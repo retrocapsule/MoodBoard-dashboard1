@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Find a Dispensary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+        .google-map-pin {
+            width: 28px;height: 28px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            background-color: var(--primary-color);
+            position: relative;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);}
+        .google-map-pin::after {
+            content: '';
+            width: 12px;height: 12px;
+            background: #121212;position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }.google-map-pin-selected {
+            width: 32px;height: 32px;
+        }
+        .google-map-pin-selected::after {
+            width: 14px;height: 14px;
+        }
+    </style>
+<style type="text/tailwindcss">
+    :root {
+      --primary-color: #a68d48;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-screen w-full max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Dark themed Google Maps view of a city with several location pins." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHqFf-wFwJjLgi9AuWYHX3-oSSgenO9NFfwXeEnRhx3Hqyzp08VG35iKq_nlt1rYnbGqf8KJEeHrt36diIBH6Zd-VqU90OtnhNqdksFEwafX_a44QgKSNspEQHNAc1W2FoaNFazbkuz7QqZ_1HocYfgzDkVSOCRJUFbdZU7ft7C3tHg9ZHIlczNyGVYJiXA_CTC1YRLGGvg7dAdxbnQx04G-xtjaF3hBaV9zpMhIB20idUI9wK5vRQ4Q7Ow57nwkznzbL7o2Cg-8I');">
+<div class="absolute" style="top: 45%; left: 48%;">
+<div class="relative flex flex-col items-center">
+<div class="absolute -top-10 flex h-9 items-center justify-center rounded-lg bg-primary px-3 text-sm font-semibold text-[#121212]">
+                        Mohave
+                    </div>
+<div class="google-map-pin google-map-pin-selected" style="transform: rotate(-45deg) translateY(-50%) translateX(50%);"></div>
+</div>
+</div>
+<div class="absolute" style="top: 30%; left: 70%;">
+<div class="relative flex flex-col items-center">
+<div class="google-map-pin" style="transform: rotate(-45deg) translateY(-50%) translateX(50%);"></div>
+</div>
+</div>
+<div class="absolute" style="top: 60%; left: 20%;">
+<div class="relative flex flex-col items-center">
+<div class="google-map-pin" style="transform: rotate(-45deg) translateY(-50%) translateX(50%);"></div>
+</div>
+</div>
+</div>
+<div class="absolute left-0 top-0 z-10 w-full p-4">
+<div class="flex items-center gap-3">
+<div class="flex-1">
+<label class="flex h-14 w-full flex-col">
+<div class="flex h-full w-full flex-1 items-stretch rounded-lg shadow-lg">
+<div class="flex items-center justify-center rounded-l-lg border-r-0 border-none bg-[#1e1e1e] pl-4 text-[#A9A9A9]">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border-l-0 border-none bg-[#1e1e1e] px-4 pl-2 text-base font-normal leading-normal text-[#EAEAEA] placeholder:text-[#A9A9A9] focus:outline-0 focus:ring-0" placeholder="Find a dispensary near you" value=""/>
+</div>
+</label>
+</div>
+<button class="flex h-14 w-14 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#1e1e1e] text-[#EAEAEA] shadow-lg">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+</div>
+</div>
+<div class="absolute right-4 top-24 z-10 mt-2">
+<button class="flex h-14 w-14 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#1e1e1e] text-[#EAEAEA] shadow-lg">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 z-20 flex h-full w-full flex-col justify-end">
+<div class="flex flex-col items-stretch rounded-t-xl bg-[#1e1e1e]">
+<button class="flex h-5 w-full items-center justify-center">
+<div class="h-1 w-9 rounded-full bg-[#595240]"></div>
+</button>
+<div class="flex flex-col gap-4 p-4 pb-6">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="text-xl font-bold text-[#EAEAEA]">Mohave Cannabis - Scottsdale</h3>
+<p class="text-sm text-[#A9A9A9]">123 N. Main Street, Scottsdale, AZ 85251</p>
+</div>
+<p class="text-sm font-semibold text-primary">2.5 mi</p>
+</div>
+<div>
+<p class="font-medium text-[#EAEAEA]">
+<span class="text-green-400">Open Now</span> • Closes 10 PM
+                        </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-6 text-base font-bold leading-normal text-[#121212]">
+<span class="material-symbols-outlined">directions</span>
+                            Get Directions
+                        </button>
+<button class="flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border border-primary/50 bg-transparent px-6 text-base font-bold leading-normal text-primary">
+                            View Details
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

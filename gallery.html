@@ -61,6 +61,20 @@
             flex: 1;
             position: relative;
         }
+        #notes-modal {
+            display: none;
+        }
+        #notes-modal.show {
+            display: flex;
+        }
+        #thumbs-up-btn.active {
+            border-color: #a88e48;
+            background: rgba(168, 142, 72, 0.2);
+        }
+        #thumbs-down-btn.active {
+            border-color: #a88e48;
+            background: rgba(168, 142, 72, 0.2);
+        }
         #fullscreen-content > * {
             width: 100%;
             max-width: 100%;
@@ -162,11 +176,65 @@
                     <span class="material-symbols-outlined text-2xl">arrow_back</span>
                 </button>
                 <h2 id="fullscreen-title" class="text-white text-lg font-semibold flex-1 text-center"></h2>
-                <div class="w-12"></div>
+                <button id="notes-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors relative">
+                    <span class="material-symbols-outlined text-2xl">rate_review</span>
+                    <span id="notes-indicator" class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full hidden"></span>
+                </button>
             </div>
         </div>
         <div id="fullscreen-content" class="w-full">
             <!-- Content will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Notes & Rating Modal -->
+    <div id="notes-modal" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="bg-[#2a271f] rounded-xl border border-[#3e3a2d] w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-[#2a271f] border-b border-[#3e3a2d] p-4 flex items-center justify-between">
+                <h3 class="text-white text-xl font-bold">Design Feedback</h3>
+                <button id="close-notes-modal" class="flex items-center justify-center h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <!-- Rating Section -->
+                <div>
+                    <label class="text-white text-sm font-semibold mb-3 block">Overall Rating (1-10)</label>
+                    <div class="flex items-center gap-2">
+                        <input type="range" id="rating-slider" min="1" max="10" value="5" 
+                               class="flex-1 h-2 bg-[#3e3a2d] rounded-lg appearance-none cursor-pointer accent-primary">
+                        <span id="rating-value" class="text-primary text-2xl font-bold min-w-[3rem] text-center">5</span>
+                    </div>
+                </div>
+
+                <!-- Thumbs Section -->
+                <div>
+                    <label class="text-white text-sm font-semibold mb-3 block">Quick Impression</label>
+                    <div class="flex gap-4">
+                        <button id="thumbs-up-btn" class="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl border-2 border-[#3e3a2d] hover:border-primary/50 transition-colors bg-[#1d1b15]">
+                            <span class="material-symbols-outlined text-3xl text-white">thumb_up</span>
+                            <span class="text-white font-semibold">Like</span>
+                        </button>
+                        <button id="thumbs-down-btn" class="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl border-2 border-[#3e3a2d] hover:border-primary/50 transition-colors bg-[#1d1b15]">
+                            <span class="material-symbols-outlined text-3xl text-white">thumb_down</span>
+                            <span class="text-white font-semibold">Dislike</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notes Section -->
+                <div>
+                    <label for="notes-textarea" class="text-white text-sm font-semibold mb-3 block">Notes</label>
+                    <textarea id="notes-textarea" 
+                              placeholder="Add your thoughts, feedback, or observations about this design..."
+                              class="w-full h-32 p-4 bg-[#1d1b15] border border-[#3e3a2d] rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary resize-none"></textarea>
+                </div>
+
+                <!-- Save Button -->
+                <button id="save-notes-btn" class="w-full h-12 rounded-xl bg-primary text-background-dark font-bold text-base tracking-wide hover:bg-primary/90 transition-colors">
+                    Save Feedback
+                </button>
+            </div>
         </div>
     </div>
 
@@ -275,12 +343,77 @@
             });
         }
 
+        // Store current item for notes/rating
+        let currentItemId = null;
+
+        // Get feedback for an item
+        function getFeedback(itemId) {
+            const key = `feedback_${itemId}`;
+            const feedback = localStorage.getItem(key);
+            return feedback ? JSON.parse(feedback) : {
+                rating: 5,
+                thumbs: null,
+                notes: ''
+            };
+        }
+
+        // Save feedback for an item
+        function saveFeedback(itemId, feedback) {
+            const key = `feedback_${itemId}`;
+            localStorage.setItem(key, JSON.stringify(feedback));
+        }
+
+        // Load feedback into modal
+        function loadFeedbackIntoModal(itemId) {
+            const feedback = getFeedback(itemId);
+            
+            // Set rating
+            document.getElementById('rating-slider').value = feedback.rating;
+            document.getElementById('rating-value').textContent = feedback.rating;
+            
+            // Set thumbs
+            document.getElementById('thumbs-up-btn').classList.remove('active');
+            document.getElementById('thumbs-down-btn').classList.remove('active');
+            if (feedback.thumbs === 'up') {
+                document.getElementById('thumbs-up-btn').classList.add('active');
+            } else if (feedback.thumbs === 'down') {
+                document.getElementById('thumbs-down-btn').classList.add('active');
+            }
+            
+            // Set notes
+            document.getElementById('notes-textarea').value = feedback.notes || '';
+            
+            // Show indicator if feedback exists
+            const indicator = document.getElementById('notes-indicator');
+            if (feedback.notes || feedback.thumbs || feedback.rating !== 5) {
+                indicator.classList.remove('hidden');
+            } else {
+                indicator.classList.add('hidden');
+            }
+        }
+
+        // Open notes modal
+        function openNotesModal() {
+            if (currentItemId) {
+                loadFeedbackIntoModal(currentItemId);
+                document.getElementById('notes-modal').classList.add('show');
+            }
+        }
+
+        // Close notes modal
+        function closeNotesModal() {
+            document.getElementById('notes-modal').classList.remove('show');
+        }
+
         // Open fullscreen view
         async function openFullscreen(item, index) {
             const fullscreenView = document.getElementById('fullscreen-view');
             const fullscreenContent = document.getElementById('fullscreen-content');
             const fullscreenTitle = document.getElementById('fullscreen-title');
             const galleryView = document.getElementById('gallery-view');
+
+            // Store current item ID for notes/rating
+            currentItemId = item.folder;
 
             // Mark as viewed
             markAsViewed(index);
@@ -294,6 +427,17 @@
             // Set title
             const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             fullscreenTitle.textContent = displayName;
+            
+            // Load feedback indicator
+            if (currentItemId) {
+                const feedback = getFeedback(currentItemId);
+                const indicator = document.getElementById('notes-indicator');
+                if (feedback.notes || feedback.thumbs || feedback.rating !== 5) {
+                    indicator.classList.remove('hidden');
+                } else {
+                    indicator.classList.add('hidden');
+                }
+            }
 
             // Show loading state
             fullscreenContent.innerHTML = '<div class="flex items-center justify-center h-full min-h-[400px]"><p class="text-white/60">Loading...</p></div>';
@@ -449,10 +593,89 @@
             // Back button handler
             document.getElementById('back-button').addEventListener('click', closeFullscreen);
             
+            // Notes button handler
+            document.getElementById('notes-button').addEventListener('click', openNotesModal);
+            
+            // Close notes modal handlers
+            document.getElementById('close-notes-modal').addEventListener('click', closeNotesModal);
+            document.getElementById('notes-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'notes-modal') {
+                    closeNotesModal();
+                }
+            });
+            
+            // Rating slider handler
+            const ratingSlider = document.getElementById('rating-slider');
+            const ratingValue = document.getElementById('rating-value');
+            ratingSlider.addEventListener('input', (e) => {
+                ratingValue.textContent = e.target.value;
+            });
+            
+            // Thumbs buttons handlers
+            document.getElementById('thumbs-up-btn').addEventListener('click', () => {
+                const upBtn = document.getElementById('thumbs-up-btn');
+                const downBtn = document.getElementById('thumbs-down-btn');
+                
+                if (upBtn.classList.contains('active')) {
+                    upBtn.classList.remove('active');
+                } else {
+                    upBtn.classList.add('active');
+                    downBtn.classList.remove('active');
+                }
+            });
+            
+            document.getElementById('thumbs-down-btn').addEventListener('click', () => {
+                const upBtn = document.getElementById('thumbs-up-btn');
+                const downBtn = document.getElementById('thumbs-down-btn');
+                
+                if (downBtn.classList.contains('active')) {
+                    downBtn.classList.remove('active');
+                } else {
+                    downBtn.classList.add('active');
+                    upBtn.classList.remove('active');
+                }
+            });
+            
+            // Save feedback button handler
+            document.getElementById('save-notes-btn').addEventListener('click', () => {
+                if (!currentItemId) return;
+                
+                const rating = parseInt(document.getElementById('rating-slider').value);
+                const notes = document.getElementById('notes-textarea').value;
+                const thumbsUp = document.getElementById('thumbs-up-btn').classList.contains('active');
+                const thumbsDown = document.getElementById('thumbs-down-btn').classList.contains('active');
+                
+                const thumbs = thumbsUp ? 'up' : (thumbsDown ? 'down' : null);
+                
+                const feedback = {
+                    rating: rating,
+                    thumbs: thumbs,
+                    notes: notes
+                };
+                
+                saveFeedback(currentItemId, feedback);
+                
+                // Update indicator
+                const indicator = document.getElementById('notes-indicator');
+                if (notes || thumbs || rating !== 5) {
+                    indicator.classList.remove('hidden');
+                } else {
+                    indicator.classList.add('hidden');
+                }
+                
+                // Close modal
+                closeNotesModal();
+            });
+            
             // ESC key handler
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    closeFullscreen();
+                    const modal = document.getElementById('notes-modal');
+                    if (modal.classList.contains('show')) {
+                        closeNotesModal();
+                    } else {
+                        closeFullscreen();
+                    }
                 }
             });
         });

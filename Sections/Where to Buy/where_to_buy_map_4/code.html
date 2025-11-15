@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rapid Access Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1e1e1e",
+                        "text-dark-primary": "#EAEAEA",
+                        "text-dark-secondary": "#A9A9A9"
+                    },
+                    fontFamily: {
+                        "sans": ["Roboto Flex", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+<style type="text/tailwindcss">
+    :root {
+      --primary-color: #a68d48;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-text-dark-primary">
+<div class="relative mx-auto flex h-screen w-full max-w-md flex-col overflow-y-scroll">
+<div class="sticky top-0 z-20 flex flex-col gap-3 bg-background-dark p-4 pb-3 shadow-lg">
+<div class="flex items-center gap-3">
+<label class="flex h-12 w-full flex-col">
+<div class="flex h-full w-full flex-1 items-stretch rounded-lg bg-surface-dark shadow-md">
+<div class="flex items-center justify-center rounded-l-lg pl-4 text-text-dark-secondary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border-l-0 border-none bg-surface-dark px-4 pl-2 text-base font-normal leading-normal text-text-dark-primary placeholder:text-text-dark-secondary focus:outline-0 focus:ring-0" placeholder="Search dispensary..." value=""/>
+</div>
+</label>
+<button class="flex h-12 w-12 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface-dark text-text-dark-primary shadow-md">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+<div class="flex justify-start gap-2 overflow-x-auto scrollbar-hide">
+<button class="flex items-center rounded-full bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary shadow-sm hover:bg-primary/30">
+<span class="material-symbols-outlined text-base mr-1">schedule</span>
+                Open Now
+            </button>
+<button class="flex items-center rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-dark-primary shadow-sm hover:bg-primary/20 hover:text-primary">
+<span class="material-symbols-outlined text-base mr-1">near_me</span>
+                Closest
+            </button>
+<button class="flex items-center rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-dark-primary shadow-sm hover:bg-primary/20 hover:text-primary">
+<span class="material-symbols-outlined text-base mr-1">star</span>
+                Top Rated
+            </button>
+<button class="flex items-center rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-dark-primary shadow-sm hover:bg-primary/20 hover:text-primary">
+<span class="material-symbols-outlined text-base mr-1">local_offer</span>
+                Deals
+            </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4 pt-0">
+<div class="flex w-full flex-col gap-3 rounded-xl bg-surface-dark p-4 shadow-lg">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/20 overflow-hidden">
+<img alt="Mohave Cannabis logo" class="h-full w-full object-cover p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0xlCRrLAX_bjseq1lnGos4bu7sDK3J8gA9mVpc75YgxZ1xBjS1mbxaRlQaX11mQu-nhkTFot5WkYYzVy0kToeQFQkna_X-ea-WGlKuETnQkXDhqS55upEDPo6LpECJntGlVhCVixB7M8OCN16FrSyThQpNp8_RIVq_LHuqPxDoqhn93906mQU1V-A454tPO5GlzihCxvo3hkdJ_p7RmsgQhBcQaOszDgAgunVtBUu1AqCCqSpOYzvJlpxKgVaTZ7VsLXqQMNoYQI"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h3 class="text-lg font-semibold leading-tight text-text-dark-primary">Scottsdale HQ</h3>
+<p class="text-xs text-text-dark-secondary">123 N. Main St, Scottsdale, AZ</p>
+<p class="mt-1 text-sm font-medium leading-tight">
+<span class="text-green-400">Open</span> until 10 PM
+                    </p>
+</div>
+<div class="flex-shrink-0 relative w-20 h-20 rounded-lg overflow-hidden border border-white/10 shadow-md bg-background-dark/50">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Small map thumbnail for Scottsdale HQ" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHqFf-wFwJjLgi9AuWYHX3-oSSgenO9NFfwXeEnRhx3Hqyzp08VG35iKq_nlt1rYnbGqf8KJEeHrt36diIBH6Zd-VqU90OtnhNqdksFEwafX_a44QgKSNspEQHNAc1W2FoaNFazbkuz7QqZ_1HocYfgzDkVSOCRJUFbdZU7ft7C3tHg9ZHIlczNyGVYJiXA_CTC1YRLGGvg7dAdxbnQx04G-xtjaF3hBaV9zpMhIB20idUI9wK5vRQ4Q7Ow57nwkznzbL7o2Cg-8I');"></div>
+<div class="absolute" style="top: 50%; left: 50%; transform: translate(-50%, -100%);">
+<div class="google-map-pin-thumbnail bg-primary" style="width: 12px;height: 12px; transform: rotate(-45deg);"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary text-text-dark-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">directions</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-transparent text-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">info</span>
+</button>
+</div>
+</div>
+<div class="flex w-full flex-col gap-3 rounded-xl bg-surface-dark p-4 shadow-lg">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/20 overflow-hidden">
+<img alt="Mohave Cannabis logo" class="h-full w-full object-cover p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAa38h9qkbk616uUx9r5zxxmGDFKPPp0pW3lsHjQ4JHYnDcaJLy7KtCMiuUa6jEVQW_tmZFpbMLbGTAIPIZ2pb4bzzi51H-t3fA1yahyr9RPgQ7jFEefAh2X1wxD7ru3_1XM45Ty3IY2jp5EYDCqhU_NWA7ex9J9g-c5BYMC60wV5eG9noKHF1qSdCxRhaxixMWXS8bdMf69R4O81llHz4h91QONbhvvNf4l0wg8LkULavx3emU3eNyWxQ6zfpi18v6LWaq8qslNE"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h3 class="text-lg font-semibold leading-tight text-text-dark-primary">Mohave Phoenix</h3>
+<p class="text-xs text-text-dark-secondary">456 W. Oak St, Phoenix, AZ</p>
+<p class="mt-1 text-sm font-medium leading-tight">
+<span class="text-green-400">Open</span> until 9 PM
+                    </p>
+</div>
+<div class="flex-shrink-0 relative w-20 h-20 rounded-lg overflow-hidden border border-white/10 shadow-md bg-background-dark/50">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Small map thumbnail for Mohave Phoenix" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHqFf-wFwJjLgi9AuWYHX3-oSSgenO9NFfwXeEnRhx3Hqyzp08VG35iKq_nlt1rYnbGqf8KJEeHrt36diIBH6Zd-VqU90OtnhNqdksFEwafX_a44QgKSNspEQHNAc1W2FoaNFazbkuz7QqZ_1HocYfgzDkVSOCRJUFbdZU7ft7C3tHg9ZHIlczNyGVYJiXA_CTC1YRLGGvg7dAdxbnQx04G-xtjaF3hBaV9zpMhIB20idUI9wK5vRQ4Q7Ow57nwkznzbL7o2Cg-8I');"></div>
+<div class="absolute" style="top: 50%; left: 50%; transform: translate(-50%, -100%);">
+<div class="google-map-pin-thumbnail bg-primary" style="width: 12px;height: 12px; transform: rotate(-45deg);"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary text-text-dark-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">directions</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-transparent text-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">info</span>
+</button>
+</div>
+</div>
+<div class="flex w-full flex-col gap-3 rounded-xl bg-surface-dark p-4 shadow-lg">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/20 overflow-hidden">
+<img alt="Mohave Cannabis logo" class="h-full w-full object-cover p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNUR-X0oZArsTFUvxFxwn_2egyC9bG689swxS5gvpS9FgRtQy5iBzSCfsoCIse3ajEfGT4cMdpDjzlU2YsHfrvGCLKKuEXUhfuyEL72nD2rmeGuy-p4P4O9TGF9V7H8tWt_PqIJRRgslszkbpVOo-y-vmswiU-lqS8ELxxFKJk4jis3g5IqljpNdxuM1YJiJRlpY612tsEaEUEuVLSA0dds0g-hRJIIdm1Gmi4aphGm05OLVKMmyHpkf5MtNDJIVh5Dpn3reXh2d0"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h3 class="text-lg font-semibold leading-tight text-text-dark-primary">Tucson Store</h3>
+<p class="text-xs text-text-dark-secondary">789 S. Desert Rd, Tucson, AZ</p>
+<p class="mt-1 text-sm font-medium leading-tight">
+<span class="text-red-400">Closed</span> • Opens 9 AM
+                    </p>
+</div>
+<div class="flex-shrink-0 relative w-20 h-20 rounded-lg overflow-hidden border border-white/10 shadow-md bg-background-dark/50">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Small map thumbnail for Tucson Store" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHqFf-wFwJjLgi9AuWYHX3-oSSgenO9NFfwXeEnRhx3Hqyzp08VG35iKq_nlt1rYnbGqf8KJEeHrt36diIBH6Zd-VqU90OtnhNqdksFEwafX_a44QgKSNspEQHNAc1W2FoaNFazbkuz7QqZ_1HocYfgzDkVSOCRJUFbdZU7ft7C3tHg9ZHIlczNyGVYJiXA_CTC1YRLGGvg7dAdxbnQx04G-xtjaF3hBaV9zpMhIB20idUI9wK5vRQ4Q7Ow57nwkznzbL7o2Cg-8I');"></div>
+<div class="absolute" style="top: 50%; left: 50%; transform: translate(-50%, -100%);">
+<div class="google-map-pin-thumbnail bg-primary" style="width: 12px;height: 12px; transform: rotate(-45deg);"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary text-text-dark-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">directions</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-transparent text-primary shadow-md">
+<span class="material-symbols-outlined text-2xl">info</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
