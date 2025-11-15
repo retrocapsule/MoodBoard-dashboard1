@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strain Detail Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a78e49",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+              "primary-text": "#EAEAEA",
+              "secondary-text": "#A0A0A0"
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-dark p-4 pb-2 justify-between">
+<div class="text-primary-text flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-3xl">arrow_back</span>
+</div>
+<h2 class="text-primary-text text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Strain Name</h2>
+<div class="flex size-12 shrink-0 items-center"></div>
+</div>
+<!-- Interactive 3D Model Viewer -->
+<div class="flex w-full grow bg-background-dark @container py-3 items-center justify-center h-80">
+<div class="relative flex items-center justify-center w-64 h-64">
+<img alt="A 3D render of a cannabis nug, rotating slowly" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3mOMuBumhywYuE3zmwwnjY7KNVK1IMlWN8l1uMD8Dz1bayPEk3kBPsch-AGDOUcKdhWHt3WjUf4ImLo9lzrshgy6Wp14t0T2aeAYirFEiZfknbk5IDLdhJ9ntkaE7noFIfJqUv59PJOPuX_MUDF6YZ_zpiMFe_o5ISasuJr3Hem4szYKuwWZkxLc9rDTqMaKWSWm7wEtXGFuuU1t0rg6yoF7-5Gxx8mGlyrp2Du3t7bl0hWtim0nLh0GimxiQCQKXKNc9UDJmlw4"/>
+<div class="absolute bottom-4 right-4 flex items-center justify-center p-2 bg-black/30 rounded-full text-primary-text backdrop-blur-sm">
+<span class="material-symbols-outlined">360</span>
+</div>
+</div>
+</div>
+<!-- Page Indicators -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+<div class="h-2 w-2 rounded-full bg-[#595240]"></div>
+<div class="h-2 w-2 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-[#595240]"></div>
+</div>
+<div class="px-4 pb-28">
+<!-- Headline Text -->
+<h1 class="text-primary-text tracking-light text-[32px] font-bold leading-tight text-left pb-3 pt-6">Strain Name</h1>
+<!-- Description List -->
+<div class="grid grid-cols-2">
+<div class="flex flex-col gap-1 border-t border-solid border-t-[#595240] py-4 pr-2">
+<p class="text-secondary-text text-sm font-normal leading-normal">Type</p>
+<p class="text-primary-text text-sm font-normal leading-normal">Hybrid</p>
+</div>
+<div class="flex flex-col gap-1 border-t border-solid border-t-[#595240] py-4 pl-2">
+<p class="text-secondary-text text-sm font-normal leading-normal">THC</p>
+<p class="text-primary-text text-sm font-normal leading-normal">24%</p>
+</div>
+<div class="flex flex-col gap-1 border-t border-solid border-t-[#595240] py-4 pr-2">
+<p class="text-secondary-text text-sm font-normal leading-normal">Genetics</p>
+<p class="text-primary-text text-sm font-normal leading-normal">Parent A x Parent B</p>
+</div>
+<div class="flex flex-col gap-1 border-t border-solid border-t-[#595240] py-4 pl-2">
+<p class="text-secondary-text text-sm font-normal leading-normal">CBD</p>
+<p class="text-primary-text text-sm font-normal leading-normal">1%</p>
+</div>
+</div>
+<!-- Effects Section -->
+<div class="py-6">
+<h3 class="text-primary-text text-lg font-semibold leading-tight mb-4">Effects</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full">Relaxed</span>
+<span class="bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full">Happy</span>
+<span class="bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full">Uplifted</span>
+<span class="bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full">Euphoric</span>
+<span class="bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full">Creative</span>
+</div>
+</div>
+<!-- Aroma Profile Section -->
+<div class="py-6 border-t border-solid border-t-[#595240]">
+<h3 class="text-primary-text text-lg font-semibold leading-tight mb-4">Aroma Profile</h3>
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-16 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary text-4xl">park</span>
+</div>
+<p class="text-secondary-text text-sm">Pine</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-16 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary text-4xl">local_florist</span>
+</div>
+<p class="text-secondary-text text-sm">Citrus</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-16 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary text-4xl">grass</span>
+</div>
+<p class="text-secondary-text text-sm">Earthy</p>
+</div>
+</div>
+</div>
+<!-- User Ratings -->
+<div class="py-6 border-t border-solid border-t-[#595240]">
+<h3 class="text-primary-text text-lg font-semibold leading-tight mb-4">User Ratings</h3>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#2a271f] rounded-lg">
+<div class="flex flex-col items-center sm:items-start">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-2xl">star_half</span>
+</div>
+<p class="text-secondary-text text-sm mt-1">4.5 from 128 reviews</p>
+</div>
+<button class="bg-primary/20 text-primary font-bold py-2 px-6 rounded-full text-sm w-full sm:w-auto">Rate this strain</button>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="mt-8">
+<button class="w-full bg-primary text-background-dark font-bold py-4 px-6 rounded-full text-base">Find this Strain</button>
+</div>
+</div>
+<!-- Persistent Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 bg-[#2a271f] border-t border-solid border-t-[#595240]">
+<div class="flex justify-around items-center h-20 px-4">
+<a class="flex flex-col items-center text-secondary-text hover:text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">grass</span>
+<span class="text-xs">Strains</span>
+</a>
+<a class="flex flex-col items-center text-secondary-text hover:text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+<span class="text-xs">Stores</span>
+</a>
+<a class="flex flex-col items-center text-secondary-text hover:text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+<span class="text-xs">Profile</span>
+</a>
+</div>
+</div>
+</div>
+</body></html>
