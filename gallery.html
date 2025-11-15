@@ -460,6 +460,10 @@
             const fullscreenTitle = document.getElementById('fullscreen-title');
             const galleryView = document.getElementById('gallery-view');
 
+            // Show fullscreen view and hide gallery view
+            galleryView.style.display = 'none';
+            fullscreenView.classList.add('active');
+
             // Store current item ID for notes/rating
             currentItemId = item.folder;
             currentItemSupabaseId = item.id || null; // Store Supabase ID if available
@@ -645,10 +649,6 @@
                         };
                     }
                 });
-
-            // Show fullscreen view
-            galleryView.style.display = 'none';
-            fullscreenView.classList.add('active');
         }
 
         // Close fullscreen view
@@ -657,7 +657,7 @@
             const galleryView = document.getElementById('gallery-view');
             
             fullscreenView.classList.remove('active');
-            galleryView.style.display = 'block';
+            galleryView.style.display = '';
         }
 
         // Initialize
