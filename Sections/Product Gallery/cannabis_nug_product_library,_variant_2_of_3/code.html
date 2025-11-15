@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Flower Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4">
+<button class="flex size-12 shrink-0 items-center justify-center text-white/80">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-white">Flower Library</h1>
+<button class="flex size-12 shrink-0 items-center justify-center text-white/80">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Chips for Filtering -->
+<div class="flex gap-2 p-4 pt-2 overflow-x-auto whitespace-nowrap">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-4">
+<p class="text-sm font-medium leading-normal text-white">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-sm font-medium leading-normal text-white/80">Indica</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-sm font-medium leading-normal text-white/80">Sativa</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-sm font-medium leading-normal text-white/80">Hybrid</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-sm font-medium leading-normal text-white/80">Popular</p>
+</button>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-2 gap-4 p-4">
+<!-- Product Card 1 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Grateful Breath cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADxeUynIRuXV1K9TBmoNxdUE8CZ9mRLhD9w65UzsOVCOZmkOu6f8kHCY0CCDF6hQV1Yx1abBysHmzg1iXpnnj3jp7I-sIZQEzUW6w90K_g2AnKIiy0epSo1KpEGoPqMGNrbBEuCGvMkZjywkcH5xO5mnGzdyQ-87Rq3I3T_ZdyhiP2lSiLjdRp3ioVvVHpf6nEQ_xs-BXnPCGMspuMwJYjSwapl48IaV7CFW6z8YUP5TNXBcLeCyhCbFlQVbOAIoHfiSEcdAzrZJA"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Grateful Breath</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<!-- Expanded Details -->
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-purple-300 mb-2">Indica</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 24%</span>
+<span>CBD: 1%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden mt-6">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Chiefin' cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwlTGBBXWwoowkgEPPC7-dcj73JIOnPc_tVHBcGNDpEbQ93CwqzqnH3tp3mE5_8QH0uYR80r_w9X6sQ0yry58xs6tCyKYjRLSgKnYX451skSVcXhEJZvk-8GSOIJODtbdhP0TpJluRyHuP6hoRJiYpllfT-ippuB9HP0hVsbn_sXCvI8l8pssdywg_CtkxdIngAOXaFh_ly8IZQ3kPujz1BshE2JOT42db_5MC-0-ef5eQ3b7ATtesqIl7e6bvHwP_BUFvNCeCsgo"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Chiefin'</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-yellow-300 mb-2">Sativa</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 28%</span>
+<span>CBD: &lt;1%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Desert Bloom cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzdi_SgqUtfdawdOtH5UeL9GWU4ZIhGHB3RVp2EmGVjdW-Gyj3HgLhyeReciH-3wJbsQuj_qv9DtWtWfwqXg3yIdy7wqMW73f4XFGVA6Se3klSY8RuwNI_mazyofsXBxcY61tvXp8WWiX5bgXLCilbtEFpS1W3CmC5DU5NpsK16ilBTVXiKoAqxymH-N6RhOBwa6sQSZbNZQeTGXaM-Sz4cw7LuR3HK6Cj2tZRiUJleat6_kHI3lt5KQ62enARd5z9jrzgP4rv6Ec"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Desert Bloom</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-green-300 mb-2">Hybrid</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 22%</span>
+<span>CBD: 2%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden mt-6">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Mohave Haze cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYLkKNUSCNkF6RPeTWom3I4QN_ZpwuHlhdLPACGV-ewSiRxJQcZuus2SLqzVEHFb618-uKTMesvrygZHrDO6WBbTxcwf6VV7d0KYoK45RH2CZhNyV0KDtCEBJjeF5-OWBEskAU7ng9yIi6TJbje8zww8BWTzva4Q9LqhMAswWtcqSalQBrNe_wyaLgPTB3hBIi_Jh12zbEoPxDcrDG69mlw5LTBr4bN_5rT5YW8IAsL3mBKtH8qR8Ti2WkeRgiNQ5amBLVkw19SmE"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Mohave Haze</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-yellow-300 mb-2">Sativa</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 26%</span>
+<span>CBD: &lt;1%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Cactus Jack cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOEthAzRVVrLP-zh3kywBidr0m39w-qawVVoT45Ez6rYz0OgSYK3wN68CqkNcvkh4PgyUNxMFcOW1oeINolixoSvc2Ed73R2-ZUnjd5b8H6fDV96j0qpJcn3bK8gLS7UC7IruHRvAwH6l6H1PhnJbx1iy4xK2-Dh_VsXJ64dQ34f1qpCnjLUUrq3xgkq865GThBfWxFGzMyqN_dHiGdg-zwba-xLv55PjMzSqeOvgv64ukAj9HormvThUbTzE4n60KxihZP2Wk6CE"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Cactus Jack</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-green-300 mb-2">Hybrid</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 25%</span>
+<span>CBD: 1%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden mt-6">
+<div class="relative p-4 pb-0 text-center">
+<img class="mx-auto h-32 w-auto transition-transform duration-300 group-hover:scale-110" data-alt="A high-quality image of a Sunset Sherbet cannabis nug with a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi45rVJTuNvXOV7KZoqPiKzWf49AjjaHPsZov8BQNMQRcYZbehhjxZ4v4_U2nHaYcQZfFG3J8jDGU6Qy7hmWIaD8XcnXin9U1CdMjymSBYvwznH56g0u26o2tlFbJXQyIpe9-cPnuk9Xpklkwe_-fOt399dBfvTTjv3RxgcABqHSIw287z9nAt5fC-vcOVIiuQ2v7qBj3tMgDWzeYwOIbOI5OVRzmBk0ix7fzRX9Ghux6gd8yOtSNXuofFoQuar2qwxT4bBHhF2kk"/>
+</div>
+<div class="flex flex-col p-4 pt-2">
+<h3 class="text-base font-bold text-white">Sunset Sherbet</h3>
+<p class="text-xs text-white/60 mb-3">Tap for Details</p>
+<div class="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-300 ease-in-out overflow-hidden">
+<div class="text-xs font-medium text-purple-300 mb-2">Indica</div>
+<div class="flex justify-between text-xs text-white/80 mb-3">
+<span>THC: 21%</span>
+<span>CBD: 2%</span>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg bg-primary text-sm font-bold text-white">View Details</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<footer class="sticky bottom-0 z-10">
+<div class="flex border-t border-[#3e3a2d] bg-[#2c2920] px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<p class="text-xs font-medium leading-normal">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<p class="text-xs font-medium leading-normal">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined text-2xl">calendar_month</span>
+<p class="text-xs font-medium leading-normal">Events</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined text-2xl">star</span>
+<p class="text-xs font-medium leading-normal">Loyalty</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<p class="text-xs font-medium leading-normal">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+</body></html>

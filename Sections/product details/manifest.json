@@ -1,0 +1,94 @@
+{
+  "items": [
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_1_of_3_1",
+      "name": "individual_strain_page,_variant_1_of_3_1",
+      "html": "Sections/product details/individual_strain_page,_variant_1_of_3_1/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_1_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_1_of_3_2",
+      "name": "individual_strain_page,_variant_1_of_3_2",
+      "html": "Sections/product details/individual_strain_page,_variant_1_of_3_2/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_1_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_1_of_3_3",
+      "name": "individual_strain_page,_variant_1_of_3_3",
+      "html": "Sections/product details/individual_strain_page,_variant_1_of_3_3/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_1_of_3_3/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_1_of_3_4",
+      "name": "individual_strain_page,_variant_1_of_3_4",
+      "html": "Sections/product details/individual_strain_page,_variant_1_of_3_4/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_1_of_3_4/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_1_of_3_5",
+      "name": "individual_strain_page,_variant_1_of_3_5",
+      "html": "Sections/product details/individual_strain_page,_variant_1_of_3_5/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_1_of_3_5/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_2_of_3_1",
+      "name": "individual_strain_page,_variant_2_of_3_1",
+      "html": "Sections/product details/individual_strain_page,_variant_2_of_3_1/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_2_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_2_of_3_2",
+      "name": "individual_strain_page,_variant_2_of_3_2",
+      "html": "Sections/product details/individual_strain_page,_variant_2_of_3_2/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_2_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_3_of_3_1",
+      "name": "individual_strain_page,_variant_3_of_3_1",
+      "html": "Sections/product details/individual_strain_page,_variant_3_of_3_1/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_3_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/product details/individual_strain_page,_variant_3_of_3_2",
+      "name": "individual_strain_page,_variant_3_of_3_2",
+      "html": "Sections/product details/individual_strain_page,_variant_3_of_3_2/code.html",
+      "thumbnail": "Sections/product details/individual_strain_page,_variant_3_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_1_of_3",
+      "name": "product_detail_page,_variant_1_of_3",
+      "html": "Sections/product details/product_detail_page,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_2_of_3",
+      "name": "product_detail_page,_variant_2_of_3",
+      "html": "Sections/product details/product_detail_page,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_3_of_3_1",
+      "name": "product_detail_page,_variant_3_of_3_1",
+      "html": "Sections/product details/product_detail_page,_variant_3_of_3_1/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_3_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_3_of_3_2",
+      "name": "product_detail_page,_variant_3_of_3_2",
+      "html": "Sections/product details/product_detail_page,_variant_3_of_3_2/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_3_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_3_of_3_3",
+      "name": "product_detail_page,_variant_3_of_3_3",
+      "html": "Sections/product details/product_detail_page,_variant_3_of_3_3/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_3_of_3_3/screen.png"
+    },
+    {
+      "folder": "Sections/product details/product_detail_page,_variant_3_of_3_4",
+      "name": "product_detail_page,_variant_3_of_3_4",
+      "html": "Sections/product details/product_detail_page,_variant_3_of_3_4/code.html",
+      "thumbnail": "Sections/product details/product_detail_page,_variant_3_of_3_4/screen.png"
+    }
+  ]
+}

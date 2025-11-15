@@ -1,0 +1,14 @@
+{
+  "sections": [
+    {
+      "name": "Product Gallery",
+      "folder": "Sections/Product Gallery",
+      "icon": "inventory_2"
+    },
+    {
+      "name": "Product Details",
+      "folder": "Sections/product details",
+      "icon": "description"
+    }
+  ]
+}

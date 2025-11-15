@@ -1,0 +1,155 @@
+{
+  "galleries": [
+    {
+      "folder": "Product Gallery",
+      "name": "Product Gallery",
+      "items": [
+        {
+          "folder": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1",
+          "name": "Cannabis Nug Product Library,  Variant 1 Of 3 1",
+          "thumbnail": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1/screen.png",
+          "html": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1/code.html"
+        },
+        {
+          "folder": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2",
+          "name": "Cannabis Nug Product Library,  Variant 1 Of 3 2",
+          "thumbnail": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2/screen.png",
+          "html": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2/code.html"
+        },
+        {
+          "folder": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3",
+          "name": "Cannabis Nug Product Library,  Variant 1 Of 3 3",
+          "thumbnail": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3/screen.png",
+          "html": "Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3/code.html"
+        },
+        {
+          "folder": "Product Gallery/cannabis_nug_product_library,_variant_2_of_3",
+          "name": "Cannabis Nug Product Library,  Variant 2 Of 3",
+          "thumbnail": "Product Gallery/cannabis_nug_product_library,_variant_2_of_3/screen.png",
+          "html": "Product Gallery/cannabis_nug_product_library,_variant_2_of_3/code.html"
+        },
+        {
+          "folder": "Product Gallery/cannabis_nug_product_library,_variant_3_of_3",
+          "name": "Cannabis Nug Product Library,  Variant 3 Of 3",
+          "thumbnail": "Product Gallery/cannabis_nug_product_library,_variant_3_of_3/screen.png",
+          "html": "Product Gallery/cannabis_nug_product_library,_variant_3_of_3/code.html"
+        },
+        {
+          "folder": "Product Gallery/favorites_/_saved_products",
+          "name": " Saved Products",
+          "thumbnail": "Product Gallery/favorites_/_saved_products/screen.png",
+          "html": "Product Gallery/favorites_/_saved_products/code.html"
+        },
+        {
+          "folder": "Product Gallery/product_library",
+          "name": "Product Library",
+          "thumbnail": "Product Gallery/product_library/screen.png",
+          "html": "Product Gallery/product_library/code.html"
+        },
+        {
+          "folder": "Product Gallery/product_library_(full_access)_-_user",
+          "name": "Product Library (full Access) - User",
+          "thumbnail": "Product Gallery/product_library_(full_access)_-_user/screen.png",
+          "html": "Product Gallery/product_library_(full_access)_-_user/code.html"
+        }
+      ]
+    },
+    {
+      "folder": "product details",
+      "name": "Product Details",
+      "items": [
+        {
+          "folder": "product details/individual_strain_page,_variant_1_of_3_1",
+          "name": "Individual Strain Page,  Variant 1 Of 3 1",
+          "thumbnail": "product details/individual_strain_page,_variant_1_of_3_1/screen.png",
+          "html": "product details/individual_strain_page,_variant_1_of_3_1/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_1_of_3_2",
+          "name": "Individual Strain Page,  Variant 1 Of 3 2",
+          "thumbnail": "product details/individual_strain_page,_variant_1_of_3_2/screen.png",
+          "html": "product details/individual_strain_page,_variant_1_of_3_2/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_1_of_3_3",
+          "name": "Individual Strain Page,  Variant 1 Of 3 3",
+          "thumbnail": "product details/individual_strain_page,_variant_1_of_3_3/screen.png",
+          "html": "product details/individual_strain_page,_variant_1_of_3_3/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_1_of_3_4",
+          "name": "Individual Strain Page,  Variant 1 Of 3 4",
+          "thumbnail": "product details/individual_strain_page,_variant_1_of_3_4/screen.png",
+          "html": "product details/individual_strain_page,_variant_1_of_3_4/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_1_of_3_5",
+          "name": "Individual Strain Page,  Variant 1 Of 3 5",
+          "thumbnail": "product details/individual_strain_page,_variant_1_of_3_5/screen.png",
+          "html": "product details/individual_strain_page,_variant_1_of_3_5/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_2_of_3_1",
+          "name": "Individual Strain Page,  Variant 2 Of 3 1",
+          "thumbnail": "product details/individual_strain_page,_variant_2_of_3_1/screen.png",
+          "html": "product details/individual_strain_page,_variant_2_of_3_1/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_2_of_3_2",
+          "name": "Individual Strain Page,  Variant 2 Of 3 2",
+          "thumbnail": "product details/individual_strain_page,_variant_2_of_3_2/screen.png",
+          "html": "product details/individual_strain_page,_variant_2_of_3_2/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_3_of_3_1",
+          "name": "Individual Strain Page,  Variant 3 Of 3 1",
+          "thumbnail": "product details/individual_strain_page,_variant_3_of_3_1/screen.png",
+          "html": "product details/individual_strain_page,_variant_3_of_3_1/code.html"
+        },
+        {
+          "folder": "product details/individual_strain_page,_variant_3_of_3_2",
+          "name": "Individual Strain Page,  Variant 3 Of 3 2",
+          "thumbnail": "product details/individual_strain_page,_variant_3_of_3_2/screen.png",
+          "html": "product details/individual_strain_page,_variant_3_of_3_2/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_1_of_3",
+          "name": "Product Detail Page,  Variant 1 Of 3",
+          "thumbnail": "product details/product_detail_page,_variant_1_of_3/screen.png",
+          "html": "product details/product_detail_page,_variant_1_of_3/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_2_of_3",
+          "name": "Product Detail Page,  Variant 2 Of 3",
+          "thumbnail": "product details/product_detail_page,_variant_2_of_3/screen.png",
+          "html": "product details/product_detail_page,_variant_2_of_3/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_3_of_3_1",
+          "name": "Product Detail Page,  Variant 3 Of 3 1",
+          "thumbnail": "product details/product_detail_page,_variant_3_of_3_1/screen.png",
+          "html": "product details/product_detail_page,_variant_3_of_3_1/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_3_of_3_2",
+          "name": "Product Detail Page,  Variant 3 Of 3 2",
+          "thumbnail": "product details/product_detail_page,_variant_3_of_3_2/screen.png",
+          "html": "product details/product_detail_page,_variant_3_of_3_2/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_3_of_3_3",
+          "name": "Product Detail Page,  Variant 3 Of 3 3",
+          "thumbnail": "product details/product_detail_page,_variant_3_of_3_3/screen.png",
+          "html": "product details/product_detail_page,_variant_3_of_3_3/code.html"
+        },
+        {
+          "folder": "product details/product_detail_page,_variant_3_of_3_4",
+          "name": "Product Detail Page,  Variant 3 Of 3 4",
+          "thumbnail": "product details/product_detail_page,_variant_3_of_3_4/screen.png",
+          "html": "product details/product_detail_page,_variant_3_of_3_4/code.html"
+        }
+      ]
+    }
+  ],
+  "generated": "2025-11-15T21:24:09.067Z"
+}

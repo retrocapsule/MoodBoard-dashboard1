@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Product Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative w-full min-h-screen">
+<!-- Sticky Header -->
+<div class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4 pb-2 justify-between border-b border-white/10">
+<div class="flex size-12 shrink-0 items-center justify-start text-white/90">
+<span class="material-symbols-outlined text-3xl">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center text-white/90">Product Library</h2>
+<div class="flex size-12 shrink-0 items-center"></div> <!-- Spacer -->
+</div>
+</div>
+<!-- Search and Filter Bar -->
+<div class="sticky top-[73px] z-10 p-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#A0A0A0] flex border-none bg-[#2C2C2C] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#2C2C2C] focus:border-none h-full placeholder:text-[#A0A0A0] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search for products, strains..." value=""/>
+</div>
+</label>
+<button class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-[#121212]">
+<span class="material-symbols-outlined text-2xl">tune</span>
+</button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="px-4 pb-4">
+<div class="flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-5 pr-5">
+<p class="text-[#121212] text-sm font-medium leading-normal">All</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2C2C2C] pl-5 pr-5">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Flower</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2C2C2C] pl-5 pr-5">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Vapes</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2C2C2C] pl-5 pr-5">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Edibles</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2C2C2C] pl-5 pr-5">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Pre-rolls</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2C2C2C] pl-5 pr-5">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Concentrates</p>
+</button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 gap-4 px-4 pb-8">
+<!-- Product Card 1 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Close up shot of Mohave OG cannabis flower in a jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfX0g_tldLIiNxDUI5oYr7KSO4ZD4Rotq6jEhm5D-EBeT2tknt-daPeY8rARpIGGuqrZBngVI6VTmO71q5Ss2tWNRCwcx59e42K2OFugWN4gCI5xWjrfnz80ePN98r3p5k8V6Ls0uMZ2BQn5cZSVfQB9Zkvq3SPhDAKNNewKgMNcHyqyomBB4tFsdISEJeJemHHMW7yB4R4uT2NTv5JwQXEFiK9XPNHhyoT1wpsCwsJKQEz3mi3VOQXXYnH1szJ9Qtpbj3619Xx78");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Mohave OG</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Indica | THC 24%</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$45.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Desert Diesel cannabis flower on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxvd-W5tw860OXHPDRZS32A_qjVpHIAwkQ6xgzvJ7H44bDL8EtQYkcExKyTVI_R9WLBTkaBn5dwd1MhC7GLRmLHwGCCoycUiiiCdmJuZJNfsr0PwZcLaTfRw1edZ7F1dvqEVPMMx9oP4gFgewcSztIXOg6miuust8qV568slR1_2MDaCV_1usZm7QErjq-THHCrnibWgPD_H5LNr_9KCmzJ_AeA6qD-fcXRzvrYx93LQAO7WUqzf7yLcbIorPtx6oTRGgj_MUbRT4");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Desert Diesel</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Sativa | THC 22%</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$50.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Bag of Mango Kush edibles with fruit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFtYQRXetFStmHjNTKBnesQpIDCxw86x6LkyxQZGJ1nqEnD198ysKG-VN86zwKrrRdMAp_ZV3bsqWdkE4gPwkGji-eMa0Xjx3qh6od4Sxq-WSPw_ZxUhYaQczZ9mxBRMjOSsNXVo89Mqrm3OpJ02ebNKyL0DLXwwKU_WV6qJVpHiQXuK4J9CZ8HlesAnE81xhaxfobdGZrWVnP080giWyq-QXirKEi3_gufyjb3DoYsSxxC6BRS7PG0LlQIk1yBsBoYuI5cm-SZcA");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Mango Kush Gummies</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Hybrid | 100mg</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$22.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Blue Dream vape cartridge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgSvaORnOpQ70QkljAiG8Ja5kTKBdl0MQZPKXb80MHCLG9A1BoeTy2-B2f31ARTYCTAQLc8CgvcQi1_2S4D-y-zTR1z13AFo_FpAxWbRWb_fDC7CnG3hHPyNttaueY4gWD7VXoVGgEm3bQ1HPqVj-YgzMGbRGEKhk79dL2Z9QHN_AL6aDaPcuTH0v7zBnxSQJMlXdml_xTGZLBFVZyQrdtVpWx_WDurDwVT9EaDVJrJjpm4G16OF4OnQKSJWCtVVMPNbWDor0E-d0");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Blue Dream Vape</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Sativa | THC 88%</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$35.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Sour OG Chem cannabis flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCH_mweBwc1axyv25PCZ351qaMalONphiLRGORDHy1owhcQUekMg2j1UKsvwn9nTLECBQOn_mz2SCgdjiTiZXzRkRbePzMElQE__Cau0gTwrvcQlt9DBjCRxqlMRd_EBXCkTqhiN27j7O9vv77QBB2JMwkKfW8a9blteIMudWIYKkLu9u_f1BnmpGy84X-4jZeRbr87EBtqTQLMnMWkWvG9zd0AGdexHEKEw_IGspGE4ttkHgSlQ49K8lOs1V_mfdTdMasJy5vGNQ8");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Sour OG Chem</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Hybrid | THC 26%</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$48.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="flex flex-col rounded-xl bg-[#2C2C2C] overflow-hidden">
+<div class="relative w-full aspect-square bg-center bg-no-repeat bg-cover" data-alt="Wedding Cake cannabis preroll pack" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqrqjtbk9Q7Gf0RYApX_qY_fjExad95LuWI6-VEtDQ0s4Or0Syz7aVtWlQaKbL5y5yEuAZDCmV0v7TFskoG-21IeJjL1qW8xqq6ngtzdbf3kAEtriDx0u18dPjy00q9ILM55iMd82zARqfpcOwCy3RDuQI7-f1S3rN5aBVCfHWGetljBhzBnGuEomCPbTghNS2VzulWv_XcymD9e_UPS107N3wYhReUCoeQO-ZoYtIvSt3FNhxpnYqLDomIach9Ol6fTyeNKPc6vM");'>
+<button class="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 p-3">
+<div class="flex flex-col">
+<p class="text-[#E0E0E0] text-base font-bold leading-tight">Wedding Cake Pre-roll</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Indica | THC 25%</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">$18.00</p>
+<button class="flex min-w-[32px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 w-8 bg-primary text-[#121212] text-sm font-medium leading-normal">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

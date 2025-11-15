@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MoodBoard - Gallery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            min-height: 100vh;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+        }
+        .gallery-item.viewed {
+            opacity: 0.6;
+        }
+        .gallery-item.viewed::after {
+            content: '✓';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #a88e48;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(168, 142, 72, 0.4);
+        }
+        .fullscreen-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1d1b15;
+            z-index: 1000;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .fullscreen-view.active {
+            display: flex;
+        }
+        #fullscreen-content {
+            overflow: hidden;
+            flex: 1;
+            position: relative;
+        }
+        #fullscreen-content > * {
+            width: 100%;
+            max-width: 100%;
+        }
+        #fullscreen-content iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #fullscreen-content .loaded-page-content {
+            overflow-y: auto;
+            height: 100%;
+        }
+        .gallery-masonry {
+            column-count: 2;
+            column-gap: 8px;
+        }
+        @media (min-width: 640px) {
+            .gallery-masonry {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .gallery-masonry {
+                column-count: 3;
+            }
+        }
+        @media (min-width: 1280px) {
+            .gallery-masonry {
+                column-count: 4;
+            }
+        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 8px;
+            page-break-inside: avoid;
+        }
+        .gallery-item .bg-\[#2a271f\] {
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- Load manifest data (works with file:// protocol) -->
+    <script src="manifest-loader.js"></script>
+</head>
+<body class="bg-background-dark font-display">
+    <!-- Main Gallery View -->
+    <div id="gallery-view" class="min-h-screen pb-8">
+        <!-- Header with Logo -->
+        <header class="sticky top-0 z-10 w-full bg-background-dark/80 backdrop-blur-sm border-b border-[#3e3a2d]">
+            <div class="flex items-center justify-between px-4 py-4">
+                <a href="index.html" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                </a>
+                <div class="flex flex-col items-center flex-1">
+                    <img src="SunBurst2.webp" alt="Logo" class="mb-2 w-16 h-16 object-contain">
+                    <h1 id="section-title" class="text-white text-xl font-bold tracking-tight">Gallery</h1>
+                </div>
+                <div class="w-12"></div>
+            </div>
+        </header>
+
+        <!-- Gallery Grid -->
+        <main class="container mx-auto px-2 py-8 max-w-7xl">
+            <div id="gallery-grid" class="gallery-masonry">
+                <!-- Gallery items will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Fullscreen View -->
+    <div id="fullscreen-view" class="fullscreen-view">
+        <div class="sticky top-0 z-20 bg-background-dark/95 backdrop-blur-sm border-b border-[#3e3a2d]">
+            <div class="flex items-center justify-between p-4">
+                <button id="back-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                </button>
+                <h2 id="fullscreen-title" class="text-white text-lg font-semibold flex-1 text-center"></h2>
+                <div class="w-12"></div>
+            </div>
+        </div>
+        <div id="fullscreen-content" class="w-full">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Get section from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const sectionFolder = urlParams.get('section');
+        const sectionName = urlParams.get('name') || 'Gallery';
+
+        // Set section title
+        document.getElementById('section-title').textContent = sectionName;
+
+        // Load viewed items from localStorage (scoped to section)
+        function getViewedItems() {
+            const key = `viewedItems_${sectionFolder}`;
+            const viewed = localStorage.getItem(key);
+            return viewed ? JSON.parse(viewed) : [];
+        }
+
+        // Save viewed item to localStorage
+        function markAsViewed(index) {
+            const key = `viewedItems_${sectionFolder}`;
+            const viewed = getViewedItems();
+            if (!viewed.includes(index)) {
+                viewed.push(index);
+                localStorage.setItem(key, JSON.stringify(viewed));
+            }
+        }
+
+        // Load gallery items - works with both http:// and file:// protocols
+        async function loadGalleryItems() {
+            if (!sectionFolder) {
+                document.getElementById('gallery-grid').innerHTML = 
+                    '<div class="col-span-full text-center text-white/60">No section specified</div>';
+                return;
+            }
+
+            // First, try to get manifest from embedded manifest-loader.js (works with file://)
+            if (typeof getManifestForSection === 'function') {
+                const manifest = getManifestForSection(sectionFolder);
+                if (manifest && manifest.items) {
+                    renderGallery(manifest.items);
+                    return;
+                }
+            }
+
+            // Fallback: try fetch (works with http://)
+            const manifestPath = `${sectionFolder}/manifest.json`;
+            try {
+                const response = await fetch(manifestPath);
+                if (response.ok) {
+                    const manifest = await response.json();
+                    renderGallery(manifest.items);
+                    return;
+                }
+            } catch (e) {
+                // CORS error with file:// protocol
+                console.log('Fetch failed, manifest-loader.js not loaded or section not found');
+            }
+            
+            // If we get here, show error
+            showManifestError();
+        }
+        
+        function showManifestError() {
+            document.getElementById('gallery-grid').innerHTML = 
+                '<div class="col-span-full text-center text-white/60 p-8">' +
+                '<p class="mb-4">Unable to load gallery.</p>' +
+                '<p class="text-sm mb-4">Please run:</p>' +
+                '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 generate-manifests.py</code>' +
+                '<p class="text-sm mb-4">Or use a local web server:</p>' +
+                '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 -m http.server 8000</code>' +
+                '<p class="text-sm">Then open: <code class="bg-[#1d1b15] px-2 py-1 rounded">http://localhost:8000</code></p>' +
+                '</div>';
+        }
+
+        // Render gallery
+        function renderGallery(items) {
+            const galleryContainer = document.getElementById('gallery-grid');
+            const viewed = getViewedItems();
+
+            galleryContainer.innerHTML = '';
+
+            items.forEach((item, index) => {
+                const isViewed = viewed.includes(index);
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `gallery-item relative cursor-pointer ${isViewed ? 'viewed' : ''}`;
+                
+                // Clean up folder name for display
+                const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                
+                itemDiv.innerHTML = `
+                    <div class="bg-[#2a271f] rounded-xl overflow-hidden border border-[#3e3a2d] hover:border-primary/50 transition-colors">
+                        <img src="${item.thumbnail}" 
+                             alt="${displayName}" 
+                             class="w-full h-auto"
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'600\\'%3E%3Crect fill=\\'%232a271f\\' width=\\'400\\' height=\\'600\\'/%3E%3Ctext fill=\\'%23fff\\' font-family=\\'Arial\\' font-size=\\'20\\' x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\'%3EImage not found%3C/text%3E%3C/svg%3E'">
+                        <div class="p-3">
+                            <h3 class="text-white text-xs font-semibold truncate">${displayName}</h3>
+                        </div>
+                    </div>
+                `;
+                itemDiv.addEventListener('click', () => openFullscreen(item, index));
+                galleryContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Open fullscreen view
+        async function openFullscreen(item, index) {
+            const fullscreenView = document.getElementById('fullscreen-view');
+            const fullscreenContent = document.getElementById('fullscreen-content');
+            const fullscreenTitle = document.getElementById('fullscreen-title');
+            const galleryView = document.getElementById('gallery-view');
+
+            // Mark as viewed
+            markAsViewed(index);
+            
+            // Update UI to show viewed state
+            const galleryItemElements = document.querySelectorAll('.gallery-item');
+            if (galleryItemElements[index]) {
+                galleryItemElements[index].classList.add('viewed');
+            }
+
+            // Set title
+            const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            fullscreenTitle.textContent = displayName;
+
+            // Show loading state
+            fullscreenContent.innerHTML = '<div class="flex items-center justify-center h-full min-h-[400px]"><p class="text-white/60">Loading...</p></div>';
+
+            // Try to load HTML content directly, fallback to iframe for file:// protocol
+            fetch(item.html)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Parse the HTML
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // Extract body content, but remove any existing headers
+                    const body = doc.body.cloneNode(true);
+                    // Remove any header elements that might conflict with our custom header
+                    const headers = body.querySelectorAll('header');
+                    headers.forEach(header => {
+                        header.remove();
+                    });
+                    
+                    // Also remove any sticky top navigation bars
+                    const stickyNavs = body.querySelectorAll('.sticky.top-0, [class*="sticky"][class*="top"]');
+                    stickyNavs.forEach(nav => {
+                        if (nav.closest('header') || nav.querySelector('button[class*="arrow_back"]')) {
+                            nav.remove();
+                        }
+                    });
+                    
+                    const bodyContent = body.innerHTML;
+                    
+                    // Extract and inject styles from head
+                    const styles = doc.head.querySelectorAll('style, link[rel="stylesheet"], script[src*="tailwind"], script[src*="fonts"], link[href*="fonts"]');
+                    const styleContainer = document.getElementById('injected-styles') || document.createElement('div');
+                    styleContainer.id = 'injected-styles';
+                    styleContainer.innerHTML = '';
+                    
+                    styles.forEach(style => {
+                        if (style.tagName === 'STYLE') {
+                            const newStyle = document.createElement('style');
+                            newStyle.textContent = style.textContent;
+                            styleContainer.appendChild(newStyle);
+                        } else if (style.tagName === 'LINK') {
+                            // Check if link already exists
+                            const existingLink = document.querySelector(`link[href="${style.href}"]`);
+                            if (!existingLink) {
+                                const newLink = document.createElement('link');
+                                newLink.rel = style.rel;
+                                newLink.href = style.href;
+                                if (style.media) newLink.media = style.media;
+                                document.head.appendChild(newLink);
+                            }
+                        } else if (style.tagName === 'SCRIPT' && style.src) {
+                            // Check if script already exists
+                            const existingScript = document.querySelector(`script[src="${style.src}"]`);
+                            if (!existingScript) {
+                                const newScript = document.createElement('script');
+                                newScript.src = style.src;
+                                if (style.id) newScript.id = style.id;
+                                document.head.appendChild(newScript);
+                            }
+                        }
+                    });
+                    
+                    if (!document.getElementById('injected-styles')) {
+                        document.head.appendChild(styleContainer);
+                    }
+                    
+                    // Inject the body content
+                    // Wrap in a container to maintain the original page structure
+                    fullscreenContent.innerHTML = `<div class="loaded-page-content">${bodyContent}</div>`;
+                    
+                    // Ensure the loaded content maintains proper styling
+                    const loadedContent = fullscreenContent.querySelector('.loaded-page-content');
+                    if (loadedContent) {
+                        // Preserve body classes if needed
+                        const bodyClasses = doc.body.className;
+                        if (bodyClasses) {
+                            loadedContent.className += ' ' + bodyClasses;
+                        }
+                    }
+                    
+                    // Re-initialize any scripts that need to run
+                    const scripts = doc.querySelectorAll('script:not([src])');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        fullscreenContent.appendChild(newScript);
+                    });
+                })
+                .catch(error => {
+                    console.error('Fetch failed, using iframe fallback:', error);
+                    // Fallback to iframe for file:// protocol or other fetch failures
+                    // Make iframe full height and let it handle its own scrolling
+                    fullscreenContent.innerHTML = `
+                        <iframe 
+                            id="page-iframe"
+                            src="${item.html}" 
+                            style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);">
+                        </iframe>
+                    `;
+                    
+                    // Try to remove headers from iframe content after it loads (works for same-origin)
+                    const iframe = document.getElementById('page-iframe');
+                    if (iframe) {
+                        iframe.onload = function() {
+                            try {
+                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                if (iframeDoc && iframeDoc.body) {
+                                    // Remove headers from iframe content
+                                    const headers = iframeDoc.querySelectorAll('header');
+                                    headers.forEach(header => header.remove());
+                                    
+                                    // Also remove sticky navigation bars
+                                    const stickyNavs = iframeDoc.querySelectorAll('.sticky.top-0, [class*="sticky"][class*="top"]');
+                                    stickyNavs.forEach(nav => {
+                                        if (nav.closest('header') || nav.querySelector('button[class*="arrow_back"]')) {
+                                            nav.remove();
+                                        }
+                                    });
+                                }
+                            } catch (e) {
+                                // CORS restriction - can't access iframe content
+                                // This is expected for cross-origin, but should work for file:// same directory
+                                console.log('Cannot modify iframe content (may be cross-origin)');
+                            }
+                        };
+                    }
+                });
+
+            // Show fullscreen view
+            galleryView.style.display = 'none';
+            fullscreenView.classList.add('active');
+        }
+
+        // Close fullscreen view
+        function closeFullscreen() {
+            const fullscreenView = document.getElementById('fullscreen-view');
+            const galleryView = document.getElementById('gallery-view');
+            
+            fullscreenView.classList.remove('active');
+            galleryView.style.display = 'block';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGalleryItems();
+            
+            // Back button handler
+            document.getElementById('back-button').addEventListener('click', closeFullscreen);
+            
+            // ESC key handler
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

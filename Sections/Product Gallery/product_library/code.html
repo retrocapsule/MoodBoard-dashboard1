@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Product Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex flex-col bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full text-[#E0E0E0] hover:bg-white/10">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-[#E0E0E0]">Product Library</h1>
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full text-[#E0E0E0] hover:bg-white/10">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="px-4 pb-3 pt-1">
+<label class="flex h-12 w-full min-w-40 flex-col">
+<div class="flex h-full w-full flex-1 items-stretch rounded-lg">
+<div class="flex items-center justify-center rounded-l-lg border-r-0 border-none bg-[#1E1E1E] pl-4 text-[#A0A0A0]">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border-l-0 border-none bg-[#1E1E1E] px-4 pl-2 text-base font-normal leading-normal text-[#E0E0E0] placeholder:text-[#A0A0A0] focus:outline-0 focus:ring-0" placeholder="Search for strains or products..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips -->
+<div class="flex gap-2 overflow-x-auto px-4 pb-4 [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#1E1E1E] px-4">
+<span class="material-symbols-outlined text-base text-primary">tune</span>
+<p class="text-sm font-medium leading-normal text-primary">Filters</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4">
+<p class="text-sm font-medium leading-normal text-background-dark">Flower</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#1E1E1E] px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Edibles</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#1E1E1E] px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Concentrates</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#1E1E1E] px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Vapes</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#1E1E1E] px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Indica</p>
+</button>
+</div>
+</header>
+<!-- Image Grid -->
+<main class="flex-1">
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up of OG Kush cannabis flower with dark green and orange hues." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANX32nIxt-pW0FX5jcNMUASHZGN-Y5d0-SOaQ_RbRiVcFk_f9i9mgJOPaUJb4o04oChSBWr23gAp7a-DA1ohrdPPevjmw3mVDADVIls_HrcPWvhKqlerds-M7DJWInoi8kFCZc3o7Jc_zhDd4lvRVGS-O8V5lsl2XJ6i6UACyb_1AZek9qWpqbiN1DP3vHz8__ZZhNmz1nRCNk2wEQBhaOb7GRArT92FJzqLF95xyV4jeU4wkeMqNpakYLCvyjfizsh1R_1yOzd_s");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">OG Kush</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Indica</p>
+<p class="text-sm font-normal leading-normal text-primary">$15/g</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up of Blue Dream cannabis flower with light green and blueish tints." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjVmW0hUnyP-kH0jH61kixiqrk0UOowU5zp7dUk9qag_Mp9viw7sHzK6O71eaVJk9XXdsrT-xNJgPE_9E39DkGEZ0JJDXeNsdzZg0T_62JNxaoOJqVS382B28FIzSlMCb9QaVluwzPQGn8uD79f-OuIQb5BXPhWa1rpFS-aT0RFrsS3b5W7c-AhFaOUVheOMB7aQWwGea-CR5_lGJseowOvltSlh5SEklikx7Ib7ZuXvxtDkw3heC26OmgTVqnIjJkkAvsCS4KnpQ");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">Blue Dream</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Sativa</p>
+<p class="text-sm font-normal leading-normal text-primary">$14/g</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up of Sour Diesel cannabis flower with bright green colors." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5E4m6rg5HXs2f_DyUQAk0W5Mqmp_lIZcR3d9Yd-jHqjOl4GwrHX7_8jznqukZqSBS0HXvoeLDdRhTBF6UdBIjf9OoMi74gCmK3Wc8k7klbyCwbNTVEpOWfHK1RkxliYsg4Exjg4zKlA5mhBfnTi9sXtXiIzi4BvjrqPr-ov2dff8YljhcENyVZNO-X2BNPutX4C5OmWaUM8-IchgzN4zVY5jLMZhB5HP74polcnH93caya4Wx6-KE-waZaBOKoSvx4XOYtAaMJNw");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">Sour Diesel</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Sativa</p>
+<p class="text-sm font-normal leading-normal text-primary">$16/g</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up of GSC cannabis flower with dense trichomes." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7yHSgBKDpZDPYkJ0l9Mr2BipWk9OUA1dqHSb59MiPX-wsDkvnYzQw-sFrFR1mgm2AuGarKxUq4h1fu6fGOf-SyEVR0n4nUFB3dyYFNxJui-ELEQBnWczOmoKR3o8JIVMquCOGgsg4AR2b13zhio8435GtEPfXIjRWxfYxNMgYzdDl11pp0BNUOTU5HhC5parE7rNM0H2W4aGBWU72srMgZZpU2r6KJyjH9yBrv0WBh3swXj1jEIyiqnf-XKfhFXzy4A3WfMVf_Fg");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">GSC</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Hybrid</p>
+<p class="text-sm font-normal leading-normal text-primary">$15/g</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Cannabis edible gummies in various colors." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4gnEvt5KaTasyqnWJzthupUg4Poo4VQxoMdM3r73nbsbVYnX5TpiXZi5SWG03f76jtgclB2jImur579wHGZ_FBaADHSEEzyAuPiiy4WIzBBRaw9JUHhg_8rmAwogZlHzUELAx_qqXYjbeSoQ3LFwXxPkEESrwHokRk8hwiz96xdcCqy_lULggJlJfWtH-mXaMGBF_VtjOy1NcLfKSEG5tLnykQgEwf7lZ720j2uLCOF5DYijwx1kXhZNcOoB96JTot4pwexq0oGQ");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">Wyld Gummies</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Edible</p>
+<p class="text-sm font-normal leading-normal text-primary">$20/pack</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1E1E1E] p-2">
+<div class="relative w-full">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="A sleek, modern vape pen." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD87JD6-QBqCb7SPjFzuop8rHDZrAGP2GQl6NWjb0FCAiMBW35v3cr1cz7H_dtKL7U9cRX7hmKvgBbTjjUcoT-acOy0wY5qC8rAl4PKvv0GDxFiC9XRy_4-1dcxgm1Igbqr0XueMyskmuvZxXtVimm4PY4tg--i6ZNGpk3Lx1VNRJXCHFOlRDBlW371asZMBwQb2PhgekKd8UW_bObSUEpQY13jcWczYpWB_CQ6xk4cQ5kTbj1Va3rK1zydttN81E5a4Zakjymr8Ho");'></div>
+<button class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-base font-medium leading-normal text-[#E0E0E0]">Sativa Vape</p>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Vape Cart</p>
+<p class="text-sm font-normal leading-normal text-primary">$45/cart</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<footer class="sticky bottom-0 z-10">
+<div class="flex border-t border-[#1E1E1E] bg-background-dark/80 px-4 pb-3 pt-2 backdrop-blur-sm">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#A0A0A0]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#A0A0A0]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">loyalty</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Loyalty</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#A0A0A0]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+</body></html>

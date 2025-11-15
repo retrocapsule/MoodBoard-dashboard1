@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1",
+      "name": "cannabis_nug_product_library,_variant_1_of_3_1",
+      "html": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1/code.html",
+      "thumbnail": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2",
+      "name": "cannabis_nug_product_library,_variant_1_of_3_2",
+      "html": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2/code.html",
+      "thumbnail": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3",
+      "name": "cannabis_nug_product_library,_variant_1_of_3_3",
+      "html": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3/code.html",
+      "thumbnail": "Sections/Product Gallery/cannabis_nug_product_library,_variant_1_of_3_3/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/cannabis_nug_product_library,_variant_2_of_3",
+      "name": "cannabis_nug_product_library,_variant_2_of_3",
+      "html": "Sections/Product Gallery/cannabis_nug_product_library,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Product Gallery/cannabis_nug_product_library,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/cannabis_nug_product_library,_variant_3_of_3",
+      "name": "cannabis_nug_product_library,_variant_3_of_3",
+      "html": "Sections/Product Gallery/cannabis_nug_product_library,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Product Gallery/cannabis_nug_product_library,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/favorites_/_saved_products",
+      "name": "_saved_products",
+      "html": "Sections/Product Gallery/favorites_/_saved_products/code.html",
+      "thumbnail": "Sections/Product Gallery/favorites_/_saved_products/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/product_library",
+      "name": "product_library",
+      "html": "Sections/Product Gallery/product_library/code.html",
+      "thumbnail": "Sections/Product Gallery/product_library/screen.png"
+    },
+    {
+      "folder": "Sections/Product Gallery/product_library_(full_access)_-_user",
+      "name": "product_library_(full_access)_-_user",
+      "html": "Sections/Product Gallery/product_library_(full_access)_-_user/code.html",
+      "thumbnail": "Sections/Product Gallery/product_library_(full_access)_-_user/screen.png"
+    }
+  ]
+}

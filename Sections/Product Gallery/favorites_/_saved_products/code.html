@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - My Favorites</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Main Content Area -->
+<main class="flex-1 pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-zinc-100 dark:text-white" style="font-size: 24px;">arrow_back_ios_new</span>
+</div>
+<h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Favorites</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-zinc-100 dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">tune</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-zinc-400 dark:text-[#b2aea4] flex border-none bg-zinc-100 dark:bg-[#34322d] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-zinc-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-zinc-100 dark:bg-[#34322d] focus:border-none h-full placeholder:text-zinc-400 dark:placeholder:text-[#b2aea4] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search in favorites" value=""/>
+</div>
+</label>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A package of Mohave Kush cannabis flower in a desert setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDe8qCvoB5XDDMYrcTycJn4m1_XVjpMyHihFth6kv8zAJLLw_mOlE9pjOoZTpYEas26VNfqRDJYOTIhq3WqdgS-vlHt0sthfoXT6AtmMiU_2aT36Cq51ZNdatiiHk1cMONdGYkqqbCPul31Xn03h3D0C9qTLDFe_-ieUNsZSMYB8ruwTPRWYA0nv20DLFcXW3NVUy6JcqUeOUohsu9XDzC2KETQvFCyQiC4Cl6toOjq0Op18ndrww7CsUYzmgZ3GZ7BssO8Bm0in_M");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Mohave Kush</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Indica Flower</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">THC: 24%</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A colorful package of Desert Dream Sativa Edibles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB12hjRQzU7b_HFhAtYL9E7hUYqkjMG76YAvtrZxFfYn7bSMiqAr9Rl4DMmC_HmvBtW7wWs70-tC6Uevbvi64vwgEwOzv4bRkA3ZczoUOQqJdFm_t8QhtMfV3Hy2-n8xICk1UmcdGDlJmXet1bWNO_S3gZQC797palUYQ88Cy-7RwQAcKnPdcc71l8zERuqBiBW-PQ12vtD0O3kylT7cMkGZeGoEncChjBkoXbJS0Ff60_t53-BJ2cJczK6ENFo--sP5BusWgE35_4");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Desert Dream</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Sativa Edible</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">10mg per piece</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A dark package of Cactus OG Indica Flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBX6BCQAUpp3oxTwtnJ7gfY1u7QjJlkFqcXLCGTfW99aR4IEwhlSErgV8WYeM0Dy0h5EjDpPGKatxtnS2USh5F8P0zeWDpBuL250yRJhITjdVlj5D4tN4-F3QBse8WeB30MKusnhY7QXmlMXpJ_tKi2KHOS8xdBvR-xyWp4s0ijeACwI1rZV9wzf1F3GIHBvaxia4IlLqv1FzjA81Fo8tJXnnlW3HEJu8700RfJOERIJF-o0MiTLpC2HeA27HBx9_qXVMghnSQV4QQ");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Cactus OG</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Indica Flower</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">THC: 22%</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A bright package of Sunstone Sativa vape cartridge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCt7I2gMIJ96-M6sEtsZdchvIJadTS_KOn4IaXvx2mns6ufFqshfu4Oc7Z9ozTj74ipBYkrFZVsqpVTwvhm1w4LxPtpfC0ADz3lyCEmh7ntYY7gq6IluBF-DbltUvlZD-fdpn-kaXAjyQ2wTrRSpGQmmqylTTCntwudQJ6KYnlt0feaxN_Lo5CnZGSd8-Bskk_lNhMZdz9OgA6zZ7L1PcE6gaPD3JsDqzQXnac0bqL1YfYo9ZZPkUN-rZ3H1wTbZUQkQf8jfX9dIgI");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Sunstone Sativa</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Sativa Vape</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">THC: 85%</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A minimalist package of Ridgeback Hybrid flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDP-OpPka-SR8tQmCSX83cDUPmC0y7m5uihmz1ycwrv1FV1_SXUOgABK3QUt2weB8BuY4CDC4PDS0bOc4pr5JhaVtlRzO4VToATTtGXAf-6iTLsdoJqX1mMOdvGN3sDBpAhuKY-StqdUAr4YyZpwdUhHZpH-1FHoDuxnBgx41KzSNGN-5v_Q4xDug6X1RyjTqT_rJKc_i-rpdU8iaO0oymEyvlZooJ31zzV-y9xGm8j32F7wNZyWjVgamf02oqH0OrKhqV-wLLsylE");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Ridgeback Hybrid</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Hybrid Flower</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">THC: 20%</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl" data-alt="A green and earthy package of Valley Haze Sativa flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnfRxFfZDDlCQIfJUlK4nYxKVrbjj6_ts2W00VX1NSKmvFFWPSMHQo3kLFn1ieSsqkLVFhy257IW-Fn3Fe2FtNcyBIArEuLWXyuQ14N8qkYN-B2VkSc_g6Gc7F3AqxzXFu7wak9yMkxMC2l7qh4j8xkpQBrgSvOrlBGlod3v-K1XVj80ZLji_jF95bBBY5HTfIaRh6HKuh2cVpEk8Y1q87glDtJwUmmfULDKiKuohnanV8x2QJ9SjHBfR-PF4P3KdarYImtpl90PE");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 bg-black/50 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div>
+<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Valley Haze</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">Sativa Flower</p>
+<p class="text-zinc-500 dark:text-[#b2aea4] text-sm font-normal leading-normal">THC: 19%</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<footer class="fixed bottom-0 left-0 right-0">
+<div class="flex gap-2 border-t border-zinc-200 dark:border-[#34322d] bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-sm px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-[#b2aea4]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-[#b2aea4]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">grass</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">favorite</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Favorites</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-[#b2aea4]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">workspace_premium</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Rewards</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-[#b2aea4]" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+</body></html>
