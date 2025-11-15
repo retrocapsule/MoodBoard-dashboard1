@@ -1,6 +1,11 @@
 {
   "sections": [
     {
+      "name": "Events",
+      "folder": "Sections/Events",
+      "icon": "folder"
+    },
+    {
       "name": "Onboarding",
       "folder": "Sections/Onboarding",
       "icon": "folder"

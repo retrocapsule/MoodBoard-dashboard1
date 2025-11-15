@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Events - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between bg-background-dark/80 p-4 pb-2 backdrop-blur-sm">
+<div class="flex size-12 shrink-0 items-center text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-white">My Events</h2>
+<div class="w-12"></div> <!-- Spacer for centering title -->
+</div>
+<!-- Tabs -->
+<div>
+<div class="flex border-b border-white/10 px-4">
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-primary pb-[13px] pt-4 text-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Upcoming</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent pb-[13px] pt-4 text-white/60" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Past</p>
+</a>
+</div>
+</div>
+<!-- Event Cards Container -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Upcoming Event Card 1 -->
+<div class="flex flex-col items-stretch justify-end overflow-hidden rounded-xl bg-cover bg-center pt-[132px]" data-alt="Vibrant outdoor music festival with a desert backdrop at dusk" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0QisR5r86gwuixMi0tZ_hHwsTF8GlkMzCmeeSpj8WfuykwKBcqYA-JuKL8AWpQWlr1UdfgjgTwmdwjyox2QTCwH6ihid-y77O7PMj4XPJKWkrkXwXChmHnw48azL3KOFWDsRkNt5mIABFPZJXzYO2esvA10Jirl4M490iZNc2XYy5LyCvjgLQ3Ol9-v56-Q3wIvdTvrJC-oMN7dmpnAoDBgZySRThp8RiRlsa4tAX95kdbDMHKlU1X6pxAK2wTA9mBXxXkYvN6A4");'>
+<div class="flex w-full flex-col gap-4 p-4 md:flex-row md:items-end md:justify-between">
+<div class="flex max-w-[440px] flex-1 flex-col gap-1">
+<p class="text-2xl font-bold leading-tight tracking-tight text-white">Desert Bloom Festival</p>
+<p class="text-base font-medium leading-normal text-white/90">Sat, Oct 26, 7:00 PM</p>
+</div>
+<button class="flex h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-background-dark">
+<span class="truncate">Manage RSVP</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Event Card 2 -->
+<div class="flex flex-col items-stretch justify-end overflow-hidden rounded-xl bg-cover bg-center pt-[132px]" data-alt="Stylish social mingling event with warm, ambient lighting" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwoElFJ_MyI_IphFvC3rt_Mv9E_E1SvXQXR6Os6dyaxs60SbR1f7hyk6wui8HM37VLIjLMtXsmwmyhMZLvJctrhvwYlBl_ONXDTwz5EFCH1O0NT_9xxsT-mf4j2qsyRUVYnYnvaLLlgtk02TRLe-Bhp0LANYTrUk748qRYbipnmjFpffFaxbJIDGns6FLSsDhhA81o9M-j7oJY-1EnZaU6VaKMkaBysjxQThUsyeNm_0YwncWrvHfL8mgbheMuK7u9VBysHgRdc9s");'>
+<div class="flex w-full flex-col gap-4 p-4 md:flex-row md:items-end md:justify-between">
+<div class="flex max-w-[440px] flex-1 flex-col gap-1">
+<p class="text-2xl font-bold leading-tight tracking-tight text-white">Mohave &amp; Mingle</p>
+<p class="text-base font-medium leading-normal text-white/90">Fri, Nov 15, 8:00 PM</p>
+</div>
+<button class="flex h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-background-dark">
+<span class="truncate">Manage RSVP</span>
+</button>
+</div>
+</div>
+<!-- Empty State Example (commented out by default) -->
+<!-- 
+            <div class="flex flex-col px-4 py-12">
+                <div class="flex flex-col items-center gap-6 text-center">
+                    <div class="flex h-40 w-40 items-center justify-center rounded-full bg-white/5">
+                         <span class="material-symbols-outlined text-6xl text-white/30">event_busy</span>
+                    </div>
+                    <div class="flex max-w-sm flex-col items-center gap-2">
+                        <p class="text-lg font-bold leading-tight tracking-[-0.015em] text-white">No upcoming events yet</p>
+                        <p class="text-sm font-normal leading-normal text-white/60">
+                            You haven't RSVP'd to any events. Keep an eye out for new and exciting gatherings!
+                        </p>
+                    </div>
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        <span class="truncate">Explore Events</span>
+                    </button>
+                </div>
+            </div>
+            -->
+</div>
+</div>
+</body></html>

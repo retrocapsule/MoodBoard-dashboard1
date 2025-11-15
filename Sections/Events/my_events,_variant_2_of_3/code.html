@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Events - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-white/10">
+<div class="text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-2xl text-white">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">My Events</h2>
+</div>
+<!-- Segmented Buttons -->
+<div class="flex px-4 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-[#1E1E1E] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 text-[#A0A0A0] has-[:checked]:bg-primary has-[:checked]:text-black text-sm font-medium leading-normal">
+<span class="truncate">Upcoming</span>
+<input class="invisible w-0" name="event-filter" type="radio" value="Upcoming"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 text-[#A0A0A0] has-[:checked]:bg-primary has-[:checked]:text-black text-sm font-medium leading-normal">
+<span class="truncate">Past</span>
+<input class="invisible w-0" name="event-filter" type="radio" value="Past"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 text-[#A0A0A0] has-[:checked]:bg-primary has-[:checked]:text-black text-sm font-medium leading-normal">
+<span class="truncate">All</span>
+<input checked="" class="invisible w-0" name="event-filter" type="radio" value="All"/>
+</label>
+</div>
+</div>
+<!-- Timeline -->
+<div class="grid grid-cols-[auto_1fr] gap-x-4 px-4 pb-8">
+<!-- Timeline Item - Upcoming -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary ring-4 ring-primary/20">
+<div class="size-2 rounded-full bg-black"></div>
+</div>
+<div class="w-px grow bg-white/20"></div>
+</div>
+<div class="flex flex-1 flex-col pb-8">
+<div class="flex flex-col gap-4 rounded-xl bg-[#1E1E1E] p-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg w-full" data-alt="Vibrant launch party scene with people socializing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfLfLHT6IfhoRN7SHhBgZGUW6MTQe7uha4dsreTqqxRNcpgAbe1WpqlrymeEG3wGC5XLRXse0SOFg3aROK3_BJzbwCmC_1kXqHIbUL9ohuPWxDgyaIl1LVg4bTdYSEoYGr9cmSihFrYcG6DiMxgBgoGXrcOIBPJt5Yr2ZD-EJPNlS7Cbwoi79kF1C3Q5PPg1KCd614qpTD-v9b0ezyK8Hgh9tOMOFg4btJih0TToqOoNEGEg1XpCAdERL6ZBhTsvc86E_Gc5BP2yc");'></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-primary">UPCOMING</span>
+</div>
+<p class="text-white text-lg font-bold leading-tight">Mohave Reserve Launch Party</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Oct 28, 7:00 PM</p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+<!-- Timeline Item - Upcoming -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary ring-4 ring-primary/20">
+<div class="size-2 rounded-full bg-black"></div>
+</div>
+<div class="w-px grow bg-white/20"></div>
+</div>
+<div class="flex flex-1 flex-col pb-8">
+<div class="flex flex-col gap-4 rounded-xl bg-[#1E1E1E] p-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg w-full" data-alt="In-store demonstration of cannabis products" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgSjdirU6Gtp4Wnnv-EzaB_z9MhZ1haHqkxt-gVe8453aC4r8piEvMO72VbvsdKm3fVkr0ZRW-Ok-N1wiuye5YirlJa2lPXtlff9bqOdFFqd6ReVMS63TLS_Aw1baAipaBHNaGn9JYY10xl4Lpl_kHo05oQcXK5VnEZ0ShNPCdl0aTMMIvP3upj8PzGAauKnEN3rPaKGoLpxiQfRtpV2bRircBqBQAOAOyylJx6HykU1tN9WEiHc1_dN4pmHOvo-6RvlP_40FDoi8");'></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-primary">UPCOMING</span>
+</div>
+<p class="text-white text-lg font-bold leading-tight">In-Store Demo Day</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Oct 15, 12:00 PM</p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Get Directions</span>
+</button>
+</div>
+</div>
+<!-- Timeline Item - Past -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-white/40 bg-transparent"></div>
+<div class="w-px grow bg-white/20"></div>
+</div>
+<div class="flex flex-1 flex-col pb-8 opacity-60">
+<div class="flex flex-col gap-4 rounded-xl bg-[#1E1E1E] p-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg w-full grayscale" data-alt="Black and white photo of community members at a meet and greet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbpiP52Sd3tlrmbt0B2vjups8u7PBjimU0AXAm62E2zR7m-ZMmZrANj6p1jOLQW6YFR_HclJvGmo9Zyd-gp9P6KswgnkD2LGrMd7zP77iZ_DM5LSF-kXJ3cCH57uPBJeZL8om00iO5GKezkLLHwqTDcFsUcaKCULxX9So0ic0PNiaO3lsHF03A_i6MGr27fM7NHJpS8G_KnSqu3VchMuu6m3PrnDQ9PrK1W4rzA2_86x7GHuLT0CNtb6vWT2CDRprvufW5AJdKjYY");'></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/60">PAST</span>
+</div>
+<p class="text-white text-lg font-bold leading-tight">Community Meet &amp; Greet</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Sep 20</p>
+</div>
+</div>
+</div>
+<!-- Timeline Item - Past -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-white/40 bg-transparent"></div>
+<div class="w-px grow bg-transparent"></div>
+</div>
+<div class="flex flex-1 flex-col pb-8 opacity-60">
+<div class="flex flex-col gap-4 rounded-xl bg-[#1E1E1E] p-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg w-full grayscale" data-alt="Black and white photo of a harvest festival with tents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0esumbJAbf9Bzyv6RbDhC8PKzlTSUqkoBi2zZJTj4wLFPfv4adFEFB6ZWX_a6wz2KqtJxo86Kam1llgTrBTHfprtfqRxdv8Ogx7-6taEZXwVLI1o-vVK_yccqLoh9lsKvOqVj471n36udD2VluXiMLwLpQGualywB7J6E22NMcCU1BH6A4B9bT1rv_1gn_xgK3fl9CqRiEW3S_MVo1lwNifcNohySbbCpdxD2kOtjGp1q7dGWAwWKmHxSBh59aswwPYC9zKU2jOs");'></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/60">PAST</span>
+</div>
+<p class="text-white text-lg font-bold leading-tight">Annual Harvest Festival</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal">Aug 05</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Example of Empty State (could be conditionally shown) -->
+<!-- 
+        <div class="flex flex-col px-4 py-16 flex-grow justify-center">
+            <div class="flex flex-col items-center gap-6">
+                <div class="flex text-primary">
+                     <span class="material-symbols-outlined text-8xl">calendar_month</span>
+                </div>
+                <div class="flex max-w-[480px] flex-col items-center gap-2">
+                    <p class="text-white text-xl font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">No Events Yet</p>
+                    <p class="text-[#A0A0A0] text-base font-normal leading-normal max-w-[480px] text-center">You haven't RSVP'd to any events. Explore upcoming events and join the community!</p>
+                </div>
+                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+                    <span class="truncate">Explore Events</span>
+                </button>
+            </div>
+        </div>
+        -->
+</div>
+</body></html>

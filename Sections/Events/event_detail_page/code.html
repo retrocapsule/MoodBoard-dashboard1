@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Detail Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between bg-background-light dark:bg-background-dark p-4 pb-2">
+<div class="flex size-12 shrink-0 items-center text-white">
+<span class="material-symbols-outlined text-zinc-100">arrow_back</span>
+</div>
+<h2 class="flex-1 text-lg font-bold leading-tight tracking-[-0.015em] text-zinc-900 dark:text-white">Event Details</h2>
+<div class="w-12"></div>
+</div>
+<!-- Main Content Wrapper -->
+<div class="flex-1">
+<!-- Header Image -->
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3 px-4 py-2">
+<div class="w-full min-h-80 bg-cover bg-center bg-no-repeat flex flex-col justify-end overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800" data-alt="Vibrant abstract gold and smoke pattern for a launch party event" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5OZcHXpiNU0XKxOK3in2vFcZ9j6A6kunRDkmZjTRzfg2Nd2yvHQeQW5dQjGoMVt8hrYpe1g52seeb-1ecEyUk1ILJErpqcwcjIVLJ9ofdKyzmR5F1HFLIpUUKgrLm0_9yfUEow2OipKV7UTl0ygm85TdoK6hXdv_fj4f72-favJYyA8onz4B4upnfqN91-lt8xafLtkgb0_6DgFOjbesv0TQwxgQ7QA-q4s33gH8hCHHSbtzs3iJfDyJpiL6hLuvoZJ7bWEWsnCc");'></div>
+</div>
+</div>
+<!-- Headline Text -->
+<h1 class="px-4 pb-3 pt-4 text-[32px] font-bold leading-tight tracking-tight text-zinc-900 dark:text-white text-left">Mohave Reserve Launch Party</h1>
+<!-- List Item: Date -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex shrink-0 items-center justify-center rounded-lg bg-zinc-200 dark:bg-zinc-800 size-10 text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-zinc-900 dark:text-white">Saturday, October 26, 2024</p>
+</div>
+<div class="shrink-0"></div>
+</div>
+<!-- List Item: Time -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex shrink-0 items-center justify-center rounded-lg bg-zinc-200 dark:bg-zinc-800 size-10 text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-zinc-900 dark:text-white">7:00 PM - 10:00 PM</p>
+</div>
+<div class="shrink-0">
+<p class="text-sm font-normal leading-normal text-zinc-500 dark:text-zinc-400">3 hours</p>
+</div>
+</div>
+<!-- List Item: Location -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex shrink-0 items-center justify-center rounded-lg bg-zinc-200 dark:bg-zinc-800 size-10 text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-zinc-900 dark:text-white">Mohave Flagship Store, 123 Green St.</p>
+</div>
+<div class="shrink-0"></div>
+</div>
+<!-- Description -->
+<div class="px-4 pt-6 pb-4">
+<h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">About The Event</h3>
+<p class="text-base leading-relaxed text-zinc-600 dark:text-zinc-300">Join us for an exclusive evening as we celebrate the launch of our new Mohave Reserve line. Be the first to experience our premium collection, enjoy live music, gourmet hors d'oeuvres, and special guest appearances. This is an invitation-only event for our most valued members.</p>
+</div>
+<!-- Map View -->
+<div class="px-4 py-4">
+<div class="w-full h-48 rounded-lg overflow-hidden bg-cover bg-center" data-alt="A stylized map showing a pin at the event location." data-location="Los Angeles, California" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfFM3JftXy7fww3jrnNn9nnMAgtbqp8IigH_ztscGHK1oBbaHmguFquAIYagWaN0_agh13bmgrpKdr6pNGH5WwftJSZmnE4upa51OuhNuEEZ9FI1ka6pDlcZUIx0cRk6zCdsfPtM7tFGMWWdlcOC_bs_BgKH1_fU_8Yv8UjVz01FV01n1dRl_Qrfin1u_duX6kUGSqSGsv9pdRQd4g_cjpneBaQUTqMQ_raoFpvGwQcLyyJQtczSTskjq9PWMI99Sacj5w325gstA'); background-color: #333;">
+</div>
+</div>
+</div>
+<!-- Sticky Footer for CTA -->
+<div class="sticky bottom-0 z-10 w-full bg-background-light dark:bg-background-dark p-4 pt-2">
+<button class="w-full rounded-xl bg-primary px-6 py-4 text-center text-base font-bold text-black dark:text-white shadow-lg transition-transform duration-200 ease-in-out active:scale-95">
+                RSVP Now
+            </button>
+</div>
+</div>
+</body></html>

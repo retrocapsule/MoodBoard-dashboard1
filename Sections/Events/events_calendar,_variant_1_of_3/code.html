@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. Events</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a88e48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Events</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Segmented Buttons -->
+<div class="flex px-4 py-3">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-[#34322d] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-[#161513] has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-white text-[#b2aea4] text-sm font-medium leading-normal">
+<span class="truncate">Calendar View</span>
+<input checked="" class="invisible w-0" name="view-toggle" type="radio" value="Calendar View"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-[#161513] has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-white text-[#b2aea4] text-sm font-medium leading-normal">
+<span class="truncate">List View</span>
+<input class="invisible w-0" name="view-toggle" type="radio" value="List View"/>
+</label>
+</div>
+</div>
+<!-- Calendar Picker -->
+<div class="flex flex-wrap items-center justify-center gap-6 p-4">
+<div class="flex min-w-72 max-w-[336px] flex-1 flex-col gap-0.5">
+<div class="flex items-center p-1 justify-between">
+<button>
+<div class="text-white flex size-10 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_left</span>
+</div>
+</button>
+<p class="text-white text-base font-bold leading-tight flex-1 text-center">October 2024</p>
+<button>
+<div class="text-white flex size-10 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_right</span>
+</div>
+</button>
+</div>
+<div class="grid grid-cols-7">
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">S</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">M</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">T</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">W</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">T</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">F</p>
+<p class="text-[#A0A0A0] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">S</p>
+<button class="h-12 w-full text-white/50 col-start-3 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">1</div></button>
+<button class="h-12 w-full text-white/50 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">2</div></button>
+<button class="h-12 w-full text-white/50 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">3</div></button>
+<button class="h-12 w-full text-white/50 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">4</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">5</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">6</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">7</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">8</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">9</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">10</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">11</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">12</div><div class="absolute bottom-2 left-1/2 -translate-x-1/2 size-1.5 rounded-full bg-primary"></div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">13</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">14</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">15</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">16</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">17</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">18</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">19</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">20</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">21</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">22</div><div class="absolute bottom-2 left-1/2 -translate-x-1/2 size-1.5 rounded-full bg-primary"></div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">23</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">24</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">25</div></button>
+<button class="h-12 w-full text-[#1d1b15] text-sm font-bold leading-normal relative"><div class="flex size-full items-center justify-center rounded-full bg-primary">26</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">27</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">28</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">29</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">30</div></button>
+<button class="h-12 w-full text-white text-sm font-medium leading-normal relative"><div class="flex size-full items-center justify-center rounded-full">31</div></button>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Upcoming on Oct 26</h3>
+<!-- Event List Items -->
+<div class="flex flex-col gap-2 pb-4">
+<div class="flex items-center gap-4 bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="vibrant sunset over a desert landscape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOPbuqAX0vc7DGJ7PqShGHxpd9SAyoTIySrQn6VPn-Bg2QdxBn1tR8fUqEXNf1JWmNVJX1iUAyB0Votx7aXLNGcJkeMdR7pP4K44ZCwRjRioFGwLCmuefca5cOKsQYWo-a0cqaS4h5vMKMRPdU65zVJ7Az1MNMGt1taaSoaS8_R10PQEMdpSLm6P-SY_0BEIJOLoGozDKCD4wVGXPLcNy5x22AO6AgkuK9t0TZlI79E19xapDpm5lIDmMEn1cQ2IVgsZlRG7QfDms");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Mohave Sunset Sesh</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Oct 26, 2024</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#A0A0A0] text-sm font-normal leading-normal">4:20 PM</p></div>
+</div>
+<div class="flex items-center gap-4 bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="close-up of a golden cannabis bud" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLH7YVbDYIvtPGv5yIK6LywKOg9zmNJKJhpID6ApAYes8c0iOzcmC3xpEqV9iJzwU6cBTmPiGlkQ5h9WzqJHAfZPhLXGcLqp5a6FB19FugF5ddw4VBeZC6A6WnaY5zgPEVjX0RGgO5YQXSo2cxbRME_Gr1UrNmAxqv6UPeuEVCBPrPjyfgWz99_DUrlNNp8LVWuAweN74Ho6QelC0NhYrwOkcM_6qtvIDuXN5YpXx3n6l1TEX2rXuhUDqMN9-SXtEDOFFVy1aqTmE");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">New Strain: Desert Gold</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Oct 26, 2024</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#A0A0A0] text-sm font-normal leading-normal">6:00 PM</p></div>
+</div>
+<div class="flex items-center gap-4 bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="a smiling person standing in a cannabis grow facility" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYB9zCGbdeZfuCCAlY19LgMP46wtIcpwmv7p8AIeerE1Yre-IF9npdn5Fp7w3oUGQk4-z1_R3U2ZD1CmgbW5IEEgof-ml6o0ZDXrLhTi5PJYIbBU6qfJfTn0dX8kH3e1xIlet-ATqi9T5vOIPIfLepELnufnO6oIbgdeEYeF5M2dPM54vAs29-mbCc5lMfJzouZryhTmGKkiQAYEFc0gw9DoA58DGKJcLCYXJj1M6P_9euSDjARvEqAEb2nnUcjvVEXHzV7CPMoc");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Meet the Grower Night</p>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Oct 26, 2024</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#A0A0A0] text-sm font-normal leading-normal">8:00 PM</p></div>
+</div>
+</div>
+</div>
+</body></html>

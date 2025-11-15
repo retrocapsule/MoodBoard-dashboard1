@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Events/event_calendar",
+      "name": "event_calendar",
+      "html": "Sections/Events/event_calendar/code.html",
+      "thumbnail": "Sections/Events/event_calendar/screen.png"
+    },
+    {
+      "folder": "Sections/Events/event_detail_page",
+      "name": "event_detail_page",
+      "html": "Sections/Events/event_detail_page/code.html",
+      "thumbnail": "Sections/Events/event_detail_page/screen.png"
+    },
+    {
+      "folder": "Sections/Events/events_calendar,_variant_1_of_3",
+      "name": "events_calendar,_variant_1_of_3",
+      "html": "Sections/Events/events_calendar,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Events/events_calendar,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Events/events_calendar,_variant_2_of_3",
+      "name": "events_calendar,_variant_2_of_3",
+      "html": "Sections/Events/events_calendar,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Events/events_calendar,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Events/events_calendar,_variant_3_of_3",
+      "name": "events_calendar,_variant_3_of_3",
+      "html": "Sections/Events/events_calendar,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Events/events_calendar,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Events/my_events,_variant_1_of_3",
+      "name": "my_events,_variant_1_of_3",
+      "html": "Sections/Events/my_events,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Events/my_events,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Events/my_events,_variant_2_of_3",
+      "name": "my_events,_variant_2_of_3",
+      "html": "Sections/Events/my_events,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Events/my_events,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Events/my_events,_variant_3_of_3",
+      "name": "my_events,_variant_3_of_3",
+      "html": "Sections/Events/my_events,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Events/my_events,_variant_3_of_3/screen.png"
+    }
+  ]
+}

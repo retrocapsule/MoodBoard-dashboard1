@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Events - Mohave Cannabis Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a78e49",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: inherit;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white text-2xl">arrow_back</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Events</h1>
+<div class="flex size-12 shrink-0 items-center"></div>
+</header>
+<!-- Segmented Buttons -->
+<div class="flex px-4 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex h-11 flex-1 items-center justify-center rounded-lg bg-[#2c2a24] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-primary has-[:checked]:shadow-lg has-[:checked]:text-black text-[#a19d91] text-sm font-semibold leading-normal">
+<span class="truncate">RSVP'd Events</span>
+<input checked="" class="invisible w-0" name="event-type-toggle" type="radio" value="RSVP'd Events"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-primary has-[:checked]:shadow-lg has-[:checked]:text-black text-[#a19d91] text-sm font-semibold leading-normal">
+<span class="truncate">Past Events</span>
+<input class="invisible w-0" name="event-type-toggle" type="radio" value="Past Events"/>
+</label>
+</div>
+</div>
+<!-- Event List -->
+<main class="flex flex-col gap-px px-4 pb-4">
+<!-- List Item 1 -->
+<div class="flex cursor-pointer items-center gap-4 bg-[#2c2a24] p-3 rounded-lg">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-md size-[70px] shrink-0" data-alt="Abstract image of mingling event with warm lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfFLURUMNiKgHvyWsAR3ZOTvOekE2LwIRYcZJ2RNxMksqrxKdNUdaPKJPLPaidexHIkb0VBE1b1zD21Rw7CnnKOOscytz9V2lirusFVMHhG4MggsLTgjzOaV-_pfpV_fXTfdF9glGtUcBPmopUwGXKBVY03p7nP8davvr8h68qypxFFpMQ9y3caubSyZYefHWRBRBckHV6bmBr6MNAv3VnYkvShW_S9ev8YHoCqcVvDutxHfQ4bLMhmW_N46ePbCrDfMGR61Mzy6I");'></div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-white text-base font-semibold leading-tight">Mohave &amp; Mingle</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">calendar_today</span> Oct 26, 2024 | 7:00 PM</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">location_on</span> The Green Oasis Lounge</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex cursor-pointer items-center gap-4 bg-[#2c2a24] p-3 rounded-lg mt-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-md size-[70px] shrink-0" data-alt="Stylish art gallery interior during a launch party" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBxf8igWBjR7jTSODYw2OiU1L4QYvF1UXTqAUxfbT7ipHHscfif0QXskaN3_nXGHGltNdMZGbpfyPc_EsrOWC2_KqJK3DBSAMF_FOvdQnEX2I6HxltjP2riLq5hNrwNDsm-rto4HbpVm4xsgZU-fpqDCJpFoJ66xXAWjNWqcb58i4jm-KZ9PxF_cmWQbzOEKwS8Q11bwluYwoEHp65i8QHmWhP4M7w_bB-t4l6dLllJtG6J2_nH__ZBzJSmTAsHlyjf41tuhR2dSg4");'></div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-white text-base font-semibold leading-tight">Desert Bloom Launch Party</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">calendar_today</span> Nov 15, 2024 | 6:00 PM</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">location_on</span> Downtown Art Gallery</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex cursor-pointer items-center gap-4 bg-[#2c2a24] p-3 rounded-lg mt-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-md size-[70px] shrink-0" data-alt="Close up shot of cannabis plants in a greenhouse" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3dUkdC4Z8RxMjHd4LudjKDIwPT_fmDL2b7Gugp9xc6YWaL8IO5NmNBvph0reKnmTz4tqu2-2kMh88BAioHJP3sLKWXAvlR8EiztVd8bFpQSFk_Sf7lOyC77_ZMz3Ui5v0VvWk15VcbjaeXrFADA0A9cp4parwoh8oL_OD988eUjC2Jmw6J53HsedWewxOecjtamagzPmKpb5JZQHO-rPNqIcPw5KdyA7RsNVGK0eJzNK37Jf9Iq4O8aIBoSg_VPzjd9Y-bvwKd1E");'></div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-white text-base font-semibold leading-tight">Cultivation Workshop</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">calendar_today</span> Dec 02, 2024 | 1:00 PM</p>
+<p class="text-[#a19d91] text-sm font-normal leading-tight flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-primary">location_on</span> Mohave Greenhouse Facility</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+</div>
+</div>
+<!-- Empty State Example (Commented out) -->
+<!-- 
+            <div class="flex flex-col items-center justify-center text-center py-20 px-8">
+                <span class="material-symbols-outlined text-5xl text-primary mb-4">event_busy</span>
+                <h3 class="text-white text-lg font-semibold mb-1">No Upcoming Events</h3>
+                <p class="text-[#a19d91] text-sm">You haven't RSVP'd to any events yet. Check out the "Discover" tab to find new events!</p>
+            </div>
+            -->
+</main>
+</div>
+</body></html>
