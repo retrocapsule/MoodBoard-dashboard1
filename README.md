@@ -34,20 +34,35 @@ A beautiful, dark-themed gallery application for browsing product detail page va
 └── SunBurst2.webp         # Logo
 ```
 
+## Supabase Integration
+
+This app uses Supabase for data storage and user tracking. See `SUPABASE_SETUP.md` for complete setup instructions.
+
+**Quick Setup:**
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Run the SQL schema from `supabase-schema.sql` in your Supabase SQL Editor
+3. Copy `supabase-config.example.js` to `supabase-config.js` and add your credentials
+4. Run `python3 sync-to-supabase.py` to upload your local data
+
 ## Adding New Sections
 
 1. **Create a new folder** in the `Sections/` directory
 2. **Add your page folders** - Each should contain:
    - `code.html` - The HTML page
    - `screen.png` (or `.jpg`, `.jpeg`, `.webp`) - The thumbnail image
-3. **Run the update scripts** (required after adding new sections):
+3. **Sync to Supabase**:
    ```bash
-   python3 update-sections.py    # Updates sections.json and index.html
-   python3 generate-manifests.py  # Generates manifest.json for each section and manifest-loader.js
+   python3 sync-to-supabase.py  # Scans Sections/ and syncs to Supabase
    ```
 4. **Refresh the page** - Your new section will appear on the main index!
 
-**Note:** You must run both scripts whenever you add a new section folder or add new pages to existing sections.
+**Note:** The sync script automatically:
+- Detects new sections and items
+- Updates existing records
+- Removes deleted items
+- Maintains display order
+
+**Fallback Mode:** If Supabase is not configured, the app falls back to local `manifest-loader.js` files (run `generate-manifests.py` for local mode).
 
 ## Usage
 

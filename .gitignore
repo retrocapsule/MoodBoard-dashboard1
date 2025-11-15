@@ -22,3 +22,7 @@ npm-debug.log*
 *.tmp
 *.temp
 
+# Supabase config (contains sensitive keys)
+supabase-config.env
+supabase-config.js
+

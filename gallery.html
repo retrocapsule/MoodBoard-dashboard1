@@ -140,8 +140,9 @@
             },
         }
     </script>
-    <!-- Load manifest data (works with file:// protocol) -->
-    <script src="manifest-loader.js"></script>
+    <!-- Load Supabase config and client -->
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
 </head>
 <body class="bg-background-dark font-display">
     <!-- Main Gallery View -->
@@ -264,7 +265,7 @@
             }
         }
 
-        // Load gallery items - works with both http:// and file:// protocols
+        // Load gallery items - tries Supabase first, falls back to local files
         async function loadGalleryItems() {
             if (!sectionFolder) {
                 document.getElementById('gallery-grid').innerHTML = 
@@ -272,7 +273,18 @@
                 return;
             }
 
-            // First, try to get manifest from embedded manifest-loader.js (works with file://)
+            // Try Supabase first
+            try {
+                const items = await fetchGalleryItems(sectionFolder);
+                if (items && items.length > 0) {
+                    renderGallery(items);
+                    return;
+                }
+            } catch (error) {
+                console.log('Supabase fetch failed, trying fallback:', error);
+            }
+
+            // Fallback 1: Try manifest-loader.js (works with file://)
             if (typeof getManifestForSection === 'function') {
                 const manifest = getManifestForSection(sectionFolder);
                 if (manifest && manifest.items) {
@@ -281,7 +293,7 @@
                 }
             }
 
-            // Fallback: try fetch (works with http://)
+            // Fallback 2: Try fetch manifest.json (works with http://)
             const manifestPath = `${sectionFolder}/manifest.json`;
             try {
                 const response = await fetch(manifestPath);
@@ -291,8 +303,7 @@
                     return;
                 }
             } catch (e) {
-                // CORS error with file:// protocol
-                console.log('Fetch failed, manifest-loader.js not loaded or section not found');
+                console.log('Fetch failed');
             }
             
             // If we get here, show error
@@ -304,10 +315,9 @@
                 '<div class="col-span-full text-center text-white/60 p-8">' +
                 '<p class="mb-4">Unable to load gallery.</p>' +
                 '<p class="text-sm mb-4">Please run:</p>' +
+                '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 sync-to-supabase.py</code>' +
+                '<p class="text-sm mb-2">Or use local fallback:</p>' +
                 '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 generate-manifests.py</code>' +
-                '<p class="text-sm mb-4">Or use a local web server:</p>' +
-                '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 -m http.server 8000</code>' +
-                '<p class="text-sm">Then open: <code class="bg-[#1d1b15] px-2 py-1 rounded">http://localhost:8000</code></p>' +
                 '</div>';
         }
 
@@ -324,11 +334,16 @@
                 itemDiv.className = `gallery-item relative cursor-pointer ${isViewed ? 'viewed' : ''}`;
                 
                 // Clean up folder name for display
-                const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const displayName = (item.folder || item.name || '').split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                
+                // Ensure we have all required fields
+                const folder = item.folder || item.name || '';
+                const html = item.html || item.html_path || '';
+                const thumbnail = item.thumbnail || item.thumbnail_path || '';
                 
                 itemDiv.innerHTML = `
                     <div class="bg-[#2a271f] rounded-xl overflow-hidden border border-[#3e3a2d] hover:border-primary/50 transition-colors">
-                        <img src="${item.thumbnail}" 
+                        <img src="${thumbnail}" 
                              alt="${displayName}" 
                              class="w-full h-auto"
                              loading="lazy"
@@ -338,16 +353,38 @@
                         </div>
                     </div>
                 `;
-                itemDiv.addEventListener('click', () => openFullscreen(item, index));
+                
+                // Ensure item has all required properties
+                const itemData = {
+                    folder: folder,
+                    name: item.name || displayName,
+                    html: html,
+                    thumbnail: thumbnail,
+                    id: item.id || null // Supabase ID if available
+                };
+                
+                itemDiv.addEventListener('click', () => openFullscreen(itemData, index));
                 galleryContainer.appendChild(itemDiv);
             });
         }
 
         // Store current item for notes/rating
         let currentItemId = null;
+        let currentItemSupabaseId = null; // Store Supabase item ID
 
-        // Get feedback for an item
-        function getFeedback(itemId) {
+        // Get feedback for an item (from Supabase or localStorage fallback)
+        async function getFeedbackForItem(itemId) {
+            // Try Supabase first if we have the ID
+            if (currentItemSupabaseId && typeof getFeedback === 'function') {
+                try {
+                    const feedback = await getFeedback(currentItemSupabaseId);
+                    if (feedback) return feedback;
+                } catch (error) {
+                    console.log('Supabase feedback fetch failed, using localStorage');
+                }
+            }
+            
+            // Fallback to localStorage
             const key = `feedback_${itemId}`;
             const feedback = localStorage.getItem(key);
             return feedback ? JSON.parse(feedback) : {
@@ -357,15 +394,26 @@
             };
         }
 
-        // Save feedback for an item
-        function saveFeedback(itemId, feedback) {
+        // Save feedback for an item (to Supabase or localStorage fallback)
+        async function saveFeedbackForItem(itemId, feedback) {
+            // Try Supabase first if we have the ID
+            if (currentItemSupabaseId && typeof saveFeedback === 'function') {
+                try {
+                    const success = await saveFeedback(currentItemSupabaseId, feedback);
+                    if (success) return;
+                } catch (error) {
+                    console.log('Supabase feedback save failed, using localStorage');
+                }
+            }
+            
+            // Fallback to localStorage
             const key = `feedback_${itemId}`;
             localStorage.setItem(key, JSON.stringify(feedback));
         }
 
-        // Load feedback into modal
-        function loadFeedbackIntoModal(itemId) {
-            const feedback = getFeedback(itemId);
+        // Load feedback into modal (async for Supabase)
+        async function loadFeedbackIntoModal(itemId) {
+            const feedback = await getFeedbackForItem(itemId);
             
             // Set rating
             document.getElementById('rating-slider').value = feedback.rating;
@@ -393,9 +441,9 @@
         }
 
         // Open notes modal
-        function openNotesModal() {
+        async function openNotesModal() {
             if (currentItemId) {
-                loadFeedbackIntoModal(currentItemId);
+                await loadFeedbackIntoModal(currentItemId);
                 document.getElementById('notes-modal').classList.add('show');
             }
         }
@@ -414,7 +462,8 @@
 
             // Store current item ID for notes/rating
             currentItemId = item.folder;
-
+            currentItemSupabaseId = item.id || null; // Store Supabase ID if available
+            
             // Mark as viewed
             markAsViewed(index);
             
@@ -428,9 +477,9 @@
             const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             fullscreenTitle.textContent = displayName;
             
-            // Load feedback indicator
+            // Load feedback indicator (async for Supabase)
             if (currentItemId) {
-                const feedback = getFeedback(currentItemId);
+                const feedback = await getFeedbackForItem(currentItemId);
                 const indicator = document.getElementById('notes-indicator');
                 if (feedback.notes || feedback.thumbs || feedback.rating !== 5) {
                     indicator.classList.remove('hidden');
@@ -442,8 +491,33 @@
             // Show loading state
             fullscreenContent.innerHTML = '<div class="flex items-center justify-center h-full min-h-[400px]"><p class="text-white/60">Loading...</p></div>';
 
+            // Get the HTML path (handle both Supabase and local formats)
+            const htmlPath = item.html || item.html_path || '';
+            console.log('Loading HTML from path:', htmlPath, 'Item:', item);
+            
+            if (!htmlPath) {
+                fullscreenContent.innerHTML = '<div class="flex items-center justify-center h-full min-h-[400px]"><p class="text-white/60">Error: No HTML path specified</p></div>';
+                return;
+            }
+
             // Try to load HTML content directly, fallback to iframe for file:// protocol
-            fetch(item.html)
+            // Check if we're using file:// protocol - if so, skip fetch and use iframe directly
+            const isFileProtocol = window.location.protocol === 'file:';
+            
+            if (isFileProtocol) {
+                // Use iframe directly for file:// protocol
+                fullscreenContent.innerHTML = `
+                    <iframe 
+                        id="page-iframe"
+                        src="${htmlPath}" 
+                        style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);">
+                    </iframe>
+                `;
+                return;
+            }
+            
+            // Try fetch for http:// or https:// protocols
+            fetch(htmlPath)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -539,7 +613,7 @@
                     fullscreenContent.innerHTML = `
                         <iframe 
                             id="page-iframe"
-                            src="${item.html}" 
+                            src="${htmlPath}" 
                             style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);">
                         </iframe>
                     `;
@@ -636,8 +710,8 @@
                 }
             });
             
-            // Save feedback button handler
-            document.getElementById('save-notes-btn').addEventListener('click', () => {
+            // Save feedback button handler (async for Supabase)
+            document.getElementById('save-notes-btn').addEventListener('click', async () => {
                 if (!currentItemId) return;
                 
                 const rating = parseInt(document.getElementById('rating-slider').value);
@@ -653,18 +727,32 @@
                     notes: notes
                 };
                 
-                saveFeedback(currentItemId, feedback);
+                // Show loading state
+                const saveBtn = document.getElementById('save-notes-btn');
+                const originalText = saveBtn.textContent;
+                saveBtn.textContent = 'Saving...';
+                saveBtn.disabled = true;
                 
-                // Update indicator
-                const indicator = document.getElementById('notes-indicator');
-                if (notes || thumbs || rating !== 5) {
-                    indicator.classList.remove('hidden');
-                } else {
-                    indicator.classList.add('hidden');
+                try {
+                    await saveFeedbackForItem(currentItemId, feedback);
+                    
+                    // Update indicator
+                    const indicator = document.getElementById('notes-indicator');
+                    if (notes || thumbs || rating !== 5) {
+                        indicator.classList.remove('hidden');
+                    } else {
+                        indicator.classList.add('hidden');
+                    }
+                    
+                    // Close modal
+                    closeNotesModal();
+                } catch (error) {
+                    console.error('Error saving feedback:', error);
+                    alert('Error saving feedback. Please try again.');
+                } finally {
+                    saveBtn.textContent = originalText;
+                    saveBtn.disabled = false;
                 }
-                
-                // Close modal
-                closeNotesModal();
             });
             
             // ESC key handler
