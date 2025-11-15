@@ -1,0 +1,13 @@
+{
+  "name": "moodboard",
+  "version": "1.0.0",
+  "description": "MoodBoard - Design Preview Gallery",
+  "scripts": {
+    "build": "node inject-supabase-config.js",
+    "vercel-build": "node inject-supabase-config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
