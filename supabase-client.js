@@ -123,26 +123,42 @@ async function getAllFeedbackForItem(itemId) {
     }
 
     try {
-        const { data, error } = await supabaseClient
+        // First get all feedback for the item
+        const { data: feedbackData, error: feedbackError } = await supabaseClient
             .from('feedback')
-            .select(`
-                id,
-                rating,
-                thumbs,
-                notes,
-                created_at,
-                updated_at,
-                users:user_id (
-                    id,
-                    name,
-                    email
-                )
-            `)
+            .select('id, rating, thumbs, notes, created_at, updated_at, user_id')
             .eq('item_id', itemId)
             .order('created_at', { ascending: false });
 
-        if (error) throw error;
-        return data || [];
+        if (feedbackError) throw feedbackError;
+        if (!feedbackData || feedbackData.length === 0) return [];
+
+        // Get unique user IDs
+        const userIds = [...new Set(feedbackData.map(f => f.user_id))];
+        
+        // Fetch user info for all users
+        const { data: usersData, error: usersError } = await supabaseClient
+            .from('users')
+            .select('id, name, email')
+            .in('id', userIds);
+
+        if (usersError) throw usersError;
+
+        // Create a map of user data
+        const usersMap = {};
+        if (usersData) {
+            usersData.forEach(user => {
+                usersMap[user.id] = user;
+            });
+        }
+
+        // Combine feedback with user data
+        const result = feedbackData.map(feedback => ({
+            ...feedback,
+            users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown', email: '' }
+        }));
+
+        return result;
     } catch (error) {
         console.error('Error fetching all feedback:', error);
         return null;

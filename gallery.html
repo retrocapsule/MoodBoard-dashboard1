@@ -246,6 +246,7 @@
                 <button id="save-notes-btn" class="w-full h-12 rounded-xl bg-primary text-background-dark font-bold text-base tracking-wide hover:bg-primary/90 transition-colors">
                     Save Feedback
                 </button>
+                <p class="text-white/50 text-xs text-center mt-2">Your feedback is saved automatically. You can continue editing.</p>
             </div>
         </div>
     </div>
@@ -256,6 +257,10 @@
             <div class="sticky top-0 bg-[#2a271f] border-b border-[#3e3a2d] p-4 flex items-center justify-between">
                 <h3 class="text-white text-xl font-bold">Admin Panel - All Feedback</h3>
                 <div class="flex items-center gap-2">
+                    <button id="refresh-admin-btn" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors flex items-center gap-2" title="Refresh feedback">
+                        <span class="material-symbols-outlined text-lg">refresh</span>
+                        Refresh
+                    </button>
                     <button id="export-feedback-btn" class="px-4 py-2 bg-primary text-background-dark font-semibold rounded-lg hover:bg-primary/90 transition-colors">
                         Export All
                     </button>
@@ -725,7 +730,8 @@
             await loadAdminPanel();
         }
 
-        async function loadAdminPanel() {
+        // Make loadAdminPanel globally accessible for refresh button
+        window.loadAdminPanel = async function loadAdminPanel() {
             const content = document.getElementById('admin-panel-content');
             content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-white/60">Loading feedback...</p></div>';
 
@@ -736,6 +742,8 @@
 
             try {
                 const allFeedback = await getAllFeedbackForItem(currentAdminItemId);
+                
+                console.log('Admin panel - fetched feedback:', allFeedback); // Debug log
 
                 if (!allFeedback || allFeedback.length === 0) {
                     content.innerHTML = `
@@ -743,6 +751,9 @@
                             <span class="material-symbols-outlined text-6xl text-white/30 mb-4">rate_review</span>
                             <p class="text-white/60 text-lg">No feedback yet</p>
                             <p class="text-white/40 text-sm mt-2">Users haven't left any notes for this design</p>
+                            <button onclick="window.loadAdminPanel()" class="mt-4 px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90">
+                                Refresh
+                            </button>
                         </div>
                     `;
                     return;
@@ -750,10 +761,20 @@
 
                 let html = '<div class="space-y-4">';
                 allFeedback.forEach((feedback, index) => {
-                    const user = feedback.users || {};
-                    const userName = user.name || user.email || 'Unknown User';
-                    const userEmail = user.email || '';
-                    const rating = feedback.rating || 'N/A';
+                    // Handle both direct user object and nested users object
+                    const user = feedback.users || (feedback.user_id ? null : {});
+                    let userName = 'Unknown User';
+                    let userEmail = '';
+                    
+                    if (user && (user.name || user.email)) {
+                        userName = user.name || user.email || 'Unknown User';
+                        userEmail = user.email || '';
+                    } else if (feedback.user_id) {
+                        // If user data wasn't loaded, show user ID
+                        userName = `User ${feedback.user_id.substring(0, 8)}...`;
+                    }
+                    
+                    const rating = feedback.rating !== null && feedback.rating !== undefined ? feedback.rating : 'N/A';
                     const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
                     const notes = feedback.notes || 'No notes';
                     const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
@@ -784,7 +805,15 @@
                 content.innerHTML = html;
             } catch (error) {
                 console.error('Error loading admin panel:', error);
-                content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-red-400">Error loading feedback</p></div>';
+                content.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-8">
+                        <p class="text-red-400 mb-4">Error loading feedback</p>
+                        <p class="text-white/60 text-sm mb-4">${error.message || 'Unknown error'}</p>
+                        <button onclick="window.loadAdminPanel()" class="px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90">
+                            Retry
+                        </button>
+                    </div>
+                `;
             }
         }
 
@@ -979,6 +1008,11 @@
             document.getElementById('admin-panel-button').addEventListener('click', openAdminPanel);
             document.getElementById('close-admin-modal').addEventListener('click', closeAdminPanel);
             document.getElementById('export-feedback-btn').addEventListener('click', exportAllFeedback);
+            document.getElementById('refresh-admin-btn').addEventListener('click', () => {
+                if (window.loadAdminPanel) {
+                    window.loadAdminPanel();
+                }
+            });
             
             // Close admin modal on outside click
             document.getElementById('admin-panel-modal').addEventListener('click', (e) => {
@@ -1061,13 +1095,23 @@
                         indicator.classList.add('hidden');
                     }
                     
-                    // Close modal
-                    closeNotesModal();
+                    // Reload the feedback into the modal so user can continue editing
+                    await loadFeedbackIntoModal(currentItemId);
+                    
+                    // Show success message briefly
+                    const originalBtnText = saveBtn.textContent;
+                    saveBtn.textContent = '✓ Saved!';
+                    saveBtn.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        saveBtn.textContent = originalBtnText;
+                        saveBtn.classList.remove('bg-green-600');
+                    }, 2000);
+                    
+                    // Don't close modal - allow user to continue editing
                 } catch (error) {
                     console.error('Error saving feedback:', error);
                     alert('Error saving feedback. Please try again.');
                 } finally {
-                    saveBtn.textContent = originalText;
                     saveBtn.disabled = false;
                 }
             });
