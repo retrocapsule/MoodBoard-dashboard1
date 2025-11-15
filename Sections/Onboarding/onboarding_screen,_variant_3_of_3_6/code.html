@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-full min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Cannabis plant background" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjf1r5CM-uEGmTVwLgYFZdTfj4mfOliv5H-I0j4Va8liwl2h3DKxigqvwn4qA_UUiM3qIxAUNay5nshpo60qpgr8ANC-ZX9Av_I69aNeij7R9ZOtPOBZ1za4hsd4hy9Jimyu6XNKU2pRoRHjNRi5P2HmdPhcORDjnE1iLLXL7c_8-zlJIS1dAgrYgmdPJYQk6s8S2Dh5G4f8N5TiUZKpOCt_p4ER22_z36G6qjilGUmn7unmEOPYEm2J1b7lOH4FXw4z4H8KlCeVA" style="filter: brightness(0.4) blur(4px);"/>
+</div>
+<div class="relative z-10 flex flex-1 flex-col items-center justify-center p-6 text-white">
+<div class="flex w-full max-w-sm flex-col items-center">
+<div class="mb-12 flex justify-center">
+<img alt="Mohave Cannabis Co. Logo" class="h-20 w-auto" data-alt="Mohave Cannabis Co. Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KqvXVULTo3kSBhXA4pU3tmHlsxCuUjFMZbAOavUOayu5jqVzUYBVM51ItX3EwBgl7ExhUB73B9wGawxrFE7R4pIgHm6JRus6Zd1y-jNaaFXizcqJ7I0ThrVklp0G3XxV4cJIE-SRnqjBb8MybHNX6lCNDqluqLSclDmDKXr7FpABoA0YZ8vfqrChOhfiKswZXBAO6UhwEJA0c3dKyghH5YVq5s3_dqE-pbLPj5ThkRPOgNkfC4KuhPiXER_1E0_kI54HDbErY-0"/>
+</div>
+<div class="flex w-full flex-col items-stretch gap-6" style="--select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(166,141,72)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M215.39,100.34a8,8,0,0,0-11.78-.39L128,172.1,52.39,99.95a8,8,0,0,0-12.17,10.44l80,83.08a8,8,0,0,0,12.17,0l80-83.08A8,8,0,0,0,215.39,100.34Z%27%3e%3c/path%3e%3c/svg%3e');">
+<label class="flex items-center gap-3">
+<input class="form-checkbox h-6 w-6 rounded border-primary bg-transparent text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-base font-medium text-white">I confirm I am 21 or older</span>
+</label>
+<div class="relative w-full">
+<select class="form-select flex w-full resize-none appearance-none overflow-hidden rounded-lg border border-primary bg-transparent px-4 py-3.5 pr-10 text-base font-normal leading-normal text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-0">
+<option disabled="" selected="" value="">Select your state</option>
+<option class="bg-background-dark" value="az">Arizona</option>
+<option class="bg-background-dark" value="ca">California</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-primary"> expand_more </span>
+</div>
+<button class="flex h-14 w-full items-center justify-center rounded-lg bg-primary text-base font-bold leading-normal text-background-dark">
+            Enter
+          </button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

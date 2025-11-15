@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-hidden">
+<div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark to-background-dark/80 bg-[url('https://assets.mixkit.co/videos/preview/mixkit-smoke-in-a-dark-_room-573-large.mp4')] bg-cover bg-center opacity-20"></div>
+<div class="relative z-10 flex flex-1 flex-col justify-between p-6">
+<div class="flex justify-center pt-8">
+<img alt="Mohave Cannabis Co. Logo" class="h-12 w-auto" data-alt="Mohave Cannabis Co. Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KqvXVULTo3kSBhXA4pU3tmHlsxCuUjFMZbAOavUOayu5jqVzUYBVM51ItX3EwBgl7ExhUB73B9wGawxrFE7R4pIgHm6JRus6Zd1y-jNaaFXizcqJ7I0ThrVklp0G3XxV4cJIE-SRnqjBb8MybHNX6lCNDqluqLSclDmDKXr7FpABoA0YZ8vfqrChOhfiKswZXBAO6UhwEJA0c3dKyghH5YVq5s3_dqE-pbLPj5ThkRPOgNkfC4KuhPiXER_1E0_kI54HDbErY-0"/>
+</div>
+<div class="flex w-full flex-col items-center gap-4 pb-4 opacity-0 pointer-events-none">
+<h2 class="text-white text-lg font-medium leading-normal text-center mb-2">Premium Cannabis Experience</h2>
+<button class="flex h-14 w-full items-center justify-center rounded-lg bg-primary text-background-dark text-base font-bold leading-normal">Create Account</button>
+<button class="flex h-14 w-full items-center justify-center rounded-lg border border-primary text-primary text-base font-bold leading-normal">Log In</button>
+<a class="text-white text-base font-medium leading-normal mt-4" href="#">Continue as Guest</a>
+</div>
+</div>
+<div class="absolute inset-0 z-20 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-sm">
+<div class="relative mx-6 flex w-full max-w-sm flex-col items-stretch rounded-xl bg-background-dark p-6 shadow-lg" style="--select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(169,169,169)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e');">
+<h1 class="text-white tracking-tight text-[32px] font-bold leading-tight text-center pb-2 pt-4">Are you 21 or older?</h1>
+<p class="text-[#A9A9A9] text-base font-normal leading-normal pb-6 text-center">Please confirm your age and select your state to continue.</p>
+<div class="flex w-full flex-col gap-4 pb-4">
+<label class="flex flex-col w-full">
+<select class="form-select flex w-full resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-white/20 bg-white/5 focus:border-primary h-14 bg-[image:--select-button-svg] bg-right-4 bg-no-repeat appearance-none placeholder:text-[#A9A9A9] px-4 py-3.5 text-base font-normal leading-normal">
+<option disabled="" selected="" value="">Select your state</option>
+<option value="ca">California</option>
+<option value="az">Arizona</option>
+<option value="nv">Nevada</option>
+</select>
+</label>
+<div class="flex w-full items-center gap-4">
+<button class="flex h-14 flex-1 items-center justify-center rounded-lg border border-primary text-primary text-base font-bold leading-normal">No</button>
+<button class="flex h-14 flex-1 items-center justify-center rounded-lg bg-primary text-background-dark text-base font-bold leading-normal">Yes</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
