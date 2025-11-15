@@ -1,6 +1,11 @@
 {
   "sections": [
     {
+      "name": "Onboarding",
+      "folder": "Sections/Onboarding",
+      "icon": "folder"
+    },
+    {
       "name": "Product Gallery",
       "folder": "Sections/Product Gallery",
       "icon": "inventory_2"

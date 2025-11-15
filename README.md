@@ -40,12 +40,14 @@ A beautiful, dark-themed gallery application for browsing product detail page va
 2. **Add your page folders** - Each should contain:
    - `code.html` - The HTML page
    - `screen.png` (or `.jpg`, `.jpeg`, `.webp`) - The thumbnail image
-3. **Run the update scripts**:
+3. **Run the update scripts** (required after adding new sections):
    ```bash
-   python3 update-sections.py    # Updates sections.json
-   python3 generate-manifests.py  # Generates manifest.json for each section
+   python3 update-sections.py    # Updates sections.json and index.html
+   python3 generate-manifests.py  # Generates manifest.json for each section and manifest-loader.js
    ```
 4. **Refresh the page** - Your new section will appear on the main index!
+
+**Note:** You must run both scripts whenever you add a new section folder or add new pages to existing sections.
 
 ## Usage
 
