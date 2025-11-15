@@ -98,10 +98,63 @@ function isAuthenticated() {
     return getCurrentUser() !== null;
 }
 
+// Check if current user is admin
+function isAdmin() {
+    const user = getCurrentUser();
+    return user && user.email === 'gorillaflix@gmail.com';
+}
+
 // Logout user
 function logoutUser() {
     localStorage.removeItem('moodboard_user');
     window.location.reload();
+}
+
+// Get all feedback for an item (admin only - includes user info)
+async function getAllFeedbackForItem(itemId) {
+    if (!supabaseClient) {
+        supabaseClient = await initSupabase();
+        if (!supabaseClient) return null;
+    }
+
+    if (!isAdmin()) {
+        console.error('Admin access required');
+        return null;
+    }
+
+    try {
+        const { data, error } = await supabaseClient
+            .from('feedback')
+            .select(`
+                id,
+                rating,
+                thumbs,
+                notes,
+                created_at,
+                updated_at,
+                users:user_id (
+                    id,
+                    name,
+                    email
+                )
+            `)
+            .eq('item_id', itemId)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return data || [];
+    } catch (error) {
+        console.error('Error fetching all feedback:', error);
+        return null;
+    }
+}
+
+// Get all views for an item (admin only - includes user info)
+// Note: This requires tracking views in the database. For now, we'll use a simple approach.
+async function getItemViews(itemId) {
+    // This would require a views table - for now return empty
+    // You can implement this later if needed
+    return [];
 }
 
 // Fetch sections from Supabase

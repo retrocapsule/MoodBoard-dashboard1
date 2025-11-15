@@ -56,6 +56,12 @@
         .fullscreen-view.active {
             display: flex;
         }
+        #admin-panel-modal {
+            display: none;
+        }
+        #admin-panel-modal.show {
+            display: flex;
+        }
         #fullscreen-content {
             overflow: hidden;
             flex: 1;
@@ -177,10 +183,15 @@
                     <span class="material-symbols-outlined text-2xl">arrow_back</span>
                 </button>
                 <h2 id="fullscreen-title" class="text-white text-lg font-semibold flex-1 text-center"></h2>
-                <button id="notes-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors relative">
-                    <span class="material-symbols-outlined text-2xl">rate_review</span>
-                    <span id="notes-indicator" class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full hidden"></span>
-                </button>
+                <div class="flex items-center gap-2">
+                    <button id="admin-panel-button" class="hidden flex items-center justify-center h-12 w-12 rounded-full bg-primary/20 hover:bg-primary/30 text-primary transition-colors relative" title="Admin Panel">
+                        <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+                    </button>
+                    <button id="notes-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors relative">
+                        <span class="material-symbols-outlined text-2xl">rate_review</span>
+                        <span id="notes-indicator" class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full hidden"></span>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="fullscreen-content" class="w-full">
@@ -235,6 +246,28 @@
                 <button id="save-notes-btn" class="w-full h-12 rounded-xl bg-primary text-background-dark font-bold text-base tracking-wide hover:bg-primary/90 transition-colors">
                     Save Feedback
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-panel-modal" class="fixed inset-0 z-[3000] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="bg-[#2a271f] rounded-xl border border-[#3e3a2d] w-full max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-[#2a271f] border-b border-[#3e3a2d] p-4 flex items-center justify-between">
+                <h3 class="text-white text-xl font-bold">Admin Panel - All Feedback</h3>
+                <div class="flex items-center gap-2">
+                    <button id="export-feedback-btn" class="px-4 py-2 bg-primary text-background-dark font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+                        Export All
+                    </button>
+                    <button id="close-admin-modal" class="flex items-center justify-center h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                        <span class="material-symbols-outlined text-xl">close</span>
+                    </button>
+                </div>
+            </div>
+            <div id="admin-panel-content" class="p-6">
+                <div class="flex items-center justify-center py-8">
+                    <p class="text-white/60">Loading feedback...</p>
+                </div>
             </div>
         </div>
     </div>
@@ -371,6 +404,7 @@
         // Store current item for notes/rating
         let currentItemId = null;
         let currentItemSupabaseId = null; // Store Supabase item ID
+        let currentItem = null; // Store full item object for admin panel
 
         // Get feedback for an item (from Supabase or localStorage fallback)
         async function getFeedbackForItem(itemId) {
@@ -467,6 +501,7 @@
             // Store current item ID for notes/rating
             currentItemId = item.folder;
             currentItemSupabaseId = item.id || null; // Store Supabase ID if available
+            currentItem = item; // Store full item for admin panel
             
             // Mark as viewed
             markAsViewed(index);
@@ -480,6 +515,14 @@
             // Set title
             const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             fullscreenTitle.textContent = displayName;
+            
+            // Show admin panel button if user is admin
+            const adminButton = document.getElementById('admin-panel-button');
+            if (typeof isAdmin === 'function' && isAdmin()) {
+                adminButton.classList.remove('hidden');
+            } else {
+                adminButton.classList.add('hidden');
+            }
             
             // Load feedback indicator (async for Supabase)
             if (currentItemId) {
@@ -660,6 +703,268 @@
             galleryView.style.display = '';
         }
 
+        // Admin panel functions
+        let currentAdminItemId = null;
+        let currentAdminItemThumbnail = null;
+
+        async function openAdminPanel() {
+            if (!currentItemSupabaseId) {
+                alert('Item ID not available');
+                return;
+            }
+
+            if (typeof isAdmin === 'function' && !isAdmin()) {
+                alert('Admin access required');
+                return;
+            }
+
+            currentAdminItemId = currentItemSupabaseId;
+            currentAdminItemThumbnail = currentItem.thumbnail || currentItem.thumbnail_path || '';
+
+            document.getElementById('admin-panel-modal').classList.add('show');
+            await loadAdminPanel();
+        }
+
+        async function loadAdminPanel() {
+            const content = document.getElementById('admin-panel-content');
+            content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-white/60">Loading feedback...</p></div>';
+
+            if (!currentAdminItemId || typeof getAllFeedbackForItem !== 'function') {
+                content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-white/60">Error: Admin functions not available</p></div>';
+                return;
+            }
+
+            try {
+                const allFeedback = await getAllFeedbackForItem(currentAdminItemId);
+
+                if (!allFeedback || allFeedback.length === 0) {
+                    content.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-12">
+                            <span class="material-symbols-outlined text-6xl text-white/30 mb-4">rate_review</span>
+                            <p class="text-white/60 text-lg">No feedback yet</p>
+                            <p class="text-white/40 text-sm mt-2">Users haven't left any notes for this design</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '<div class="space-y-4">';
+                allFeedback.forEach((feedback, index) => {
+                    const user = feedback.users || {};
+                    const userName = user.name || user.email || 'Unknown User';
+                    const userEmail = user.email || '';
+                    const rating = feedback.rating || 'N/A';
+                    const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                    const notes = feedback.notes || 'No notes';
+                    const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
+
+                    html += `
+                        <div class="bg-[#1d1b15] border border-[#3e3a2d] rounded-xl p-4">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <h4 class="text-white font-semibold">${escapeHtml(userName)}</h4>
+                                    <p class="text-white/60 text-sm">${escapeHtml(userEmail)}</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="text-primary font-bold">${rating}/10</span>
+                                        ${thumbs ? `<span class="text-2xl">${thumbs}</span>` : ''}
+                                    </div>
+                                    <p class="text-white/40 text-xs">${date}</p>
+                                </div>
+                            </div>
+                            <div class="bg-[#2a271f] rounded-lg p-3 mt-3">
+                                <p class="text-white/80 text-sm whitespace-pre-wrap">${escapeHtml(notes)}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+
+                content.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading admin panel:', error);
+                content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-red-400">Error loading feedback</p></div>';
+            }
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('admin-panel-modal').classList.remove('show');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        async function exportAllFeedback() {
+            if (!currentAdminItemId) return;
+
+            try {
+                const allFeedback = await getAllFeedbackForItem(currentAdminItemId);
+                if (!allFeedback || allFeedback.length === 0) {
+                    alert('No feedback to export');
+                    return;
+                }
+
+                // Get item info
+                const itemName = document.getElementById('fullscreen-title').textContent;
+                
+                // Create HTML export with thumbnail
+                let htmlExport = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Export - ${escapeHtml(itemName)}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1d1b15;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3e3a2d;
+        }
+        .thumbnail {
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .summary {
+            background: #2a271f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .feedback-item {
+            background: #2a271f;
+            border: 1px solid #3e3a2d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #3e3a2d;
+        }
+        .user-info h3 {
+            margin: 0 0 5px 0;
+            color: #a88e48;
+        }
+        .user-info p {
+            margin: 0;
+            color: #999;
+            font-size: 14px;
+        }
+        .rating-info {
+            text-align: right;
+        }
+        .rating {
+            font-size: 24px;
+            font-weight: bold;
+            color: #a88e48;
+        }
+        .notes {
+            background: #1d1b15;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .meta {
+            color: #666;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Feedback Export</h1>
+        <h2>${escapeHtml(itemName)}</h2>
+        <p class="meta">Exported on ${new Date().toLocaleString()}</p>
+    </div>
+
+    <div class="thumbnail">
+        <img src="${currentAdminItemThumbnail}" alt="${escapeHtml(itemName)}" onerror="this.style.display='none'">
+    </div>
+
+    <div class="summary">
+        <h3>Summary</h3>
+        <p>Total Feedback: <strong>${allFeedback.length}</strong></p>
+        <p>Average Rating: <strong>${(allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / allFeedback.length).toFixed(1)}/10</strong></p>
+        <p>Thumbs Up: <strong>${allFeedback.filter(f => f.thumbs === 'up').length}</strong></p>
+        <p>Thumbs Down: <strong>${allFeedback.filter(f => f.thumbs === 'down').length}</strong></p>
+    </div>
+`;
+
+                allFeedback.forEach((feedback, index) => {
+                    const user = feedback.users || {};
+                    const userName = user.name || user.email || 'Unknown User';
+                    const userEmail = user.email || '';
+                    const rating = feedback.rating || 'N/A';
+                    const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                    const notes = feedback.notes || 'No notes provided';
+                    const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
+
+                    htmlExport += `
+    <div class="feedback-item">
+        <div class="feedback-header">
+            <div class="user-info">
+                <h3>${escapeHtml(userName)}</h3>
+                <p>${escapeHtml(userEmail)}</p>
+            </div>
+            <div class="rating-info">
+                <div class="rating">${rating}/10 ${thumbs}</div>
+                <p class="meta">${date}</p>
+            </div>
+        </div>
+        <div class="notes">${escapeHtml(notes)}</div>
+    </div>
+`;
+                });
+
+                htmlExport += `
+</body>
+</html>
+`;
+
+                // Create blob and download
+                const blob = new Blob([htmlExport], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `feedback-${itemName.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-${Date.now()}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('Error exporting feedback:', error);
+                alert('Error exporting feedback. Please try again.');
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadGalleryItems();
@@ -669,6 +974,18 @@
             
             // Notes button handler
             document.getElementById('notes-button').addEventListener('click', openNotesModal);
+            
+            // Admin panel handlers
+            document.getElementById('admin-panel-button').addEventListener('click', openAdminPanel);
+            document.getElementById('close-admin-modal').addEventListener('click', closeAdminPanel);
+            document.getElementById('export-feedback-btn').addEventListener('click', exportAllFeedback);
+            
+            // Close admin modal on outside click
+            document.getElementById('admin-panel-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'admin-panel-modal') {
+                    closeAdminPanel();
+                }
+            });
             
             // Close notes modal handlers
             document.getElementById('close-notes-modal').addEventListener('click', closeNotesModal);
