@@ -30,11 +30,14 @@ This guide will help you deploy your MoodBoard app to Vercel with Supabase integ
 
 1. Go to your Vercel project → **Settings** → **General**
 2. Find **Build & Development Settings**
-3. Set **Build Command** to: `node inject-supabase-config.js`
-4. Set **Output Directory** to: `.` (current directory)
-5. Set **Install Command** to: (leave empty, no dependencies needed)
+3. Set **Build Command** to: `npm run build` (or `npm run vercel-build`)
+4. Set **Output Directory** to: `.` (just a dot - current directory)
+5. Set **Install Command** to: (leave empty - no npm dependencies needed)
+6. Set **Framework Preset** to: Other (or leave as auto-detected)
 
-This will run the build script that injects your environment variables into `supabase-config.js` before deployment.
+This will run the build script from `package.json` that injects your environment variables into `supabase-config.js` before deployment.
+
+**Important**: Make sure `inject-supabase-config.js` and `package.json` are committed to your GitHub repository!
 
 ## Step 3: Deploy
 

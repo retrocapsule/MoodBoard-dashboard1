@@ -1,0 +1,3 @@
+# Don't ignore anything - we need all files for deployment
+# This file ensures Vercel includes all necessary files
+
