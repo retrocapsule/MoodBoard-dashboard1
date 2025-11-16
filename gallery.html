@@ -523,6 +523,12 @@
         async function loadFeedbackIntoModal(itemId) {
             const feedback = await getFeedbackForItem(itemId);
             
+            // Reset save button state
+            const saveBtn = document.getElementById('save-notes-btn');
+            saveBtn.textContent = 'Save Feedback';
+            saveBtn.disabled = false;
+            saveBtn.classList.remove('bg-green-600', 'bg-yellow-600');
+            
             // Set rating
             document.getElementById('rating-slider').value = feedback.rating;
             document.getElementById('rating-value').textContent = feedback.rating;
@@ -551,6 +557,12 @@
         // Open notes modal
         async function openNotesModal() {
             if (currentItemId) {
+                // Reset save button before loading
+                const saveBtn = document.getElementById('save-notes-btn');
+                saveBtn.textContent = 'Save Feedback';
+                saveBtn.disabled = false;
+                saveBtn.classList.remove('bg-green-600', 'bg-yellow-600');
+                
                 await loadFeedbackIntoModal(currentItemId);
                 document.getElementById('notes-modal').classList.add('show');
             }
@@ -869,7 +881,7 @@
             try {
                 console.log('Loading admin panel with itemId:', supabaseItemId);
                 console.log('About to call getAllFeedbackForItem...');
-                const allFeedback = await getAllFeedbackForItem(supabaseItemId);
+                let allFeedback = await getAllFeedbackForItem(supabaseItemId);
                 
                 console.log('Admin panel - fetched feedback:', allFeedback); // Debug log
                 console.log('Feedback is array?', Array.isArray(allFeedback));
@@ -1370,12 +1382,11 @@
                     // Reload the feedback into the modal so user can continue editing
                     await loadFeedbackIntoModal(currentItemId);
                     
-                    // Show success message briefly
-                    const originalBtnText = saveBtn.textContent;
+                    // Show success message briefly (after loadFeedbackIntoModal resets the button)
                     saveBtn.textContent = '✓ Saved!';
                     saveBtn.classList.add('bg-green-600');
                     setTimeout(() => {
-                        saveBtn.textContent = originalBtnText;
+                        saveBtn.textContent = 'Save Feedback';
                         saveBtn.classList.remove('bg-green-600');
                     }, 2000);
                     

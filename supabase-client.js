@@ -391,48 +391,73 @@ async function saveFeedback(itemId, feedback) {
     
     if (!supabaseClient || !user) {
         console.error('User not authenticated or Supabase client not available');
+        console.error('supabaseClient:', supabaseClient ? 'exists' : 'null');
+        console.error('user:', user);
         return false;
     }
 
     // Check if user ID is a valid UUID - if not, can't save to Supabase
     if (!isValidUUID(user.id)) {
-        console.log('User ID is not a valid UUID, cannot save to Supabase:', user.id);
-        console.log('User needs to be created in Supabase first. Try logging out and back in.');
+        console.warn('User ID is not a valid UUID, cannot save to Supabase:', user.id);
+        console.warn('User needs to be created in Supabase first. Try logging out and back in.');
+        return false;
+    }
+
+    // Validate item ID is a valid UUID
+    if (!isValidUUID(itemId)) {
+        console.error('Item ID is not a valid UUID:', itemId);
         return false;
     }
 
     try {
-        console.log('Upserting feedback to Supabase:', {
+        const feedbackData = {
             item_id: itemId,
             user_id: user.id,
             rating: feedback.rating,
             thumbs: feedback.thumbs,
-            notes: feedback.notes
-        });
+            notes: feedback.notes || null // Ensure null instead of empty string
+        };
+        
+        console.log('Upserting feedback to Supabase:', feedbackData);
+        console.log('Item ID type:', typeof itemId, 'is valid UUID:', isValidUUID(itemId));
+        console.log('User ID type:', typeof user.id, 'is valid UUID:', isValidUUID(user.id));
         
         const { data, error } = await supabaseClient
             .from('feedback')
-            .upsert({
-                item_id: itemId,
-                user_id: user.id,
-                rating: feedback.rating,
-                thumbs: feedback.thumbs,
-                notes: feedback.notes
-            }, {
+            .upsert(feedbackData, {
                 onConflict: 'item_id,user_id'
             });
 
-        console.log('Upsert result:', { data, error });
+        console.log('Upsert result:', { 
+            data, 
+            error,
+            hasData: !!data,
+            errorCode: error?.code,
+            errorMessage: error?.message,
+            errorDetails: error?.details,
+            errorHint: error?.hint
+        });
 
         if (error) {
             console.error('Supabase upsert error:', error);
+            console.error('Error code:', error.code);
+            console.error('Error message:', error.message);
+            console.error('Error details:', error.details);
+            console.error('Error hint:', error.hint);
+            
+            // Check if it's an RLS policy error
+            if (error.code === '42501' || error.message?.includes('policy') || error.message?.includes('RLS')) {
+                console.error('This looks like an RLS policy error. Make sure you ran fix-feedback-insert-rls.sql');
+            }
+            
             throw error;
         }
         
-        console.log('Feedback saved successfully');
+        console.log('Feedback saved successfully to Supabase');
         return true;
     } catch (error) {
         console.error('Error saving feedback:', error);
+        console.error('Error stack:', error.stack);
         return false;
     }
 }
