@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "folder": "Sections/merch item page/merch_store_product_detail_1",
+      "name": "merch_store_product_detail_1",
+      "html": "Sections/merch item page/merch_store_product_detail_1/code.html",
+      "thumbnail": "Sections/merch item page/merch_store_product_detail_1/screen.png"
+    },
+    {
+      "folder": "Sections/merch item page/merch_store_product_detail_2",
+      "name": "merch_store_product_detail_2",
+      "html": "Sections/merch item page/merch_store_product_detail_2/code.html",
+      "thumbnail": "Sections/merch item page/merch_store_product_detail_2/screen.png"
+    },
+    {
+      "folder": "Sections/merch item page/merch_store_product_detail_3",
+      "name": "merch_store_product_detail_3",
+      "html": "Sections/merch item page/merch_store_product_detail_3/code.html",
+      "thumbnail": "Sections/merch item page/merch_store_product_detail_3/screen.png"
+    },
+    {
+      "folder": "Sections/merch item page/merch_store_product_detail_4",
+      "name": "merch_store_product_detail_4",
+      "html": "Sections/merch item page/merch_store_product_detail_4/code.html",
+      "thumbnail": "Sections/merch item page/merch_store_product_detail_4/screen.png"
+    }
+  ]
+}

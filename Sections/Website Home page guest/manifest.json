@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Website Home page guest/guest_home_landing_page,_variant_1_of_3",
+      "name": "guest_home_landing_page,_variant_1_of_3",
+      "html": "Sections/Website Home page guest/guest_home_landing_page,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Website Home page guest/guest_home_landing_page,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Website Home page guest/guest_home_landing_page,_variant_2_of_3",
+      "name": "guest_home_landing_page,_variant_2_of_3",
+      "html": "Sections/Website Home page guest/guest_home_landing_page,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Website Home page guest/guest_home_landing_page,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Website Home page guest/guest_home_landing_page,_variant_3_of_3",
+      "name": "guest_home_landing_page,_variant_3_of_3",
+      "html": "Sections/Website Home page guest/guest_home_landing_page,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Website Home page guest/guest_home_landing_page,_variant_3_of_3/screen.png"
+    }
+  ]
+}

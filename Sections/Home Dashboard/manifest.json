@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Home Dashboard/guest_home,_variant_1_of_3",
+      "name": "guest_home,_variant_1_of_3",
+      "html": "Sections/Home Dashboard/guest_home,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Home Dashboard/guest_home,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Home Dashboard/guest_home,_variant_2_of_3",
+      "name": "guest_home,_variant_2_of_3",
+      "html": "Sections/Home Dashboard/guest_home,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Home Dashboard/guest_home,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Home Dashboard/guest_home,_variant_3_of_3",
+      "name": "guest_home,_variant_3_of_3",
+      "html": "Sections/Home Dashboard/guest_home,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Home Dashboard/guest_home,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Home Dashboard/home_dashboard",
+      "name": "home_dashboard",
+      "html": "Sections/Home Dashboard/home_dashboard/code.html",
+      "thumbnail": "Sections/Home Dashboard/home_dashboard/screen.png"
+    },
+    {
+      "folder": "Sections/Home Dashboard/user_home_dashboard",
+      "name": "user_home_dashboard",
+      "html": "Sections/Home Dashboard/user_home_dashboard/code.html",
+      "thumbnail": "Sections/Home Dashboard/user_home_dashboard/screen.png"
+    }
+  ]
+}

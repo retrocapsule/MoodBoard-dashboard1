@@ -210,8 +210,9 @@ async function fetchSections() {
     try {
         const { data, error } = await supabaseClient
             .from('sections')
-            .select('id, name, folder_path, icon')
-            .order('name');
+            .select('id, name, folder_path, icon, display_order, category')
+            .order('display_order', { ascending: true })
+            .order('name', { ascending: true });
 
         if (error) throw error;
         return data;

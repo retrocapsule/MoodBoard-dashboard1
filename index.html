@@ -122,6 +122,8 @@
     <!-- Load Supabase config and client -->
     <script src="supabase-config.js"></script>
     <script src="supabase-client.js"></script>
+    <!-- Load manifest data for local fallback -->
+    <script src="manifest-loader.js"></script>
 </head>
 <body class="bg-background-dark font-display">
     <!-- User Authentication Modal -->
@@ -248,7 +250,9 @@
                     sections = sections.map(s => ({
                         name: s.name,
                         folder: s.folder_path,
-                        icon: s.icon
+                        icon: s.icon,
+                        display_order: s.display_order || 999,
+                        category: s.category || 'other'
                     }));
                     renderSections(sections);
                     return;
@@ -257,22 +261,102 @@
                 console.error('Error fetching from Supabase:', error);
             }
 
-            // Fallback: Try embedded data or manifest-loader
+            // Fallback: Try embedded data or scan local Sections folder
             try {
                 if (typeof sectionsData !== 'undefined' && sectionsData.sections) {
-                    renderSections(sectionsData.sections);
-                } else if (typeof getManifestForSection === 'function') {
-                    // Try to get sections from manifest-loader
-                    console.log('Using fallback: manifest-loader');
-                } else {
-                    throw new Error('No data source available');
+                    // Add default order and category to embedded sections
+                    const sectionsWithOrder = sectionsData.sections.map(s => {
+                        const nameLower = s.name.toLowerCase();
+                        const folderLower = (s.folder || '').toLowerCase();
+                        let display_order = 999;
+                        let category = 'other';
+                        
+                        if ('onboarding' in nameLower || 'onboarding' in folderLower) {
+                            display_order = 1; category = 'entry';
+                        } else if (('home' in nameLower && ('dashboard' in nameLower || 'guest' in nameLower)) || 
+                                   ('home' in nameLower || 'dashboard' in nameLower)) {
+                            display_order = 2; category = 'entry';
+                        } else if ('browse' in nameLower && 'merch' in nameLower) {
+                            display_order = 11; category = 'browsing';
+                        } else if ('product' in nameLower && 'gallery' in nameLower) {
+                            display_order = 12; category = 'browsing';
+                        } else if ('product' in nameLower && ('detail' in nameLower || 'page' in nameLower)) {
+                            display_order = 31; category = 'product';
+                        } else if ('merch' in nameLower && ('item' in nameLower || 'page' in nameLower)) {
+                            display_order = 32; category = 'product';
+                        } else if ('where' in nameLower && 'buy' in nameLower) {
+                            display_order = 51; category = 'purchase';
+                        } else if ('checkout' in nameLower || 'order' in nameLower) {
+                            display_order = 52; category = 'purchase';
+                        } else if ('event' in nameLower) {
+                            display_order = 71; category = 'other';
+                        }
+                        
+                        return {
+                            ...s,
+                            display_order,
+                            category
+                        };
+                    });
+                    renderSections(sectionsWithOrder);
+                    return;
                 }
+                
+                // Last resort: Try to build sections from manifest-loader.js
+                if (typeof allManifests !== 'undefined') {
+                    console.log('Building sections from manifest-loader.js');
+                    const sectionsFromManifests = [];
+                    for (const [folderPath, manifest] of Object.entries(allManifests)) {
+                        const sectionName = folderPath.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        const nameLower = sectionName.toLowerCase();
+                        let display_order = 999;
+                        let category = 'other';
+                        
+                        if ('onboarding' in nameLower) {
+                            display_order = 1; category = 'entry';
+                        } else if (('home' in nameLower && ('dashboard' in nameLower || 'guest' in nameLower)) || 
+                                   ('home' in nameLower || 'dashboard' in nameLower)) {
+                            display_order = 2; category = 'entry';
+                        } else if ('browse' in nameLower && 'merch' in nameLower) {
+                            display_order = 11; category = 'browsing';
+                        } else if ('product' in nameLower && 'gallery' in nameLower) {
+                            display_order = 12; category = 'browsing';
+                        } else if ('product' in nameLower && ('detail' in nameLower || 'page' in nameLower)) {
+                            display_order = 31; category = 'product';
+                        } else if ('merch' in nameLower && ('item' in nameLower || 'page' in nameLower)) {
+                            display_order = 32; category = 'product';
+                        } else if ('where' in nameLower && 'buy' in nameLower) {
+                            display_order = 51; category = 'purchase';
+                        } else if ('checkout' in nameLower || 'order' in nameLower) {
+                            display_order = 52; category = 'purchase';
+                        } else if ('event' in nameLower) {
+                            display_order = 71; category = 'other';
+                        }
+                        
+                        sectionsFromManifests.push({
+                            name: sectionName,
+                            folder: folderPath,
+                            icon: 'folder',
+                            display_order,
+                            category
+                        });
+                    }
+                    
+                    if (sectionsFromManifests.length > 0) {
+                        renderSections(sectionsFromManifests);
+                        return;
+                    }
+                }
+                
+                throw new Error('No data source available');
             } catch (error) {
                 console.error('Error loading sections:', error);
                 document.getElementById('sections-grid').innerHTML = 
                     '<div class="col-span-full text-center text-white/60 p-8">' +
                     '<p class="mb-4">Unable to load sections.</p>' +
-                    '<p class="text-sm">Please configure Supabase or ensure manifest-loader.js is available.</p>' +
+                    '<p class="text-sm mb-2">Please run:</p>' +
+                    '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 generate-manifests.py</code>' +
+                    '<p class="text-sm">Or configure Supabase for automatic syncing.</p>' +
                     '</div>';
             }
         }
@@ -281,7 +365,47 @@
             const grid = document.getElementById('sections-grid');
             grid.innerHTML = '';
 
-            for (const section of sections) {
+            // Group sections by category
+            const categories = {
+                'entry': { name: 'Entry & Onboarding', sections: [] },
+                'browsing': { name: 'Browsing', sections: [] },
+                'product': { name: 'Product Details', sections: [] },
+                'purchase': { name: 'Purchase Flow', sections: [] },
+                'other': { name: 'Other', sections: [] }
+            };
+
+            // Sort sections by display_order, then group by category
+            sections.sort((a, b) => {
+                const orderA = a.display_order || 999;
+                const orderB = b.display_order || 999;
+                if (orderA !== orderB) return orderA - orderB;
+                return (a.name || '').localeCompare(b.name || '');
+            });
+
+            // Group sections
+            sections.forEach(section => {
+                const category = section.category || 'other';
+                if (categories[category]) {
+                    categories[category].sections.push(section);
+                } else {
+                    categories['other'].sections.push(section);
+                }
+            });
+
+            // Render grouped sections
+            for (const [categoryKey, categoryData] of Object.entries(categories)) {
+                if (categoryData.sections.length === 0) continue;
+
+                // Add category header
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'col-span-full mb-4 mt-8 first:mt-0';
+                categoryHeader.innerHTML = `
+                    <h2 class="text-white/60 text-sm font-semibold uppercase tracking-wider">${categoryData.name}</h2>
+                `;
+                grid.appendChild(categoryHeader);
+
+                // Render sections in this category
+                for (const section of categoryData.sections) {
                 const sectionCard = document.createElement('a');
                 sectionCard.href = `gallery.html?section=${encodeURIComponent(section.folder)}&name=${encodeURIComponent(section.name)}`;
                 sectionCard.className = 'section-card block';

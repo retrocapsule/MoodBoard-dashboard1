@@ -34,6 +34,39 @@ def get_supabase_client() -> Client:
     
     return create_client(url, service_key)
 
+def get_section_order_and_category(name, folder_path):
+    """Determine display order and category based on section name and workflow logic"""
+    name_lower = name.lower()
+    folder_lower = folder_path.lower()
+    
+    # Define workflow order and categories
+    # Order: 1-10 = Entry/Onboarding, 11-30 = Browsing, 31-50 = Product Details, 51-70 = Purchase, 71+ = Other
+    
+    if 'onboarding' in name_lower or 'onboarding' in folder_lower:
+        return (1, 'entry')
+    elif 'home' in name_lower and ('dashboard' in name_lower or 'guest' in name_lower):
+        return (2, 'entry')
+    elif 'home' in name_lower or 'dashboard' in name_lower:
+        return (3, 'entry')
+    elif 'browse' in name_lower and 'merch' in name_lower:
+        return (11, 'browsing')
+    elif 'product' in name_lower and 'gallery' in name_lower:
+        return (12, 'browsing')
+    elif 'browse' in name_lower:
+        return (13, 'browsing')
+    elif 'product' in name_lower and ('detail' in name_lower or 'page' in name_lower):
+        return (31, 'product')
+    elif 'merch' in name_lower and ('item' in name_lower or 'page' in name_lower):
+        return (32, 'product')
+    elif 'where' in name_lower and 'buy' in name_lower:
+        return (51, 'purchase')
+    elif 'checkout' in name_lower or 'order' in name_lower:
+        return (52, 'purchase')
+    elif 'event' in name_lower:
+        return (71, 'other')
+    else:
+        return (999, 'other')
+
 def scan_local_sections():
     """Scan local Sections folder and return structured data"""
     sections_dir = Path("Sections")
@@ -48,6 +81,9 @@ def scan_local_sections():
         if section_dir.is_dir():
             folder_path = str(section_dir.relative_to(Path(".")))
             name = section_dir.name.replace("_", " ").title()
+            
+            # Get display order and category
+            display_order, category = get_section_order_and_category(name, folder_path)
             
             # Scan items in this section
             items = []
@@ -78,6 +114,8 @@ def scan_local_sections():
                 "name": name,
                 "folder_path": folder_path,
                 "icon": "folder",  # Default, can be updated in Supabase
+                "display_order": display_order,
+                "category": category,
                 "items": items
             })
     
@@ -109,9 +147,11 @@ def sync_to_supabase(supabase: Client):
         folder_path = section_data["folder_path"]
         name = section_data["name"]
         icon = section_data.get("icon", "folder")
+        display_order = section_data.get("display_order", 999)
+        category = section_data.get("category", "other")
         items = section_data["items"]
         
-        print(f"Syncing section: {name} ({folder_path})")
+        print(f"Syncing section: {name} ({folder_path}) [Order: {display_order}, Category: {category}]")
         
         # Check if section exists
         existing = supabase.table("sections").select("id").eq("folder_path", folder_path).execute()
@@ -122,6 +162,8 @@ def sync_to_supabase(supabase: Client):
             supabase.table("sections").update({
                 "name": name,
                 "icon": icon,
+                "display_order": display_order,
+                "category": category,
                 "updated_at": "now()"
             }).eq("id", section_id).execute()
             print(f"  ✓ Updated existing section")
@@ -130,7 +172,9 @@ def sync_to_supabase(supabase: Client):
             result = supabase.table("sections").insert({
                 "name": name,
                 "folder_path": folder_path,
-                "icon": icon
+                "icon": icon,
+                "display_order": display_order,
+                "category": category
             }).execute()
             section_id = result.data[0]["id"]
             print(f"  ✓ Created new section")

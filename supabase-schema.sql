@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS sections (
     name TEXT NOT NULL,
     folder_path TEXT NOT NULL UNIQUE,
     icon TEXT DEFAULT 'folder',
+    display_order INTEGER DEFAULT 999,
+    category TEXT DEFAULT 'other',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
