@@ -124,6 +124,14 @@
     <script src="supabase-client.js"></script>
     <!-- Load manifest data for local fallback -->
     <script src="manifest-loader.js"></script>
+    <script>
+        // Helper function to check if a string is a valid UUID (needed in index.html)
+        function isValidUUID(str) {
+            if (!str || typeof str !== 'string') return false;
+            const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+            return uuidRegex.test(str);
+        }
+    </script>
 </head>
 <body class="bg-background-dark font-display">
     <!-- User Authentication Modal -->
@@ -536,22 +544,44 @@
             submitBtn.disabled = true;
             
             try {
+                // Initialize Supabase first
+                console.log('Initializing Supabase...');
+                if (typeof initSupabase === 'function') {
+                    const client = await initSupabase();
+                    if (!client) {
+                        throw new Error('Failed to initialize Supabase client. Check your Supabase configuration.');
+                    }
+                    console.log('Supabase initialized successfully');
+                }
+                
                 // Get or create user in Supabase
+                console.log('Creating/getting user in Supabase...');
                 const user = await getOrCreateUser(name, email);
                 
-                if (user) {
+                if (user && user.id && isValidUUID(user.id)) {
+                    // User successfully created/retrieved from Supabase
+                    console.log('User authenticated with Supabase:', user);
                     setCurrentUser(user);
                     document.getElementById('auth-modal').classList.remove('show');
                     await loadSections();
                 } else {
-                    // Fallback: store in localStorage if Supabase not available
-                    setCurrentUser({ name, email, id: 'local_' + Date.now() });
-                    document.getElementById('auth-modal').classList.remove('show');
-                    await loadSections();
+                    // User creation failed
+                    console.error('User creation failed. User object:', user);
+                    
+                    // Check if Supabase is configured
+                    if (typeof SUPABASE_CONFIG === 'undefined' || !SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey) {
+                        alert('Supabase is not configured. Please check your configuration.');
+                    } else {
+                        alert('Unable to create user account in Supabase. Please check:\n1. Your internet connection\n2. Browser console for errors\n3. That RLS policies allow user inserts (run fix-admin-feedback-rls.sql)');
+                    }
+                    
+                    // Don't allow login with local storage - force Supabase
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
             } catch (error) {
                 console.error('Authentication error:', error);
-                alert('Error authenticating. Please try again.');
+                alert('Error authenticating: ' + (error.message || 'Unknown error') + '\n\nPlease check the browser console for details.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }

@@ -43,41 +43,84 @@ async function initSupabase() {
 
 // Get or create user
 async function getOrCreateUser(name, email) {
+    console.log('getOrCreateUser called with:', { name, email });
+    
     if (!supabaseClient) {
+        console.log('Supabase client not initialized, initializing now...');
         supabaseClient = await initSupabase();
-        if (!supabaseClient) return null;
+        if (!supabaseClient) {
+            console.error('Failed to initialize Supabase client');
+            return null;
+        }
+        console.log('Supabase client initialized');
     }
 
     try {
+        console.log('Checking if user exists with email:', email);
+        
         // Check if user exists
-        const { data: existingUser } = await supabaseClient
+        const { data: existingUser, error: selectError } = await supabaseClient
             .from('users')
             .select('id, name, email')
             .eq('email', email)
             .single();
 
+        console.log('User lookup result:', { existingUser, selectError });
+
         if (existingUser) {
+            console.log('User found in Supabase:', existingUser);
             // Update name if changed
             if (existingUser.name !== name) {
-                await supabaseClient
+                console.log('Updating user name from', existingUser.name, 'to', name);
+                const { error: updateError } = await supabaseClient
                     .from('users')
                     .update({ name: name })
                     .eq('id', existingUser.id);
+                
+                if (updateError) {
+                    console.error('Error updating user name:', updateError);
+                } else {
+                    existingUser.name = name;
+                }
             }
             return existingUser;
         }
 
-        // Create new user
-        const { data: newUser, error } = await supabaseClient
+        // User doesn't exist, create new user
+        console.log('User not found, creating new user...');
+        const { data: newUser, error: insertError } = await supabaseClient
             .from('users')
             .insert({ name: name, email: email })
             .select()
             .single();
 
-        if (error) throw error;
+        console.log('User creation result:', { newUser, insertError });
+
+        if (insertError) {
+            console.error('Error creating user:', insertError);
+            console.error('Error code:', insertError.code);
+            console.error('Error message:', insertError.message);
+            console.error('Error details:', insertError.details);
+            console.error('Error hint:', insertError.hint);
+            
+            // Check if it's an RLS policy error
+            if (insertError.code === '42501' || insertError.message?.includes('policy') || insertError.message?.includes('RLS')) {
+                console.error('RLS policy error - make sure you ran fix-admin-feedback-rls.sql to allow user inserts');
+            }
+            
+            throw insertError;
+        }
+        
+        if (!newUser || !newUser.id) {
+            console.error('User created but no ID returned:', newUser);
+            throw new Error('User creation succeeded but no ID returned');
+        }
+        
+        console.log('User successfully created in Supabase:', newUser);
         return newUser;
     } catch (error) {
         console.error('Error getting/creating user:', error);
+        console.error('Error stack:', error.stack);
         return null;
     }
 }

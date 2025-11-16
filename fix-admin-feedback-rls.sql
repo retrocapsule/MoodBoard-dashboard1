@@ -3,8 +3,14 @@
 
 -- Allow public read access to users table (needed for admin to see who left feedback)
 -- This is safe because we're only exposing name and email, which users already provided
+DROP POLICY IF EXISTS "Public read access to users" ON users;
 CREATE POLICY "Public read access to users" ON users
     FOR SELECT USING (true);
+
+-- Allow users to insert themselves (needed for user creation during login)
+DROP POLICY IF EXISTS "Users can insert themselves" ON users;
+CREATE POLICY "Users can insert themselves" ON users
+    FOR INSERT WITH CHECK (true);
 
 -- Verify feedback read policy exists and allows all reads
 -- If the policy already exists, this will fail gracefully
