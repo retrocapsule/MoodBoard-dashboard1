@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Preferences - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a88e48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white/90">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center -ml-12">Preferences</h2>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3 bg-background-light dark:bg-background-dark sticky top-[72px] z-10">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-white/70 flex border-none bg-[#3e3a2d] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-[#3e3a2d] focus:border-none h-full placeholder:text-white/60 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search preferences..." value=""/>
+</div>
+</label>
+</div>
+<div class="px-4">
+<!-- Section: Product Preferences -->
+<h3 class="text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] pb-2 pt-4">Product Preferences</h3>
+<div class="flex flex-col bg-[#2c2922] rounded-xl overflow-hidden">
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#3e3a2d] shrink-0 size-10">
+<span class="material-symbols-outlined">category</span>
+</div>
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Preferred Categories</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<button class="text-white/70 text-base font-medium leading-normal">Select</button>
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#3e3a2d] shrink-0 size-10">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Preferred Strain Type</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<button class="text-white/70 text-base font-medium leading-normal">Indica</button>
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#3e3a2d] shrink-0 size-10">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Potency Level (THC)</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<button class="text-white/70 text-base font-medium leading-normal">Any</button>
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Section: Notification Settings -->
+<h3 class="text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] pb-2 pt-6">Notification Settings</h3>
+<div class="flex flex-col bg-[#2c2922] rounded-xl overflow-hidden">
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Push Notifications</p>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Email Notifications</p>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">New Product Alerts</p>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Special Offers</p>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section: App Settings -->
+<h3 class="text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] pb-2 pt-6">App Settings</h3>
+<div class="flex flex-col bg-[#2c2922] rounded-xl overflow-hidden">
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Location Services</p>
+<div class="shrink-0 flex items-center gap-2">
+<button class="text-white/70 text-base font-medium leading-normal">Enabled</button>
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Language</p>
+<div class="shrink-0 flex items-center gap-2">
+<button class="text-white/70 text-base font-medium leading-normal">English</button>
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Biometric Login</p>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between border-b border-white/10">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Terms of Service</p>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<p class="text-white/90 text-base font-normal leading-normal flex-1 truncate">Privacy Policy</p>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-white/50">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-10"></div>
+</div>
+</body></html>

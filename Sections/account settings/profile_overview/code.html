@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a88e48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+              "surface-dark": "#2a271f",
+              "border-dark": "#595240",
+              "text-primary-dark": "#f0ede6",
+              "text-secondary-dark": "#bab3a0"
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark px-4 pt-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-text-primary-dark flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Profile</h2>
+<div class="flex size-10 shrink-0 items-center"></div>
+</div>
+<!-- Profile Header -->
+<div class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border-2 border-primary" data-alt="User's profile picture, Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsqS3IimDKediCmevpEMh99T3wDB4bvo6VS5PAlaknDz3fUQbw3bHheLgrw5Wg6WBCLX_MGmzNvp2dxU4eRrjwUKGETY2sT23Ef5svnOXuP_jkPKk_HOvvqvp48XsqD9TYJ4w9FD4H1BF-wZWj6EhSc64kStxV0EighlzzR8l9rCHRw_Vfpo0zAe6rBCq1qgeNqzormV_9-81NdYrR_HOc9nIQsfJ8YMiKJElotplQ1K3yijsZZrNVDnXYlOUygRs0T_b5oSYe6XU");'></div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Jane Doe</p>
+<p class="text-text-secondary-dark text-base font-normal leading-normal text-center">@janedoe</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-2 bg-background-light dark:bg-background-dark"></div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-surface-dark p-6 border border-border-dark">
+<p class="text-text-secondary-dark text-base font-medium leading-normal">Total Points</p>
+<p class="text-text-primary-dark tracking-light text-2xl font-bold leading-tight text-primary">1,250</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-surface-dark p-6 border border-border-dark">
+<p class="text-text-secondary-dark text-base font-medium leading-normal">Missions Completed</p>
+<p class="text-text-primary-dark tracking-light text-2xl font-bold leading-tight">12</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-surface-dark p-6 border border-border-dark">
+<p class="text-text-secondary-dark text-base font-medium leading-normal">Leaderboard Rank</p>
+<p class="text-text-primary-dark tracking-light text-2xl font-bold leading-tight">#8</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-4 p-4 rounded-xl m-4 bg-surface-dark border border-border-dark">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Points Summary</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">1250 / 2000</p>
+</div>
+<div class="rounded-full bg-border-dark h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 62.5%;"></div>
+</div>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal text-center">750 points to next tier</p>
+</div>
+<!-- Spacer -->
+<div class="h-4 bg-background-light dark:bg-background-dark"></div>
+<!-- Navigation List -->
+<div class="flex flex-col gap-px p-4">
+<div class="flex items-center gap-4 bg-surface-dark px-4 min-h-14 justify-between rounded-t-xl border border-b-0 border-border-dark">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined text-2xl">person</span>
+</div>
+<p class="text-text-primary-dark text-base font-normal leading-normal flex-1 truncate">Account Settings</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-dark px-4 min-h-14 justify-between border-x border-border-dark">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined text-2xl">tune</span>
+</div>
+<p class="text-text-primary-dark text-base font-normal leading-normal flex-1 truncate">Preferences</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-dark px-4 min-h-14 justify-between rounded-b-xl border border-t-0 border-border-dark">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined text-2xl">help</span>
+</div>
+<p class="text-text-primary-dark text-base font-normal leading-normal flex-1 truncate">Help &amp; Support</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<div class="p-4 mt-2 mb-4">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-center">
+<p class="font-bold text-background-dark text-base leading-normal">View Rewards</p>
+</button>
+</div>
+</div>
+</body></html>

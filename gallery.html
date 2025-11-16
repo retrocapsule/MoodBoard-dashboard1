@@ -402,9 +402,37 @@
                     id: item.id || null // Supabase ID if available
                 };
                 
+                // Add data attribute for hash navigation
+                if (itemData.id) {
+                    itemDiv.setAttribute('data-item-id', itemData.id);
+                }
+                
                 itemDiv.addEventListener('click', () => openFullscreen(itemData, index));
                 galleryContainer.appendChild(itemDiv);
             });
+            
+            // Check if there's a hash in URL to open specific item
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#item-')) {
+                const itemId = hash.replace('#item-', '');
+                // Find the item and open it
+                const itemToOpen = items.find(item => item.id === itemId);
+                if (itemToOpen) {
+                    const itemIndex = items.findIndex(item => item.id === itemId);
+                    const itemDisplayName = (itemToOpen.folder || itemToOpen.name || '').split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    const itemData = {
+                        folder: itemToOpen.folder || itemToOpen.name || '',
+                        name: itemToOpen.name || itemDisplayName,
+                        html: itemToOpen.html || itemToOpen.html_path || '',
+                        thumbnail: itemToOpen.thumbnail || itemToOpen.thumbnail_path || '',
+                        id: itemToOpen.id || null
+                    };
+                    // Small delay to ensure gallery is rendered
+                    setTimeout(() => {
+                        openFullscreen(itemData, itemIndex);
+                    }, 300);
+                }
+            }
         }
 
         // Store current item for notes/rating

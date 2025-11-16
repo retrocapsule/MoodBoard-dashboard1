@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Settings - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#1A1A1A",
+            "card-dark": "#2C2C2E",
+            "text-primary-dark": "#EAEAEA",
+            "text-secondary-dark": "#8E8E93",
+            "destructive": "#E53E3E"
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-text-primary-dark cursor-pointer">arrow_back</span>
+</div>
+<h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Account Settings</h2>
+<div class="size-12 shrink-0"></div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 p-4">
+<div class="flex flex-col gap-3">
+<!-- Accordion: Personal Information -->
+<details class="flex flex-col rounded-xl bg-card-dark px-4 py-2 group" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Personal Information</p>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-4 pt-2 pb-4">
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Update your personal details below. Your information is kept private and secure.</p>
+<label class="flex flex-col w-full">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal pb-1">Full Name</p>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg border-none bg-[#404042] p-3 text-text-primary-dark placeholder:text-text-secondary-dark text-sm font-normal leading-normal focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" type="text" value="Jane Doe"/>
+</label>
+<label class="flex flex-col w-full">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal pb-1">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg border-none bg-[#404042] p-3 text-text-primary-dark placeholder:text-text-secondary-dark text-sm font-normal leading-normal focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" type="email" value="jane.doe@example.com"/>
+</label>
+<label class="flex flex-col w-full">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal pb-1">Phone Number</p>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg border-none bg-[#404042] p-3 text-text-primary-dark placeholder:text-text-secondary-dark text-sm font-normal leading-normal focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" type="tel" value="(555) 123-4567"/>
+</label>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 mt-2 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Save Changes</span>
+</button>
+</div>
+</details>
+<!-- Accordion: Security -->
+<details class="flex flex-col rounded-xl bg-card-dark px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Security</p>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-4 pt-2 pb-4">
+<a class="text-primary text-sm font-medium py-2" href="#">Change Password</a>
+<div class="flex items-center justify-between">
+<p class="text-text-primary-dark text-sm">Biometric Login</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-[#404042] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</details>
+<!-- Accordion: Notifications -->
+<details class="flex flex-col rounded-xl bg-card-dark px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Notifications</p>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-4 pt-2 pb-4">
+<div class="flex items-center justify-between">
+<p class="text-text-primary-dark text-sm">Special Offers</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-[#404042] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-text-primary-dark text-sm">New Product Alerts</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-[#404042] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-text-primary-dark text-sm">Event Reminders</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-[#404042] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</details>
+<!-- Accordion: Loyalty & Rewards -->
+<details class="flex flex-col rounded-xl bg-card-dark px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Loyalty &amp; Rewards</p>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-2 pt-2 pb-4">
+<div class="flex items-baseline justify-between">
+<span class="text-text-secondary-dark text-sm">Current Points:</span>
+<span class="text-text-primary-dark font-bold text-lg">1,250</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-text-secondary-dark text-sm">Tier Status:</span>
+<span class="text-primary font-bold text-lg">Gold Member</span>
+</div>
+<a class="text-primary text-sm font-medium pt-2 self-start" href="#">View Rewards History</a>
+</div>
+</details>
+</div>
+<!-- Account Actions -->
+<div class="mt-8 pt-4 border-t border-t-[#2C2C2E]">
+<div class="flex flex-col items-stretch gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-transparent text-text-primary-dark text-base font-bold leading-normal tracking-[0.015em] w-full">
+<span class="truncate">Log Out</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-transparent text-destructive text-base font-bold leading-normal tracking-[0.015em] w-full">
+<span class="truncate">Delete Account</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

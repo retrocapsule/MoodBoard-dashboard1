@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "text-primary-dark": "#E0E0E0",
+              "text-secondary-dark": "#888888",
+              "surface-dark": "#1d1d1d"
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-dark p-4 pb-3 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center">
+<!-- Placeholder for a back button or menu icon if needed -->
+</div>
+<h1 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Notifications</h1>
+<div class="flex w-auto items-center justify-end">
+<button class="text-primary text-sm font-bold leading-normal tracking-[0.015em] shrink-0">Mark all as read</button>
+</div>
+</header>
+<!-- Notification List -->
+<main class="flex flex-col gap-px overflow-y-auto px-4">
+<!-- Unread Notification Item: Reward -->
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-lg">
+<div class="flex items-center gap-4 flex-grow">
+<div class="shrink-0">
+<div class="flex size-4 items-center justify-center">
+<div class="size-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-size: 24px;">redeem</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-primary text-base font-bold leading-normal">Reward Available</p>
+<p class="text-text-primary-dark text-sm font-normal leading-normal">Your 10% Off reward is ready to be claimed.</p>
+<p class="text-text-secondary-dark text-xs font-normal leading-normal">2m ago</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Unread Notification Item: Drop Alert -->
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-lg mt-2">
+<div class="flex items-center gap-4 flex-grow">
+<div class="shrink-0">
+<div class="flex size-4 items-center justify-center">
+<div class="size-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-size: 24px;">potted_plant</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-primary text-base font-bold leading-normal">Drop Alert</p>
+<p class="text-text-primary-dark text-sm font-normal leading-normal">New Strain Alert: Blue Dream is now available.</p>
+<p class="text-text-secondary-dark text-xs font-normal leading-normal">5m ago</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Read Notification Item: Mission Update -->
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-lg mt-2">
+<div class="flex items-center gap-4 flex-grow">
+<div class="shrink-0">
+<div class="flex size-4 items-center justify-center">
+<!-- Empty space for alignment -->
+</div>
+</div>
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-size: 24px;">military_tech</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-primary text-base font-bold leading-normal">Mission Update</p>
+<p class="text-text-primary-dark text-sm font-normal leading-normal">You've completed the 'Early Bird' mission!</p>
+<p class="text-text-secondary-dark text-xs font-normal leading-normal">1h ago</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Read Notification Item: Points Earned -->
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-lg mt-2">
+<div class="flex items-center gap-4 flex-grow">
+<div class="shrink-0">
+<div class="flex size-4 items-center justify-center">
+<!-- Empty space for alignment -->
+</div>
+</div>
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-size: 24px;">star</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-primary text-base font-bold leading-normal">Points Earned</p>
+<p class="text-text-primary-dark text-sm font-normal leading-normal">You just earned 50 points for your recent purchase.</p>
+<p class="text-text-secondary-dark text-xs font-normal leading-normal">Yesterday</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Read Notification Item: Event Reminder -->
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-lg mt-2">
+<div class="flex items-center gap-4 flex-grow">
+<div class="shrink-0">
+<div class="flex size-4 items-center justify-center">
+<!-- Empty space for alignment -->
+</div>
+</div>
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-size: 24px;">calendar_month</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-primary text-base font-bold leading-normal">Event Reminder</p>
+<p class="text-text-primary-dark text-sm font-normal leading-normal">Event Today: Meet the Grower at 4:20 PM.</p>
+<p class="text-text-secondary-dark text-xs font-normal leading-normal">Yesterday</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-secondary-dark flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

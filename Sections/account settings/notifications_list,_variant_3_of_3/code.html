@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+            "card-dark": "#1E1E1E",
+            "text-primary-dark": "#E0E0E0",
+            "text-secondary-dark": "#888888",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative mx-auto flex h-screen min-h-screen w-full max-w-md flex-col bg-background-dark group/design-root overflow-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between bg-background-dark px-4">
+<div class="flex h-10 w-10 items-center justify-start text-text-primary-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="text-xl font-bold text-text-primary-dark">Notifications</h1>
+<div class="flex h-10 w-10 items-center justify-end">
+<!-- Optional: "Clear All" could go here -->
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<div class="px-4">
+<!-- Notification Group - Today -->
+<h2 class="mb-2 text-sm font-bold uppercase tracking-wider text-text-secondary-dark">Today</h2>
+<div class="flex flex-col gap-2">
+<!-- Swipeable Notification Item 1 -->
+<div class="relative overflow-hidden rounded-lg">
+<!-- Swipe Actions Background -->
+<div class="absolute inset-0 flex justify-between">
+<div class="flex items-center justify-start bg-primary/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<div class="flex items-center justify-end bg-red-700/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">archive</span>
+</div>
+</div>
+<!-- Notification Card -->
+<div class="relative z-10 flex items-center gap-4 bg-card-dark p-4 transition-transform duration-300 ease-in-out">
+<div class="flex shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary">star</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="font-bold text-text-primary-dark">Loyalty Points Added</p>
+<p class="text-sm text-text-secondary-dark">You've earned 50 points!</p>
+</div>
+<div class="flex shrink-0 items-start self-start gap-2">
+<p class="text-xs text-text-secondary-dark">5m ago</p>
+<div class="mt-1 size-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Swipeable Notification Item 2 -->
+<div class="relative overflow-hidden rounded-lg">
+<!-- Swipe Actions Background -->
+<div class="absolute inset-0 flex justify-between">
+<div class="flex items-center justify-start bg-primary/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<div class="flex items-center justify-end bg-red-700/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">archive</span>
+</div>
+</div>
+<!-- Notification Card -->
+<div class="relative z-10 flex items-center gap-4 bg-card-dark p-4 transition-transform duration-300 ease-in-out">
+<div class="flex shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary">sell</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="font-bold text-text-primary-dark">New Product Drop</p>
+<p class="text-sm text-text-secondary-dark">Check out the 'Desert Dream' vape cartridge.</p>
+</div>
+<div class="flex shrink-0 items-start self-start gap-2">
+<p class="text-xs text-text-secondary-dark">2h ago</p>
+<div class="mt-1 size-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Group - Yesterday -->
+<h2 class="mb-2 mt-6 text-sm font-bold uppercase tracking-wider text-text-secondary-dark">Yesterday</h2>
+<div class="flex flex-col gap-2">
+<!-- Swipeable Notification Item 3 -->
+<div class="relative overflow-hidden rounded-lg">
+<!-- Swipe Actions Background -->
+<div class="absolute inset-0 flex justify-between">
+<div class="flex items-center justify-start bg-primary/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<div class="flex items-center justify-end bg-red-700/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">archive</span>
+</div>
+</div>
+<!-- Notification Card -->
+<div class="relative z-10 flex items-center gap-4 bg-card-dark p-4 transition-transform duration-300 ease-in-out">
+<div class="flex shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary">confirmation_number</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="font-bold text-text-primary-dark">Event Reminder</p>
+<p class="text-sm text-text-secondary-dark">Your RSVP for 'Meet the Grower' is confirmed.</p>
+</div>
+<div class="flex shrink-0 items-start self-start">
+<p class="text-xs text-text-secondary-dark">Yesterday</p>
+</div>
+</div>
+</div>
+<!-- Swipeable Notification Item 4 -->
+<div class="relative overflow-hidden rounded-lg">
+<!-- Swipe Actions Background -->
+<div class="absolute inset-0 flex justify-between">
+<div class="flex items-center justify-start bg-primary/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<div class="flex items-center justify-end bg-red-700/80 px-4" style="width: 88px;">
+<span class="material-symbols-outlined text-white">archive</span>
+</div>
+</div>
+<!-- Notification Card -->
+<div class="relative z-10 flex items-center gap-4 bg-card-dark p-4 transition-transform duration-300 ease-in-out">
+<div class="flex shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary">local_shipping</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="font-bold text-text-primary-dark">Order Shipped</p>
+<p class="text-sm text-text-secondary-dark">Your order #MC12345 has been shipped.</p>
+</div>
+<div class="flex shrink-0 items-start self-start">
+<p class="text-xs text-text-secondary-dark">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Example -->
+<!-- <div class="flex flex-col items-center justify-center pt-24 text-center">
+          <span class="material-symbols-outlined text-6xl text-text-secondary-dark">notifications_off</span>
+          <h3 class="mt-4 text-lg font-semibold text-text-primary-dark">You're all caught up</h3>
+          <p class="mt-1 text-sm text-text-secondary-dark">Check back later for new notifications.</p>
+        </div> -->
+</div>
+</main>
+</div>
+</body></html>

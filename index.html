@@ -101,6 +101,12 @@
         #auth-modal.show {
             display: flex;
         }
+        #admin-overview-modal {
+            display: none;
+        }
+        #admin-overview-modal.show {
+            display: flex;
+        }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -173,7 +179,10 @@
                 <h1 id="header-title" class="text-white text-lg font-bold tracking-tight transition-all duration-300">MoodBoard</h1>
                 <!-- User info and logout -->
                 <div id="user-info" class="absolute top-2 right-4 hidden">
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-3">
+                        <button id="admin-overview-btn" class="hidden flex items-center justify-center h-8 w-8 rounded-full bg-primary/20 hover:bg-primary/30 text-primary transition-colors relative" title="Admin Overview">
+                            <span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+                        </button>
                         <span id="user-name-display" class="text-white/70 text-xs"></span>
                         <button id="logout-btn" class="text-white/50 hover:text-white text-xs underline" title="Logout">
                             Logout
@@ -234,6 +243,32 @@
         </main>
     </div>
 
+    <!-- Admin Overview Modal -->
+    <div id="admin-overview-modal" class="fixed inset-0 z-[3000] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="bg-[#2a271f] rounded-xl border border-[#3e3a2d] w-full max-w-6xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-[#2a271f] border-b border-[#3e3a2d] p-4 flex items-center justify-between z-10">
+                <h3 class="text-white text-xl font-bold">Admin Overview - All Feedback</h3>
+                <div class="flex items-center gap-2">
+                    <button id="refresh-overview-btn" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors flex items-center gap-2" title="Refresh feedback">
+                        <span class="material-symbols-outlined text-lg">refresh</span>
+                        Refresh
+                    </button>
+                    <button id="export-all-feedback-btn" class="px-4 py-2 bg-primary text-background-dark font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+                        Export All Pages
+                    </button>
+                    <button id="close-overview-modal" class="flex items-center justify-center h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                        <span class="material-symbols-outlined text-xl">close</span>
+                    </button>
+                </div>
+            </div>
+            <div id="admin-overview-content" class="p-6">
+                <div class="flex items-center justify-center py-8">
+                    <p class="text-white/60">Loading all feedback...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Check authentication and load sections
         async function initApp() {
@@ -254,6 +289,8 @@
             console.log('User authenticated, loading sections');
             document.getElementById('auth-modal').classList.remove('show');
             await loadSections();
+            // Update user info to show admin button if applicable
+            updateUserInfo();
         }
 
         async function loadSections() {
@@ -564,6 +601,8 @@
                     setCurrentUser(user);
                     document.getElementById('auth-modal').classList.remove('show');
                     await loadSections();
+                    // Update user info to show admin button if applicable
+                    updateUserInfo();
                 } else {
                     // User creation failed
                     console.error('User creation failed. User object:', user);
@@ -592,12 +631,34 @@
             const user = getCurrentUser();
             const userInfo = document.getElementById('user-info');
             const userNameDisplay = document.getElementById('user-name-display');
+            const adminBtn = document.getElementById('admin-overview-btn');
+            
+            console.log('updateUserInfo called, user:', user);
+            console.log('isAdmin function exists:', typeof isAdmin === 'function');
             
             if (user) {
                 userInfo.classList.remove('hidden');
                 userNameDisplay.textContent = user.name || user.email || 'User';
+                
+                // Show admin button if user is admin
+                if (typeof isAdmin === 'function') {
+                    const adminStatus = isAdmin();
+                    console.log('Admin status:', adminStatus, 'User email:', user.email);
+                    if (adminStatus) {
+                        console.log('Showing admin button');
+                        adminBtn.classList.remove('hidden');
+                    } else {
+                        console.log('Hiding admin button - not admin');
+                        adminBtn.classList.add('hidden');
+                    }
+                } else {
+                    console.log('isAdmin function not available');
+                    adminBtn.classList.add('hidden');
+                }
             } else {
+                console.log('No user, hiding user info and admin button');
                 userInfo.classList.add('hidden');
+                if (adminBtn) adminBtn.classList.add('hidden');
             }
         }
 
@@ -639,6 +700,603 @@
             lastScrollTop = scrollTop;
         }
 
+        // Admin Overview Functions
+        async function openAdminOverview() {
+            if (typeof isAdmin === 'function' && !isAdmin()) {
+                alert('Admin access required. You must be logged in as gorillaflix@gmail.com');
+                return;
+            }
+            
+            document.getElementById('admin-overview-modal').classList.add('show');
+            await loadAdminOverview();
+        }
+
+        async function loadAdminOverview() {
+            const content = document.getElementById('admin-overview-content');
+            content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-white/60">Loading all feedback...</p></div>';
+
+            if (!supabaseClient) {
+                supabaseClient = await initSupabase();
+                if (!supabaseClient) {
+                    content.innerHTML = '<div class="flex items-center justify-center py-8"><p class="text-white/60">Error: Supabase not available</p></div>';
+                    return;
+                }
+            }
+
+            try {
+                // Get all gallery items with their section info
+                const { data: allItems, error: itemsError } = await supabaseClient
+                    .from('gallery_items')
+                    .select('id, name, folder_path, thumbnail_path, section_id, sections!inner(folder_path, name)')
+                    .order('name');
+
+                if (itemsError) throw itemsError;
+
+                if (!allItems || allItems.length === 0) {
+                    content.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-12">
+                            <span class="material-symbols-outlined text-6xl text-white/30 mb-4">inbox</span>
+                            <p class="text-white/60 text-lg">No items found</p>
+                            <p class="text-white/40 text-sm mt-2">No gallery items in the database</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Get all feedback
+                const { data: allFeedback, error: feedbackError } = await supabaseClient
+                    .from('feedback')
+                    .select('id, item_id, user_id, rating, thumbs, notes, created_at')
+                    .order('created_at', { ascending: false });
+
+                if (feedbackError) throw feedbackError;
+
+                // Get all user IDs from feedback
+                const userIds = [...new Set((allFeedback || []).map(f => f.user_id).filter(id => id))];
+                
+                // Get user info
+                let usersMap = {};
+                if (userIds.length > 0) {
+                    const { data: users, error: usersError } = await supabaseClient
+                        .from('users')
+                        .select('id, name, email')
+                        .in('id', userIds);
+                    
+                    if (!usersError && users) {
+                        users.forEach(user => {
+                            usersMap[user.id] = user;
+                        });
+                    }
+                }
+
+                // Group feedback by item
+                const feedbackByItem = {};
+                (allFeedback || []).forEach(feedback => {
+                    if (!feedbackByItem[feedback.item_id]) {
+                        feedbackByItem[feedback.item_id] = [];
+                    }
+                    feedbackByItem[feedback.item_id].push({
+                        ...feedback,
+                        users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown User', email: '' }
+                    });
+                });
+
+                // Build HTML
+                let html = '<div class="space-y-6">';
+                
+                // Summary stats
+                const totalFeedback = allFeedback ? allFeedback.length : 0;
+                const itemsWithFeedback = Object.keys(feedbackByItem).length;
+                const avgRating = totalFeedback > 0 
+                    ? (allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / totalFeedback).toFixed(1)
+                    : '0';
+                const thumbsUp = allFeedback ? allFeedback.filter(f => f.thumbs === 'up').length : 0;
+                const thumbsDown = allFeedback ? allFeedback.filter(f => f.thumbs === 'down').length : 0;
+
+                html += `
+                    <div class="bg-[#1d1b15] border border-[#3e3a2d] rounded-xl p-6 mb-6">
+                        <h4 class="text-white text-lg font-bold mb-4">Summary</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            <div>
+                                <p class="text-white/60 text-xs mb-1">Total Feedback</p>
+                                <p class="text-white text-2xl font-bold">${totalFeedback}</p>
+                            </div>
+                            <div>
+                                <p class="text-white/60 text-xs mb-1">Pages with Feedback</p>
+                                <p class="text-white text-2xl font-bold">${itemsWithFeedback}</p>
+                            </div>
+                            <div>
+                                <p class="text-white/60 text-xs mb-1">Avg Rating</p>
+                                <p class="text-white text-2xl font-bold">${avgRating}/10</p>
+                            </div>
+                            <div>
+                                <p class="text-white/60 text-xs mb-1">Thumbs Up</p>
+                                <p class="text-white text-2xl font-bold">${thumbsUp}</p>
+                            </div>
+                            <div>
+                                <p class="text-white/60 text-xs mb-1">Thumbs Down</p>
+                                <p class="text-white text-2xl font-bold">${thumbsDown}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // List items with feedback
+                for (const item of allItems) {
+                    const itemFeedback = feedbackByItem[item.id] || [];
+                    
+                    if (itemFeedback.length === 0) continue; // Skip items with no feedback
+
+                    const sectionFolder = item.sections?.folder_path || '';
+                    const sectionName = item.sections?.name || '';
+                    const itemName = item.name || item.folder_path.split('/').pop().replace(/_/g, ' ');
+                    const itemAvgRating = itemFeedback.length > 0
+                        ? (itemFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / itemFeedback.length).toFixed(1)
+                        : '0';
+                    
+                    // Create link to gallery page with item hash to open it directly
+                    const itemFolderName = item.folder_path.split('/').pop();
+                    const galleryLink = sectionFolder ? `gallery.html?section=${encodeURIComponent(sectionFolder)}&name=${encodeURIComponent(sectionName)}#item-${item.id}` : '#';
+
+                    html += `
+                        <div class="bg-[#1d1b15] border border-[#3e3a2d] rounded-xl p-4">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex-1">
+                                    ${galleryLink !== '#' ? 
+                                        `<a href="${galleryLink}" class="text-white font-semibold text-lg mb-1 hover:text-primary transition-colors cursor-pointer block">${escapeHtml(itemName)}</a>` :
+                                        `<h4 class="text-white font-semibold text-lg mb-1">${escapeHtml(itemName)}</h4>`
+                                    }
+                                    <p class="text-white/60 text-sm">${itemFeedback.length} ${itemFeedback.length === 1 ? 'feedback' : 'feedback entries'}</p>
+                                    <p class="text-white/50 text-xs mt-1">Avg Rating: ${itemAvgRating}/10</p>
+                                </div>
+                                <button onclick="exportItemFeedback('${item.id}', '${escapeHtml(itemName)}')" 
+                                        class="px-4 py-2 bg-primary text-background-dark font-semibold rounded-lg hover:bg-primary/90 transition-colors text-sm">
+                                    Export
+                                </button>
+                            </div>
+                            <div class="space-y-3 max-h-64 overflow-y-auto">
+                    `;
+
+                    itemFeedback.slice(0, 5).forEach(feedback => {
+                        const user = feedback.users || {};
+                        const userName = user.name || user.email || 'Unknown User';
+                        const rating = feedback.rating !== null && feedback.rating !== undefined ? feedback.rating : 'N/A';
+                        const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                        const notes = feedback.notes || 'No notes provided';
+                        const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
+
+                        html += `
+                            <div class="bg-[#2a271f] border border-[#3e3a2d] rounded-lg p-3">
+                                <div class="flex items-start justify-between mb-2">
+                                    <div>
+                                        <p class="text-white font-semibold text-sm">${escapeHtml(userName)}</p>
+                                        <p class="text-white/60 text-xs">${escapeHtml(user.email || '')}</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-primary font-bold">${rating}/10</span>
+                                            ${thumbs ? `<span>${thumbs}</span>` : ''}
+                                        </div>
+                                        <p class="text-white/40 text-xs">${date}</p>
+                                    </div>
+                                </div>
+                                <p class="text-white/80 text-sm mt-2 line-clamp-2">${escapeHtml(notes)}</p>
+                            </div>
+                        `;
+                    });
+
+                    if (itemFeedback.length > 5) {
+                        html += `<p class="text-white/50 text-xs text-center pt-2">+${itemFeedback.length - 5} more feedback entries</p>`;
+                    }
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (itemsWithFeedback === 0) {
+                    html = `
+                        <div class="flex flex-col items-center justify-center py-12">
+                            <span class="material-symbols-outlined text-6xl text-white/30 mb-4">rate_review</span>
+                            <p class="text-white/60 text-lg">No feedback yet</p>
+                            <p class="text-white/40 text-sm mt-2">Users haven't left any notes for any designs</p>
+                        </div>
+                    `;
+                }
+
+                html += '</div>';
+                content.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading admin overview:', error);
+                content.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-8">
+                        <p class="text-red-400 mb-4">Error loading feedback</p>
+                        <p class="text-white/60 text-sm mb-4">${error.message || 'Unknown error'}</p>
+                        <button onclick="loadAdminOverview()" class="px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        async function exportItemFeedback(itemId, itemName) {
+            try {
+                const allFeedback = await getAllFeedbackForItem(itemId);
+                if (!allFeedback || allFeedback.length === 0) {
+                    alert('No feedback to export for this item');
+                    return;
+                }
+
+                // Get item thumbnail
+                const { data: item } = await supabaseClient
+                    .from('gallery_items')
+                    .select('thumbnail_path')
+                    .eq('id', itemId)
+                    .single();
+
+                const thumbnail = item?.thumbnail_path || '';
+
+                // Create HTML export (similar to gallery.html export)
+                let htmlExport = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Export - ${escapeHtml(itemName)}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1d1b15;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3e3a2d;
+        }
+        .thumbnail {
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .summary {
+            background: #2a271f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .feedback-item {
+            background: #2a271f;
+            border: 1px solid #3e3a2d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        .rating-info {
+            text-align: right;
+        }
+        .rating {
+            font-size: 24px;
+            font-weight: bold;
+            color: #a88e48;
+        }
+        .notes {
+            background: #1d1b15;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .meta {
+            color: #666;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Feedback Export</h1>
+        <h2>${escapeHtml(itemName)}</h2>
+        <p class="meta">Exported on ${new Date().toLocaleString()}</p>
+    </div>
+
+    ${thumbnail ? `<div class="thumbnail"><img src="${thumbnail}" alt="${escapeHtml(itemName)}" onerror="this.style.display='none'"></div>` : ''}
+
+    <div class="summary">
+        <h3>Summary</h3>
+        <p>Total Feedback: <strong>${allFeedback.length}</strong></p>
+        <p>Average Rating: <strong>${(allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / allFeedback.length).toFixed(1)}/10</strong></p>
+        <p>Thumbs Up: <strong>${allFeedback.filter(f => f.thumbs === 'up').length}</strong></p>
+        <p>Thumbs Down: <strong>${allFeedback.filter(f => f.thumbs === 'down').length}</strong></p>
+    </div>
+`;
+
+                allFeedback.forEach((feedback) => {
+                    const user = feedback.users || {};
+                    const userName = user.name || user.email || 'Unknown User';
+                    const userEmail = user.email || '';
+                    const rating = feedback.rating || 'N/A';
+                    const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                    const notes = feedback.notes || 'No notes provided';
+                    const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
+
+                    htmlExport += `
+    <div class="feedback-item">
+        <div class="feedback-header">
+            <div>
+                <h3>${escapeHtml(userName)}</h3>
+                <p>${escapeHtml(userEmail)}</p>
+            </div>
+            <div class="rating-info">
+                <div class="rating">${rating}/10 ${thumbs}</div>
+                <p class="meta">${date}</p>
+            </div>
+        </div>
+        <div class="notes">${escapeHtml(notes)}</div>
+    </div>
+`;
+                });
+
+                htmlExport += `
+</body>
+</html>
+`;
+
+                // Create blob and download
+                const blob = new Blob([htmlExport], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `feedback-${itemName.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-${Date.now()}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('Error exporting item feedback:', error);
+                alert('Error exporting feedback. Please try again.');
+            }
+        }
+
+        async function exportAllFeedback() {
+            try {
+                // Get all items
+                const { data: allItems, error: itemsError } = await supabaseClient
+                    .from('gallery_items')
+                    .select('id, name, folder_path, thumbnail_path')
+                    .order('name');
+
+                if (itemsError) throw itemsError;
+
+                // Get all feedback
+                const { data: allFeedback, error: feedbackError } = await supabaseClient
+                    .from('feedback')
+                    .select('id, item_id, user_id, rating, thumbs, notes, created_at')
+                    .order('created_at', { ascending: false });
+
+                if (feedbackError) throw feedbackError;
+
+                // Get all users
+                const userIds = [...new Set((allFeedback || []).map(f => f.user_id).filter(id => id))];
+                let usersMap = {};
+                if (userIds.length > 0) {
+                    const { data: users, error: usersError } = await supabaseClient
+                        .from('users')
+                        .select('id, name, email')
+                        .in('id', userIds);
+                    
+                    if (!usersError && users) {
+                        users.forEach(user => {
+                            usersMap[user.id] = user;
+                        });
+                    }
+                }
+
+                // Group feedback by item
+                const feedbackByItem = {};
+                (allFeedback || []).forEach(feedback => {
+                    if (!feedbackByItem[feedback.item_id]) {
+                        feedbackByItem[feedback.item_id] = [];
+                    }
+                    feedbackByItem[feedback.item_id].push({
+                        ...feedback,
+                        users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown User', email: '' }
+                    });
+                });
+
+                // Create comprehensive HTML export
+                let htmlExport = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>All Feedback Export - ${new Date().toLocaleDateString()}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1d1b15;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3e3a2d;
+        }
+        .summary {
+            background: #2a271f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .item-section {
+            background: #2a271f;
+            border: 1px solid #3e3a2d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .item-header {
+            border-bottom: 1px solid #3e3a2d;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .feedback-item {
+            background: #1d1b15;
+            border: 1px solid #3e3a2d;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+        .rating {
+            font-size: 20px;
+            font-weight: bold;
+            color: #a88e48;
+        }
+        .notes {
+            background: #2a271f;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .meta {
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Complete Feedback Export</h1>
+        <h2>All Pages - All Users</h2>
+        <p class="meta">Exported on ${new Date().toLocaleString()}</p>
+    </div>
+
+    <div class="summary">
+        <h3>Summary</h3>
+        <p>Total Feedback Entries: <strong>${allFeedback ? allFeedback.length : 0}</strong></p>
+        <p>Pages with Feedback: <strong>${Object.keys(feedbackByItem).length}</strong></p>
+        <p>Average Rating: <strong>${allFeedback && allFeedback.length > 0 ? (allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / allFeedback.length).toFixed(1) : '0'}/10</strong></p>
+        <p>Thumbs Up: <strong>${allFeedback ? allFeedback.filter(f => f.thumbs === 'up').length : 0}</strong></p>
+        <p>Thumbs Down: <strong>${allFeedback ? allFeedback.filter(f => f.thumbs === 'down').length : 0}</strong></p>
+    </div>
+`;
+
+                // Export each item's feedback
+                for (const item of allItems) {
+                    const itemFeedback = feedbackByItem[item.id] || [];
+                    if (itemFeedback.length === 0) continue;
+
+                    const itemName = item.name || item.folder_path.split('/').pop().replace(/_/g, ' ');
+
+                    htmlExport += `
+    <div class="item-section">
+        <div class="item-header">
+            <h2>${escapeHtml(itemName)}</h2>
+            <p class="meta">${itemFeedback.length} ${itemFeedback.length === 1 ? 'feedback entry' : 'feedback entries'}</p>
+        </div>
+`;
+
+                    itemFeedback.forEach((feedback) => {
+                        const user = feedback.users || {};
+                        const userName = user.name || user.email || 'Unknown User';
+                        const userEmail = user.email || '';
+                        const rating = feedback.rating || 'N/A';
+                        const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                        const notes = feedback.notes || 'No notes provided';
+                        const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : '';
+
+                        htmlExport += `
+        <div class="feedback-item">
+            <div class="feedback-header">
+                <div>
+                    <h3>${escapeHtml(userName)}</h3>
+                    <p class="meta">${escapeHtml(userEmail)}</p>
+                </div>
+                <div style="text-align: right;">
+                    <div class="rating">${rating}/10 ${thumbs}</div>
+                    <p class="meta">${date}</p>
+                </div>
+            </div>
+            <div class="notes">${escapeHtml(notes)}</div>
+        </div>
+`;
+                    });
+
+                    htmlExport += `
+    </div>
+`;
+                }
+
+                htmlExport += `
+</body>
+</html>
+`;
+
+                // Create blob and download
+                const blob = new Blob([htmlExport], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `all-feedback-export-${Date.now()}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('Error exporting all feedback:', error);
+                alert('Error exporting all feedback. Please try again.');
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Make functions globally accessible
+        window.loadAdminOverview = loadAdminOverview;
+        window.exportItemFeedback = exportItemFeedback;
+        window.exportAllFeedback = exportAllFeedback;
+
         // Initialize app on page load
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOMContentLoaded - initializing app');
@@ -646,12 +1304,30 @@
             setTimeout(() => {
                 console.log('Calling initApp...');
                 initApp();
-                updateUserInfo();
+                // Update user info after a short delay to ensure Supabase client is ready
+                setTimeout(() => {
+                    updateUserInfo();
+                }, 100);
             }, 500);
             
             // Add scroll listener for header
             window.addEventListener('scroll', handleHeaderScroll);
             handleHeaderScroll(); // Initial check
+            
+            // Admin overview button
+            document.getElementById('admin-overview-btn').addEventListener('click', openAdminOverview);
+            document.getElementById('close-overview-modal').addEventListener('click', () => {
+                document.getElementById('admin-overview-modal').classList.remove('show');
+            });
+            document.getElementById('refresh-overview-btn').addEventListener('click', loadAdminOverview);
+            document.getElementById('export-all-feedback-btn').addEventListener('click', exportAllFeedback);
+            
+            // Close modal on outside click
+            document.getElementById('admin-overview-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'admin-overview-modal') {
+                    document.getElementById('admin-overview-modal').classList.remove('show');
+                }
+            });
         });
     </script>
 </body>
