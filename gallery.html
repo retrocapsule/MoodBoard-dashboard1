@@ -97,24 +97,27 @@
             height: 100%;
         }
         .gallery-masonry {
-            column-count: 2;
+            column-count: 3;
             column-gap: 8px;
-        }
-        @media (min-width: 640px) {
-            .gallery-masonry {
-                column-count: 2;
-            }
+            transition: column-count 0.3s ease;
         }
         @media (min-width: 1024px) {
             .gallery-masonry {
-                column-count: 3;
+                column-count: 6;
             }
         }
-        @media (min-width: 1280px) {
-            .gallery-masonry {
-                column-count: 4;
-            }
-        }
+        /* Zoom levels - override media queries when zoom class is applied */
+        .gallery-masonry.zoom-1 { column-count: 1 !important; }
+        .gallery-masonry.zoom-2 { column-count: 2 !important; }
+        .gallery-masonry.zoom-3 { column-count: 3 !important; }
+        .gallery-masonry.zoom-4 { column-count: 4 !important; }
+        .gallery-masonry.zoom-5 { column-count: 5 !important; }
+        .gallery-masonry.zoom-6 { column-count: 6 !important; }
+        .gallery-masonry.zoom-7 { column-count: 7 !important; }
+        .gallery-masonry.zoom-8 { column-count: 8 !important; }
+        .gallery-masonry.zoom-9 { column-count: 9 !important; }
+        .gallery-masonry.zoom-10 { column-count: 10 !important; }
+        .gallery-masonry.zoom-12 { column-count: 12 !important; }
         .gallery-item {
             break-inside: avoid;
             margin-bottom: 8px;
@@ -164,7 +167,19 @@
                     <img id="gallery-logo" src="SunBurst2.webp" alt="Logo" class="mb-1 w-10 h-10 object-contain transition-all duration-300">
                     <h1 id="section-title" class="text-white text-base font-bold tracking-tight transition-all duration-300">Gallery</h1>
                 </div>
-                <div class="w-10"></div>
+                <div class="flex items-center gap-2">
+                    <!-- Zoom Controls -->
+                    <div class="hidden md:flex items-center gap-1 bg-white/10 rounded-lg p-1">
+                        <button id="zoom-out-btn" class="flex items-center justify-center h-8 w-8 rounded hover:bg-white/20 text-white transition-colors" title="Zoom Out (Fewer Columns)">
+                            <span class="material-symbols-outlined text-lg">remove</span>
+                        </button>
+                        <span id="zoom-level" class="text-white text-xs font-semibold min-w-[3rem] text-center">Auto</span>
+                        <button id="zoom-in-btn" class="flex items-center justify-center h-8 w-8 rounded hover:bg-white/20 text-white transition-colors" title="Zoom In (More Columns)">
+                            <span class="material-symbols-outlined text-lg">add</span>
+                        </button>
+                    </div>
+                    <div class="w-10 md:w-0"></div>
+                </div>
             </div>
         </header>
 
@@ -1286,9 +1301,100 @@
             }
         }
 
+        // Zoom control functionality
+        let currentZoomLevel = null; // null = auto (responsive), number = fixed columns
+        const zoomLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12];
+        
+        function updateZoomDisplay() {
+            const zoomLevelDisplay = document.getElementById('zoom-level');
+            if (zoomLevelDisplay) {
+                zoomLevelDisplay.textContent = currentZoomLevel === null ? 'Auto' : `${currentZoomLevel}`;
+            }
+        }
+        
+        function applyZoom(level) {
+            const galleryGrid = document.getElementById('gallery-grid');
+            if (!galleryGrid) return;
+            
+            // Remove all zoom classes
+            galleryGrid.classList.remove(...zoomLevels.map(z => `zoom-${z}`));
+            
+            if (level === null) {
+                // Auto mode - remove zoom class, let CSS media queries handle it
+                currentZoomLevel = null;
+            } else {
+                // Fixed zoom level
+                galleryGrid.classList.add(`zoom-${level}`);
+                currentZoomLevel = level;
+            }
+            
+            updateZoomDisplay();
+            
+            // Save to localStorage
+            localStorage.setItem('galleryZoomLevel', currentZoomLevel === null ? 'auto' : currentZoomLevel.toString());
+        }
+        
+        function zoomIn() {
+            if (currentZoomLevel === null) {
+                // Get current column count from computed style
+                const galleryGrid = document.getElementById('gallery-grid');
+                const computedStyle = window.getComputedStyle(galleryGrid);
+                const currentColumns = parseInt(computedStyle.columnCount) || 2;
+                // Find next level
+                const nextLevel = zoomLevels.find(level => level > currentColumns) || zoomLevels[zoomLevels.length - 1];
+                applyZoom(nextLevel);
+            } else {
+                const currentIndex = zoomLevels.indexOf(currentZoomLevel);
+                if (currentIndex < zoomLevels.length - 1) {
+                    applyZoom(zoomLevels[currentIndex + 1]);
+                }
+            }
+        }
+        
+        function zoomOut() {
+            if (currentZoomLevel === null) {
+                // Get current column count from computed style
+                const galleryGrid = document.getElementById('gallery-grid');
+                const computedStyle = window.getComputedStyle(galleryGrid);
+                const currentColumns = parseInt(computedStyle.columnCount) || 2;
+                // Find previous level (reverse array to search from high to low)
+                const reversedLevels = [...zoomLevels].reverse();
+                const prevLevel = reversedLevels.find(level => level < currentColumns) || zoomLevels[0];
+                applyZoom(prevLevel || 2);
+            } else {
+                const currentIndex = zoomLevels.indexOf(currentZoomLevel);
+                if (currentIndex > 0) {
+                    applyZoom(zoomLevels[currentIndex - 1]);
+                } else if (currentIndex === 0) {
+                    // Go to auto mode
+                    applyZoom(null);
+                }
+            }
+        }
+        
+        // Initialize zoom from localStorage
+        function initZoom() {
+            const savedZoom = localStorage.getItem('galleryZoomLevel');
+            if (savedZoom && savedZoom !== 'auto') {
+                const level = parseInt(savedZoom);
+                if (zoomLevels.includes(level)) {
+                    applyZoom(level);
+                }
+            } else {
+                applyZoom(null); // Auto mode
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadGalleryItems();
+            
+            // Initialize zoom
+            initZoom();
+            
+            // Zoom button handlers
+            document.getElementById('zoom-in-btn').addEventListener('click', zoomIn);
+            document.getElementById('zoom-out-btn').addEventListener('click', zoomOut);
             
             // Add scroll listeners for headers
             window.addEventListener('scroll', () => {
