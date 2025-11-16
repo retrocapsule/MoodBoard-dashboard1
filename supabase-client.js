@@ -113,6 +113,13 @@ function logoutUser() {
 // Get all feedback for an item (admin only - includes user info)
 async function getAllFeedbackForItem(itemId) {
     console.log('getAllFeedbackForItem called with itemId:', itemId);
+    console.log('itemId type:', typeof itemId);
+    console.log('itemId value:', itemId);
+    
+    if (!itemId) {
+        console.error('getAllFeedbackForItem: itemId is null or undefined');
+        return null;
+    }
     
     if (!supabaseClient) {
         supabaseClient = await initSupabase();
@@ -122,38 +129,66 @@ async function getAllFeedbackForItem(itemId) {
         }
     }
 
+    const currentUser = getCurrentUser();
+    console.log('Current user for admin check:', currentUser);
+    
+    // Check if user is admin - but don't require valid UUID for admin check
+    // Admin check is based on email, not user ID
     if (!isAdmin()) {
-        console.error('Admin access required. Current user:', getCurrentUser());
+        console.error('Admin access required. Current user:', currentUser);
+        console.error('Is admin?', isAdmin());
         return null;
     }
+    
+    // Note: Admin query doesn't filter by user_id, so it should work even if current user has local ID
 
     try {
         console.log('Fetching feedback for item:', itemId);
         
-        // First get all feedback for the item
+        // First get all feedback for the item (no user filter - admin sees all)
         const { data: feedbackData, error: feedbackError } = await supabaseClient
             .from('feedback')
             .select('id, rating, thumbs, notes, created_at, updated_at, user_id')
             .eq('item_id', itemId)
             .order('created_at', { ascending: false });
 
-        console.log('Feedback query result:', { feedbackData, feedbackError });
+        console.log('Feedback query result:', { 
+            data: feedbackData, 
+            error: feedbackError,
+            count: feedbackData ? feedbackData.length : 0
+        });
 
         if (feedbackError) {
             console.error('Feedback query error:', feedbackError);
+            console.error('Error details:', JSON.stringify(feedbackError, null, 2));
             throw feedbackError;
         }
         
         if (!feedbackData || feedbackData.length === 0) {
             console.log('No feedback found for item:', itemId);
+            console.log('This could mean:');
+            console.log('  1. No users have left feedback for this item yet');
+            console.log('  2. The item_id does not match any feedback records');
+            console.log('  3. RLS policies might be blocking the query');
             return [];
         }
 
         console.log('Found', feedbackData.length, 'feedback entries');
+        console.log('Sample feedback entry:', feedbackData[0]);
 
         // Get unique user IDs
-        const userIds = [...new Set(feedbackData.map(f => f.user_id))];
+        const userIds = [...new Set(feedbackData.map(f => f.user_id).filter(id => id))];
         console.log('User IDs to fetch:', userIds);
+        console.log('Number of unique users:', userIds.length);
+        
+        if (userIds.length === 0) {
+            console.warn('No user IDs found in feedback data');
+            // Return feedback without user data
+            return feedbackData.map(feedback => ({
+                ...feedback,
+                users: { id: feedback.user_id, name: 'Unknown', email: '' }
+            }));
+        }
         
         // Fetch user info for all users
         const { data: usersData, error: usersError } = await supabaseClient
@@ -161,33 +196,41 @@ async function getAllFeedbackForItem(itemId) {
             .select('id, name, email')
             .in('id', userIds);
 
-        console.log('Users query result:', { usersData, usersError });
+        console.log('Users query result:', { 
+            data: usersData, 
+            error: usersError,
+            count: usersData ? usersData.length : 0
+        });
 
         if (usersError) {
             console.error('Users query error:', usersError);
-            throw usersError;
+            console.error('Error details:', JSON.stringify(usersError, null, 2));
+            // Don't throw - return feedback without user data
+            console.warn('Continuing without user data due to error');
         }
 
         // Create a map of user data
         const usersMap = {};
-        if (usersData) {
+        if (usersData && usersData.length > 0) {
             usersData.forEach(user => {
                 usersMap[user.id] = user;
             });
         }
-
         console.log('Users map:', usersMap);
+        console.log('Users map size:', Object.keys(usersMap).length);
 
         // Combine feedback with user data
         const result = feedbackData.map(feedback => ({
             ...feedback,
-            users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown', email: '' }
+            users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown User', email: '' }
         }));
 
-        console.log('Final result:', result);
+        console.log('Final result count:', result.length);
+        console.log('Final result sample:', result[0]);
         return result;
     } catch (error) {
         console.error('Error fetching all feedback:', error);
+        console.error('Error stack:', error.stack);
         return null;
     }
 }
@@ -284,10 +327,22 @@ async function getItemIdFromFolderPath(folderPath) {
     }
 }
 
+// Helper function to check if a string is a valid UUID
+function isValidUUID(str) {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    return uuidRegex.test(str);
+}
+
 // Get feedback for an item
 async function getFeedback(itemId) {
     const user = getCurrentUser();
     if (!supabaseClient || !user) return { rating: 5, thumbs: null, notes: '' };
+
+    // Check if user ID is a valid UUID - if not, skip Supabase query
+    if (!isValidUUID(user.id)) {
+        console.log('User ID is not a valid UUID, skipping Supabase query:', user.id);
+        return { rating: 5, thumbs: null, notes: '' };
+    }
 
     try {
         const { data, error } = await supabaseClient
@@ -315,6 +370,13 @@ async function saveFeedback(itemId, feedback) {
     
     if (!supabaseClient || !user) {
         console.error('User not authenticated or Supabase client not available');
+        return false;
+    }
+
+    // Check if user ID is a valid UUID - if not, can't save to Supabase
+    if (!isValidUUID(user.id)) {
+        console.log('User ID is not a valid UUID, cannot save to Supabase:', user.id);
+        console.log('User needs to be created in Supabase first. Try logging out and back in.');
         return false;
     }
 
