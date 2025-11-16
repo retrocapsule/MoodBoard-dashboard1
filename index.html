@@ -345,6 +345,10 @@
                         
                         if ('onboarding' in nameLower || 'onboarding' in folderLower) {
                             display_order = 1; category = 'entry';
+                        } else if ('admin' in nameLower && 'dashboard' in nameLower) {
+                            display_order = 81; category = 'account';
+                        } else if ('budtender' in nameLower && 'dashboard' in nameLower) {
+                            display_order = 82; category = 'account';
                         } else if (('home' in nameLower && ('dashboard' in nameLower || 'guest' in nameLower)) || 
                                    ('home' in nameLower || 'dashboard' in nameLower)) {
                             display_order = 2; category = 'entry';
@@ -360,8 +364,14 @@
                             display_order = 51; category = 'purchase';
                         } else if ('checkout' in nameLower || 'order' in nameLower) {
                             display_order = 52; category = 'purchase';
+                        } else if ('reward' in nameLower) {
+                            display_order = 53; category = 'purchase';
+                        } else if ('account' in nameLower && ('setting' in nameLower || 'profile' in nameLower)) {
+                            display_order = 83; category = 'account';
+                        } else if ('education' in nameLower) {
+                            display_order = 91; category = 'other';
                         } else if ('event' in nameLower) {
-                            display_order = 71; category = 'other';
+                            display_order = 92; category = 'other';
                         }
                         
                         return {
@@ -388,6 +398,10 @@
                         
                         if ('onboarding' in nameLower) {
                             display_order = 1; category = 'entry';
+                        } else if ('admin' in nameLower && 'dashboard' in nameLower) {
+                            display_order = 81; category = 'account';
+                        } else if ('budtender' in nameLower && 'dashboard' in nameLower) {
+                            display_order = 82; category = 'account';
                         } else if (('home' in nameLower && ('dashboard' in nameLower || 'guest' in nameLower)) || 
                                    ('home' in nameLower || 'dashboard' in nameLower)) {
                             display_order = 2; category = 'entry';
@@ -403,8 +417,14 @@
                             display_order = 51; category = 'purchase';
                         } else if ('checkout' in nameLower || 'order' in nameLower) {
                             display_order = 52; category = 'purchase';
+                        } else if ('reward' in nameLower) {
+                            display_order = 53; category = 'purchase';
+                        } else if ('account' in nameLower && ('setting' in nameLower || 'profile' in nameLower)) {
+                            display_order = 83; category = 'account';
+                        } else if ('education' in nameLower) {
+                            display_order = 91; category = 'other';
                         } else if ('event' in nameLower) {
-                            display_order = 71; category = 'other';
+                            display_order = 92; category = 'other';
                         }
                         
                         sectionsFromManifests.push({
@@ -463,6 +483,7 @@
                 'browsing': { name: 'Browsing', sections: [] },
                 'product': { name: 'Product Details', sections: [] },
                 'purchase': { name: 'Purchase Flow', sections: [] },
+                'account': { name: 'Account & Admin', sections: [] },
                 'other': { name: 'Other', sections: [] }
             };
 
@@ -501,6 +522,14 @@
                     const sectionCard = document.createElement('a');
                     sectionCard.href = `gallery.html?section=${encodeURIComponent(section.folder)}&name=${encodeURIComponent(section.name)}`;
                     sectionCard.className = 'section-card block';
+                    
+                    // Save scroll position before navigating
+                    sectionCard.addEventListener('click', (e) => {
+                        // Save current scroll position
+                        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+                        sessionStorage.setItem('indexScrollPosition', scrollPos.toString());
+                        // Allow navigation to proceed
+                    });
                     
                     // Try to get thumbnails from Supabase
                     let thumbnails = [];
@@ -1297,12 +1326,44 @@
         window.exportItemFeedback = exportItemFeedback;
         window.exportAllFeedback = exportAllFeedback;
 
+        // Restore scroll position if returning from gallery
+        function restoreScrollPosition() {
+            const savedPosition = sessionStorage.getItem('indexScrollPosition');
+            if (savedPosition !== null) {
+                const scrollPos = parseInt(savedPosition, 10);
+                // Wait for content to be fully rendered
+                // Use multiple requestAnimationFrame calls to ensure layout is complete
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        window.scrollTo({
+                            top: scrollPos,
+                            behavior: 'auto' // Instant scroll, not smooth
+                        });
+                        // Clear the saved position after restoring
+                        sessionStorage.removeItem('indexScrollPosition');
+                    });
+                });
+            }
+        }
+
         // Initialize app on page load
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOMContentLoaded - initializing app');
             // Wait for Supabase client to initialize
             setTimeout(() => {
                 console.log('Calling initApp...');
+                
+                // Restore scroll position after sections are rendered
+                // Wrap renderSections to restore scroll after rendering
+                const originalRenderSections = renderSections;
+                renderSections = async function(...args) {
+                    await originalRenderSections.apply(this, args);
+                    // Wait a bit more for images to load, then restore scroll
+                    setTimeout(() => {
+                        restoreScrollPosition();
+                    }, 300);
+                };
+                
                 initApp();
                 // Update user info after a short delay to ensure Supabase client is ready
                 setTimeout(() => {

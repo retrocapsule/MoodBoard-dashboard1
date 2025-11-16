@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Course Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .horizontal-scroll {
+            scrollbar-width: none; /* Firefox */
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative w-full max-w-md mx-auto min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white text-3xl">menu</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Course Library</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-3xl">search</span>
+</button>
+</div>
+</div>
+<!-- Chips / Category Filter Bar -->
+<div class="flex gap-3 px-4 py-3 overflow-x-auto horizontal-scroll">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">All</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Beginner</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Strains</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Cultivation</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Wellness</p>
+</div>
+</div>
+<!-- Vertical Course List -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Card 1 with Progress Bar -->
+<div class="flex flex-col items-stretch justify-start rounded-xl overflow-hidden bg-[#2c2921]">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Abstract image of a cannabis leaf with golden light accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQh8r7JFv2EIkpxvIZNU9BY5LnxpDZIvao1dp0SANF0i5hXb1e0XYYjW8yPeqHlynNOlL-UPHrcpY5QaMRTj3zujmb9NO0DGmwevdV6y49jBZDEtGsDaI9LSPTtwnek6w9PU2jpK5AwNttz0rF2s9ZNTrr8Ru2AfM6BX_lwq2Ums-wAaSj8-o9yrI44cD3cRGLhHNtm62ZrEmcgWEZazEPq7K-dBaaKua3qv_q_zzV-3hG8QdxI5thTXsLffQpM_7nqMjeQ0I-CqY");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Introduction to Cannabis</p>
+<p class="text-[#bab3a0] text-base font-normal leading-normal">Learn the basics of cannabis, its history, and cultural significance.</p>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex justify-end">
+<p class="text-primary text-xs font-normal leading-normal">25% Complete</p>
+</div>
+<div class="rounded-full bg-[#595240] h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 25%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl overflow-hidden bg-[#2c2921]">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Close-up of terpene molecular structures on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAW6H8mPWDTu4C2mVLi9xXq4s5FOihX4ZTcN-JWJbLWt-i2I7IfBSS2vof_M6C_lclGC3c4KXegfEWp9yVA2VJNsu0mo5qZXKSpQwWgSwrxqLAiYl3PhdwssDijXrZtXUtYe_jjlcQFVAPB1E__zb10r-1-Y-P21PwqoUgBWgbIWxIuXov4-HH4VA8Sfxajhf2cDBjEvkLJgOPVwevjfzvh9pcQWcJCKoBogZeCH0GPWJJAEDZQYT787Y3pN9dp-pH3Duth2NKwlzQ");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Understanding Terpenes</p>
+<p class="text-[#bab3a0] text-base font-normal leading-normal">Discover the aromatic compounds that give cannabis its unique flavors.</p>
+</div>
+</div>
+<!-- Card 3 with Progress Bar -->
+<div class="flex flex-col items-stretch justify-start rounded-xl overflow-hidden bg-[#2c2921]">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="A person carefully tending to young cannabis plants indoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANOxVB8WXpof1PKaqVqPto9QnkaqkHfBQutWPIQg4Hkm0-HRvBgcJ5nYe6R3xM_lKpMT6j3K1DMrD8ZUgCfsdnsXZy2m4agnMFJQiFdXIl34oQoHoow6ttngjWhkZ4_4UD7PSQj20Uu3Iwzuomtb1nHFOmZP0wfSXg2geYFgA5c4TtIUmUfsXcNaPj14HrC1mUOmDx79cScUkd4C-6fW3YNaRXViRbUGBRAEcMOw4sjpfGsApxsHUofWmUBHrvgEMS8w9U1Aexf7E");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Growing Basics 101</p>
+<p class="text-[#bab3a0] text-base font-normal leading-normal">Your first step into cultivating your own plants from seed to harvest.</p>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex justify-end">
+<p class="text-primary text-xs font-normal leading-normal">70% Complete</p>
+</div>
+<div class="rounded-full bg-[#595240] h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

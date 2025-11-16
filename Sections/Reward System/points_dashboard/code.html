@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Points Dashboard - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "card-light": "#ffffff",
+              "card-dark": "#1E1E1E",
+              "text-light": "#1E1E1E",
+              "text-dark": "#F5F5F5",
+              "text-secondary-light": "#666666",
+              "text-secondary-dark": "#888888",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between sticky top-0 z-10 border-b border-card-light/10 dark:border-card-dark/50">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark text-2xl">arrow_back</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-[-0.015em] text-text-light dark:text-text-dark flex-1 text-center">Points Dashboard</h1>
+<div class="flex size-10 shrink-0 items-center justify-center">
+<!-- Placeholder for another icon like settings or notifications -->
+</div>
+</header>
+<main class="flex-1 flex flex-col p-4 space-y-6">
+<!-- Profile Summary Card -->
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNhB9tiW1bjo5xzdkyatPLBrMjC4dpAhQAinWpfPNavwg2OLqopqZXTPfUb1AnMdj22wAyqxONsVwwNtxhipavEngf3FR0FFie9Z2AoFYyeT-gdltOu7bDoiAVbBdG0mh-vbQV8tyD1z5pVXe_aagLGMNRoWVbGdO3DD12XKe06di6FfTNULJNJSVoUKO83f-JNjQe40ibHOJFOrOcFLnYg_1Lq1_6Lo1ZFy2AmlEFMldiTg0k9dRSV_lzw1QNCNoIcVUB0je-7n4");'></div>
+<div class="flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-bold leading-normal truncate">Jane Doe</p>
+<p class="text-primary text-sm font-medium leading-normal">Gold Member</p>
+</div>
+</div>
+<!-- Points Display Card -->
+<div class="flex flex-col items-center justify-center bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm">
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal">Total Points</p>
+<h2 class="text-primary tracking-tight text-5xl font-bold leading-tight py-1">1,250</h2>
+</div>
+<!-- Rewards Progress Bar -->
+<div class="flex flex-col gap-3 bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm">
+<div class="flex gap-4 justify-between items-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Next Reward: Free Pre-Roll</p>
+</div>
+<div class="rounded-full bg-background-light dark:bg-background-dark h-2.5">
+<div class="h-2.5 rounded-full bg-primary" style="width: 66%;"></div>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">50 more points to unlock</p>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span class="material-symbols-outlined text-xl">redeem</span>
+<span>Redeem Rewards</span>
+</button>
+<button class="flex items-center justify-center gap-2 w-full bg-primary/20 text-primary font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+<span>See How to Earn</span>
+</button>
+</div>
+<!-- Activity/History Section -->
+<div class="flex flex-col flex-1">
+<!-- Tab Navigation -->
+<div class="flex border-b border-card-light/10 dark:border-card-dark/50 mb-4">
+<button class="flex-1 py-3 text-center font-bold border-b-2 border-primary text-primary">Activity</button>
+<button class="flex-1 py-3 text-center font-bold border-b-2 border-transparent text-text-secondary-light dark:text-text-secondary-dark">History</button>
+</div>
+<!-- Activity List -->
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark px-4 py-3.5 rounded-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary text-2xl">storefront</span>
+</div>
+<div class="flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Store Visit - Palm Springs</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">October 26, 2023</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-green-500 font-bold text-base">+100 pts</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark px-4 py-3.5 rounded-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary text-2xl">cake</span>
+</div>
+<div class="flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Birthday Bonus</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">October 20, 2023</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-green-500 font-bold text-base">+50 pts</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark px-4 py-3.5 rounded-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary text-2xl">reviews</span>
+</div>
+<div class="flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Product Review</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">October 15, 2023</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-green-500 font-bold text-base">+25 pts</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark px-4 py-3.5 rounded-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-10 items-center justify-center rounded-full bg-red-500/10">
+<span class="material-symbols-outlined text-red-500 text-2xl">redeem</span>
+</div>
+<div class="flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Redeemed: 1g Flower</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">October 1, 2023</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-red-500 font-bold text-base">-500 pts</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

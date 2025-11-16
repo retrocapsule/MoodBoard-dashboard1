@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Reward System/fraud_prevention_notices",
+      "name": "fraud_prevention_notices",
+      "html": "Sections/Reward System/fraud_prevention_notices/code.html",
+      "thumbnail": "Sections/Reward System/fraud_prevention_notices/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/gamified_education_screen",
+      "name": "gamified_education_screen",
+      "html": "Sections/Reward System/gamified_education_screen/code.html",
+      "thumbnail": "Sections/Reward System/gamified_education_screen/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/how_to_earn_points",
+      "name": "how_to_earn_points",
+      "html": "Sections/Reward System/how_to_earn_points/code.html",
+      "thumbnail": "Sections/Reward System/how_to_earn_points/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/missions_dashboard",
+      "name": "missions_dashboard",
+      "html": "Sections/Reward System/missions_dashboard/code.html",
+      "thumbnail": "Sections/Reward System/missions_dashboard/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/points_dashboard",
+      "name": "points_dashboard",
+      "html": "Sections/Reward System/points_dashboard/code.html",
+      "thumbnail": "Sections/Reward System/points_dashboard/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/reward_detail_page",
+      "name": "reward_detail_page",
+      "html": "Sections/Reward System/reward_detail_page/code.html",
+      "thumbnail": "Sections/Reward System/reward_detail_page/screen.png"
+    },
+    {
+      "folder": "Sections/Reward System/rewards_catalog",
+      "name": "rewards_catalog",
+      "html": "Sections/Reward System/rewards_catalog/code.html",
+      "thumbnail": "Sections/Reward System/rewards_catalog/screen.png"
+    }
+  ]
+}

@@ -21,25 +21,51 @@
             transform: translateY(-4px);
         }
         .gallery-item.viewed {
-            opacity: 0.6;
+            opacity: 0.75;
+        }
+        .gallery-item.viewed .bg-\[#2a271f\] {
+            border-color: #a88e48 !important;
+            border-width: 2px;
         }
         .gallery-item.viewed::after {
             content: '✓';
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 8px;
+            right: 8px;
             background: #a88e48;
             color: white;
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 3px 12px rgba(168, 142, 72, 0.6);
+            border: 2px solid white;
+        }
+        .gallery-item.has-notes::before {
+            content: '📝';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(168, 142, 72, 0.95);
+            color: white;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            font-weight: bold;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(168, 142, 72, 0.4);
+            box-shadow: 0 3px 12px rgba(168, 142, 72, 0.6);
+            border: 2px solid white;
+        }
+        .gallery-item.viewed.has-notes::before {
+            top: 48px; /* Move notes badge down if viewed badge is present */
         }
         .fullscreen-view {
             display: none;
@@ -330,9 +356,13 @@
             // Try Supabase first
             try {
                 const items = await fetchGalleryItems(sectionFolder);
+                console.log('Fetched items from Supabase:', items);
                 if (items && items.length > 0) {
+                    console.log(`Found ${items.length} items for section: ${sectionFolder}`);
                     renderGallery(items);
                     return;
+                } else {
+                    console.log(`No items found in Supabase for section: ${sectionFolder}, trying fallback...`);
                 }
             } catch (error) {
                 console.log('Supabase fetch failed, trying fallback:', error);
@@ -365,27 +395,75 @@
         }
         
         function showManifestError() {
+            const sectionName = document.getElementById('section-title').textContent;
             document.getElementById('gallery-grid').innerHTML = 
                 '<div class="col-span-full text-center text-white/60 p-8">' +
-                '<p class="mb-4">Unable to load gallery.</p>' +
+                `<p class="mb-4">Unable to load gallery for "${sectionName}".</p>` +
+                '<p class="text-sm mb-2">This section may not have any items yet, or the items may not have been synced.</p>' +
                 '<p class="text-sm mb-4">Please run:</p>' +
                 '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 sync-to-supabase.py</code>' +
                 '<p class="text-sm mb-2">Or use local fallback:</p>' +
                 '<code class="block bg-[#1d1b15] p-3 rounded mb-4 text-xs">python3 generate-manifests.py</code>' +
+                '<p class="text-xs mt-4 text-white/40">Note: Items must have both code.html and screen.png files to be synced.</p>' +
                 '</div>';
         }
 
         // Render gallery
-        function renderGallery(items) {
+        async function renderGallery(items) {
             const galleryContainer = document.getElementById('gallery-grid');
             const viewed = getViewedItems();
 
             galleryContainer.innerHTML = '';
 
+            // Check for feedback for all items
+            const feedbackPromises = items.map(async (item, index) => {
+                const folder = item.folder || item.name || '';
+                let hasFeedback = false;
+                
+                // Try to get feedback for this item
+                try {
+                    // First try to get Supabase item ID
+                    let supabaseItemId = item.id || null;
+                    
+                    if (!supabaseItemId && typeof getItemIdFromFolderPath === 'function') {
+                        supabaseItemId = await getItemIdFromFolderPath(folder);
+                    }
+                    
+                    // Check for feedback
+                    if (supabaseItemId && typeof getFeedback === 'function') {
+                        const feedback = await getFeedback(supabaseItemId);
+                        if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
+                            hasFeedback = true;
+                        }
+                    } else {
+                        // Fallback to localStorage
+                        const key = `feedback_${folder}`;
+                        const localFeedback = localStorage.getItem(key);
+                        if (localFeedback) {
+                            const feedback = JSON.parse(localFeedback);
+                            if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
+                                hasFeedback = true;
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.log('Error checking feedback for item:', error);
+                }
+                
+                return { index, hasFeedback };
+            });
+            
+            const feedbackResults = await Promise.all(feedbackPromises);
+            const feedbackMap = {};
+            feedbackResults.forEach(result => {
+                feedbackMap[result.index] = result.hasFeedback;
+            });
+
             items.forEach((item, index) => {
                 const isViewed = viewed.includes(index);
+                const hasNotes = feedbackMap[index] || false;
                 const itemDiv = document.createElement('div');
-                itemDiv.className = `gallery-item relative cursor-pointer ${isViewed ? 'viewed' : ''}`;
+                itemDiv.className = `gallery-item relative cursor-pointer ${isViewed ? 'viewed' : ''} ${hasNotes ? 'has-notes' : ''}`;
                 
                 // Clean up folder name for display
                 const displayName = (item.folder || item.name || '').split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -417,10 +495,11 @@
                     id: item.id || null // Supabase ID if available
                 };
                 
-                // Add data attribute for hash navigation
+                // Add data attribute for hash navigation and folder path
                 if (itemData.id) {
                     itemDiv.setAttribute('data-item-id', itemData.id);
                 }
+                itemDiv.setAttribute('data-folder-path', folder);
                 
                 itemDiv.addEventListener('click', () => openFullscreen(itemData, index));
                 galleryContainer.appendChild(itemDiv);
@@ -560,6 +639,58 @@
             const key = `feedback_${itemId}`;
             localStorage.setItem(key, JSON.stringify(feedback));
             console.log('Saved to localStorage as fallback');
+            
+            // Update gallery indicators after saving
+            setTimeout(async () => {
+                await updateGalleryItemIndicators();
+            }, 300);
+        }
+        
+        // Update gallery item indicators (viewed/notes badges)
+        async function updateGalleryItemIndicators() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            for (let i = 0; i < galleryItems.length; i++) {
+                const itemDiv = galleryItems[i];
+                const itemId = itemDiv.getAttribute('data-item-id');
+                const folderPath = itemDiv.getAttribute('data-folder-path') || '';
+                
+                // Check if item has feedback
+                let hasFeedback = false;
+                try {
+                    let supabaseItemId = itemId;
+                    
+                    if (!supabaseItemId && typeof getItemIdFromFolderPath === 'function' && folderPath) {
+                        supabaseItemId = await getItemIdFromFolderPath(folderPath);
+                    }
+                    
+                    if (supabaseItemId && typeof getFeedback === 'function') {
+                        const feedback = await getFeedback(supabaseItemId);
+                        if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
+                            hasFeedback = true;
+                        }
+                    } else if (folderPath) {
+                        // Fallback to localStorage
+                        const key = `feedback_${folderPath}`;
+                        const localFeedback = localStorage.getItem(key);
+                        if (localFeedback) {
+                            const feedback = JSON.parse(localFeedback);
+                            if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
+                                hasFeedback = true;
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.log('Error checking feedback:', error);
+                }
+                
+                // Update has-notes class
+                if (hasFeedback) {
+                    itemDiv.classList.add('has-notes');
+                } else {
+                    itemDiv.classList.remove('has-notes');
+                }
+            }
         }
 
         // Load feedback into modal (async for Supabase)
@@ -645,6 +776,12 @@
             if (galleryItemElements[index]) {
                 galleryItemElements[index].classList.add('viewed');
             }
+            
+            // After saving feedback, update the gallery to show notes indicator
+            // This will be called after feedback is saved
+            setTimeout(async () => {
+                await updateGalleryItemIndicators();
+            }, 500);
 
             // Set title
             const displayName = item.folder.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -829,7 +966,7 @@
         }
 
         // Close fullscreen view
-        function closeFullscreen() {
+        async function closeFullscreen() {
             const fullscreenView = document.getElementById('fullscreen-view');
             const galleryView = document.getElementById('gallery-view');
             
@@ -840,6 +977,9 @@
             setTimeout(() => {
                 handleGalleryHeaderScroll();
             }, 100);
+            
+            // Update gallery indicators when returning to gallery
+            await updateGalleryItemIndicators();
         }
 
         // Admin panel functions

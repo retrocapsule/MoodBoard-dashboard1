@@ -40,10 +40,14 @@ def get_section_order_and_category(name, folder_path):
     folder_lower = folder_path.lower()
     
     # Define workflow order and categories
-    # Order: 1-10 = Entry/Onboarding, 11-30 = Browsing, 31-50 = Product Details, 51-70 = Purchase, 71+ = Other
+    # Order: 1-10 = Entry/Onboarding, 11-30 = Browsing, 31-50 = Product Details, 51-70 = Purchase, 81-90 = Account/Admin, 91+ = Other
     
     if 'onboarding' in name_lower or 'onboarding' in folder_lower:
         return (1, 'entry')
+    elif 'admin' in name_lower and 'dashboard' in name_lower:
+        return (81, 'account')
+    elif 'budtender' in name_lower and 'dashboard' in name_lower:
+        return (82, 'account')
     elif 'home' in name_lower and ('dashboard' in name_lower or 'guest' in name_lower):
         return (2, 'entry')
     elif 'home' in name_lower or 'dashboard' in name_lower:
@@ -62,8 +66,14 @@ def get_section_order_and_category(name, folder_path):
         return (51, 'purchase')
     elif 'checkout' in name_lower or 'order' in name_lower:
         return (52, 'purchase')
+    elif 'reward' in name_lower:
+        return (53, 'purchase')
+    elif 'account' in name_lower and ('setting' in name_lower or 'profile' in name_lower):
+        return (83, 'account')
+    elif 'education' in name_lower:
+        return (91, 'other')
     elif 'event' in name_lower:
-        return (71, 'other')
+        return (92, 'other')
     else:
         return (999, 'other')
 

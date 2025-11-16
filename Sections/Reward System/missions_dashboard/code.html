@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Missions Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-[#E0E0E0]">menu</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Missions Dashboard</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-[#E0E0E0]">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Stats Section -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-[#1E1E1E] p-4">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Total Points Earned</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">1,250</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-[#1E1E1E] p-4">
+<p class="text-[#E0E0E0] text-sm font-medium leading-normal">Missions Completed</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">8</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="sticky top-[72px] bg-background-light dark:bg-background-dark z-10">
+<div class="flex border-b border-[#2d2d2d] px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Active</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#E0E0E0]/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-inherit text-sm font-bold leading-normal tracking-[0.015em]">Available</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#E0E0E0]/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-inherit text-sm font-bold leading-normal tracking-[0.015em]">Completed</p>
+</a>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Active Missions</h2>
+<!-- Card 1 -->
+<div class="px-4 pb-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#1E1E1E]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="Abstract green and gold leaf pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAph7XxcI7qk1HDE4XVVC7CL0cFAUrkXkeWobqrCBBqNDH-YVdZxn6lYjCNv3S0SFiKg6ROlRydDsSsGZojBtqRU5M_NCtuw6cuvejnw4cpGSSSefJ-74wVYEMNfjEBze9pfd6z_o-2JNiGCi_De2SdBAJdKz7Ix6olplc8nKla4n7vqcS5iV0Hhub1WJW5UbCMpx4Ge8EYB9Nq07N_m4shtSIR7NSd0dFM2ogvwaWiQSR0M4zB67byo9QhJAn_U46zHtoTzHwWXR8");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div>
+<p class="text-[#E0E0E0]/60 text-sm font-normal leading-normal">Weekly Challenge</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Refer 3 Friends</p>
+<p class="text-[#E0E0E0] text-base font-normal leading-normal mt-1">Invite friends to join and get rewards.</p>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-primary">Progress</span>
+<span class="text-sm font-medium text-[#E0E0E0]">2 / 3</span>
+</div>
+<div class="w-full bg-[#2d2d2d] rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 66%"></div>
+</div>
+</div>
+<div class="flex items-center gap-2 justify-between">
+<p class="text-primary text-base font-bold leading-normal">Reward: 500 Points</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-[#121212] text-sm font-bold leading-normal">
+<span class="truncate">Invite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="px-4 pb-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#1E1E1E]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="A person holding a cannabis product in a store" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcTi0tugzlwDgQcrOguWzEHCo5rjAz7BMQkneJJaU55FVP_sbjzxbnkwUrRH37_T0UMZgOJ8jKlB_1GAfZ8d-k-CxWpeqvLtL-75AWv3pnWIZEMudkALb4iXoy2q1oxXUFSyYvAV8RUJQNTPr3GU9k6cwSat8556D4XUeq76qmoL7EEvexbSYjFXmpb_6maT7pyNFOwSwcqHUCgc1KCynQQuwTYTGjqhjetGN9T_lkzO6Y9qiZelWvH7xWbfQs5f390reOhMkKcIU");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div>
+<p class="text-[#E0E0E0]/60 text-sm font-normal leading-normal">Purchase Mission</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">First Purchase Bonus</p>
+<p class="text-[#E0E0E0] text-base font-normal leading-normal mt-1">Make your first purchase to unlock a special reward.</p>
+</div>
+<div class="flex items-center gap-3 justify-between">
+<p class="text-primary text-base font-bold leading-normal">Reward: 10% Off Coupon</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-[#121212] text-sm font-bold leading-normal">
+<span class="truncate">Shop Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Available Missions</h2>
+<!-- Card 3 -->
+<div class="px-4 pb-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#1E1E1E]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="A person checking their phone" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNxKMJagwXrd7xu1VAXUb53wqj-bauWCZ_NkIXQAJAYLrOuGZxgpf7PG0BMjYMwBQSc71bogo0eBJYlWfgkQwoxOGbOnnEBGPbw_IyCAnrkdRQO9l3utYrn5E6O8PnPeidJVTqFUDj0aEFjAonrF7KDjxs9tKvdq4jys9VHnQe3wWXEZmazljeXT9X0Rl4KhCmJ_3-faKNFqfCO4ZVjDFz7mtRkIXZ_C1QmWloNMvhOJySjsKuKODeYohWrDh53LxA43VJtlnrNew");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div>
+<p class="text-[#E0E0E0]/60 text-sm font-normal leading-normal">Daily Mission</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Daily Check-in</p>
+<p class="text-[#E0E0E0] text-base font-normal leading-normal mt-1">Check in today to earn bonus points.</p>
+</div>
+<div class="flex items-center gap-3 justify-between">
+<p class="text-primary text-base font-bold leading-normal">Reward: 100 Points</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/30 text-primary text-sm font-bold leading-normal">
+<span class="truncate">Start Mission</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Example for Completed Missions -->
+<div class="hidden">
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Completed Missions</h2>
+<div class="flex flex-col items-center justify-center gap-4 p-8 text-center rounded-xl m-4 bg-[#1E1E1E]">
+<span class="material-symbols-outlined text-primary !text-5xl">task_alt</span>
+<p class="text-white text-lg font-bold">No Missions Completed Yet</p>
+<p class="text-[#E0E0E0]/60 text-base">Start and complete missions from the 'Available' tab to see your achievements here.</p>
+</div>
+</div>
+</div>
+</body></html>

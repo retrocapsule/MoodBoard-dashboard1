@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "folder": "Sections/account settings/account_settings,_variant_1_of_3",
+      "name": "account_settings,_variant_1_of_3",
+      "html": "Sections/account settings/account_settings,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/account settings/account_settings,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/account_settings,_variant_2_of_3",
+      "name": "account_settings,_variant_2_of_3",
+      "html": "Sections/account settings/account_settings,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/account settings/account_settings,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/account_settings,_variant_3_of_3",
+      "name": "account_settings,_variant_3_of_3",
+      "html": "Sections/account settings/account_settings,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/account settings/account_settings,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/help_&_support",
+      "name": "help_&_support",
+      "html": "Sections/account settings/help_&_support/code.html",
+      "thumbnail": "Sections/account settings/help_&_support/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/notification_settings",
+      "name": "notification_settings",
+      "html": "Sections/account settings/notification_settings/code.html",
+      "thumbnail": "Sections/account settings/notification_settings/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/notifications_list,_variant_1_of_3",
+      "name": "notifications_list,_variant_1_of_3",
+      "html": "Sections/account settings/notifications_list,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/account settings/notifications_list,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/notifications_list,_variant_2_of_3",
+      "name": "notifications_list,_variant_2_of_3",
+      "html": "Sections/account settings/notifications_list,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/account settings/notifications_list,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/notifications_list,_variant_3_of_3",
+      "name": "notifications_list,_variant_3_of_3",
+      "html": "Sections/account settings/notifications_list,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/account settings/notifications_list,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/preferences,_variant_1_of_3",
+      "name": "preferences,_variant_1_of_3",
+      "html": "Sections/account settings/preferences,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/account settings/preferences,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/preferences,_variant_2_of_3",
+      "name": "preferences,_variant_2_of_3",
+      "html": "Sections/account settings/preferences,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/account settings/preferences,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/preferences,_variant_3_of_3",
+      "name": "preferences,_variant_3_of_3",
+      "html": "Sections/account settings/preferences,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/account settings/preferences,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/account settings/profile_overview",
+      "name": "profile_overview",
+      "html": "Sections/account settings/profile_overview/code.html",
+      "thumbnail": "Sections/account settings/profile_overview/screen.png"
+    }
+  ]
+}

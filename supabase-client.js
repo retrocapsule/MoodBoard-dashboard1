@@ -337,14 +337,35 @@ async function fetchGalleryItems(sectionFolder) {
     }
 
     try {
-        // First get section by folder_path
-        const { data: section, error: sectionError } = await supabaseClient
+        // First get section by folder_path (case-insensitive match)
+        // Try exact match first
+        let { data: section, error: sectionError } = await supabaseClient
             .from('sections')
-            .select('id')
+            .select('id, folder_path')
             .eq('folder_path', sectionFolder)
             .single();
 
-        if (sectionError || !section) return null;
+        // If exact match fails, try case-insensitive
+        if (sectionError || !section) {
+            const { data: allSections, error: allSectionsError } = await supabaseClient
+                .from('sections')
+                .select('id, folder_path');
+            
+            if (!allSectionsError && allSections) {
+                const matched = allSections.find(s => 
+                    s.folder_path.toLowerCase() === sectionFolder.toLowerCase()
+                );
+                if (matched) {
+                    section = matched;
+                    sectionError = null;
+                }
+            }
+        }
+
+        if (sectionError || !section) {
+            console.log('Section not found for folder_path:', sectionFolder);
+            return null;
+        }
 
         // Get items for this section
         const { data: items, error: itemsError } = await supabaseClient

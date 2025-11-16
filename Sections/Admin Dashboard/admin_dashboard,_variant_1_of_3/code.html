@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-white/90" style="font-size: 28px;">grass</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Mohave Admin</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-zinc-800 text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-white/90">person</span>
+</button>
+</div>
+</div>
+<!-- Date Range Chips -->
+<div class="flex gap-2 p-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary pl-4 pr-3">
+<p class="text-white text-sm font-medium leading-normal">Last 7 Days</p>
+<span class="material-symbols-outlined text-white" style="font-size: 20px;">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-zinc-800 dark:bg-zinc-800 pl-4 pr-3">
+<p class="text-white/70 text-sm font-medium leading-normal">Last 30 Days</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-zinc-800 dark:bg-zinc-800 pl-4 pr-3">
+<p class="text-white/70 text-sm font-medium leading-normal">Last 90 Days</p>
+</button>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-2 gap-4 p-4">
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Total Revenue</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">$12,482</p>
+<p class="text-green-500 text-sm font-medium leading-normal">+5.2%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">New Customers</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">89</p>
+<p class="text-green-500 text-sm font-medium leading-normal">+12.0%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Orders Today</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">112</p>
+<p class="text-red-500 text-sm font-medium leading-normal">-1.5%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Active Budtenders</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">16</p>
+<p class="text-green-500 text-sm font-medium leading-normal">+2</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="flex flex-col gap-4 px-4 py-2">
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-lg border border-white/10 bg-zinc-900 dark:bg-zinc-900 p-6">
+<p class="text-white text-base font-medium leading-normal">Sales Overview</p>
+<p class="text-white tracking-light text-[32px] font-bold leading-tight truncate">$8,921</p>
+<div class="flex gap-1">
+<p class="text-white/60 text-base font-normal leading-normal">Last 7 Days</p>
+<p class="text-green-500 text-base font-medium leading-normal">+8.1%</p>
+</div>
+<div class="grid min-h-[180px] grid-flow-col gap-4 grid-rows-[1fr_auto] items-end justify-items-center px-2">
+<div class="bg-primary/30 w-full rounded-t" style="height: 50%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Mon</p>
+<div class="bg-primary/30 w-full rounded-t" style="height: 10%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Tue</p>
+<div class="bg-primary/30 w-full rounded-t" style="height: 20%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Wed</p>
+<div class="bg-primary w-full rounded-t" style="height: 100%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Thu</p>
+<div class="bg-primary/30 w-full rounded-t" style="height: 60%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Fri</p>
+<div class="bg-primary/30 w-full rounded-t" style="height: 40%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Sat</p>
+<div class="bg-primary/30 w-full rounded-t" style="height: 40%;"></div>
+<p class="text-white/60 text-xs font-bold leading-normal">Sun</p>
+</div>
+</div>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-lg border border-white/10 bg-zinc-900 dark:bg-zinc-900 p-6">
+<p class="text-white text-base font-medium leading-normal">User Engagement</p>
+<p class="text-white tracking-light text-[32px] font-bold leading-tight truncate">1,204</p>
+<div class="flex gap-1">
+<p class="text-white/60 text-base font-normal leading-normal">Last 7 Days</p>
+<p class="text-green-500 text-base font-medium leading-normal">+15.3%</p>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="148" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#a68d48" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#a68d48" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#a68d48" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-around">
+<p class="text-white/60 text-xs font-bold leading-normal">Mon</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Tue</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Wed</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Thu</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Fri</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Sat</p>
+<p class="text-white/60 text-xs font-bold leading-normal">Sun</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions Section -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-4 p-4">
+<button class="flex flex-col items-center justify-center gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 h-28 border border-white/10">
+<span class="material-symbols-outlined text-primary text-3xl">event</span>
+<p class="text-white text-sm font-medium">New Event</p>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 h-28 border border-white/10">
+<span class="material-symbols-outlined text-primary text-3xl">loyalty</span>
+<p class="text-white text-sm font-medium">Manage Loyalty</p>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 h-28 border border-white/10">
+<span class="material-symbols-outlined text-primary text-3xl">notifications_active</span>
+<p class="text-white text-sm font-medium">Push Notification</p>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 rounded-lg p-4 bg-zinc-900 dark:bg-zinc-900 h-28 border border-white/10">
+<span class="material-symbols-outlined text-primary text-3xl">inventory_2</span>
+<p class="text-white text-sm font-medium">View Products</p>
+</button>
+</div>
+<!-- Recent Activity -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Recent Activity</h3>
+<div class="flex flex-col gap-px p-4">
+<div class="flex items-center gap-4 p-4 bg-zinc-900 dark:bg-zinc-900 rounded-t-lg">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">add_shopping_cart</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">New product "OG Kush" added.</p>
+<p class="text-white/60 text-xs">2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 bg-zinc-900 dark:bg-zinc-900">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">campaign</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">Event "Summer Sale" published.</p>
+<p class="text-white/60 text-xs">1 day ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 bg-zinc-900 dark:bg-zinc-900 rounded-b-lg">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">New budtender account created.</p>
+<p class="text-white/60 text-xs">3 days ago</p>
+</div>
+</div>
+</div>
+<div class="h-5 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

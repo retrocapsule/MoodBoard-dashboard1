@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Admin Dashboard/admin_dashboard,_variant_1_of_3",
+      "name": "admin_dashboard,_variant_1_of_3",
+      "html": "Sections/Admin Dashboard/admin_dashboard,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Admin Dashboard/admin_dashboard,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Admin Dashboard/admin_dashboard,_variant_2_of_3",
+      "name": "admin_dashboard,_variant_2_of_3",
+      "html": "Sections/Admin Dashboard/admin_dashboard,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Admin Dashboard/admin_dashboard,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Admin Dashboard/admin_dashboard,_variant_3_of_3",
+      "name": "admin_dashboard,_variant_3_of_3",
+      "html": "Sections/Admin Dashboard/admin_dashboard,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Admin Dashboard/admin_dashboard,_variant_3_of_3/screen.png"
+    }
+  ]
+}

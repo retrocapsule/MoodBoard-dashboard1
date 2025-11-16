@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Course Library - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-[#E0E0E0]">
+<div class="relative flex min-h-screen w-full flex-col bg-background-dark">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-dark/80 p-4 pb-2 backdrop-blur-sm">
+<button class="flex size-12 shrink-0 items-center justify-center text-[#E0E0E0]">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-[#E0E0E0]">Course Library</h1>
+<div class="size-12 shrink-0"></div> <!-- Spacer -->
+</header>
+<main class="flex-1 px-4">
+<!-- Search Bar -->
+<div class="py-3">
+<label class="flex h-12 w-full min-w-40 flex-col">
+<div class="flex h-full w-full flex-1 items-stretch rounded-full">
+<div class="flex items-center justify-center rounded-l-full border-none bg-zinc-800 pl-4 text-[#888888]">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full border-none bg-zinc-800 px-4 pl-2 text-base font-normal leading-normal text-[#E0E0E0] placeholder:text-[#888888] focus:border-none focus:outline-0 focus:ring-0" placeholder="Search for topics, strains, etc." value=""/>
+</div>
+</label>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex gap-2 py-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none]">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4">
+<p class="text-sm font-medium leading-normal text-background-dark">All</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-800 px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Beginner Basics</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-800 px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Cultivation</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-800 px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Product Science</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-800 px-4">
+<p class="text-sm font-medium leading-normal text-[#E0E0E0]">Wellness</p>
+</div>
+</div>
+<!-- Featured Course Card -->
+<div class="pt-4">
+<h2 class="pb-2 text-lg font-bold leading-tight tracking-[-0.015em] text-[#E0E0E0]">Featured Course</h2>
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-zinc-800/50 @container">
+<div class="aspect-video w-full rounded-t-xl bg-cover bg-center bg-no-repeat" data-alt="Abstract image with shades of green and gold representing a cannabis plant leaf up close." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkbT4VIhDG58RQvhQnc1LhGgpmpLyOcbgKs6ls9c7yPOLBzAbzde9ntMbYVcJcFlclKzZB1bu4iGUeHFS2YuRC3pR4W5PcQbqNNdN5I9bl1rlMcADdBYRwv6A65_Y8Cp-KsHaPLYyePKxadbOhNLQdAvoKfoUyVv-vepWysa54YUJ_b3bbHy6lYRE3vpsaSMwgyaVpwsGy3sWgcUyexTQBFYecyAEQrX9whGGj-V6L_UQbv1LMrbvpKBUKnS5xXinEdYbaFGGvTMA");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 p-4">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-[#E0E0E0]">Advanced Cultivation Techniques</p>
+<p class="text-base font-normal leading-normal text-[#888888]">Explore advanced methods for maximizing yield and potency.</p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5 text-sm text-primary">
+<span class="material-symbols-outlined text-base">trending_up</span>
+<p>Trending</p>
+</div>
+<button class="flex h-8 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-4 text-sm font-medium leading-normal text-background-dark">
+<span class="truncate">Start Course</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card Grid -->
+<div class="grid grid-cols-2 gap-4 py-6">
+<!-- Course Card 1 -->
+<div class="flex flex-col">
+<div class="relative aspect-square w-full">
+<div class="h-full w-full rounded-xl bg-cover bg-center" data-alt="A person holding a small cannabis seedling in their hands, with soil in the background." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDcZEfjWT-yhz63qUNLMpJyJDw5Vx6XQF07M1ew_kcvLf-NHoxbLSj9Wx26IPJisRW1-jKz1q17V_T6v0aUyq6V2pKDvyHueymnxBhT1oFhhkXKvsjJGgTmqkF4HK0fnl5lP22A3YSEhr4oNRLuPanpECPhLE0QVH-0Ut8F9m_rhT_kLQFD0Iy9YedwJeHnor04B5qjcfX1K0twzzPn9B1Yfdka3ayB-a2fulwU2MAOyKNfErmwBjSCb1yeNQGvEWU96G2oTKhf4GQ");'></div>
+<div class="absolute bottom-2 left-2 right-2 rounded-full bg-black/30 p-1 backdrop-blur-sm">
+<div class="h-1.5 w-full rounded-full bg-zinc-600">
+<div class="h-1.5 w-1/2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col py-2">
+<p class="font-bold leading-tight text-[#E0E0E0]">Intro to Growing</p>
+<p class="text-sm font-normal text-[#888888]">15 min</p>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="flex flex-col">
+<div class="aspect-square w-full rounded-xl bg-cover bg-center" data-alt="Close-up of a vibrant, healthy cannabis bud with visible trichomes." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6YfVDUfzP9FffZIjAhnWFk2vHn8Nx8kUQNC1tI4iQNrGv6NAcuWZh1vtSHLgCkyFmH_hhIM3Q2QHJSemh3RkuIiFiKaAxOZMXdJpwwdGfHq2Y9j7A1GjJ2BqDPum_tB2BZhz2M9IpODzlmZ0sllYz55O8j2PIcDGu6oYspu3CpN9sxMPcMPPH-FIODwTDhHtEtJyUXdA-XnQgCyWDd8KlQWtI9LiOHjB5r-KbAIqTkLeiUJhQ8bN0Mf9eN0TFzUNhhhizqYpC628");'></div>
+<div class="flex flex-col py-2">
+<p class="font-bold leading-tight text-[#E0E0E0]">Strain Science</p>
+<p class="text-sm font-normal text-[#888888]">30 min</p>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="flex flex-col">
+<div class="aspect-square w-full rounded-xl bg-cover bg-center" data-alt="A scientist in a lab coat examining a beaker with green liquid." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHFd8TEAsNOesPWTiuac8koMH6mCyLmnGVjUjTPVTLounMmjqs5IWk2VbGztTUQSvJWRwMah7sl8zxtWcDFRbqdFXVPDiKe1m1RBgSo_4CtVigVSCZKrwPrtBS-eH1g63aGJXd6WGb6bab4eWmrpnleiicEadVO2lFLlomNBFiUh6vAHUZVt7Jp_-R4P1daJGfY7hB0JoeVq-zgdRvXartZ-HSOjFxhmjihbtPFY0pb2GKJBBocRLSf2TI1yStZ3nIMY19pDBzebQ");'></div>
+<div class="flex flex-col py-2">
+<p class="font-bold leading-tight text-[#E0E0E0]">Consumption Methods</p>
+<p class="text-sm font-normal text-[#888888]">20 min</p>
+</div>
+</div>
+<!-- Course Card 4 -->
+<div class="flex flex-col">
+<div class="aspect-square w-full rounded-xl bg-cover bg-center" data-alt="A serene image of a person meditating in a calm, natural setting." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUiG4-muoOjTbUXv_Yz9YFLYMCGVWSYDohWOJHVfF8QemEkJOT0JBV2QICcUB9lJLNf1UNudaFYpj7Ajiuop_6l2r6dCUV-Vka2OHDdzI177ICkmbcgPUGOKdHao7phqiHbSq2RYv5OQFUXeRvXlA6y7uvBroSp5Lr2PioDMFKOl_8aGvP6dxLhLGt9fOP0GhWjQKv6ImdoWa4FpuPTsimZbuppjveOEBddZpZuZhMU40YAltE1JkglhS-pXUIP4ZA8drPoC5v1U8");'></div>
+<div class="flex flex-col py-2">
+<p class="font-bold leading-tight text-[#E0E0E0]">Cannabis for Wellness</p>
+<p class="text-sm font-normal text-[#888888]">Beginner</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="sticky bottom-6 right-6 flex justify-end pr-4">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-background-dark shadow-lg">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</button>
+</div>
+</div>
+</body></html>

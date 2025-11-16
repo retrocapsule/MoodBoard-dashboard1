@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reward Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 justify-between backdrop-blur-sm">
+<div class="flex size-12 shrink-0 items-center text-gray-800 dark:text-gray-200">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-gray-100">Reward Details</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent p-0 text-base font-bold leading-normal tracking-[0.015em] text-gray-800 dark:text-gray-200">
+<span class="material-symbols-outlined text-2xl">share</span>
+</button>
+</div>
+</div>
+<main class="flex-1">
+<!-- Header Image -->
+<div class="@container px-4 pt-2">
+<div class="w-full min-h-80 rounded-xl bg-cover bg-center bg-no-repeat" data-alt="Close-up of high-quality cannabis flower buds in a glass jar, showcasing trichomes and orange pistils." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9n3yH3QkNHSUft9eh3J14FQB6pxF3COjpBs33sdWByz0zzXHu7EICtL-oyUbGmW9VGnSzqo8YrkTJ1wNX_RZ1LrJ5m8K0KNawMqeqGRNIt8CXH8Cdagvk-Xn6gkYuwddBJL1b9jsYDR03DS_Z3f47ZSww9youDOTA34fNXe9K9yvPPBb5ASyfod4rykSTwLUDRtmu5jyt2n9PAXQzKmDWni92NwYlZrWZe8ppqR1OqkUkY_P_xnEBUiz2fgYIosktrNm3WTxxtsE");'></div>
+</div>
+<!-- Headline Text -->
+<h1 class="text-gray-900 dark:text-[#E0E0E0] tracking-light px-4 pt-6 pb-2 text-left text-[32px] font-bold leading-tight">Free 1/8th Flower</h1>
+<!-- Meta Text (Points Cost) -->
+<div class="flex items-center gap-2 px-4 pb-4 pt-1">
+<span class="material-symbols-outlined text-primary text-xl">toll</span>
+<p class="text-gray-600 dark:text-[#A0A0A0] text-base font-medium leading-normal">1,500 Points</p>
+</div>
+<!-- Accordions -->
+<div class="flex flex-col px-4 pt-4 pb-6">
+<details class="group flex flex-col border-t border-t-gray-200 dark:border-t-[#4d4a42] py-2" open="">
+<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+<p class="text-sm font-medium leading-normal text-gray-900 dark:text-[#E0E0E0]">Description</p>
+<div class="text-gray-600 dark:text-[#A0A0A0] transition-transform duration-300 group-open:rotate-180">
+<span class="material-symbols-outlined text-xl">expand_more</span>
+</div>
+</summary>
+<p class="text-sm font-normal leading-normal pb-2 text-gray-600 dark:text-[#A0A0A0]">
+                        Enjoy a complimentary eighth of our premium, hand-selected flower. Choose from any of our available indica, sativa, or hybrid strains and experience the quality that defines Mohave Cannabis Co.
+                    </p>
+</details>
+<details class="group flex flex-col border-t border-t-gray-200 dark:border-t-[#4d4a42] py-2">
+<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+<p class="text-sm font-medium leading-normal text-gray-900 dark:text-[#E0E0E0]">How to Redeem</p>
+<div class="text-gray-600 dark:text-[#A0A0A0] transition-transform duration-300 group-open:rotate-180">
+<span class="material-symbols-outlined text-xl">expand_more</span>
+</div>
+</summary>
+<p class="text-sm font-normal leading-normal pb-2 text-gray-600 dark:text-[#A0A0A0]">
+                       Simply show this screen to your budtender at checkout. They will scan your unique QR code to apply the reward to your purchase.
+                    </p>
+</details>
+<details class="group flex flex-col border-t border-b border-y-gray-200 dark:border-y-[#4d4a42] py-2">
+<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+<p class="text-sm font-medium leading-normal text-gray-900 dark:text-[#E0E0E0]">Terms &amp; Conditions</p>
+<div class="text-gray-600 dark:text-[#A0A0A0] transition-transform duration-300 group-open:rotate-180">
+<span class="material-symbols-outlined text-xl">expand_more</span>
+</div>
+</summary>
+<p class="text-sm font-normal leading-normal pb-2 text-gray-600 dark:text-[#A0A0A0]">
+                        Offer valid for one (1) 1/8th ounce of flower. Not redeemable for cash. Cannot be combined with other offers. Subject to availability. Expires 90 days after redemption.
+                    </p>
+</details>
+</div>
+</main>
+<!-- Bottom CTA Bar -->
+<div class="sticky bottom-0 bg-background-light/80 dark:bg-background-dark/80 p-4 backdrop-blur-sm">
+<button class="flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary px-6 py-4 text-center text-base font-bold text-gray-900 dark:text-black shadow-lg shadow-primary/20 transition-colors hover:bg-primary/90">
+                Redeem for 1,500 Points
+            </button>
+</div>
+</div>
+<!-- Confirmation Modal (hidden by default) -->
+<!-- <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="mx-4 flex w-full max-w-sm flex-col gap-4 rounded-xl bg-gray-100 dark:bg-[#1C1C1E] p-6 shadow-2xl">
+            <div class="flex flex-col items-center text-center">
+                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary mb-4">
+                    <span class="material-symbols-outlined text-2xl">qr_code_2</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-[#E0E0E0]">Confirm Redemption</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-[#A0A0A0]">
+                    You are about to use 1,500 points. A QR code will be generated for the budtender to scan. This action cannot be undone.
+                </p>
+            </div>
+            <div class="mt-4 flex flex-col gap-3">
+                <button class="w-full rounded-lg bg-primary py-3 text-sm font-bold text-black">Yes, Redeem Now</button>
+                <button class="w-full rounded-lg bg-gray-200 dark:bg-gray-700 py-3 text-sm font-bold text-gray-800 dark:text-gray-200">Cancel</button>
+            </div>
+        </div>
+    </div> -->
+</body></html>

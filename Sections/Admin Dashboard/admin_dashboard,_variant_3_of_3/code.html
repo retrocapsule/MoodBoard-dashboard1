@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-white/10">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">grass</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Mohave Admin</h1>
+<div class="flex w-10 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-white">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Action Panel / Alert -->
+<div class="p-4 @container">
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-lg border border-red-800 bg-[#2d1a1a] p-5 @[480px]:flex-row @[480px]:items-center">
+<div class="flex flex-col gap-1">
+<p class="text-[#fca5a5] text-base font-bold leading-tight tracking-wide">SECURITY ALERT</p>
+<p class="text-white text-sm font-normal leading-normal">Suspicious Activity Detected</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-primary text-background-dark text-sm font-medium leading-normal">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+<!-- Key Metrics -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-4 bg-white/5 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Active Budtenders</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">42</p>
+<p class="text-green-500 text-sm font-medium leading-normal">+2%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-4 bg-white/5 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Daily Sales</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">$12,480</p>
+<p class="text-green-500 text-sm font-medium leading-normal">+8.5%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-4 bg-white/5 border border-white/10">
+<p class="text-white/70 text-sm font-medium leading-normal">Open Tickets</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">5</p>
+<p class="text-red-500 text-sm font-medium leading-normal">-1%</p>
+</div>
+</div>
+<!-- Quick Action Grid -->
+<div class="grid grid-cols-2 gap-4 p-4">
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-4 flex-col items-start justify-start aspect-square">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">pie_chart</span>
+<div class="flex flex-col gap-1 mt-auto">
+<h2 class="text-white text-base font-bold leading-tight">Reports</h2>
+<p class="text-white/60 text-sm font-normal leading-normal">View sales &amp; analytics</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-4 flex-col items-start justify-start aspect-square">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">inventory_2</span>
+<div class="flex flex-col gap-1 mt-auto">
+<h2 class="text-white text-base font-bold leading-tight">Inventory</h2>
+<p class="text-white/60 text-sm font-normal leading-normal">Manage product stock</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-4 flex-col items-start justify-start aspect-square">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">group</span>
+<div class="flex flex-col gap-1 mt-auto">
+<h2 class="text-white text-base font-bold leading-tight">Users</h2>
+<p class="text-white/60 text-sm font-normal leading-normal">Set user permissions</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-4 flex-col items-start justify-start aspect-square">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">calendar_month</span>
+<div class="flex flex-col gap-1 mt-auto">
+<h2 class="text-white text-base font-bold leading-tight">Events</h2>
+<p class="text-white/60 text-sm font-normal leading-normal">Schedule &amp; manage</p>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Recent Activity</h3>
+<!-- Activity Feed -->
+<div class="flex flex-col px-4 space-y-2">
+<div class="flex items-center gap-4 rounded-lg p-3 hover:bg-white/5 cursor-pointer">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#facc15]/20">
+<span class="material-symbols-outlined text-amber-300">warning</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-medium text-sm">Stock for 'OG Kush' is below 10 units.</p>
+<p class="text-white/60 text-xs">2 minutes ago</p>
+</div>
+<span class="material-symbols-outlined text-white/40">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg p-3 hover:bg-white/5 cursor-pointer">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-medium text-sm">New user 'Jane Doe' registered.</p>
+<p class="text-white/60 text-xs">15 minutes ago</p>
+</div>
+<span class="material-symbols-outlined text-white/40">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg p-3 hover:bg-white/5 cursor-pointer">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">event</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-medium text-sm">New event 'Budtender Meetup' created.</p>
+<p class="text-white/60 text-xs">1 hour ago</p>
+</div>
+<span class="material-symbols-outlined text-white/40">chevron_right</span>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 h-20 bg-background-dark border-t border-white/10 z-20">
+<div class="grid h-full grid-cols-4">
+<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/60 hover:text-white" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-xs font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/60 hover:text-white" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-xs font-medium">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/60 hover:text-white" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+</div>
+</div>
+</div>
+</body></html>

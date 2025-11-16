@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Rewards Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a88e48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#1d1b15",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-dark/80 backdrop-blur-sm p-4 pb-2 justify-between">
+<div class="flex size-10 shrink-0 items-center justify-start text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Rewards Catalog</h2>
+<div class="size-10 shrink-0"></div> <!-- Spacer for centering title -->
+</div>
+<!-- Points Balance Card -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start bg-[#2c2c2c] overflow-hidden">
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 p-6 @xl:px-4">
+<p class="text-zinc-400 text-sm font-normal leading-normal">Your Points Balance</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-4xl">workspace_premium</span>
+<p class="text-white text-4xl font-bold leading-tight tracking-[-0.015em]">3,250</p>
+</div>
+<p class="text-zinc-400 text-sm font-normal leading-normal mt-1">Available to Redeem</p>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 sticky top-[68px] z-10 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex border-b border-white/10 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-primary text-sm font-bold leading-normal tracking-[0.015em]">Available Rewards</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-zinc-400 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-zinc-400 text-sm font-bold leading-normal tracking-[0.015em]">Redemption History</p>
+</a>
+</div>
+</div>
+<!-- Rewards List -->
+<div class="flex flex-col">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Cannabis pre-roll illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBYbc_pOh9iOI9V4m6Fv7TurE6rhXN3daC1-wvJ0VXRkL609QPE3-mFbXxPhLr2dbXwXdAasStXJA5WeRubyI4Q88AIw1EqYfRx2WY0xgd0V7mdupciQjCe_qU8Sf-WN4Qy8IRbw1T1jbwtSzY2IbLBAfLtyXsoMaqjCjbZq88BYwt62flWvMz40UkAe-90sr2cZpq831v3PXVMmWILiykthxC0ubSNMbCdTMJGKS_89IJivmK3Ja25ArTp5cA083onrYIsj-ybwgs");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Free Pre-Roll</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Enjoy one of our premium pre-rolls on us.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-bold leading-normal">500 PTS</button></div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Close-up of cannabis flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDg_jY3-zHF_1hToOk5riadgKe3HExUwie5Sjek5xxMNDehlwPtkZeQb7hMerL5wW1ovD_gP84RVJrNl24P2_j0d-Il6dvzUtvx8_Q-t-mmxy0yljPtlxhzsOHJNDcQImmMp5BopLcIXNDfMw_LoFYmH_u4IAuY_4m1lCbKhrdDDdebFrPVrp8eMF62IpQYngdQ_YjxnHwfKx1icHvf0F8XxT6UV_okH1yv-KDjklWV-c_7Lgkse5GFgX7PxjGkcG0cUMl_xsLxEq4");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">10% Off Your Order</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Get a 10% discount on your entire purchase.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-bold leading-normal">1,000 PTS</button></div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="A cannabis vape pen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPN-q29ifwDgD92n8FGyo_6cVGhamEgqNsBckFBszN8sNQSdW9j4Z2aEniNVlrwi_LvzCT62DOmPIxDIgvYJuE7e2obm5iCcHqzazZyY3ARpKCM5wX4TiCxTj6u7gl5wAO6dBeLmkNxKN_ngNsyUUqZOTlb0fpWUcLe_AUGNqjScfMrLg2xswTx_wl9_gtaq6lW-s-j-UTaE05rixtWFQTAyaZ-SVqIaeI1Bg2AHQADT3XLQxYEjns3jaaQXHFVWD27SbsV6K3aYU");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Free Vape Cartridge</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Choose any of our half-gram vape cartridges.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-bold leading-normal">1,500 PTS</button></div>
+</div>
+<!-- List Item 4 -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="An assortment of cannabis edibles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTtz5r0Xu7NQKJvv_lpJ2ToOjUBTWobr-c1zqMJU76dvqWoS51hRueo9Palxum7fOTZ6B2U5RI_gGKOYvsaUPrj4D8YVOjpCJKP0QkER8rEWJa09kEFdUVLxd0-87SbXhrXwXnyZguBwqlnSzmu2nend4-CGZAj4FCNRpXdw0xihxGzftkqOlV7bJFpjrmvVWDwiQJ-fT4P90PkQx_SGj7ROzRbaHI6umKQT7YibnFMkQBYcwJiN_zvPIQZvqwHwM7UNgumHCzboM");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Free Edible</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Select a delicious edible from our wide range.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-bold leading-normal">2,000 PTS</button></div>
+</div>
+<!-- List Item 5 (Disabled) -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between border-b border-white/10 opacity-50">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="A stylish branded t-shirt on a hanger" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkbtfiYR42D6yVpg2avsfKWpllSZs1xrm_Z8_2ngnGwAljwmXS7hrZu64FXa2MDsUhcgFrsTpu7D66yvP3_xNcLwn-lEURIfole-Up8JWt_rnPNALZFx7c0lDYBk3CY-5Vt5kii4MSESdRV2VloRf_rfO7BdWuiGeXOWabc1ooXbVnRaJrtuc7ReaVQbk9FsMFyWyD_zf6NEjaNISBizdmW7uVW0w5k1PikQHVgtTC1E7DcYVnTioomtNvXmLTBrSc7Q4oSHr6eZU");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Mohave T-Shirt</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Show your love with our exclusive branded tee.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-zinc-500 text-base font-bold leading-normal" disabled="">5,000 PTS</button></div>
+</div>
+<!-- List Item 6 (Disabled) -->
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 justify-between opacity-50">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="A branded baseball cap" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwJOTFxHK4Jht25ANJVR3yEXbMaLSD-P-MFEpDVOLT0r9wnxNAKPTByFW_gw96bvJ68Wenn6vHGV6OUc1xS7eMFzWr05pRyhCxWFt8ONB2QSl7kOtAtd7HGa78YHBkb-II5WVnaWdE2YGF6Fo0lyz1chfla57Qd9tDhjHiHrVIqU83inN6Prfo1PTEhipNYt0MrA_36TAukPRvakMIb9gJD5ISlwxsu5n07mDzekhQH5JT8ZpdIjQx3FazBntuf5SeQAysbEDJRzM");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Mohave Snapback</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal line-clamp-2">A stylish snapback hat with our logo.</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-zinc-500 text-base font-bold leading-normal" disabled="">7,500 PTS</button></div>
+</div>
+</div>
+</div>
+</body></html>

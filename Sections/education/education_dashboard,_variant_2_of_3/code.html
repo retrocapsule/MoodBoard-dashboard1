@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Education Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+            "surface-dark": "#2C2C2E",
+            "text-primary-dark": "rgba(255, 255, 255, 0.87)",
+            "text-secondary-dark": "rgba(255, 255, 255, 0.6)",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark text-text-primary-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<h1 class="text-text-primary-dark text-xl font-bold leading-tight tracking-tight">Hello, User!</h1>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-text-primary-dark gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-text-secondary-dark flex border-none bg-surface-dark items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-primary-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-surface-dark focus:border-none h-full placeholder:text-text-secondary-dark px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search for courses or topics" value=""/>
+</div>
+</label>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col gap-6 px-4 py-2">
+<!-- Progress Tracking Card -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark p-4">
+<h3 class="text-text-primary-dark text-lg font-bold leading-tight tracking-tight">Your Learning Journey</h3>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2">
+<div class="rounded-full bg-background-dark"><div class="h-2 rounded-full bg-primary" style="width: 65%;"></div></div>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal self-end">65% Complete</p>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4">
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-lg p-4 bg-background-dark">
+<p class="text-text-secondary-dark text-sm font-medium leading-normal">Courses Started</p>
+<p class="text-primary tracking-light text-2xl font-bold leading-tight">10</p>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-lg p-4 bg-background-dark">
+<p class="text-text-secondary-dark text-sm font-medium leading-normal">Courses Completed</p>
+<p class="text-primary tracking-light text-2xl font-bold leading-tight">6</p>
+</div>
+</div>
+</div>
+<!-- Featured Courses Section -->
+<div class="flex flex-col gap-4">
+<h3 class="text-text-primary-dark text-lg font-bold leading-tight tracking-tight">Featured For You</h3>
+<div class="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4">
+<!-- Featured Course Card 1 -->
+<div class="flex w-3/4 flex-none flex-col overflow-hidden rounded-xl bg-surface-dark">
+<div class="relative h-32 w-full">
+<img class="h-full w-full object-cover" data-alt="Abstract image of green and gold gradients representing terpenes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhaay39NvI9WGbUoGVSuAFwp4jCw7qC1BW8NxPmqhnIt28-5JGAKdPNgdDe5E4MLA7bHCHjclvjIIY4jV2efEBXYObOFcnBC2go8RGSLFKp9Oj9C8T3WB0nyDezwUHa7AXi5eUVvvXENdc_3W6Y3i9eefw2lzkBuCrAAvyurVlx4MOwqG1XOf3nL8McjmLtTgHQeUEqBfSj5G-mXi__YLsU6JYR8HNv3N_zxIwUF-9EnlnDa0uOp-IhrKRLfM8Z89DhySXuoNZdZw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute bottom-2 left-3 rounded-full bg-primary/20 px-2 py-1 text-xs font-medium text-primary backdrop-blur-sm">Beginner</span>
+</div>
+<div class="flex flex-col gap-1 p-3">
+<h4 class="text-text-primary-dark font-bold leading-snug">Intro to Terpenes</h4>
+<p class="text-text-secondary-dark text-sm">Discover the aromatic world of cannabis.</p>
+</div>
+</div>
+<!-- Featured Course Card 2 -->
+<div class="flex w-3/4 flex-none flex-col overflow-hidden rounded-xl bg-surface-dark">
+<div class="relative h-32 w-full">
+<img class="h-full w-full object-cover" data-alt="Stylized illustration of a cannabis plant's life cycle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL3hcw1pK-FJR1pEke_39TNlVEVM9EkyrLH57G4cnbu3vgl2ZN7Bey3ieCBW3hqxx39qDIVe-EjhKQBZiwKPFvUSmXBdhgju-J6PWtgDf5gpLxpnQGyjOh9lbgXq6aenOFhpjgfTNEQSTwTGM2JyFDkmHUZlk3rrb0bDs89I-cLi9-Hb29mZ5_ppToTuUiJK-qd79qgUPTtZZPGjzhWxJzREinAeIEuaPG2WIIf-rg_q2XreppVRkOLyaS8N5YSU8NupZ9QK46viI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute bottom-2 left-3 rounded-full bg-primary/20 px-2 py-1 text-xs font-medium text-primary backdrop-blur-sm">Intermediate</span>
+</div>
+<div class="flex flex-col gap-1 p-3">
+<h4 class="text-text-primary-dark font-bold leading-snug">Growing Basics</h4>
+<p class="text-text-secondary-dark text-sm">Learn the fundamentals of cultivation.</p>
+</div>
+</div>
+<!-- Featured Course Card 3 -->
+<div class="flex w-3/4 flex-none flex-col overflow-hidden rounded-xl bg-surface-dark">
+<div class="relative h-32 w-full">
+<img class="h-full w-full object-cover" data-alt="Abstract design with scientific symbols related to health." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGI26Y7T-2-0CFv7Pwg5MSUB3_7cCMNixIWH9MN-affr0Jrr9uhWzr2NfMNdi13qcEwsHaLSxz26dLtDSdtdtfE-rNiQ6h4laMeQBEKHiPmR9cuS7gYrFzFUfDDa_VkkEHKR2kMG6-MXiPkaGBpRfq1HiF4Azz-2pAWerALD_U38wyJHOTmZvyOwNfWBmeFOO4HFj5KI1V3jPxbRmn-Zrpq79gllIrkCeDAoQ8a8pCK6Zf437jRi-BaA89rt-aRSXmM2au5Gn5Vfk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute bottom-2 left-3 rounded-full bg-primary/20 px-2 py-1 text-xs font-medium text-primary backdrop-blur-sm">Expert</span>
+</div>
+<div class="flex flex-col gap-1 p-3">
+<h4 class="text-text-primary-dark font-bold leading-snug">Cannabinoids &amp; Health</h4>
+<p class="text-text-secondary-dark text-sm">Deep dive into the science.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Categories Section -->
+<div class="flex flex-col gap-4 pb-20">
+<h3 class="text-text-primary-dark text-lg font-bold leading-tight tracking-tight">Explore by Category</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Category Card 1 -->
+<a class="flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-dark p-4 aspect-square text-center" href="#">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<p class="text-text-primary-dark text-sm font-medium">Strains 101</p>
+</a>
+<!-- Category Card 2 -->
+<a class="flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-dark p-4 aspect-square text-center" href="#">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<p class="text-text-primary-dark text-sm font-medium">Health &amp; Wellness</p>
+</a>
+<!-- Category Card 3 -->
+<a class="flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-dark p-4 aspect-square text-center" href="#">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<p class="text-text-primary-dark text-sm font-medium">Growing Basics</p>
+</a>
+<!-- Category Card 4 -->
+<a class="flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-dark p-4 aspect-square text-center" href="#">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<p class="text-text-primary-dark text-sm font-medium">History</p>
+</a>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-background-dark shadow-lg">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</div>
+</body></html>
