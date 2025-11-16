@@ -144,8 +144,19 @@ async function getAllFeedbackForItem(itemId) {
 
     try {
         console.log('Fetching feedback for item:', itemId);
+        console.log('Item ID type:', typeof itemId);
+        console.log('Item ID value:', itemId);
         
-        // First get all feedback for the item (no user filter - admin sees all)
+        // First, let's verify the item exists
+        const { data: itemCheck, error: itemError } = await supabaseClient
+            .from('gallery_items')
+            .select('id, name, folder_path')
+            .eq('id', itemId)
+            .single();
+        
+        console.log('Item check result:', { itemCheck, itemError });
+        
+        // Now get all feedback for the item (no user filter - admin sees all)
         const { data: feedbackData, error: feedbackError } = await supabaseClient
             .from('feedback')
             .select('id, rating, thumbs, notes, created_at, updated_at, user_id')
@@ -157,10 +168,20 @@ async function getAllFeedbackForItem(itemId) {
             error: feedbackError,
             count: feedbackData ? feedbackData.length : 0
         });
+        
+        // Also try a count query to see if there's any feedback at all
+        const { count: feedbackCount, error: countError } = await supabaseClient
+            .from('feedback')
+            .select('*', { count: 'exact', head: true })
+            .eq('item_id', itemId);
+        
+        console.log('Feedback count query:', { feedbackCount, countError });
 
         if (feedbackError) {
             console.error('Feedback query error:', feedbackError);
             console.error('Error details:', JSON.stringify(feedbackError, null, 2));
+            console.error('Error code:', feedbackError.code);
+            console.error('Error message:', feedbackError.message);
             throw feedbackError;
         }
         

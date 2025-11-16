@@ -889,7 +889,45 @@
                     return;
                 }
 
-                if (allFeedback.length === 0) {
+                // Check for localStorage feedback for this item (fallback for local user IDs)
+                const currentItemFolder = currentItemId || '';
+                const localFeedbackKey = `feedback_${currentItemFolder}`;
+                let localFeedback = null;
+                try {
+                    const localData = localStorage.getItem(localFeedbackKey);
+                    if (localData) {
+                        localFeedback = JSON.parse(localData);
+                        console.log('Found localStorage feedback:', localFeedback);
+                    }
+                } catch (e) {
+                    console.log('Error reading localStorage feedback:', e);
+                }
+                
+                // Combine Supabase feedback with localStorage feedback
+                let combinedFeedback = allFeedback || [];
+                
+                // If we have localStorage feedback and it's not already in Supabase feedback, add it
+                if (localFeedback && (localFeedback.notes || localFeedback.rating !== 5 || localFeedback.thumbs)) {
+                    // Check if this feedback is already in the Supabase results
+                    const alreadyExists = combinedFeedback.some(f => 
+                        f.notes === localFeedback.notes && 
+                        f.rating === localFeedback.rating && 
+                        f.thumbs === localFeedback.thumbs
+                    );
+                    
+                    if (!alreadyExists) {
+                        console.log('Adding localStorage feedback to display');
+                        combinedFeedback.push({
+                            ...localFeedback,
+                            user_id: 'local_storage',
+                            users: { name: 'Local User', email: 'Not saved to database' },
+                            created_at: new Date().toISOString(),
+                            _isLocalStorage: true
+                        });
+                    }
+                }
+                
+                if (combinedFeedback.length === 0) {
                     content.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-12">
                             <span class="material-symbols-outlined text-6xl text-white/30 mb-4">rate_review</span>
@@ -903,6 +941,9 @@
                     `;
                     return;
                 }
+                
+                // Use combined feedback for display
+                allFeedback = combinedFeedback;
 
                 let html = '<div class="space-y-4">';
                 allFeedback.forEach((feedback, index) => {
@@ -910,13 +951,19 @@
                     const user = feedback.users || (feedback.user_id ? null : {});
                     let userName = 'Unknown User';
                     let userEmail = '';
+                    const isLocalStorage = feedback._isLocalStorage || false;
                     
                     if (user && (user.name || user.email)) {
                         userName = user.name || user.email || 'Unknown User';
                         userEmail = user.email || '';
                     } else if (feedback.user_id) {
                         // If user data wasn't loaded, show user ID
-                        userName = `User ${feedback.user_id.substring(0, 8)}...`;
+                        if (feedback.user_id === 'local_storage') {
+                            userName = 'Local Storage (Not in Database)';
+                            userEmail = 'This feedback was saved locally';
+                        } else {
+                            userName = `User ${feedback.user_id.substring(0, 8)}...`;
+                        }
                     }
                     
                     const rating = feedback.rating !== null && feedback.rating !== undefined ? feedback.rating : 'N/A';
@@ -926,7 +973,8 @@
                     const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : 'Unknown date';
 
                     html += `
-                        <div class="bg-[#1d1b15] border border-[#3e3a2d] rounded-xl p-4">
+                        <div class="bg-[#1d1b15] border ${isLocalStorage ? 'border-yellow-600/50' : 'border-[#3e3a2d]'} rounded-xl p-4">
+                            ${isLocalStorage ? '<div class="mb-2 p-2 bg-yellow-900/20 border border-yellow-600/30 rounded text-yellow-400 text-xs"><strong>⚠️ Local Storage Only:</strong> This feedback was saved locally and not synced to Supabase. User needs to log out and log back in to save properly.</div>' : ''}
                             <div class="flex items-start justify-between mb-3">
                                 <div>
                                     <h4 class="text-white font-semibold">${escapeHtml(userName)}</h4>
