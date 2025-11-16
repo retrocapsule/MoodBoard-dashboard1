@@ -157,15 +157,15 @@
         </div>
     </div>
     <div class="min-h-screen pb-8">
-        <header class="sticky top-0 z-10 w-full bg-background-dark/80 backdrop-blur-sm border-b border-[#3e3a2d]">
-            <div class="flex flex-col items-center py-6 px-4 relative">
-                <img src="SunBurst2.webp" alt="Logo" class="mb-4 w-20 h-20 object-contain">
-                <h1 class="text-white text-2xl font-bold tracking-tight">MoodBoard</h1>
+        <header id="main-header" class="sticky top-0 z-10 w-full bg-background-dark/80 backdrop-blur-sm border-b border-[#3e3a2d] transition-all duration-300">
+            <div id="header-content" class="flex flex-col items-center py-3 px-4 relative transition-all duration-300">
+                <img id="header-logo" src="SunBurst2.webp" alt="Logo" class="w-12 h-12 object-contain transition-all duration-300 mb-1">
+                <h1 id="header-title" class="text-white text-lg font-bold tracking-tight transition-all duration-300">MoodBoard</h1>
                 <!-- User info and logout -->
-                <div id="user-info" class="absolute top-4 right-4 hidden">
+                <div id="user-info" class="absolute top-2 right-4 hidden">
                     <div class="flex items-center gap-2">
-                        <span id="user-name-display" class="text-white/70 text-sm"></span>
-                        <button id="logout-btn" class="text-white/50 hover:text-white text-sm underline" title="Logout">
+                        <span id="user-name-display" class="text-white/70 text-xs"></span>
+                        <button id="logout-btn" class="text-white/50 hover:text-white text-xs underline" title="Logout">
                             Logout
                         </button>
                     </div>
@@ -406,6 +406,37 @@
             }
         });
 
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        function handleHeaderScroll() {
+            const header = document.getElementById('main-header');
+            const headerContent = document.getElementById('header-content');
+            const logo = document.getElementById('header-logo');
+            const title = document.getElementById('header-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 50) {
+                // Scrolled down - make header compact (50px)
+                header.style.height = '50px';
+                headerContent.classList.add('py-1');
+                headerContent.classList.remove('py-3');
+                logo.classList.add('w-8', 'h-8', 'mb-0');
+                logo.classList.remove('w-12', 'h-12', 'mb-1');
+                title.classList.add('text-sm', 'hidden');
+                title.classList.remove('text-lg');
+            } else {
+                // At top - show full header
+                header.style.height = 'auto';
+                headerContent.classList.remove('py-1');
+                headerContent.classList.add('py-3');
+                logo.classList.remove('w-8', 'h-8', 'mb-0');
+                logo.classList.add('w-12', 'h-12', 'mb-1');
+                title.classList.remove('text-sm', 'hidden');
+                title.classList.add('text-lg');
+            }
+            lastScrollTop = scrollTop;
+        }
+
         // Initialize app on page load
         document.addEventListener('DOMContentLoaded', () => {
             // Wait for Supabase client to initialize
@@ -413,6 +444,10 @@
                 initApp();
                 updateUserInfo();
             }, 500);
+            
+            // Add scroll listener for header
+            window.addEventListener('scroll', handleHeaderScroll);
+            handleHeaderScroll(); // Initial check
         });
     </script>
 </body>

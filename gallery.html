@@ -63,9 +63,10 @@
             display: flex;
         }
         #fullscreen-content {
-            overflow: hidden;
+            overflow-y: auto;
             flex: 1;
             position: relative;
+            height: calc(100vh - 80px);
         }
         #notes-modal {
             display: none;
@@ -154,16 +155,16 @@
     <!-- Main Gallery View -->
     <div id="gallery-view" class="min-h-screen pb-8">
         <!-- Header with Logo -->
-        <header class="sticky top-0 z-10 w-full bg-background-dark/80 backdrop-blur-sm border-b border-[#3e3a2d]">
-            <div class="flex items-center justify-between px-4 py-4">
-                <a href="index.html" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
-                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+        <header id="gallery-header" class="sticky top-0 z-10 w-full bg-background-dark/80 backdrop-blur-sm border-b border-[#3e3a2d] transition-all duration-300">
+            <div id="gallery-header-content" class="flex items-center justify-between px-4 py-2 transition-all duration-300">
+                <a href="index.html" class="flex items-center justify-center h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">arrow_back</span>
                 </a>
                 <div class="flex flex-col items-center flex-1">
-                    <img src="SunBurst2.webp" alt="Logo" class="mb-2 w-16 h-16 object-contain">
-                    <h1 id="section-title" class="text-white text-xl font-bold tracking-tight">Gallery</h1>
+                    <img id="gallery-logo" src="SunBurst2.webp" alt="Logo" class="mb-1 w-10 h-10 object-contain transition-all duration-300">
+                    <h1 id="section-title" class="text-white text-base font-bold tracking-tight transition-all duration-300">Gallery</h1>
                 </div>
-                <div class="w-12"></div>
+                <div class="w-10"></div>
             </div>
         </header>
 
@@ -177,18 +178,18 @@
 
     <!-- Fullscreen View -->
     <div id="fullscreen-view" class="fullscreen-view">
-        <div class="sticky top-0 z-20 bg-background-dark/95 backdrop-blur-sm border-b border-[#3e3a2d]">
-            <div class="flex items-center justify-between p-4">
-                <button id="back-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
-                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+        <div id="fullscreen-header" class="sticky top-0 z-20 bg-background-dark/95 backdrop-blur-sm border-b border-[#3e3a2d] transition-all duration-300">
+            <div id="fullscreen-header-content" class="flex items-center justify-between px-3 py-2 transition-all duration-300">
+                <button id="back-button" class="flex items-center justify-center h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">arrow_back</span>
                 </button>
-                <h2 id="fullscreen-title" class="text-white text-lg font-semibold flex-1 text-center"></h2>
+                <h2 id="fullscreen-title" class="text-white text-sm font-semibold flex-1 text-center transition-all duration-300"></h2>
                 <div class="flex items-center gap-2">
-                    <button id="admin-panel-button" class="hidden flex items-center justify-center h-12 w-12 rounded-full bg-primary/20 hover:bg-primary/30 text-primary transition-colors relative" title="Admin Panel">
-                        <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+                    <button id="admin-panel-button" class="hidden flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 hover:bg-primary/30 text-primary transition-colors relative" title="Admin Panel">
+                        <span class="material-symbols-outlined text-xl">admin_panel_settings</span>
                     </button>
-                    <button id="notes-button" class="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors relative">
-                        <span class="material-symbols-outlined text-2xl">rate_review</span>
+                    <button id="notes-button" class="flex items-center justify-center h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors relative">
+                        <span class="material-symbols-outlined text-xl">rate_review</span>
                         <span id="notes-indicator" class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full hidden"></span>
                     </button>
                 </div>
@@ -416,10 +417,12 @@
             // Try Supabase first if we have the ID
             if (currentItemSupabaseId && typeof getFeedback === 'function') {
                 try {
+                    console.log('Fetching feedback from Supabase for item:', currentItemSupabaseId);
                     const feedback = await getFeedback(currentItemSupabaseId);
+                    console.log('Got feedback from Supabase:', feedback);
                     if (feedback) return feedback;
                 } catch (error) {
-                    console.log('Supabase feedback fetch failed, using localStorage');
+                    console.log('Supabase feedback fetch failed, using localStorage:', error);
                 }
             }
             
@@ -435,19 +438,29 @@
 
         // Save feedback for an item (to Supabase or localStorage fallback)
         async function saveFeedbackForItem(itemId, feedback) {
+            console.log('saveFeedbackForItem called with:', { itemId, currentItemSupabaseId, feedback });
+            
             // Try Supabase first if we have the ID
             if (currentItemSupabaseId && typeof saveFeedback === 'function') {
                 try {
+                    console.log('Saving feedback to Supabase for item:', currentItemSupabaseId);
                     const success = await saveFeedback(currentItemSupabaseId, feedback);
-                    if (success) return;
+                    console.log('Save result:', success);
+                    if (success) {
+                        console.log('Successfully saved to Supabase');
+                        return;
+                    }
                 } catch (error) {
-                    console.log('Supabase feedback save failed, using localStorage');
+                    console.error('Supabase feedback save failed, using localStorage:', error);
                 }
+            } else {
+                console.log('Not saving to Supabase - missing itemId or function');
             }
             
             // Fallback to localStorage
             const key = `feedback_${itemId}`;
             localStorage.setItem(key, JSON.stringify(feedback));
+            console.log('Saved to localStorage as fallback');
         }
 
         // Load feedback into modal (async for Supabase)
@@ -502,6 +515,11 @@
             // Show fullscreen view and hide gallery view
             galleryView.style.display = 'none';
             fullscreenView.classList.add('active');
+            
+            // Reset fullscreen header scroll state
+            setTimeout(() => {
+                handleFullscreenHeaderScroll();
+            }, 100);
 
             // Store current item ID for notes/rating
             currentItemId = item.folder;
@@ -706,6 +724,11 @@
             
             fullscreenView.classList.remove('active');
             galleryView.style.display = '';
+            
+            // Reset gallery header scroll state
+            setTimeout(() => {
+                handleGalleryHeaderScroll();
+            }, 100);
         }
 
         // Admin panel functions
@@ -713,19 +736,28 @@
         let currentAdminItemThumbnail = null;
 
         async function openAdminPanel() {
+            console.log('openAdminPanel called');
+            console.log('currentItemSupabaseId:', currentItemSupabaseId);
+            console.log('isAdmin function exists:', typeof isAdmin === 'function');
+            console.log('isAdmin result:', typeof isAdmin === 'function' ? isAdmin() : 'N/A');
+            console.log('currentItem:', currentItem);
+            
             if (!currentItemSupabaseId) {
-                alert('Item ID not available');
+                alert('Item ID not available. Make sure you clicked on a gallery item.');
+                console.error('No item ID available');
                 return;
             }
 
             if (typeof isAdmin === 'function' && !isAdmin()) {
-                alert('Admin access required');
+                alert('Admin access required. You must be logged in as gorillaflix@gmail.com');
+                console.error('Not an admin user');
                 return;
             }
 
             currentAdminItemId = currentItemSupabaseId;
             currentAdminItemThumbnail = currentItem.thumbnail || currentItem.thumbnail_path || '';
 
+            console.log('Opening admin panel with itemId:', currentAdminItemId);
             document.getElementById('admin-panel-modal').classList.add('show');
             await loadAdminPanel();
         }
@@ -994,9 +1026,86 @@
             }
         }
 
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        function handleGalleryHeaderScroll() {
+            const header = document.getElementById('gallery-header');
+            const headerContent = document.getElementById('gallery-header-content');
+            const logo = document.getElementById('gallery-logo');
+            const title = document.getElementById('section-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 50) {
+                // Scrolled down - make header compact (50px)
+                header.style.height = '50px';
+                headerContent.classList.add('py-1');
+                headerContent.classList.remove('py-2');
+                logo.classList.add('w-8', 'h-8', 'mb-0', 'hidden');
+                logo.classList.remove('w-10', 'h-10', 'mb-1');
+                title.classList.add('text-xs');
+                title.classList.remove('text-base');
+            } else {
+                // At top - show full header
+                header.style.height = 'auto';
+                headerContent.classList.remove('py-1');
+                headerContent.classList.add('py-2');
+                logo.classList.remove('w-8', 'h-8', 'mb-0', 'hidden');
+                logo.classList.add('w-10', 'h-10', 'mb-1');
+                title.classList.remove('text-xs');
+                title.classList.add('text-base');
+            }
+            lastScrollTop = scrollTop;
+        }
+
+        function handleFullscreenHeaderScroll() {
+            const header = document.getElementById('fullscreen-header');
+            const headerContent = document.getElementById('fullscreen-header-content');
+            const title = document.getElementById('fullscreen-title');
+            const content = document.getElementById('fullscreen-content');
+            
+            // Check scroll position of the fullscreen content container
+            const scrollTop = content ? content.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || 0);
+
+            if (scrollTop > 50) {
+                // Scrolled down - make header compact (50px)
+                header.style.height = '50px';
+                headerContent.classList.add('py-1');
+                headerContent.classList.remove('py-2');
+                title.classList.add('text-xs');
+                title.classList.remove('text-sm');
+            } else {
+                // At top - show full header
+                header.style.height = 'auto';
+                headerContent.classList.remove('py-1');
+                headerContent.classList.add('py-2');
+                title.classList.remove('text-xs');
+                title.classList.add('text-sm');
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadGalleryItems();
+            
+            // Add scroll listeners for headers
+            window.addEventListener('scroll', () => {
+                if (document.getElementById('gallery-view').style.display !== 'none') {
+                    handleGalleryHeaderScroll();
+                }
+            });
+            
+            // Add scroll listener for fullscreen content
+            const fullscreenContent = document.getElementById('fullscreen-content');
+            if (fullscreenContent) {
+                fullscreenContent.addEventListener('scroll', () => {
+                    if (document.getElementById('fullscreen-view').classList.contains('active')) {
+                        handleFullscreenHeaderScroll();
+                    }
+                });
+            }
+            
+            // Initial check
+            handleGalleryHeaderScroll();
             
             // Back button handler
             document.getElementById('back-button').addEventListener('click', closeFullscreen);

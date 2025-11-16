@@ -112,17 +112,24 @@ function logoutUser() {
 
 // Get all feedback for an item (admin only - includes user info)
 async function getAllFeedbackForItem(itemId) {
+    console.log('getAllFeedbackForItem called with itemId:', itemId);
+    
     if (!supabaseClient) {
         supabaseClient = await initSupabase();
-        if (!supabaseClient) return null;
+        if (!supabaseClient) {
+            console.error('Supabase client not initialized');
+            return null;
+        }
     }
 
     if (!isAdmin()) {
-        console.error('Admin access required');
+        console.error('Admin access required. Current user:', getCurrentUser());
         return null;
     }
 
     try {
+        console.log('Fetching feedback for item:', itemId);
+        
         // First get all feedback for the item
         const { data: feedbackData, error: feedbackError } = await supabaseClient
             .from('feedback')
@@ -130,11 +137,23 @@ async function getAllFeedbackForItem(itemId) {
             .eq('item_id', itemId)
             .order('created_at', { ascending: false });
 
-        if (feedbackError) throw feedbackError;
-        if (!feedbackData || feedbackData.length === 0) return [];
+        console.log('Feedback query result:', { feedbackData, feedbackError });
+
+        if (feedbackError) {
+            console.error('Feedback query error:', feedbackError);
+            throw feedbackError;
+        }
+        
+        if (!feedbackData || feedbackData.length === 0) {
+            console.log('No feedback found for item:', itemId);
+            return [];
+        }
+
+        console.log('Found', feedbackData.length, 'feedback entries');
 
         // Get unique user IDs
         const userIds = [...new Set(feedbackData.map(f => f.user_id))];
+        console.log('User IDs to fetch:', userIds);
         
         // Fetch user info for all users
         const { data: usersData, error: usersError } = await supabaseClient
@@ -142,7 +161,12 @@ async function getAllFeedbackForItem(itemId) {
             .select('id, name, email')
             .in('id', userIds);
 
-        if (usersError) throw usersError;
+        console.log('Users query result:', { usersData, usersError });
+
+        if (usersError) {
+            console.error('Users query error:', usersError);
+            throw usersError;
+        }
 
         // Create a map of user data
         const usersMap = {};
@@ -152,12 +176,15 @@ async function getAllFeedbackForItem(itemId) {
             });
         }
 
+        console.log('Users map:', usersMap);
+
         // Combine feedback with user data
         const result = feedbackData.map(feedback => ({
             ...feedback,
             users: usersMap[feedback.user_id] || { id: feedback.user_id, name: 'Unknown', email: '' }
         }));
 
+        console.log('Final result:', result);
         return result;
     } catch (error) {
         console.error('Error fetching all feedback:', error);
@@ -258,14 +285,26 @@ async function getFeedback(itemId) {
 
 // Save feedback for an item
 async function saveFeedback(itemId, feedback) {
+    console.log('saveFeedback called with:', { itemId, feedback });
+    
     const user = getCurrentUser();
+    console.log('Current user:', user);
+    
     if (!supabaseClient || !user) {
-        console.error('User not authenticated');
+        console.error('User not authenticated or Supabase client not available');
         return false;
     }
 
     try {
-        const { error } = await supabaseClient
+        console.log('Upserting feedback to Supabase:', {
+            item_id: itemId,
+            user_id: user.id,
+            rating: feedback.rating,
+            thumbs: feedback.thumbs,
+            notes: feedback.notes
+        });
+        
+        const { data, error } = await supabaseClient
             .from('feedback')
             .upsert({
                 item_id: itemId,
@@ -277,7 +316,14 @@ async function saveFeedback(itemId, feedback) {
                 onConflict: 'item_id,user_id'
             });
 
-        if (error) throw error;
+        console.log('Upsert result:', { data, error });
+
+        if (error) {
+            console.error('Supabase upsert error:', error);
+            throw error;
+        }
+        
+        console.log('Feedback saved successfully');
         return true;
     } catch (error) {
         console.error('Error saving feedback:', error);
