@@ -478,40 +478,40 @@
                 }
             }
             
-                    // Try Supabase first if we have the ID
-                    if (supabaseItemId && typeof saveFeedback === 'function') {
-                        try {
-                            console.log('Saving feedback to Supabase for item:', supabaseItemId);
-                            const success = await saveFeedback(supabaseItemId, feedback);
-                            console.log('Save result:', success);
-                            if (success) {
-                                console.log('Successfully saved to Supabase');
-                                // Also save to localStorage as backup
-                                const key = `feedback_${itemId}`;
-                                localStorage.setItem(key, JSON.stringify(feedback));
-                                return;
-                            } else {
-                                // Check if user has invalid ID
-                                const user = typeof getCurrentUser === 'function' ? getCurrentUser() : null;
-                                if (user && user.id && user.id.startsWith('local_')) {
-                                    console.warn('User has local ID, cannot save to Supabase');
-                                    // Show a message to user
-                                    const saveBtn = document.getElementById('save-notes-btn');
-                                    const originalText = saveBtn.textContent;
-                                    saveBtn.textContent = '⚠️ Please log out and log back in';
-                                    saveBtn.classList.add('bg-yellow-600');
-                                    setTimeout(() => {
-                                        saveBtn.textContent = originalText;
-                                        saveBtn.classList.remove('bg-yellow-600');
-                                    }, 3000);
-                                }
-                            }
-                        } catch (error) {
-                            console.error('Supabase feedback save failed, using localStorage:', error);
-                        }
+            // Try Supabase first if we have the ID
+            if (supabaseItemId && typeof saveFeedback === 'function') {
+                try {
+                    console.log('Saving feedback to Supabase for item:', supabaseItemId);
+                    const success = await saveFeedback(supabaseItemId, feedback);
+                    console.log('Save result:', success);
+                    if (success) {
+                        console.log('Successfully saved to Supabase');
+                        // Also save to localStorage as backup
+                        const key = `feedback_${itemId}`;
+                        localStorage.setItem(key, JSON.stringify(feedback));
+                        return;
                     } else {
-                        console.log('Not saving to Supabase - missing itemId or function. supabaseItemId:', supabaseItemId);
+                        // Check if user has invalid ID
+                        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : null;
+                        if (user && user.id && user.id.startsWith('local_')) {
+                            console.warn('User has local ID, cannot save to Supabase');
+                            // Show a message to user
+                            const saveBtn = document.getElementById('save-notes-btn');
+                            const originalText = saveBtn.textContent;
+                            saveBtn.textContent = '⚠️ Please log out and log back in';
+                            saveBtn.classList.add('bg-yellow-600');
+                            setTimeout(() => {
+                                saveBtn.textContent = originalText;
+                                saveBtn.classList.remove('bg-yellow-600');
+                            }, 3000);
+                        }
                     }
+                } catch (error) {
+                    console.error('Supabase feedback save failed, using localStorage:', error);
+                }
+            } else {
+                console.log('Not saving to Supabase - missing itemId or function. supabaseItemId:', supabaseItemId);
+            }
             
             // Fallback to localStorage
             const key = `feedback_${itemId}`;
