@@ -262,6 +262,28 @@ async function fetchGalleryItems(sectionFolder) {
     }
 }
 
+// Get item ID from folder path (helper function)
+async function getItemIdFromFolderPath(folderPath) {
+    if (!supabaseClient) {
+        supabaseClient = await initSupabase();
+        if (!supabaseClient) return null;
+    }
+
+    try {
+        const { data, error } = await supabaseClient
+            .from('gallery_items')
+            .select('id')
+            .eq('folder_path', folderPath)
+            .single();
+
+        if (error || !data) return null;
+        return data.id;
+    } catch (error) {
+        console.error('Error looking up item ID:', error);
+        return null;
+    }
+}
+
 // Get feedback for an item
 async function getFeedback(itemId) {
     const user = getCurrentUser();

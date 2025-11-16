@@ -229,23 +229,35 @@
     <script>
         // Check authentication and load sections
         async function initApp() {
-            // Check if user is authenticated
-            if (!isAuthenticated()) {
+            console.log('initApp called');
+            console.log('isAuthenticated function exists:', typeof isAuthenticated === 'function');
+            
+            // Check if user is authenticated (with fallback if function doesn't exist)
+            const authenticated = typeof isAuthenticated === 'function' ? isAuthenticated() : false;
+            console.log('User authenticated:', authenticated);
+            
+            if (!authenticated) {
+                console.log('User not authenticated, showing auth modal');
                 document.getElementById('auth-modal').classList.add('show');
                 return;
             }
 
             // User is authenticated, hide modal and load sections
+            console.log('User authenticated, loading sections');
             document.getElementById('auth-modal').classList.remove('show');
             await loadSections();
         }
 
         async function loadSections() {
+            console.log('loadSections called');
             try {
                 // Try to fetch from Supabase first
+                console.log('Attempting to fetch from Supabase...');
                 let sections = await fetchSections();
+                console.log('Supabase fetch result:', sections);
                 
                 if (sections && sections.length > 0) {
+                    console.log(`Found ${sections.length} sections from Supabase`);
                     // Transform Supabase data to match expected format
                     sections = sections.map(s => ({
                         name: s.name,
@@ -254,16 +266,31 @@
                         display_order: s.display_order || 999,
                         category: s.category || 'other'
                     }));
+                    console.log('Rendering sections from Supabase:', sections);
                     renderSections(sections);
                     return;
+                } else {
+                    console.log('No sections from Supabase, trying fallback...');
                 }
             } catch (error) {
                 console.error('Error fetching from Supabase:', error);
+                // Continue to fallback
             }
 
             // Fallback: Try embedded data or scan local Sections folder
+            console.log('Trying fallback methods...');
+            console.log('sectionsData available:', typeof sectionsData !== 'undefined');
+            if (typeof sectionsData !== 'undefined' && sectionsData.sections) {
+                console.log('sectionsData.sections:', sectionsData.sections);
+            }
+            console.log('allManifests available:', typeof allManifests !== 'undefined');
+            if (typeof allManifests !== 'undefined') {
+                console.log('allManifests keys:', Object.keys(allManifests));
+            }
+            
             try {
                 if (typeof sectionsData !== 'undefined' && sectionsData.sections) {
+                    console.log(`Found ${sectionsData.sections.length} sections in embedded data`);
                     // Add default order and category to embedded sections
                     const sectionsWithOrder = sectionsData.sections.map(s => {
                         const nameLower = s.name.toLowerCase();
@@ -305,8 +332,10 @@
                 // Last resort: Try to build sections from manifest-loader.js
                 if (typeof allManifests !== 'undefined') {
                     console.log('Building sections from manifest-loader.js');
+                    console.log('allManifests keys:', Object.keys(allManifests));
                     const sectionsFromManifests = [];
                     for (const [folderPath, manifest] of Object.entries(allManifests)) {
+                        console.log('Processing section:', folderPath);
                         const sectionName = folderPath.split('/').pop().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
                         const nameLower = sectionName.toLowerCase();
                         let display_order = 999;
@@ -343,9 +372,14 @@
                     }
                     
                     if (sectionsFromManifests.length > 0) {
+                        console.log(`Built ${sectionsFromManifests.length} sections from manifests:`, sectionsFromManifests);
                         renderSections(sectionsFromManifests);
                         return;
+                    } else {
+                        console.log('No sections built from manifests');
                     }
+                } else {
+                    console.log('allManifests is undefined');
                 }
                 
                 throw new Error('No data source available');
@@ -362,7 +396,20 @@
         }
 
         async function renderSections(sections) {
+            console.log('renderSections called with:', sections);
             const grid = document.getElementById('sections-grid');
+            
+            if (!grid) {
+                console.error('sections-grid element not found!');
+                return;
+            }
+            
+            if (!sections || sections.length === 0) {
+                console.error('No sections to render!');
+                grid.innerHTML = '<div class="col-span-full text-center text-white/60 p-8">No sections found</div>';
+                return;
+            }
+            
             grid.innerHTML = '';
 
             // Group sections by category
@@ -406,66 +453,67 @@
 
                 // Render sections in this category
                 for (const section of categoryData.sections) {
-                const sectionCard = document.createElement('a');
-                sectionCard.href = `gallery.html?section=${encodeURIComponent(section.folder)}&name=${encodeURIComponent(section.name)}`;
-                sectionCard.className = 'section-card block';
-                
-                // Try to get thumbnails from Supabase
-                let thumbnails = [];
-                let itemCount = 0;
-                
-                try {
-                    const items = await fetchGalleryItems(section.folder);
-                    if (items && items.length > 0) {
-                        itemCount = items.length;
-                        thumbnails = items.slice(0, 5).map(item => item.thumbnail);
+                    const sectionCard = document.createElement('a');
+                    sectionCard.href = `gallery.html?section=${encodeURIComponent(section.folder)}&name=${encodeURIComponent(section.name)}`;
+                    sectionCard.className = 'section-card block';
+                    
+                    // Try to get thumbnails from Supabase
+                    let thumbnails = [];
+                    let itemCount = 0;
+                    
+                    try {
+                        const items = await fetchGalleryItems(section.folder);
+                        if (items && items.length > 0) {
+                            itemCount = items.length;
+                            thumbnails = items.slice(0, 5).map(item => item.thumbnail);
+                        }
+                    } catch (error) {
+                        console.log('Could not fetch thumbnails from Supabase:', error);
                     }
-                } catch (error) {
-                    console.log('Could not fetch thumbnails from Supabase:', error);
-                }
-                
-                // Fallback to manifest-loader if Supabase fails
-                if (thumbnails.length === 0 && typeof getManifestForSection === 'function') {
-                    const manifest = getManifestForSection(section.folder);
-                    if (manifest && manifest.items) {
-                        itemCount = manifest.items.length;
-                        thumbnails = manifest.items.slice(0, 5).map(item => item.thumbnail);
+                    
+                    // Fallback to manifest-loader if Supabase fails
+                    if (thumbnails.length === 0 && typeof getManifestForSection === 'function') {
+                        const manifest = getManifestForSection(section.folder);
+                        if (manifest && manifest.items) {
+                            itemCount = manifest.items.length;
+                            thumbnails = manifest.items.slice(0, 5).map(item => item.thumbnail);
+                        }
                     }
-                }
-                
-                // Create thumbnail stack HTML
-                let thumbnailStackHTML = '';
-                if (thumbnails.length > 0) {
-                    thumbnailStackHTML = '<div class="thumbnail-stack">';
-                    thumbnails.forEach((thumbnail, index) => {
-                        thumbnailStackHTML += `
-                            <div class="thumbnail-card">
-                                <img src="${thumbnail}" alt="" loading="lazy" 
-                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'80\\' height=\\'120\\'%3E%3Crect fill=\\'%232a271f\\' width=\\'80\\' height=\\'120\\'/%3E%3C/svg%3E'">
+                    
+                    // Create thumbnail stack HTML
+                    let thumbnailStackHTML = '';
+                    if (thumbnails.length > 0) {
+                        thumbnailStackHTML = '<div class="thumbnail-stack">';
+                        thumbnails.forEach((thumbnail, index) => {
+                            thumbnailStackHTML += `
+                                <div class="thumbnail-card">
+                                    <img src="${thumbnail}" alt="" loading="lazy" 
+                                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'80\\' height=\\'120\\'%3E%3Crect fill=\\'%232a271f\\' width=\\'80\\' height=\\'120\\'/%3E%3C/svg%3E'">
+                                </div>
+                            `;
+                        });
+                        if (itemCount > 5) {
+                            thumbnailStackHTML += `<div class="item-count-badge">+${itemCount - 5}</div>`;
+                        }
+                        thumbnailStackHTML += '</div>';
+                    } else {
+                        // Fallback to icon if no thumbnails available
+                        thumbnailStackHTML = `
+                            <div class="flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-primary text-5xl">${section.icon || 'folder'}</span>
                             </div>
                         `;
-                    });
-                    if (itemCount > 5) {
-                        thumbnailStackHTML += `<div class="item-count-badge">+${itemCount - 5}</div>`;
                     }
-                    thumbnailStackHTML += '</div>';
-                } else {
-                    // Fallback to icon if no thumbnails available
-                    thumbnailStackHTML = `
-                        <div class="flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-primary text-5xl">${section.icon || 'folder'}</span>
+                    
+                    sectionCard.innerHTML = `
+                        <div class="bg-[#2a271f] rounded-xl overflow-hidden border border-[#3e3a2d] hover:border-primary/50 transition-colors p-6 h-full">
+                            ${thumbnailStackHTML}
+                            <h2 class="text-white text-xl font-bold text-center mb-2">${section.name}</h2>
+                            <p class="text-white/60 text-sm text-center">${itemCount > 0 ? `${itemCount} ${itemCount === 1 ? 'page' : 'pages'}` : 'Browse variants'}</p>
                         </div>
                     `;
+                    grid.appendChild(sectionCard);
                 }
-                
-                sectionCard.innerHTML = `
-                    <div class="bg-[#2a271f] rounded-xl overflow-hidden border border-[#3e3a2d] hover:border-primary/50 transition-colors p-6 h-full">
-                        ${thumbnailStackHTML}
-                        <h2 class="text-white text-xl font-bold text-center mb-2">${section.name}</h2>
-                        <p class="text-white/60 text-sm text-center">${itemCount > 0 ? `${itemCount} ${itemCount === 1 ? 'page' : 'pages'}` : 'Browse variants'}</p>
-                    </div>
-                `;
-                grid.appendChild(sectionCard);
             }
         }
 
@@ -563,8 +611,10 @@
 
         // Initialize app on page load
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded - initializing app');
             // Wait for Supabase client to initialize
             setTimeout(() => {
+                console.log('Calling initApp...');
                 initApp();
                 updateUserInfo();
             }, 500);

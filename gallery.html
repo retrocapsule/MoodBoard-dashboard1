@@ -414,13 +414,33 @@
 
         // Get feedback for an item (from Supabase or localStorage fallback)
         async function getFeedbackForItem(itemId) {
-            // Try Supabase first if we have the ID
-            if (currentItemSupabaseId && typeof getFeedback === 'function') {
+            // Try to get Supabase item ID if we don't have it
+            let supabaseItemId = currentItemSupabaseId;
+            
+            // If we don't have the Supabase ID, try to look it up by folder path
+            if (!supabaseItemId && typeof getItemIdFromFolderPath === 'function') {
                 try {
-                    console.log('Fetching feedback from Supabase for item:', currentItemSupabaseId);
-                    const feedback = await getFeedback(currentItemSupabaseId);
+                    console.log('Looking up item ID from folder path:', itemId);
+                    supabaseItemId = await getItemIdFromFolderPath(itemId);
+                    console.log('Found Supabase item ID:', supabaseItemId);
+                    if (supabaseItemId) {
+                        // Update currentItemSupabaseId for future use
+                        currentItemSupabaseId = supabaseItemId;
+                    }
+                } catch (error) {
+                    console.log('Could not look up item ID:', error);
+                }
+            }
+            
+            // Try Supabase first if we have the ID
+            if (supabaseItemId && typeof getFeedback === 'function') {
+                try {
+                    console.log('Fetching feedback from Supabase for item:', supabaseItemId);
+                    const feedback = await getFeedback(supabaseItemId);
                     console.log('Got feedback from Supabase:', feedback);
-                    if (feedback) return feedback;
+                    if (feedback && (feedback.rating !== 5 || feedback.thumbs || feedback.notes)) {
+                        return feedback;
+                    }
                 } catch (error) {
                     console.log('Supabase feedback fetch failed, using localStorage:', error);
                 }
@@ -440,21 +460,42 @@
         async function saveFeedbackForItem(itemId, feedback) {
             console.log('saveFeedbackForItem called with:', { itemId, currentItemSupabaseId, feedback });
             
-            // Try Supabase first if we have the ID
-            if (currentItemSupabaseId && typeof saveFeedback === 'function') {
+            // Try to get Supabase item ID if we don't have it
+            let supabaseItemId = currentItemSupabaseId;
+            
+            // If we don't have the Supabase ID, try to look it up by folder path
+            if (!supabaseItemId && typeof getItemIdFromFolderPath === 'function') {
                 try {
-                    console.log('Saving feedback to Supabase for item:', currentItemSupabaseId);
-                    const success = await saveFeedback(currentItemSupabaseId, feedback);
+                    console.log('Looking up item ID from folder path for save:', itemId);
+                    supabaseItemId = await getItemIdFromFolderPath(itemId);
+                    console.log('Found Supabase item ID for save:', supabaseItemId);
+                    if (supabaseItemId) {
+                        // Update currentItemSupabaseId for future use
+                        currentItemSupabaseId = supabaseItemId;
+                    }
+                } catch (error) {
+                    console.log('Could not look up item ID for save:', error);
+                }
+            }
+            
+            // Try Supabase first if we have the ID
+            if (supabaseItemId && typeof saveFeedback === 'function') {
+                try {
+                    console.log('Saving feedback to Supabase for item:', supabaseItemId);
+                    const success = await saveFeedback(supabaseItemId, feedback);
                     console.log('Save result:', success);
                     if (success) {
                         console.log('Successfully saved to Supabase');
+                        // Also save to localStorage as backup
+                        const key = `feedback_${itemId}`;
+                        localStorage.setItem(key, JSON.stringify(feedback));
                         return;
                     }
                 } catch (error) {
                     console.error('Supabase feedback save failed, using localStorage:', error);
                 }
             } else {
-                console.log('Not saving to Supabase - missing itemId or function');
+                console.log('Not saving to Supabase - missing itemId or function. supabaseItemId:', supabaseItemId);
             }
             
             // Fallback to localStorage
