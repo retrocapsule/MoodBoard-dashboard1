@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "text-primary-dark": "#EAEAEA",
+              "text-secondary-dark": "#A0A0A0"
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex w-full flex-col group/design-root overflow-x-hidden">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between p-4 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">flare</span>
+<h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em]">Mohave Sunburst</h2>
+</div>
+<a class="text-text-primary-dark text-sm font-bold leading-normal tracking-[0.015em] hover:text-primary transition-colors" href="#">Sign Up / Log In</a>
+</header>
+<!-- Hero Section -->
+<main class="flex-1">
+<section class="relative @container">
+<div class="flex min-h-[70vh] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 items-center justify-center p-4" data-alt="Abstract 3D rendering of golden and dark geometric shapes floating in space" style='background-image: linear-gradient(rgba(18, 18, 18, 0.6) 0%, rgba(18, 18, 18, 1) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvQ2Z836b_Aqq5O8mE_NL0tJfclfI-s0VnzSyfgSsoU21oPDujR528Haq5UBBJ5cB7L5LLXjp_HaY7dzRsZdTuDmTHCb03gm5yG4WeC2wV3ATHjXaaTdA-r2JplwXA9Zash9FUlPyDGbQj8KMMuALQ9gbQFH-LYB3tZ8mMztI58Ju_E-AS22CdMRBF_MlFlLmi3f4QHYlahHkppOZnEzHcu4MCL-1c9Ki9Yvfqtv90vJaKPfY0VZ0T3zcpq23izYsyCLQlwEca_3o");'>
+<div class="flex flex-col gap-2 text-center">
+<h1 class="text-text-primary-dark text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                            Experience Mohave
+                        </h1>
+<h2 class="text-text-secondary-dark text-base font-normal leading-normal @[480px]:text-lg @[480px]:font-normal @[480px]:leading-normal">
+                            Explore premium strains, exclusive merch, and rewarding loyalty.
+                        </h2>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-opacity">
+<span class="truncate">Explore the App</span>
+</button>
+</div>
+</section>
+<div class="flex flex-col gap-8 py-10 px-4">
+<!-- Strains Card -->
+<section class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-center">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="Close-up image of a vibrant green cannabis flower with orange pistils" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnTlpYlfi_NGYBpk5L6y4TiBE9PCf5VkQcjuajwaohkfwDCvPOMqOQvbVSquOADn5cWC62BLIftUoH1zqR1wCdUffiqFvOlA1qxtZqxyQefULmX83qoaHaaHzSXG6Fc5YUOAmWtGEmJ_6n3x-enSJ8_u_0hIMCeZB8rHhtjNjs4Qezc4IDrhqX1TfWjeAIXj2eWM9Q70r8rUOM7KmF2ED_8TV3mGE7lvIqi7s_9INvV5-AcG_VWNgXAHaTd3q68CrA5MQ5uSkBSl4");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-start justify-center gap-2 py-4 @xl:px-4">
+<h3 class="text-text-primary-dark text-2xl font-bold leading-tight tracking-[-0.015em]">Discover Our Strains</h3>
+<p class="text-text-secondary-dark text-base font-normal leading-normal">Explore our curated selection of premium cannabis strains, each with a unique profile.</p>
+<button class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-opacity-90 transition-opacity">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Merch Card -->
+<section class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row-reverse @xl:items-center">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="Stylish branded apparel, including a hoodie and a cap, displayed against a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0TEUSHpTeAdNOAHkVRmEewM1xHc6vg68OaI7QOmvx6bhRunYHB17XBCE8BZ5XyjLmpr5q7Ct_SNinmxTQdfLadNU3T_72IzhzmvInkLdwmNy4iiHNSeJrPYqV3UiQUIW-c_d_z5hUT5b8ugCgF7FICLn9aIXqrh1TmW-phZbHiddvlcse0EvsxrfWY7eYyW7n4_LAZoyS1H6x1eFIl2QnfIKgMG3wM1SkQmiZ0CSxyix-F7WHZ5zx1Moq8hgtxYF_9IyvE3dbY5E");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-start justify-center gap-2 py-4 @xl:px-4 @xl:text-left">
+<h3 class="text-text-primary-dark text-2xl font-bold leading-tight tracking-[-0.015em]">Exclusive Merch</h3>
+<p class="text-text-secondary-dark text-base font-normal leading-normal">Shop our line of exclusive apparel and accessories, designed for the modern connoisseur.</p>
+<button class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-opacity-90 transition-opacity">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Rewards Card -->
+<section class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-center">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="Abstract graphic representing points and loyalty with golden geometric patterns" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEtP3aTRazY89bADN3BXQ5OaA10BfH9G88-Lop72Ligjcjh9opUdd0pkodADqfD3faEXufQCRc4WucK0uKHW5rbygEckNedBKjf2_Gol_QNnD5EI6AkHJ_l2e3-5w3WjPIHLD39PIKsKRTpPBnBI7emKokTaynTknBbIuchZXUiJBlPdmrsIgvVscM1OWUamp0-GJD6LVAoc5TX7yNF1V1kUAyNgA8xqiRbmSbDvGJNIMqXeZOnrUeggtVyhOlZGE_4CgGX-CxhD8");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-start justify-center gap-2 py-4 @xl:px-4">
+<h3 class="text-text-primary-dark text-2xl font-bold leading-tight tracking-[-0.015em]">Get Rewarded</h3>
+<p class="text-text-secondary-dark text-base font-normal leading-normal">Join our loyalty program to earn points on every purchase and unlock exclusive benefits.</p>
+<button class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-opacity-90 transition-opacity">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Locations Card -->
+<section class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row-reverse @xl:items-center">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A stylized, modern map with a pin indicating a dispensary location" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRKUuPeCRQ3S6nbr0n3aczKu5tqMcJtMhQMWtjsMsWfhYfwyvef3RuSOI4oUOVlyrtMlNVb-srK-BBonFO3l0W2q3u4yMuWlbUzuDpc9ymJPtWECG9yBwlj5KUEw-duFrx5b3WBIUI3npPTg71k85DFVbLuxT4m41t6jsBZwjcv6d7ocC6buIZC7MnC__4pkN6z4AudnKbPCiw7dRGaTsI589jVyVG_NofBDvwzeIxZ_Tcc4PYLzl6GzS_H8ALnfxJsSyVNYj97vU");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-start justify-center gap-2 py-4 @xl:px-4 @xl:text-left">
+<h3 class="text-text-primary-dark text-2xl font-bold leading-tight tracking-[-0.015em]">Our Locations</h3>
+<p class="text-text-secondary-dark text-base font-normal leading-normal">Find a Mohave Cannabis Co. dispensary near you and experience our premium service in person.</p>
+<button class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-opacity-90 transition-opacity">
+<span class="truncate">Find a Store</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-white/10 mt-10">
+<div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+<div class="flex justify-center space-x-6 md:order-2">
+<a class="text-text-secondary-dark hover:text-text-primary-dark" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-text-secondary-dark hover:text-text-primary-dark" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.161 1.043c-1.06.047-1.633.218-2.188.437a3.849 3.849 0 00-1.396 1.044A3.849 3.849 0 004.58 5.922c-.22.555-.39 1.128-.437 2.188-.047 1.024-.059 1.35-.059 3.808s.012 2.784.059 3.808c.047 1.06.217 1.633.437 2.188a3.849 3.849 0 001.044 1.396 3.849 3.849 0 001.396 1.044c.555.22 1.128.39 2.188.437 1.024.047 1.35.059 3.808.059s2.784-.012 3.808-.059c1.06-.047 1.633-.218 2.188-.437a3.849 3.849 0 001.396-1.044 3.849 3.849 0 001.044-1.396c.22-.555.39-1.128.437-2.188.047-1.024.059-1.35.059-3.808s-.012-2.784-.059-3.808c-.047-1.06-.218-1.633-.437-2.188a3.849 3.849 0 00-1.044-1.396 3.849 3.849 0 00-1.396-1.044c-.555-.22-1.128-.39-2.188-.437-1.024-.047-1.35-.059-3.808-.059z" fill-rule="evenodd"></path><path d="M12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.043a4.092 4.092 0 100 8.184 4.092 4.092 0 000-8.184z"></path><path d="M16.862 6.225a1.232 1.232 0 11-2.463 0 1.232 1.232 0 012.463 0z"></path></svg>
+</a>
+<a class="text-text-secondary-dark hover:text-text-primary-dark" href="#">
+<span class="sr-only">Twitter</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+</div>
+<div class="mt-8 md:order-1 md:mt-0">
+<p class="text-center text-xs leading-5 text-text-secondary-dark">© 2024 Mohave Cannabis Co. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

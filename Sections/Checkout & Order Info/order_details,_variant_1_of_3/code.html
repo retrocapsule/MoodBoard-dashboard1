@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a88e48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="flex size-12 shrink-0 items-center justify-start text-white/80">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Order #MOHAVE-12345</h2>
+<div class="flex size-12 shrink-0 items-center"></div>
+</div>
+<div class="px-4 py-4">
+<div class="bg-[#1e1e1e] rounded-xl p-6">
+<!-- Order Status Timeline -->
+<h3 class="text-white/80 text-base font-bold leading-normal mb-6">Order Status</h3>
+<div class="grid grid-cols-[24px_1fr] gap-x-4">
+<div class="flex flex-col items-center gap-1">
+<div class="text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-[2px] bg-primary h-full"></div>
+</div>
+<div class="flex flex-1 flex-col pb-6">
+<p class="text-white text-base font-medium leading-normal">Order Placed</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Aug 12, 2024</p>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-[2px] bg-primary h-full"></div>
+</div>
+<div class="flex flex-1 flex-col pb-6">
+<p class="text-white text-base font-medium leading-normal">Processing</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Aug 13, 2024</p>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="text-primary">
+<span class="material-symbols-outlined text-2xl">local_shipping</span>
+</div>
+<div class="w-[2px] bg-[#444] h-full"></div>
+</div>
+<div class="flex flex-1 flex-col pb-6">
+<p class="text-primary text-base font-bold leading-normal">Shipped</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Aug 14, 2024</p>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="text-white/60">
+<span class="material-symbols-outlined text-2xl">circle</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-white/60 text-base font-medium leading-normal">Delivered</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Pending</p>
+</div>
+</div>
+<!-- Tracking Information -->
+<div class="mt-8 flex flex-col gap-2">
+<p class="text-white/80 text-base font-bold leading-tight">USPS</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Tracking #: 9400111206214358763429</p>
+</div>
+<button class="mt-4 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-background-dark text-base font-bold leading-normal">
+<span>Track Package</span>
+</button>
+</div>
+</div>
+<!-- Product List Card -->
+<div class="px-4 pb-4">
+<div class="bg-[#1e1e1e] rounded-xl p-6">
+<h3 class="text-white/80 text-base font-bold leading-normal mb-4">Items Ordered</h3>
+<div class="flex flex-col gap-4">
+<!-- Product Item 1 -->
+<div class="flex items-center gap-4">
+<img class="h-16 w-16 rounded-lg object-cover" data-alt="A black t-shirt with a golden graphic design on the front, laid flat." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6cf_wkwR-KfMYx-bQO7mkbsbm88UtUmTehNDEMA43eYEijiWj_qfgfj3ZrfKkXiKhB1BLqlec-vVNMCYUMlQ_5_hqAanSU4ztbEfVoABXoTvPyWLKu7jAzUZ3_HiI63dCFgaSiyezYpQvtAGZSsUNpVL6aSH7FfD-JW_ybJf-Zx0LOmRyXL-n91w_hq1MJnXe-LD_ZeqSpBeSOkP69kcNS_sRQVDkEMESISTRUM1SPRCMuODUVqE9htXsPwbH2so_nH9r5BwwSxo"/>
+<div class="flex-1">
+<p class="text-white text-base font-medium leading-normal">Mohave Classic Tee</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Qty: 1</p>
+</div>
+<p class="text-white text-base font-medium leading-normal">$35.00</p>
+</div>
+<!-- Product Item 2 -->
+<div class="flex items-center gap-4">
+<img class="h-16 w-16 rounded-lg object-cover" data-alt="A black snapback cap with a golden logo embroidered on the front panel, viewed from the side." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk4ANsbMsU91swDp25WIl9MWChdKoam8yT7qdJPIqbeEvDOSlRkllhkADMOCqBW4lqCScL9g2pcpcN7M0A7gJutCbQ8SgwkTOo6lX0_bfiU3oah09wLelRwplqOJ7JA-D_vb50I32_AAXZAnuCsEBCPPIV6ohZx7h1dVzM5aspA1bx9W7AMszRmZZ2txvvhaFOhoRstJlPVNasHT8s6_02RCkfsfWEXKj-6BmYGwOKxDtQ-GicpzC64VeqaMPPfCV6YhUHfMa1WZw"/>
+<div class="flex-1">
+<p class="text-white text-base font-medium leading-normal">Mohave Snapback</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Qty: 1</p>
+</div>
+<p class="text-white text-base font-medium leading-normal">$25.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Cost Summary Card -->
+<div class="px-4 pb-4">
+<div class="bg-[#1e1e1e] rounded-xl p-6">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<p class="text-white/60 text-base font-normal leading-normal">Subtotal</p>
+<p class="text-white/80 text-base font-normal leading-normal">$60.00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-white/60 text-base font-normal leading-normal">Shipping</p>
+<p class="text-white/80 text-base font-normal leading-normal">$5.00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-white/60 text-base font-normal leading-normal">Taxes</p>
+<p class="text-white/80 text-base font-normal leading-normal">$4.95</p>
+</div>
+<div class="my-2 border-t border-white/20"></div>
+<div class="flex justify-between items-center">
+<p class="text-white text-lg font-bold leading-tight">Total</p>
+<p class="text-white text-lg font-bold leading-tight">$69.95</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Shipping Address Card -->
+<div class="px-4 pb-4">
+<div class="bg-[#1e1e1e] rounded-xl p-6">
+<h3 class="text-white/80 text-base font-bold leading-normal mb-2">Shipping Address</h3>
+<p class="text-white/60 text-base font-normal leading-relaxed">
+          Jane Doe<br/>
+          1234 Oasis Lane<br/>
+          Palm Springs, CA 92262<br/>
+          United States
+        </p>
+</div>
+</div>
+<!-- Payment Method Card -->
+<div class="px-4 pb-4">
+<div class="bg-[#1e1e1e] rounded-xl p-6">
+<h3 class="text-white/80 text-base font-bold leading-normal mb-2">Payment Method</h3>
+<div class="flex items-center gap-3">
+<div class="w-10 h-6 bg-[#333] rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white/60 text-lg">credit_card</span>
+</div>
+<p class="text-white/60 text-base font-normal leading-normal">Visa ending in 1234</p>
+</div>
+</div>
+</div>
+<!-- Help Buttons -->
+<div class="px-4 pb-8 pt-2 flex flex-col gap-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-transparent border-2 border-primary text-primary text-base font-bold leading-normal">
+<span>View Invoice</span>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-[#1e1e1e] text-white/80 text-base font-bold leading-normal">
+<span>Get Help</span>
+</button>
+</div>
+</div>
+</body></html>

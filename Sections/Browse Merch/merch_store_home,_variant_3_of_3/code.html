@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Merch Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a88e48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative min-h-screen w-full flex flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between p-4 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm">
+<button class="flex items-center justify-center h-12 w-12 text-zinc-100">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<h1 class="text-xl font-bold text-zinc-100">Merch Store</h1>
+<div class="relative flex items-center justify-center h-12 w-12">
+<button class="text-zinc-100">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+</button>
+<div class="absolute top-2 right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary">
+<span class="text-xs font-bold text-background-dark">3</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pb-24 px-4">
+<!-- Search Bar -->
+<div class="py-3">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-zinc-400 flex border-none bg-zinc-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-zinc-100 focus:outline-0 focus:ring-0 border-none bg-zinc-800 focus:border-none h-full placeholder:text-zinc-400 px-4 text-base font-normal leading-normal" placeholder="Search shirts, hats, accessories..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips / Horizontal Category Scroller -->
+<div class="flex gap-3 py-3 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-lg bg-primary pl-5 pr-5">
+<p class="text-background-dark text-sm font-bold leading-normal">Apparel</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-lg bg-zinc-800 pl-5 pr-5">
+<p class="text-zinc-100 text-sm font-medium leading-normal">Hats</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-lg bg-zinc-800 pl-5 pr-5">
+<p class="text-zinc-100 text-sm font-medium leading-normal">Accessories</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-lg bg-zinc-800 pl-5 pr-5">
+<p class="text-zinc-100 text-sm font-medium leading-normal">New Arrivals</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-lg bg-zinc-800 pl-5 pr-5">
+<p class="text-zinc-100 text-sm font-medium leading-normal">Sale</p>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 gap-4 pt-4">
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="Black t-shirt with a small logo on the chest" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOl7WJDaCOgK45R92H_3mrFWotz9QwjBqdNYeh4w0yVzuW2niQnocUKMP5Ax0e8IjgOazVfJjoyKTFBy4azjGK246ubIEjr4F8fAW-N9XgbJZ1Ig9W-t5wGlQohFi9pGi0ciaGLuz6H3yrdYpLJWVqmze_71HAW7wIu46PTDI7KUEvsl664aFubl31kOQKSKinZYujxG-JxYwd4PRAT8xXmu-dQgQXmfk2nuSjQfM7Rb9D--OKfG74_SwnZ8WBORlcJRpckS2tLq0");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Mohave Classic Tee</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$25.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="A black baseball cap with a simple white logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqRTzOZ7cieGYQskeV8jHbt7MZ2q_AyU0T-PU_YgwPobao1NBoReFQ8N6NnN8SDeX6ImBwB8V5vpctM9JwZ3gq6wbnSyeRgh88qFhx66hTVpABVtaNtN8e4npKPyHg9-KuGRUEbdLl3CKSayEuaWhd5Ch4R35-Sc8gacHLXYe-b4DtO7H5yeAyGDIsRYa4KS3edxaMGWR5sqncbih-wBQhE4kT6h-8_WwPF8O23Qp9BHBz6pV8tw-h17L3pxCHqkqrewOsDUPhmas");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Desert Cap</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$20.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="A metal herb grinder with a brand logo etched on top" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDq6sxjuFtFjxM6zOf_jwO24LluEn6nEEJQucZrln7cwWc4k68XnEbADpaSq8t6JcR6XBWgkFqJ-kJisX3hKm-mnzVl8FUIUOWzCT16vLB4rBnuKTOvhgUz-zgwtphLuzT8o3bLSxxi3Hh7tJFxPvDuozQnFGDtCjSLeiq9iO9L5ECrvODKG3lWDGlVsUrh20abWPsZgLoRY5bULedKgUaaJGJdIDVfiN0_ZBT1iBZhK7-9YGkNIYSz8orqxM2l4nxU2nd0XhUXyN8");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Branded Grinder</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$15.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="A grey hoodie with a large brand logo across the chest" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhQwF06gVpKoyxYf9RqX-A6Dyq_b6QBf5NJj0_4JO5HSeU05V-wGSJNeOGhn1E6NRF_Tai-GWh2HueKCH0gBKnWsZgoOktl-FTu7cuwb9gWPH51q5DuR9XWVeOHNN477oLAXvCjj97CgFrnMI4Gr3WszRiIagvNSuydA-kAX7eAppqZbzfG005nzNiFqUdALELs25jkXNlnrOOdbNxAxMCpcsxmCv1sbd9oixzXQMYwZsFyS8oq5nf4JUwLjcZUdX87EhBdscu2gY");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Signature Hoodie</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$45.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="A camouflage patterned snapback hat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtj1VEAGE4XvWh6eZF0wUgtzdWi30Mtgp5OqpKJ4yPJuFrAQo6MoROfM7pluNCQPwltNFndPNJyvn3BlLGKMnIV5fwwj1saMzDcNb4HSgSqEMEkFSIEGt6O_YcX2lly7YVHbuaxD9gcf1DEZEGIi8GnL4SNcgeGtG4RPLaBebnO-TYpEJQLNWK7jkP_Z8GxMIKrN1M_5o87n2-4J7xL46XScC-sxYtTInSsFgbrbRipoku04fENtBSWWeNwOVj0qaEkXIJ1SwaCYk");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Camo Snapback</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$22.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-lg bg-center bg-cover bg-zinc-800" data-alt="A collection of branded vinyl stickers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9qMmgjay0SgM8CmHtx3-oRe-WEr01fY0uh_0yUlupefdckwogApgcM0TgLXYFgpq7rpOLrS3PC_5KCh5DA2kIcFOV9VXSdOQm3gXOytnHyxXqVdTayiD58YgkqxTYvas4zxkIHZjsx4d_tw6zI9DSK4t6YCi7guCaY4D6TevA0nMFuC6AS7RvLoQ8__lTYPejMYv35M6NN4wzpZ8DEV3A3OovygkCT1P5nByti90LxXYSgxL_9dL3vxLU0aciOHB4tMTfWteYIvc");'>
+<button class="absolute bottom-2 right-2 flex items-center justify-center w-9 h-9 bg-black/50 backdrop-blur-sm rounded-full text-white">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div>
+<p class="text-zinc-100 text-base font-medium leading-normal">Sticker Pack</p>
+<p class="text-zinc-400 text-sm font-normal leading-normal">$10.00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-10">
+<button class="flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-background-dark shadow-lg">
+<span class="material-symbols-outlined text-3xl">filter_list</span>
+</button>
+</div>
+</div>
+</body></html>

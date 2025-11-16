@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a88e48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#1d1b15",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+    
+    .material-symbols-outlined.fill-icon {
+        font-variation-settings: 'FILL' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col text-[#E0E0E0]">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between bg-background-dark/80 p-4 pb-2 backdrop-blur-sm">
+<div class="flex size-12 shrink-0 items-center">
+<!-- Placeholder for a logo or menu icon -->
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-white">Mohave Cannabis Co.</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-transparent p-0 text-base font-bold leading-normal tracking-[0.015em] text-white min-w-0">
+<span class="material-symbols-outlined text-white">person</span>
+</button>
+</div>
+</div>
+<main class="flex-grow pb-24">
+<!-- Headline Text -->
+<h1 class="px-4 pb-3 pt-6 text-left text-[32px] font-bold leading-tight tracking-tight text-white">Welcome, Jessica!</h1>
+<!-- Loyalty Card -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#121212]/30 p-4 @xl:flex-row @xl:items-start">
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1">
+<p class="text-3xl font-bold leading-tight tracking-[-0.015em] text-white">1,250 Points</p>
+<div class="flex items-end justify-between gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-base font-normal leading-normal text-[#bab3a0]">Your current loyalty balance</p>
+<p class="text-base font-normal leading-normal text-[#bab3a0]">Keep going to unlock exclusive rewards!</p>
+</div>
+<button class="flex h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium leading-normal text-background-dark">
+<span class="truncate">View Rewards</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header: Featured For You -->
+<h2 class="px-4 pb-3 pt-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">Featured For You</h2>
+<!-- Carousel: Featured Products -->
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex shrink-0 items-stretch gap-3 px-4">
+<div class="flex h-full w-40 flex-1 flex-col gap-3 rounded-lg sm:w-60">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="A stylish package of Mohave Gold cannabis product against a dark background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtP4AR_IPux69HpxmftyZ_oY-bEKYmaPKFtmbjs9zy-bi6Wgy-ezf2tU7Ww7e2jgV29SCVnjTyUtB0M4mOHGh2pAYPeKMBMgiM3O-duZecE-PNH4a6t1MCBoscw8n6Z9aPLt7ivAmeNYXtLKzqrBJoHL855B0LD-QFlWxK8W2q0jphmLMNVw9QBxEI9fl6gMdgD0JopWBncvy6r945yXc-JsgOSKshxaSFLxiKTML9d8WCoEMXo1mv9hP0UeX93jgzEO7IKCDjHY8');"></div>
+<div>
+<p class="text-base font-medium leading-normal text-white">Mohave Gold</p>
+<p class="text-sm font-normal leading-normal text-primary">New</p>
+</div>
+</div>
+<div class="flex h-full w-40 flex-1 flex-col gap-3 rounded-lg sm:w-60">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up shot of several pre-rolled joints arranged neatly." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjf35qSZCVhNY42AzCQ7XxXn0Z233iZBBrFGOq_tugWm6YHTNC5agtr957tEFd527_fRKWCV6I2EkT9ctihsL89k997B0lrKw8e17Q66KWPjGMjC5qGzZzq6xA8fk8VsfkULi3Vw8sxcGdWSCPlU3CgUwqpTdYDzgmGdeg4bz9s-s-HC2sX-y-H1KhOhjF65fJrqbZolbRzbI_1vlyRy47Rjsn09cjn-4gbayUbBuXeH_HSFrxLp-I_S_iw6docNnXdrFs9Th4L0w');"></div>
+<div>
+<p class="text-base font-medium leading-normal text-white">Select Pre-Rolls</p>
+<p class="text-sm font-normal leading-normal text-[#bab3a0]">Staff Pick</p>
+</div>
+</div>
+<div class="flex h-full w-40 flex-1 flex-col gap-3 rounded-lg sm:w-60">
+<div class="w-full aspect-[3/4] rounded-lg bg-cover bg-center bg-no-repeat" data-alt="A detailed macro shot of a cannabis bud showing its trichomes and orange hairs." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAf900Rk3pOyLL-d2T6aS8pWcIdH61W9M7CnOBwx9Zxq_FJoXp0tn_vtfMz12esxs0CYoOuPoIh-UNljm7uHqEFx2AagPj-11EVr94YyjtK7mMXR3g-Vv-FdIyLOCrXLuF_l1hijdQ_Y5t1N9olVPN8dQGhRHV-umYOy7BK0DcKCLRGofQOAmQdG9etw96_GiU-4FSSxJMXelLm_9YORuTyPl3TmlcZ7S6wyrK4zjZQaZ26XFRvTDZLqNztV_U3OuDVUf4AjAtd53U');"></div>
+<div>
+<p class="text-base font-medium leading-normal text-white">Reserve OG</p>
+<p class="text-sm font-normal leading-normal text-[#bab3a0]">Limited</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header: Active Missions -->
+<h2 class="px-4 pb-3 pt-8 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">Your Current Missions</h2>
+<!-- Mission Cards -->
+<div class="flex flex-col gap-3 px-4">
+<div class="flex flex-col gap-3 rounded-xl bg-[#121212]/30 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">explore</span>
+</div>
+<p class="flex-1 text-base font-bold leading-normal text-white">Try a New Strain</p>
+</div>
+<p class="text-sm text-[#bab3a0]">Purchase any flower you haven't tried before to earn 50 bonus points.</p>
+<div class="h-2 w-full rounded-full bg-white/10">
+<div class="h-2 w-2/3 rounded-full bg-primary"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#121212]/30 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<p class="flex-1 text-base font-bold leading-normal text-white">Visit 3 Times This Month</p>
+</div>
+<p class="text-sm text-[#bab3a0]">You're almost there! One more visit this month unlocks an exclusive discount.</p>
+<div class="h-2 w-full rounded-full bg-white/10">
+<div class="h-2 w-1/3 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Section Header: Upcoming Events -->
+<h2 class="px-4 pb-3 pt-8 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">What's Happening</h2>
+<!-- Event Card -->
+<div class="px-4">
+<div class="flex flex-col overflow-hidden rounded-xl bg-[#121212]/30">
+<div class="aspect-video w-full bg-cover bg-center bg-no-repeat" data-alt="A vibrant community gathering with people talking and smiling in a well-lit, friendly environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAV5PBAJNo8Xchi-qRaVDvHX9HMfFSb6XE6OpyIA9I3Gsx03UpmdweXXEhpKBIRKAXS_4pdQTV-8xO3oLNsWSwFv5X_cv8YuTZwp26DwMMdfgaIikYQWqJkC4pN-Fx2X4s6204xCe5IgYKu2MXGFK-_x34IMRix_UCQrcVdxxJOFyZd4qVw9CljfAxL_ZoIb4agQHwKmG9azCES6Vk-KtyEtJBfQ2V1Q9ILt9tqdiTZPX9ruowVpzF0THZYNVglmNlWyylGsW_mQ5s');"></div>
+<div class="flex flex-col gap-1 p-4">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-white">Community Meet &amp; Greet</p>
+<p class="text-base font-normal leading-normal text-primary">AUG 24, 2024 • Mohave Downtown</p>
+<p class="text-base font-normal leading-normal text-[#bab3a0]">Join us for an evening of connection and conversation. Meet fellow enthusiasts and our expert budtenders.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex h-20 items-center justify-around text-[#bab3a0]">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-icon">dashboard</span>
+<span class="text-xs font-bold">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="text-xs font-medium">Products</span>
+</button>
+<button class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">celebration</span>
+<span class="text-xs font-medium">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-xs font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

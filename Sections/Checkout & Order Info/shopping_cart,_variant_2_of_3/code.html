@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Cart</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a88e48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center border-b border-white/10 bg-background-dark/80 px-4 backdrop-blur-sm">
+<button class="flex size-10 shrink-0 items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Cart</h1>
+<div class="size-10 shrink-0"></div> <!-- Spacer -->
+</header>
+<main class="flex-1 px-4 py-6 pb-40">
+<div class="flex flex-col gap-4">
+<!-- Cart Item Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-black/20 p-4">
+<div class="flex gap-4">
+<div class="h-24 w-24 shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up of colorful gummy bears arranged neatly." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBYhp34NkXhL6wqfB8tbw4lyMJVTWOuO0ztdQE9rNCOSojZeyy7VVqyqz2sxNiB57l2lHKGv2F7OzW4BN2KGmy-xgsC_r73qwueas_gU8AJgbfzWm9OemUdFLEbrCTTM_DmOEuEeVWvVAjvWglWVwRZW5g9yAOpF6a8iHi0T0L3ZVQY95nYThLrQNh9l2wOG3UsugYPJfzRj_RwrUzC7vSrigKyvXhoeffojfemmWiCg7LJ0DDQ7kOSRRMh2ycDYWB8HqUS8lVyX1g");'></div>
+<div class="flex flex-1 flex-col">
+<p class="text-white text-lg font-bold leading-tight">WYLD Gummies</p>
+<p class="text-gray-400 text-sm font-normal leading-normal">Hybrid | 100mg</p>
+<p class="text-primary text-base font-bold leading-normal mt-auto">$25.00</p>
+</div>
+<button class="shrink-0 self-start text-gray-500 hover:text-white">
+<span class="material-symbols-outlined text-2xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-end">
+<div class="flex items-center gap-4 text-white">
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-2xl font-light">-</button>
+<span class="text-lg font-bold leading-normal w-8 text-center">1</span>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark cursor-pointer text-2xl font-light">+</button>
+</div>
+</div>
+</div>
+<!-- Cart Item Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-black/20 p-4">
+<div class="flex gap-4">
+<div class="h-24 w-24 shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Detailed shot of a cannabis flower bud, showing trichomes and green leaves." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAac7A3-G9xrKl5SAuQy8voVALA-XMGy0WpNUInBESo-otyHP1vGLJyAHQLdNhRNVUUQwz_2eueV0DAWSusAJzXhk2RgKAtGrNBGhOPWXIHAqi6w4IusQaA-EiuhQGhSM8XnVAid3boYHLfMmQGAAs0vVjZkKv52spzFIyyOOnUfmDI36pTHokYxeUKQyDF9yLPsyZMM4qXrM-QdnEPmeM94PLTkOyoPy4TZPodpktadSdYojj964FlR_Rl_EruWQk5_9caZc5s7bs");'></div>
+<div class="flex flex-1 flex-col">
+<p class="text-white text-lg font-bold leading-tight">Mohave OG</p>
+<p class="text-gray-400 text-sm font-normal leading-normal">Indica | 3.5g</p>
+<p class="text-primary text-base font-bold leading-normal mt-auto">$45.00</p>
+</div>
+<button class="shrink-0 self-start text-gray-500 hover:text-white">
+<span class="material-symbols-outlined text-2xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-end">
+<div class="flex items-center gap-4 text-white">
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-2xl font-light">-</button>
+<span class="text-lg font-bold leading-normal w-8 text-center">2</span>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark cursor-pointer text-2xl font-light">+</button>
+</div>
+</div>
+</div>
+<!-- Cart Item Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-black/20 p-4">
+<div class="flex gap-4">
+<div class="h-24 w-24 shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Sleek, modern cannabis vape pen standing upright against a dark background." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYNTZZInCE1JJHZdCjhWQw6SgIpDUBcibeawTt5t-MrgB0bDOlzyvcR1-ZaPWz6YYBMLA-Vp9Xj7ZUgC5ExA0OYsSTNCWQtbc4vor7JIqnnEbLk6K0SYLXxiOSLQV7tHZ4fcEThah5FMLGPc2VcyN34pAcSsh1G4-2e5O0C3nUtHG65EMrLOnVke7qXYMSUzMrtDfcJ_T22VhrAu58G2KE94QmM8lnGa3twK2sQWGgmRV8vuNwgi2K9fOb5vBAdYucCTr9MkdqA2E");'></div>
+<div class="flex flex-1 flex-col">
+<p class="text-white text-lg font-bold leading-tight">Desert Diesel</p>
+<p class="text-gray-400 text-sm font-normal leading-normal">Sativa | 1g Cartridge</p>
+<p class="text-primary text-base font-bold leading-normal mt-auto">$55.00</p>
+</div>
+<button class="shrink-0 self-start text-gray-500 hover:text-white">
+<span class="material-symbols-outlined text-2xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-end">
+<div class="flex items-center gap-4 text-white">
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-2xl font-light">-</button>
+<span class="text-lg font-bold leading-normal w-8 text-center">1</span>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark cursor-pointer text-2xl font-light">+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Checkout Bar -->
+<footer class="fixed bottom-0 left-0 right-0 z-10 w-full border-t border-white/10 bg-background-dark/80 p-4 backdrop-blur-sm">
+<div class="mx-auto flex max-w-4xl flex-col gap-4">
+<div class="flex items-baseline justify-between gap-x-6">
+<p class="text-gray-400 text-base font-normal leading-normal">Subtotal</p>
+<p class="text-white text-2xl font-bold leading-normal text-right">$170.00</p>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-5 bg-primary text-background-dark text-lg font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Checkout</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>

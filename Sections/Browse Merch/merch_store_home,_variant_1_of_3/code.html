@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Merch Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a88e48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#1d1b15",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col bg-[#121212] text-[#E0E0E0]">
+<!-- Top App Bar -->
+<header class="flex items-center bg-[#121212] p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-2xl text-[#E0E0E0]">arrow_back</span>
+</div>
+<h1 class="text-[#E0E0E0] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Merch Store</h1>
+<div class="flex w-12 items-center justify-end relative">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#E0E0E0] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">shopping_cart</span>
+</button>
+<div class="absolute top-2 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs font-bold text-black">
+<span>2</span>
+</div>
+</div>
+</header>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#888888] flex border-none bg-[#1d1b15] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#E0E0E0] focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-[#1d1b15] h-full placeholder:text-[#888888] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search merch..." value=""/>
+</div>
+</label>
+</div>
+<!-- Featured Products Section -->
+<main class="flex-grow flex flex-col gap-5 pb-24">
+<div>
+<h2 class="text-[#E0E0E0] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Products</h2>
+<div class="flex flex-col items-center">
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden w-full pl-4 pr-1">
+<div class="flex items-stretch gap-4">
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-[#1d1b15] shadow-[0_0_4px_rgba(0,0,0,0.1)] w-60">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-t-xl flex flex-col" data-alt="A person wearing a black hoodie with a gold logo on the chest" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATdRH-u1tWYrTJgXxwSUFNYvno6T6pFHsKltD9v6SCJN3P4gVMGhwSrFM2mz8erdmEGMFwqwzrl9eifJ-p1hfqRCJmmoVxBtPS8GJgy9MxkFmOgMt2L31QszL5EvKbZo1JpQjOM3aN0Ji5Cd9lbP97RGTv5wJK6bTWkRkMEYEXacw1cH-ngmIbb2lDI7P76NxgyS5FvpLV65alVNjqExRhPUPwXhGJRO6kgpXLSpBeEUmpqaZMqmN7GcJLe4XL9Xyw_j6Zc2acW_I");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">Mohave Signature Hoodie</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Shop Now</span>
+</button>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-[#1d1b15] shadow-[0_0_4px_rgba(0,0,0,0.1)] w-60">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-t-xl flex flex-col" data-alt="A black snapback hat with a gold emblem, placed on a dark surface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC49a0xdcgmKxG_ykGqBdC2Bg7vU4hwfUrhMkdxFkjEsQYuvSMInb80GV1FLxsxsDr6ZLRBQHGz5h33NGJz-Uxj-ZVL0cjAJPwIebpJwy1A6FzF5Np-FoDDvaVcwG7Eis5aAb-TPkh2tgKa-0ny0-dx1DzkRP11z7jIJgMc8ykXAgTPARZzmU-cNQbGpNTkCZMCZHwFKTiK0Lia4AmD9S-HZnlLvrQ4vuY7iuMTxboqYN9hZ5j5AlYyAsXNFCOfApioAoP_G_nn-48");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">Classic Emblem Snapback</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Shop Now</span>
+</button>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-[#1d1b15] shadow-[0_0_4px_rgba(0,0,0,0.1)] w-60 mr-3">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-t-xl flex flex-col" data-alt="A sleek, metallic gold herb grinder on a dark, textured background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtsEDtMHxrpDhOvNijHIYnXghTjiqxpuw3kwXiHmTExivIvuCmQpIT7cl7PjAtt4JbvB72pXLhQgmNaJjcG7UF4qlj71DDXt1I5w6y3PWbsdsvJbatbPTm1GH4uAafavRqS10WfvUDib4q23DtWF_zLbsa3ZnPj0eF-lc34lJ37utm8S3b0tnkgfiAejApPPixwaRF3lCDlW-LHlIV5Wx-LHVnqt0ZdQd1wLPtUtJfi41qg9Ie0R1yCeGeEz_mFCefz8R_5vQ3zJ8");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#E0E0E0] text-base font-medium leading-normal">Premium Grinder</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Shop Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center pt-4 gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-[#888888]"></div>
+<div class="w-2 h-2 rounded-full bg-[#888888]"></div>
+</div>
+</div>
+</div>
+<!-- Categories Section -->
+<div>
+<h2 class="text-[#E0E0E0] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Shop by Category</h2>
+<div class="grid grid-cols-2 gap-4 px-4">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden cursor-pointer group">
+<div class="absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-300 group-hover:scale-110" data-alt="Folded t-shirts and hoodies in various colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTyxuOXdXT4rT1Bt6EE-YiG6q39wRd2mf2H7EmSOw5JwGcthZpyiRWNEVU4yfwrSgHIhwbmHLSuQvKmAw5vaN_sjrdwSEbpZ3PiVb09XJEny83US6LQn49rMZS7EA-P2oLWzTHdIy2QhdnrGBERY2LuUoINg7nfM77tSp7kD9YGRafiPrpFJdnzgTDDYL09S0ixG6VHqI49BAEgzDs49O6Ab2Fv00CbKrkGDyc58IG1TG_SBHkqp8Sk6varS_O2SmQ1X9MmGvASWY");'></div>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<h3 class="text-white text-lg font-bold">Apparel</h3>
+</div>
+</div>
+<div class="relative w-full aspect-square rounded-xl overflow-hidden cursor-pointer group">
+<div class="absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-300 group-hover:scale-110" data-alt="A collection of stylish hats on display" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfCF3IUX2oJ6efHyRhKZSowdcjLBGZ6RCCDNtPcWtir4LIjE9073JSbgEDN6kXn_I68c5jvz5jJE_DWF3JiIk76ICtFkyk3hsUF4Lv_rUa3ggzx4tr8Pi3kb2OfrTGrAurlfL-X4PMgi76-c_S8f-00Oz3qqek5BlWEkZBudblesXSxloPBaE7kM8GYHZTVABC1RngihI1Qp218YKQdWOLs2jNoqks-RwhzIHttAhx4blA9rq8kt9biJAbz4o-AWZjGrixfxndyJc");'></div>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<h3 class="text-white text-lg font-bold">Hats</h3>
+</div>
+</div>
+<div class="relative w-full aspect-square rounded-xl overflow-hidden cursor-pointer group">
+<div class="absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-300 group-hover:scale-110" data-alt="Various cannabis accessories like grinders, pipes, and rolling papers arranged neatly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlj6xyU2f_0pdOL0InP8-PsGR3VfDCr7nKgR5hpVdk2THD16U6RyfiWHv1mfgfFVLNZ0QYtLMMp9_YcG0tSMKrboSUdJNXIXdy3dN_2Z_RfTg4DWZnw1_rUWfJE6hG8KLGt3-IXnjBcKhVHWfgCwovtJBwUfudliPYWrry5ICOniLuDP29d8N3KnWmzEXlTrZseaDV88NBKXYhLQa805ZKqv7zb8c5-C0gz1rW3uJAVtY8yahktewnj9ecTC4jR7q-E5TQklUu_Dg");'></div>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<h3 class="text-white text-lg font-bold">Accessories</h3>
+</div>
+</div>
+<div class="relative w-full aspect-square rounded-xl overflow-hidden cursor-pointer group">
+<div class="absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-300 group-hover:scale-110" data-alt="A limited edition product in exclusive packaging with a spotlight on it" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3gp_pBVTitoCRkvEwfsgqXPI09MUv-0SZuZr3ULYuH22QiR_KiW76T8WIyjL9z733bN5yruSOB5Ttr26_2ZozYf6UVxcDn4vtjxwBYd84Ln4PMSVXGLaCyhfgEryQieBU3yAeWZ80ULILdQxEaZJwCD87caGxgftjAVxqDnljLNpPIZF5zPhyGkgcxFJEXTKyRnjOqoEcCdnxVm0KBBjUtmDqohg4zbm5Y5D6MH7Jv-zOZunXEJMDvva0TcTRS2herYqPRUdmd44");'></div>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<h3 class="text-white text-lg font-bold">Limited Drops</h3>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 h-20 bg-[#1d1b15] border-t border-t-[#2a2823] max-w-md mx-auto">
+<div class="flex justify-around items-center h-full">
+<a class="flex flex-col items-center justify-center text-[#888888] w-full gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#888888] w-full gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">grass</span>
+<span class="text-xs">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary w-full gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">storefront</span>
+<span class="text-xs">Merch</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#888888] w-full gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-xs">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

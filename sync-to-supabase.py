@@ -89,6 +89,22 @@ def sync_to_supabase(supabase: Client):
     
     print(f"Found {len(local_data)} sections locally\n")
     
+    # Get all existing sections from Supabase
+    existing_sections = supabase.table("sections").select("id, folder_path").execute()
+    existing_folder_paths = {s["folder_path"]: s["id"] for s in existing_sections.data}
+    local_folder_paths = {s["folder_path"] for s in local_data}
+    
+    # Delete sections that no longer exist locally
+    sections_to_delete = [s_id for path, s_id in existing_folder_paths.items() if path not in local_folder_paths]
+    if sections_to_delete:
+        print(f"Removing {len(sections_to_delete)} deleted section(s)...")
+        # Delete gallery items first (cascade should handle this, but being explicit)
+        for section_id in sections_to_delete:
+            supabase.table("gallery_items").delete().eq("section_id", section_id).execute()
+        # Delete sections
+        supabase.table("sections").delete().in_("id", sections_to_delete).execute()
+        print(f"  ✓ Deleted {len(sections_to_delete)} section(s)\n")
+    
     for section_data in local_data:
         folder_path = section_data["folder_path"]
         name = section_data["name"]

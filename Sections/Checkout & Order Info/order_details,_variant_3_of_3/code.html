@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "surface-dark": "#1E1E1E",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark font-display text-white">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2">
+<button class="flex size-12 shrink-0 items-center justify-start text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] -ml-12">Order Details</h1>
+</div>
+<div class="flex flex-col gap-2 p-4 pt-2">
+<p class="text-base font-medium leading-normal">Order #MC-12345</p>
+<p class="text-sm font-normal leading-normal text-[#A9A9A9]">Placed on June 1, 2024</p>
+</div>
+<!-- Interactive Order Tracking Widget -->
+<div class="mx-4 mb-6 rounded-xl bg-surface-dark p-6">
+<div class="grid grid-cols-[40px_1fr] gap-x-2">
+<!-- Step 1: Order Placed -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex size-7 items-center justify-center rounded-full bg-primary text-black">
+<span class="material-symbols-outlined !text-[18px]">check</span>
+</div>
+<div class="w-0.5 grow bg-primary"></div>
+</div>
+<div class="flex flex-col pb-6 pt-1">
+<p class="text-base font-medium leading-normal text-white">Order Placed</p>
+<p class="text-sm font-normal leading-normal text-[#A9A9A9]">June 1, 2:40 PM</p>
+</div>
+<!-- Step 2: Shipped -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-0.5 bg-primary"></div>
+<div class="flex size-7 items-center justify-center rounded-full bg-primary text-black">
+<span class="material-symbols-outlined !text-[18px]">check</span>
+</div>
+<div class="w-0.5 grow bg-primary"></div>
+</div>
+<div class="flex flex-col pb-6 pt-1">
+<p class="text-base font-medium leading-normal text-white">Shipped</p>
+<p class="text-sm font-normal leading-normal text-[#A9A9A9]">June 2, 9:00 AM</p>
+</div>
+<!-- Step 3: Out for Delivery (Active) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-0.5 bg-primary"></div>
+<div class="relative flex size-7 items-center justify-center rounded-full bg-primary">
+<div class="size-2 rounded-full bg-black"></div>
+</div>
+<div class="w-0.5 grow bg-surface-dark border-r-2 border-dashed border-[#A9A9A9]"></div>
+</div>
+<div class="flex flex-col pb-6 pt-1">
+<p class="text-base font-bold leading-normal text-primary">Out for Delivery</p>
+<p class="text-sm font-normal leading-normal text-[#A9A9A9]">Estimated delivery: June 5</p>
+</div>
+<!-- Step 4: Delivered -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-0.5 h-full border-l-2 border-dashed border-[#A9A9A9]"></div>
+<div class="flex size-7 items-center justify-center rounded-full border-2 border-dashed border-[#A9A9A9]"></div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-base font-medium leading-normal text-[#A9A9A9]">Delivered</p>
+</div>
+</div>
+</div>
+<!-- Order Summary Card -->
+<div class="mx-4 mb-6 rounded-xl bg-surface-dark">
+<h3 class="px-4 pb-2 pt-4 text-base font-bold leading-tight">Order Summary</h3>
+<div class="flex flex-col">
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-4">
+<div class="size-14 shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Black hoodie with Mohave logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC0ULypzS10CL8_pYdms8A-Wi_ciBypISp5c1ea0MFRomvRiP28AD2JVZVz0TDCOVKcv1LNx6-zGOWhD_kPpQ3HeNMukpEXYB5coKheklnO4sJVydCTuI8atp-PLELGWixTWUnfvt-buzoVU2ELnQG6_sIAXg2IzCVk4TcxBwoO555mqj6ttuUK8M2QtlF2wfNz4pbSwKiCISSjonD1-1w_2pJ8F5GGxOnWDGBSmdB6tNOxMbxsMje-bDpAOqP3eCrLg_On5a9DL0A');"></div>
+<div class="flex flex-col justify-center">
+<p class="line-clamp-1 text-base font-medium leading-normal text-white">Mohave Hoodie, Black</p>
+<p class="line-clamp-2 text-sm font-normal leading-normal text-[#A9A9A9]">Size: Large, Qty: 1</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-base font-normal leading-normal text-white">$55.00</p></div>
+</div>
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-4">
+<div class="size-14 shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="White t-shirt with classic Mohave logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZh8uU3J4CdjVHGM_k6Ub6C4Zqlq74wpnGO7xZ4Jh9GS5RV2a48RMH43O8nO5SWoGrADP-dc-8eaZ2vAUHLuap6S2ID1lc7JORZhH4VsPxYOUJ8bwzB1BRkYiwKjKjyUR6viuorCo3lRUVV_pYKvOZnWAbYSUuTkkD7XoqTmVR1aVqduJi-F6OYF1X0TUx0MWIycp32UO3wNrBbIyvLLHYhHOi_3B48pv7uRSFyeCc0__lK4fTyctG6MXLNhAqfUjz6nKJH0lIN54');"></div>
+<div class="flex flex-col justify-center">
+<p class="line-clamp-1 text-base font-medium leading-normal text-white">Classic Logo Tee</p>
+<p class="line-clamp-2 text-sm font-normal leading-normal text-[#A9A9A9]">Size: Large, Qty: 2</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-base font-normal leading-normal text-white">$50.00</p></div>
+</div>
+</div>
+</div>
+<!-- Information Cards -->
+<div class="mx-4 mb-6 rounded-xl bg-surface-dark p-4">
+<h3 class="mb-3 text-base font-bold leading-tight">Shipping Address</h3>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5 text-primary">location_on</span>
+<p class="text-sm font-normal leading-normal text-[#A9A9A9]">
+                    Alex Thompson<br/>
+                    456 Oasis Avenue<br/>
+                    Palm Springs, CA 92262
+                </p>
+</div>
+</div>
+<div class="mx-4 mb-6 rounded-xl bg-surface-dark p-4">
+<h3 class="mb-3 text-base font-bold leading-tight">Payment Summary</h3>
+<div class="flex flex-col gap-2 text-sm">
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Subtotal</p>
+<p class="text-white">$105.00</p>
+</div>
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Shipping</p>
+<p class="text-white">$5.00</p>
+</div>
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Taxes</p>
+<p class="text-white">$8.66</p>
+</div>
+<div class="my-2 h-px bg-[#A9A9A9]/20"></div>
+<div class="flex justify-between font-bold">
+<p class="text-white">Total</p>
+<p class="text-white">$118.66</p>
+</div>
+</div>
+</div>
+<!-- CTA and Links -->
+<div class="flex flex-col gap-4 p-4">
+<button class="flex h-12 w-full items-center justify-center rounded-full bg-primary text-base font-bold text-black">Contact Support</button>
+<button class="w-full text-center text-sm font-medium text-primary">Need to Return?</button>
+</div>
+</div>
+</body></html>

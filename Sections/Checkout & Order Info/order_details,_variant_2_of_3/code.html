@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details - Mohave Cannabis Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a88e48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .group-open\:rotate-180 {
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-white flex size-12 shrink-0 items-center justify-start -ml-2">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Order #MOH12345</h2>
+<div class="size-12 shrink-0"></div>
+</div>
+<!-- Headline and Meta Text -->
+<h1 class="text-white tracking-light text-[32px] font-bold leading-tight px-4 text-left pb-1 pt-4">Order Details</h1>
+<p class="text-[#A9A9A9] text-sm font-normal leading-normal pb-6 px-4">Placed on October 26, 2023</p>
+<!-- Accordions -->
+<div class="flex flex-col p-4 pt-0 gap-3">
+<!-- Order Items Accordion -->
+<details class="flex flex-col rounded-lg bg-[#1E1E1E] px-4 py-2 group" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-white text-base font-medium leading-normal">Order Items (2)</p>
+<div class="text-white group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="pt-2 pb-2">
+<div class="flex items-center gap-4 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Mohave Reserve Tee in black" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnxxTJx1iLCAwQLeYDYGv-sBvVzSIUfI6GLfA_zgPZyd9PtRe4Lnx5jJwKrc4EZzQnMogV4ns9TlCZ93Ie43hSqqf9w5veJXYlZn1MpuKtuEQbA6lV3gYFCMeVkp3UUsxR2j_qD87xi-1aUKY2FhRK2O5Sf65_0JTk2Mg2y5GFJ6dnYFEsOBzz1vKA0SEn5sQkZMHv5jqyqg__Mnxz335_5XmhmO76zz5LwE4N7uUSFME1FHny1ppge4gMwWSpHKtafiY8X_vSNQs");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Mohave Reserve Tee</p>
+<p class="text-[#A9A9A9] text-sm font-normal leading-normal line-clamp-2">Size: L, Qty: 1</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-base font-normal leading-normal">$35.00</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Mohave Snapback hat in black" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDute7ejOjz1owOBbJGsMq-I0RyQZFukkaHDm2Q-EtcuDs5Qgwiiljzb38Yj8SgtMKZL1zl5fWaL_ey2gpZ-iBX24A6F4o-_sewOHfp7GGszpY5rw_CdTPi7lgVVh33u0aDgA2ISzehk1S77tRe3gNwsqt_Q9JMzZos2a8mSqdpKwmnwcOKeXV_5Ibmmr2snyYk2S2QA6cAZoI54NmDD_NGjxC-PNoYUfMCf6-_SzUx1fAW9bA97-kOxZPjkJaHJsNqDNCyFyedV2E");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Mohave Snapback</p>
+<p class="text-[#A9A9A9] text-sm font-normal leading-normal line-clamp-2">Color: Black, Qty: 1</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-base font-normal leading-normal">$25.00</p>
+</div>
+</div>
+<div class="border-t border-[#333] my-4"></div>
+<div class="flex flex-col gap-2 text-sm">
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Subtotal</p>
+<p class="text-white">$60.00</p>
+</div>
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Shipping</p>
+<p class="text-white">$5.00</p>
+</div>
+<div class="flex justify-between">
+<p class="text-[#A9A9A9]">Tax</p>
+<p class="text-white">$4.80</p>
+</div>
+<div class="flex justify-between mt-2 pt-2 border-t border-dashed border-[#333]">
+<p class="text-white font-bold">Grand Total</p>
+<p class="text-white font-bold">$69.80</p>
+</div>
+</div>
+</div>
+</details>
+<!-- Shipping Details Accordion -->
+<details class="flex flex-col rounded-lg bg-[#1E1E1E] px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-white text-base font-medium leading-normal">Shipping Details</p>
+<div class="text-white group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="text-[#A9A9A9] text-sm font-normal leading-normal pb-2 pt-2">
+<p class="text-white font-medium">Jane Doe</p>
+<p>123 Desert Bloom St,</p>
+<p>Palm Springs, CA 92262</p>
+<p>United States</p>
+<p class="mt-3 text-white">Standard Shipping</p>
+</div>
+</details>
+<!-- Payment Information Accordion -->
+<details class="flex flex-col rounded-lg bg-[#1E1E1E] px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-white text-base font-medium leading-normal">Payment Information</p>
+<div class="text-white group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="text-[#A9A9A9] text-sm font-normal leading-normal pb-2 pt-2">
+<p class="text-white font-medium">Payment Method</p>
+<p>Visa ending in 1234</p>
+<p class="mt-3 text-white font-medium">Billing Address</p>
+<p>Same as shipping address</p>
+</div>
+</details>
+<!-- Order Tracking Accordion -->
+<details class="flex flex-col rounded-lg bg-[#1E1E1E] px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-2 list-none">
+<p class="text-white text-base font-medium leading-normal">Order Tracking</p>
+<div class="text-white group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="text-white text-sm font-normal leading-normal pb-2 pt-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="flex size-6 items-center justify-center rounded-full bg-primary text-background-dark">
+<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
+</div>
+<div class="h-10 w-0.5 bg-primary"></div>
+</div>
+<div>
+<p class="font-medium text-white">Ordered</p>
+<p class="text-xs text-[#A9A9A9]">Oct 26, 2023</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="flex size-6 items-center justify-center rounded-full bg-primary text-background-dark">
+<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
+</div>
+<div class="h-10 w-0.5 bg-primary/30"></div>
+</div>
+<div>
+<p class="font-medium text-white">Shipped</p>
+<p class="text-xs text-[#A9A9A9]">Oct 27, 2023</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="flex size-6 items-center justify-center rounded-full border-2 border-primary/30 text-primary/30"></div>
+<div class="h-10 w-0.5 bg-primary/30"></div>
+</div>
+<div>
+<p class="font-medium text-white/50">Out for Delivery</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="flex size-6 items-center justify-center rounded-full border-2 border-primary/30 text-primary/30"></div>
+</div>
+<div>
+<p class="font-medium text-white/50">Delivered</p>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-[#A9A9A9]">Carrier: USPS</p>
+<p class="text-[#A9A9A9]">Tracking: <a class="text-primary underline" href="#">9400111206214878012345</a></p>
+</div>
+</div>
+</details>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-4 p-4 mt-4 mb-4">
+<button class="flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-center text-base font-bold text-black shadow-sm transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark">
+                Get Help
+            </button>
+<button class="flex items-center justify-center rounded-lg bg-[#1E1E1E] px-6 py-3 text-center text-base font-bold text-primary shadow-sm transition-all hover:bg-[#2a2a2a] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark">
+                Return Item
+            </button>
+</div>
+</div>
+</body></html>

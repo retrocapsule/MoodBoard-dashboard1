@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom number input styles to hide arrows */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "surface-dark": "#1E1E1E",
+              "text-primary-dark": "#FFFFFF",
+              "text-secondary-dark": "#A9A9A9",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center bg-background-dark/80 px-4 backdrop-blur-sm">
+<div class="flex size-12 shrink-0 items-center justify-start text-text-primary-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-text-primary-dark">Shopping Cart</h1>
+<div class="size-12 shrink-0"></div> <!-- Spacer for centering title -->
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-4">
+<!-- Item List -->
+<div class="flex flex-col gap-4">
+<!-- List Item 1 -->
+<div class="flex gap-4 rounded-xl bg-surface-dark p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px] shrink-0" data-alt="A package of Mohave Reserve OG Kush" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiIwAZwjfYo_jfabNBYv8CHHvAHvs3HxGFIdhxVLJfl6ne32P1_2JnDtPyzSuRwTQz8V8X3tivBmf2M9SHVEeGBdK0jugLHYpGZQlmATBp5BSmjpD7GUJivZxl2BKsPqhDjdn_uZQy2cn75NfssAWSZA-PcaYmGncNWRbWolBP6Yo13DKyKmOvp-Ux_4JF10fmO3--Yv_PyF4OYod7F27Q4ayinNzxZIVxPskqJnHEKruoTzmA13m0uKNUnp_7crDxSHvBU8bYCiA");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Mohave Reserve OG Kush</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Weight: 1/8th oz</p>
+<p class="text-primary text-base font-bold leading-normal mt-1">$45.00</p>
+</div>
+<div class="flex flex-col items-center justify-center shrink-0">
+<div class="flex items-center gap-2 text-text-primary-dark">
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-background-dark cursor-pointer text-primary text-xl font-bold">-</button>
+<input aria-label="Quantity" class="w-6 p-0 text-center text-lg font-medium bg-transparent border-none focus:outline-none focus:ring-0 text-text-primary-dark" type="number" value="1"/>
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-background-dark cursor-pointer text-primary text-xl font-bold">+</button>
+</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex gap-4 rounded-xl bg-surface-dark p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px] shrink-0" data-alt="A gold-colored branded grinder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKYmX-I7HoHfMLz4tamYtvEz-Ni7spyp96sPAE_iLV8ZHVxhcMwqfYQ74SqA3QpCJERHyq_U0JedUtciFwkMGrhsZtjakbpmYbI-vjofDLyFKgzKjZiiNr-eD5r3GkeWcjx1d91gnDLeVud4hRilfktUAvOM0e3Utxrj89QP-wVyz71qyECz08_QvrLhuV72xHSnMBqLpkpgCP72JOS-4LMwBDWNecKkLEuzTqGZGTLLaEJJBiDOVIFfDMhRvCWAdNXJRjXDGq8u4");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary-dark text-base font-medium leading-normal">Branded Grinder</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Color: Gold</p>
+<p class="text-primary text-base font-bold leading-normal mt-1">$25.00</p>
+</div>
+<div class="flex flex-col items-center justify-center shrink-0">
+<div class="flex items-center gap-2 text-text-primary-dark">
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-background-dark cursor-pointer text-primary text-xl font-bold">-</button>
+<input aria-label="Quantity" class="w-6 p-0 text-center text-lg font-medium bg-transparent border-none focus:outline-none focus:ring-0 text-text-primary-dark" type="number" value="1"/>
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-background-dark cursor-pointer text-primary text-xl font-bold">+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer with Summary and CTA -->
+<footer class="sticky bottom-0 bg-background-dark/80 px-4 py-4 backdrop-blur-sm">
+<!-- Summary Section -->
+<div class="mb-4 space-y-2">
+<div class="flex justify-between gap-x-6">
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Subtotal</p>
+<p class="text-text-primary-dark text-sm font-medium leading-normal text-right">$70.00</p>
+</div>
+<div class="flex justify-between gap-x-6">
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Taxes &amp; Fees</p>
+<p class="text-text-primary-dark text-sm font-medium leading-normal text-right">Calculated at checkout</p>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="flex">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 flex-1 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Proceed to Checkout</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>

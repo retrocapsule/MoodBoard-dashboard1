@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#121212",
+              "card-dark": "#1E1E1E",
+              "text-primary-dark": "#E0E0E0",
+              "text-secondary-dark": "#A0A0A0"
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light dark:bg-background-dark p-4 pb-2">
+<div class="flex size-12 shrink-0 items-center text-text-primary-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-text-primary-dark">Shopping Cart</h1>
+<div class="size-12 shrink-0"></div> <!-- Spacer -->
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-4 pb-44 pt-2">
+<!-- Cart Items List -->
+<div class="space-y-4">
+<!-- List Item 1 -->
+<div class="flex gap-4 rounded-xl bg-card-dark p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[80px] shrink-0" data-alt="Black t-shirt with Mohave logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoTYIgpTDtc0hLlmo5yCmer3PdBESGPT9XeuY8idaDYmb5nboa6lE31z1EKpDgszMDNeOAFkZZyQ2ngWgDo6r4cgbMoCc2sABox0i9H3ziq6BSjELkdXtke7lI7qC-Ov-QIvmTpKymzhv6ErElyTRSAN7YNwSwvt1R6Wjmm1lpxn9dgo7klsL1JrMe7cy4zKRAg2LYH6fusY5rqSDvBK1LmVp6dHVGkHe8aWz3ZB81NLTjuj8R_Rw4tVSjgPb73PliBVYgdFQAG7k");'></div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-base font-medium leading-normal text-text-primary-dark">Mohave Classic Tee</p>
+<p class="text-sm font-normal leading-normal text-text-secondary-dark">Size: Large, Color: Black</p>
+<p class="text-base font-bold leading-normal text-text-primary-dark">$25.00</p>
+<div class="flex items-center gap-3 text-text-primary-dark pt-2">
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-xl font-bold">-</button>
+<span class="text-base font-medium leading-normal w-4 text-center">1</span>
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-xl font-bold">+</button>
+</div>
+</div>
+<div class="shrink-0">
+<button class="text-text-secondary-dark">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex gap-4 rounded-xl bg-card-dark p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[80px] shrink-0" data-alt="Heather grey snapback hat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWBxVuXTNZ9bMSijyaBcU1GI_Qrp6S0nJPdtYeAsr0sRTrVKLvtAtOiHxz5XOhhJVoRGrLO2INakSPuYaEB06kIZZif_DwIIJiqeyNN__xYMsz9LC93GT_rHBRoSfHUaZa3EGOmOXOjRxDYlUIe6PJ8tuzl8QChy1qf2ODVPxYxECOCkHwM_6jMNfmNKpgKC_P864fKBtRYAJOsmwYQpapKCxc_h9-LeV5INLxyVipKhJBgQfv5SMhIfpjgy9llebptEIw1dK_Erc");'></div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-base font-medium leading-normal text-text-primary-dark">Branded Snapback Hat</p>
+<p class="text-sm font-normal leading-normal text-text-secondary-dark">Color: Heather Grey</p>
+<p class="text-base font-bold leading-normal text-text-primary-dark">$30.00</p>
+<div class="flex items-center gap-3 text-text-primary-dark pt-2">
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-xl font-bold">-</button>
+<span class="text-base font-medium leading-normal w-4 text-center">1</span>
+<button class="flex h-7 w-7 items-center justify-center rounded-full bg-primary/30 text-primary cursor-pointer text-xl font-bold">+</button>
+</div>
+</div>
+<div class="shrink-0">
+<button class="text-text-secondary-dark">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spacer to push summary down if content is short -->
+<div class="h-8"></div>
+<!-- Order Summary -->
+<div class="rounded-xl bg-card-dark p-4">
+<div class="flex justify-between gap-x-6 py-2 border-b border-white/10">
+<p class="text-sm font-normal leading-normal text-text-secondary-dark">Subtotal</p>
+<p class="text-sm font-medium leading-normal text-right text-text-primary-dark">$55.00</p>
+</div>
+<div class="flex justify-between gap-x-6 py-2 border-b border-white/10">
+<p class="text-sm font-normal leading-normal text-text-secondary-dark">Estimated Taxes</p>
+<p class="text-sm font-medium leading-normal text-right text-text-primary-dark">$4.54</p>
+</div>
+<div class="flex justify-between gap-x-6 pt-3">
+<p class="text-base font-bold leading-normal text-text-primary-dark">Total</p>
+<p class="text-base font-bold leading-normal text-right text-text-primary-dark">$59.54</p>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Bar / CTA -->
+<footer class="fixed bottom-0 left-0 right-0 z-10 w-full bg-background-light dark:bg-background-dark">
+<div class="mx-auto max-w-md p-4">
+<button class="flex h-12 w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-background-dark">
+<span class="truncate">Proceed to Checkout</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>

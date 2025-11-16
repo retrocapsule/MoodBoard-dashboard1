@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - Payment Information</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a78e49",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+
+        .checkbox-tick-svg {
+            --checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(30,27,21)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Payment Information</h1>
+<div class="size-12 shrink-0"></div>
+</header>
+<main class="flex-grow px-4">
+<!-- Section Header: Select Payment Method -->
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] pt-4 pb-3">Select Payment Method</h2>
+<div class="space-y-2">
+<!-- List Item: Credit/Debit Card -->
+<div class="flex items-center gap-4 bg-[#2a2720] p-4 min-h-14 justify-between rounded-lg border-2 border-primary">
+<div class="flex items-center gap-4">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#3e3a2d] shrink-0 size-10">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<p class="text-white text-base font-medium leading-normal flex-1 truncate">Credit / Debit Card</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center">
+<input checked="" class="h-5 w-5 rounded border-[#595240] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#595240] focus:outline-none checkbox-tick-svg" name="payment_method" type="radio"/>
+</div>
+</div>
+</div>
+<!-- List Item: Apple Pay -->
+<div class="flex items-center gap-4 bg-[#2a2720] p-4 min-h-14 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-video bg-contain h-6 w-10 shrink-0" data-alt="Apple Pay logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_WnitStNvN_7bpVQtXMNK_zi9j5cKKZ6CMzQFvNTLPUJBJUCRobxmNx05GyXvOVBVa-VOgwKudFm96sSzuxBIfhkovlOR-oNE5UE_LlcFj9PqmjlxrKJdGAbbF7keCdbO7rRtGSvLfqEFi8Yy35O5QH_aliFKiE6iiz3ow3Jo3vIK8TJN3kVv8MILOpsHSD2Z5zm6T9CGe7GHY98l_j1W7VKMcMfjtQlOxUBKvx70VgPqDxHS1Z-8rpyRA5k0KRmTY-qym3SScc8");'></div>
+<p class="text-white text-base font-medium leading-normal flex-1 truncate">Apple Pay</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center">
+<input class="h-5 w-5 rounded border-[#595240] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#595240] focus:outline-none checkbox-tick-svg" name="payment_method" type="radio"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header: Card Details -->
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] pt-8 pb-3">Card Details</h2>
+<!-- Card Details Form -->
+<div class="space-y-4">
+<!-- Cardholder Name Input -->
+<div>
+<label class="block text-sm font-medium text-gray-400 mb-1" for="cardholder-name">Cardholder Name</label>
+<input class="w-full rounded-lg border border-[#3e3a2d] bg-[#2a2720] px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-primary" id="cardholder-name" placeholder="John Doe" type="text"/>
+</div>
+<!-- Card Number Input -->
+<div>
+<label class="block text-sm font-medium text-gray-400 mb-1" for="card-number">Card Number</label>
+<div class="relative">
+<input class="w-full rounded-lg border border-[#3e3a2d] bg-[#2a2720] pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-primary" id="card-number" placeholder="•••• •••• •••• ••••" type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-gray-400">credit_card</span>
+</div>
+</div>
+</div>
+<!-- Expiry and CVV -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-400 mb-1" for="expiry-date">Expiry Date</label>
+<input class="w-full rounded-lg border border-[#3e3a2d] bg-[#2a2720] px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-primary" id="expiry-date" placeholder="MM / YY" type="text"/>
+</div>
+<div>
+<label class="flex items-center gap-2 text-sm font-medium text-gray-400 mb-1" for="cvv">
+                            CVV
+                            <span class="material-symbols-outlined text-gray-500 !text-[16px]">help_outline</span>
+</label>
+<input class="w-full rounded-lg border border-[#3e3a2d] bg-[#2a2720] px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-primary" id="cvv" maxlength="4" placeholder="•••" type="password"/>
+</div>
+</div>
+<!-- Save Card Checkbox -->
+<div class="flex items-center gap-3 pt-2">
+<input class="h-5 w-5 rounded border-[#595240] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none checkbox-tick-svg" id="save-card" type="checkbox"/>
+<label class="text-white text-base font-normal" for="save-card">Save card for future use</label>
+</div>
+</div>
+</main>
+<!-- Footer with CTA and Security Info -->
+<footer class="sticky bottom-0 bg-background-dark p-4 pt-4 mt-8">
+<div class="flex items-center justify-center gap-2 pb-4">
+<span class="material-symbols-outlined text-green-400">lock</span>
+<p class="text-sm text-gray-400">Secure Checkout - Your data is protected.</p>
+</div>
+<button class="w-full rounded-lg bg-primary py-4 text-center text-base font-bold text-background-dark">Place Order</button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1E1E1E",
+                        "text-primary-dark": "#F5F5F5",
+                        "text-secondary-dark": "#A0A0A0"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark group/design-root overflow-x-hidden">
+<div class="flex flex-col flex-1 pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture of a person with short brown hair" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPBPywkTA61XqCBMKny87BJHmzsUzBXXh8TgXRRwbajl1fm9Ka8Kvg1BQ8ZDoVmxo6ccNOkQBL0MgyL43kFRhzJC8xwYX7jfiEQ8WcXomjSsWI9OatJq3IpEQVCKYf0o0zBiYaXZGqxLV-qbaKl_U9RkJX4hEg9cnOUNjH-MhBzy352g3jeUzg_zWzVXbKg6lEstg6o6wfeK75nR-Hbcttph9S6daykKp86Bg-aB1F--DhFTtG3IHFkz4tImSBzCSzTsxXJYJlTHM");'></div>
+<h1 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Welcome back, Alex!</h1>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-text-primary-dark text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</div>
+</div>
+<!-- Stats Section -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-0 flex-1 flex-col gap-2 rounded-lg p-6 bg-surface-dark">
+<p class="text-text-secondary-dark text-base font-medium leading-normal">Loyalty Points</p>
+<p class="text-primary tracking-light text-3xl font-bold leading-tight">1,240</p>
+</div>
+<div class="flex min-w-0 flex-1 flex-col gap-2 rounded-lg p-6 bg-surface-dark">
+<p class="text-text-secondary-dark text-base font-medium leading-normal">Leaderboard Rank</p>
+<p class="text-primary tracking-light text-3xl font-bold leading-tight">#125</p>
+</div>
+</div>
+<!-- Featured Products Carousel -->
+<h2 class="text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured For You</h2>
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden pl-4 pr-1">
+<div class="flex items-stretch gap-4">
+<div class="flex w-64 flex-col gap-4 rounded-lg bg-surface-dark shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-t-lg flex flex-col" data-alt="Close-up of Mohave Reserve cannabis flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDo8eEydMYwxq4jPZHHMRICXm0B5H5yZLk8Qfo21L3pHqhsm7opgYr0ILtV0WtGzb1d7X4wOqMsf0KrXNZ4wSC6qFCxM_ztW0REd7b-CW_eLMmhr5iznwCLnmCuZAa2zkxFjy4vGOg5y3ohEIamJLqh6tuTz5jK17_NY-blJ5TYlUfb-gAk_QXCZfV2Y5PklIXp9PW0r82rdtDf8Gf90b32rxW2_UJNL0z2x--WiLw4g6ZHqX6v3maPjLXtlvMQc171cJ8waTnMLDQ");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-primary-dark text-base font-medium leading-normal">Mohave Reserve</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Indica | 28% THC</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+<div class="flex w-64 flex-col gap-4 rounded-lg bg-surface-dark shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-t-lg flex flex-col" data-alt="Twisted Citrus Pre-Rolls in packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUn2JbZC1WDnCTqMrQvN_Vnl5wykGcaJ96hd5gYDhUeSMISld_hIAJCLX7GDTQJRQqjdgHxO7zW2NDRsSjxo6y877cNfV80dPCgEZIyBYZTowbbPIdIDMN_kqSkaiTXtUal0EYHt_7-LNu56rdlBgubcnDE4uioqrgzhm1D9aG3xKPlGBfpx0nKRZqvCeJe9IFHuxlKu8DMi5n0XNZOvqUwS1HAzWRSV_-w5n9a1klmdnqnFo2MRe6pJ95LoKHPbhCGH0Iuk-jDkY");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-primary-dark text-base font-medium leading-normal">Twisted Citrus Pre-Rolls</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Sativa | 22% THC</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+<div class="flex w-64 flex-col gap-4 rounded-lg bg-surface-dark shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-t-lg flex flex-col" data-alt="Vape pen for Desert's Kiss product" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1LyB2yUAEoNEt0Kjw0k3_epYDG3eGD2MUWW3dpzvrfaNAxg3ZIv9szluXT4FwR7W1hGdZQsh7ZQa6JRsrATTC_InrDIGKFPXxJ30qIwMO9MOgAx-OqChq9nCDb0pvrBv5RWlkxENctEOaZURLUiEtOyuU5IsmpMRRSxssmJRVwja8EQo3ChJW3W1FwRd3OYFo9v9nIoh-8AGvEY-FdIh3caTet-wMmsgO0H6mssVC6nfMz4sY-F91srK7cWIpkqmwokMe4b7ODAM");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-primary-dark text-base font-medium leading-normal">Desert's Kiss Vape</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">Hybrid | 85% THC</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Missions -->
+<h2 class="text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Active Missions</h2>
+<div class="flex flex-col gap-3 px-4">
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">local_florist</span>
+</div>
+<div class="flex-1">
+<p class="text-text-primary-dark font-medium">Try a New Strain</p>
+<p class="text-text-secondary-dark text-sm">Explore our latest indica arrivals.</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary-dark">arrow_forward_ios</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">calendar_month</span>
+</div>
+<div class="flex-1">
+<p class="text-text-primary-dark font-medium">Visit 3 Times This Month</p>
+<p class="text-text-secondary-dark text-sm">You are 2 visits away!</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary-dark">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Latest Drops -->
+<h2 class="text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Latest Drops</h2>
+<div class="flex flex-col gap-3 px-4">
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-4">
+<div class="aspect-square w-16 shrink-0 rounded-md bg-cover bg-center" data-alt="Product packaging for Cosmic Cookies" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVHZp_xpluwYU71ScmYpQiTeJelFhUbtRR9-FZRd1BowmsvoCD2i1s9cQ-dp8OjuNlaPYrNfq_D3FnoBhx45oLXi6e10o8LMy45q7Bkv_p0p4Ky-eDKCBXyYuHyB40br9nVRX7s0_2phs63CrYj1wSmVP1twGqt5MN_voPXA9zp3nqa4VaRIGECcq4tyMIYBVAUsr_ZnRMqfVoeOcU2L1SksCuJijJGblZB_M4_cS7wzJZtGmhVy8YTVAmo7cLGp3O01Xb7MqPD_c')"></div>
+<div class="flex-1">
+<p class="text-text-primary-dark font-medium">Cosmic Cookies</p>
+<p class="text-text-secondary-dark text-sm">Dropped: Oct 26</p>
+</div>
+<button class="flex min-w-0 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+<span>Shop</span>
+</button>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-4">
+<div class="aspect-square w-16 shrink-0 rounded-md bg-cover bg-center" data-alt="Product packaging for Midnight Haze" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANSYiFl33ixKKegPurOEhPc8JUTYfu6czVjlBZVuPODA73IOZ66kPXiZoPegYmIUjidtTRV6o5oOX2lXAlWHpy-6MdwI1yLE8lZvQ96ZtSCM_WkHcjyxBNvdzz44hYRtl8XhHyiLGhEHo2ihOnSKf_QEG8-xrcVbMrAuReSs83mu2PCere3nF_2HU4RjvQ0AMr3Kb3sZc5I4RO_FA2gbSH2zVrWrVyEZIsWewpkv87_qC5VZ4R3CPVhQ2UatKaROywNsyBLVWpY1o')"></div>
+<div class="flex-1">
+<p class="text-text-primary-dark font-medium">Midnight Haze</p>
+<p class="text-text-secondary-dark text-sm">Dropped: Oct 24</p>
+</div>
+<button class="flex min-w-0 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+<span>Shop</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-dark/95 backdrop-blur-sm border-t border-white/10">
+<div class="flex justify-around items-center h-20">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-text-secondary-dark">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-xs font-medium">Products</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-text-secondary-dark">
+<span class="material-symbols-outlined">star</span>
+<span class="text-xs font-medium">Rewards</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-text-secondary-dark">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center bg-background-dark/80 px-4 backdrop-blur-sm">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary text-3xl">local_florist</span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-tight text-white">Mohave Cannabis Co.</h1>
+<div class="flex w-auto items-center justify-end">
+<a class="whitespace-nowrap rounded-lg bg-primary/20 px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/30" href="#">Sign Up / Log In</a>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<div class="@container">
+<div class="px-4 py-3">
+<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl min-h-80" data-alt="Close-up of a vibrant, healthy cannabis plant against a dark, moody background." style='background-image: linear-gradient(0deg, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAHypviTW6WVFgUCGZHw1TnQMkcTGRYtXOZ5KehKx-WYNd2GxM4CsZo48K0Vyc-IqKFerc2OrBEDJJ07mzgkZvJ9arh8jDYTVv1uX7Iqy4djWtZgzxove7tC3EHiPvL0Velbap0k06oQUD2kU3GmigZoLG9gP7MSDXeAVXfyJYIUU0fLCkpMAT1iavTI5tmSLDKKJNSy2ZRwqxLbaottHtQWN57jUgORkUYmxOCBm4RLdmGPPPWB9y51gVr_wfYDj2O6sIh5H6iESg");'>
+<div class="p-6">
+<p class="text-white tracking-tight text-4xl font-bold leading-tight">Experience Premium Cannabis</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-1 bg-background-dark"></div>
+<!-- Primary Action Cards -->
+<div class="flex flex-col gap-2">
+<!-- Card 1: Browse Products -->
+<div class="p-4 pt-2 @container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="Artistic display of various cannabis products like edibles and flowers." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7jp7BQ6hcwsPTtFdTTaDQGIFrjEvfdYlTTDk7sco6avjobOJmtyDALeXiZQo-Q3wMm55A7dx1whXcoSpXGCvqBNFvD5cscJErlwKi7HzqTmwB9gJL12UK7rsVCrZpA7oOS3GQ23P2YoKauAOyxB0oyl1RnTUgSwaapXgvAmMjZgqVh3RmwsMvWBS-IA6WDTFUpf-6qBHY_Wms6QKskedZayWX4aXakiCzDgz4aYs6byjUtHuiJcykKtuhB37DD7Q4uSeq_k7ACUg");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 py-4 @xl:px-4">
+<p class="text-lg font-bold leading-tight tracking-tight text-white">Browse Our Products</p>
+<div class="flex items-end gap-3 justify-between">
+<p class="text-gray-400 text-base font-normal leading-normal">Explore our curated selection of flower, edibles, and more.</p>
+<button class="flex min-w-[96px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-primary/90">
+<span class="truncate">View Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Find a Location -->
+<div class="p-4 pt-2 @container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A stylized map showing pins for dispensary locations." data-location="Arizona" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBprJYCh39GJtUmoB7X6pbB2qjIjgoH-t_Tbtb_JUx4mqr1k0YfUY1Mji5TLjGvXnvtlLAU062bq8Vok8n5O6O7nfABgVsDj-zDwNoofwNmgH5DN3_WyXwIaDnhWKScbGaBjfFi_xHiwHRxMPwqpqAx6fazRELWFos8HJ9g9rP6uRnEKXLeRF1AVLMfQO4uKCUuQQYU0JcdVs73C-9AZTSywji-RzTnpOAP2ETvXEYtgXXADbh5ZDdnIEw7jjHMIEMgXuDiqdiItFY");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 py-4 @xl:px-4">
+<p class="text-lg font-bold leading-tight tracking-tight text-white">Find a Location</p>
+<div class="flex items-end gap-3 justify-between">
+<p class="text-gray-400 text-base font-normal leading-normal">Locate your nearest Mohave Cannabis Co. dispensary.</p>
+<button class="flex min-w-[96px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-primary/90">
+<span class="truncate">View Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Upcoming Events -->
+<div class="p-4 pt-2 @container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="People enjoying an outdoor event at dusk, with festive lights." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRS_beufGGnuqWfdmvBVm9mqyPG4G6JSZby98VgvZDSB7R16yrqfecugXiiU0pQCLr0igjX8yRh0Jp9Yjh5R5FEazg-AnvXtIPySeTDIsz5uMB8NJ_yiwGF7X_WHCD-X-iXFKDVmirDVO9HIqoKZL9VeDFR5aBMkR44bqmB3d2i6_84GQp6OjK_F1_ccI6FiWOMTw2SB5ab75TeBg8MoPUQa6DyKXAGBB-uFJcbUQJ_GBUjoWOiMlBE0DhpQyxB2kD57Og13JBGUg");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 py-4 @xl:px-4">
+<p class="text-lg font-bold leading-tight tracking-tight text-white">Upcoming Events</p>
+<div class="flex items-end gap-3 justify-between">
+<p class="text-gray-400 text-base font-normal leading-normal">Check our calendar for special events and promotions.</p>
+<button class="flex min-w-[96px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-primary/90">
+<span class="truncate">View Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
