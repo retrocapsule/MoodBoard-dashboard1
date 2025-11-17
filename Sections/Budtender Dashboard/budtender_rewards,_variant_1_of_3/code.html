@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Rewards</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1d1b15",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<main class="flex-1 pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Rewards</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-primary gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-primary text-2xl">history</span>
+</button>
+</div>
+</div>
+<!-- Points Balance Card -->
+<div class="p-4">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#2c2920]">
+<div class="flex w-full min-w-72 grow flex-col items-center justify-center gap-1 py-6 px-4 text-center">
+<p class="text-primary text-sm font-normal leading-normal uppercase tracking-wider">MOHAVE POINTS</p>
+<p class="text-white text-5xl font-bold leading-tight tracking-[-0.015em]">2,540</p>
+</div>
+</div>
+</div>
+<!-- Chips / Filters -->
+<div class="flex gap-3 p-4 overflow-x-auto scrollbar-hide">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4">
+<p class="text-background-dark text-sm font-medium leading-normal">All</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] px-4">
+<p class="text-white text-sm font-medium leading-normal">Apparel</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] px-4">
+<p class="text-white text-sm font-medium leading-normal">Gear</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] px-4">
+<p class="text-white text-sm font-medium leading-normal">Experiences</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#3e3a2d] px-4">
+<p class="text-white text-sm font-medium leading-normal">Cash Cards</p>
+</div>
+</div>
+<!-- Image Grid / Rewards Catalog -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
+<!-- Item 1: Affordable -->
+<div class="flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A person wearing a black hoodie with the Mohave logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkwSHUnnPxpntRwcvT_ZvaKO4jXlU6j7LWo-m5IU3QwC9M9_zWX6L6sqyBbRwiT-j35Ap6GSxuMPdsbFVEoKlpuxrkUsimR-KzP5nGRKsRoIklJQLPtFyNmDqQkEcgp31oV5jEFumYfnq35BkzQngRKz4z-sLx09URgfBn54VAmg1p1U_ar-b7Otw3XW5GTndVM9uqpTrpAhJoXQHLf4rwT4T9XisvINYK6rw3iGU948hbkPqyn79rNpgiTURh7cHC3zJ0amIBur4");'></div>
+<div class="flex flex-col gap-2">
+<div>
+<p class="text-white text-base font-medium leading-normal">Mohave Hoodie</p>
+<p class="text-[#bab3a0] text-sm font-normal leading-normal">1,500 PTS</p>
+</div>
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-primary text-background-dark text-sm font-bold">Redeem</button>
+</div>
+</div>
+<!-- Item 2: Affordable -->
+<div class="flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A close-up of a metal cannabis grinder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIg5dK-Q0pvUkSIZpFOiTcJoG_UYuMdARQF64WLOeCFV9TGp303uDaP8bblPojU9JxljcRGG-6VvoeZyGnOy-kQEYSB-74uuxHlbVkEIENZbuchOeJJZE0K3P7qX8vkn38mNknMsnFqQf_Qh_yoHvf_SwQIRL8v9ckBoncmQWmyyAUATQfi28rYMpUc6l6HeDksRwrcrt70YPbi5Q_1vnHO8ixfRgoJK5QHDKJXc_ksvyYFrqjlkxxfVCT7G4WhkDgmPDhW0zNoGk");'></div>
+<div class="flex flex-col gap-2">
+<div>
+<p class="text-white text-base font-medium leading-normal">Branded Grinder</p>
+<p class="text-[#bab3a0] text-sm font-normal leading-normal">750 PTS</p>
+</div>
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-primary text-background-dark text-sm font-bold">Redeem</button>
+</div>
+</div>
+<!-- Item 3: Unaffordable (Disabled) -->
+<div class="flex flex-col gap-3 opacity-50">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A crowd at a concert with bright stage lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhXr4tIcKv5thfWrKijxqFgTeirgny2OP2CHCibb3EjTDNkWaiSTvisA2kkglEM1X9H67S6M_N0mJKqHEntUl03AmuM_YygHDrpIR-EEX4WKGccCZbfv2BtXCJSfuipEDdT_UlI2Kmzm1l6enz-EQVpJX8SWiESoAWm8PSZWZf-tz8Nlb8TYtvVdvZhBuSxmiSWNpDQwU5NRomYh7dTj0kQHKycCSvW4KzLUEfFUt3jRPDLm4_U7TgiiIVoidISI_pp7Vrl25jMd4");'></div>
+<div class="flex flex-col gap-2">
+<div>
+<p class="text-white text-base font-medium leading-normal">Concert Tickets</p>
+<p class="text-[#bab3a0] text-sm font-normal leading-normal">5,000 PTS</p>
+</div>
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-[#3e3a2d] text-[#7a7568] text-sm font-bold cursor-not-allowed">Redeem</button>
+</div>
+</div>
+<!-- Item 4: Affordable -->
+<div class="flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A black snapback cap with a white logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBD9uFrNVT_fgE2rkzw5fZaSWdF4lerMDbhIzO_xwSelhHF7OLnZEG8C0NUJvhgRn2a4xh6z1P4Ut4m2pHTk12qCuWHj6Wx8usl55BaXn-sSjfyhx3GEOb52lge9D-hevftEBfg96cKrn4ZPi5XmNAiVRA7dCNLwd7bWjEF5wwYDbqsmihgunzLL8g6HWXnH3sRGnC2l9RTBroZjKvU-9Tqpz8_V1RGWxODs8vyb3jvT3_udGHtq-vBdFjL8yxNuQhPiki7JKZOE84");'></div>
+<div class="flex flex-col gap-2">
+<div>
+<p class="text-white text-base font-medium leading-normal">Mohave Snapback</p>
+<p class="text-[#bab3a0] text-sm font-normal leading-normal">600 PTS</p>
+</div>
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-primary text-background-dark text-sm font-bold">Redeem</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<footer class="fixed bottom-0 left-0 right-0">
+<div class="flex gap-2 border-t border-[#3e3a2d] bg-[#2c2920] px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center text-2xl">home</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center text-2xl">grid_view</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center text-2xl">qr_code_scanner</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Scan</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Rewards</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#bab3a0]" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center text-2xl">person</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+</body></html>

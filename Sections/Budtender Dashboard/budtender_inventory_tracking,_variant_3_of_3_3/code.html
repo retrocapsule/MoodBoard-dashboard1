@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Tracking</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#a68d48",
+            "background-light": "#f0f0f0",
+            "background-dark": "#1c1c1e",
+            success: "#22c55e",
+            warning: "#f59e0b",
+            danger: "#ef4444",
+          },
+          fontFamily: {
+            display: ["Roboto", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .material-icons-outlined {
+      font-size: 24px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-300">
+<div class="mx-auto max-w-sm">
+<header class="flex items-center justify-between p-4 bg-background-light dark:bg-[#2c2c2e]">
+<span class="material-icons-outlined text-primary">menu</span>
+<h1 class="text-sm font-bold tracking-wider text-gray-300 dark:text-gray-300">INVENTORY</h1>
+<div class="w-8 h-8 rounded-full border border-primary flex items-center justify-center">
+<span class="material-icons-outlined text-primary text-xl">person_outline</span>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444] text-center">
+<h2 class="text-xs font-bold tracking-wider text-gray-500 mb-2">INVENTORY HEALTH</h2>
+<div class="flex justify-around items-end">
+<div>
+<p class="text-3xl font-bold text-success">68%</p>
+<p class="text-xs text-gray-400">In Stock</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-warning">21%</p>
+<p class="text-xs text-gray-400">Low Stock</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-danger">11%</p>
+<p class="text-xs text-gray-400">Out of Stock</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<h2 class="text-xs font-bold tracking-wider text-gray-500">PRODUCTS</h2>
+<button class="flex items-center space-x-2 py-2 px-4 text-primary border border-primary rounded-md text-sm font-semibold">
+<span class="material-icons-outlined text-base">edit</span>
+<span>BULK ADJUST</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444] flex items-center">
+<span class="w-2.5 h-2.5 bg-success rounded-full mr-4 flex-shrink-0"></span>
+<div class="flex-grow">
+<p class="font-semibold text-white">OG Kush 3.5g</p>
+<p class="text-sm text-gray-400">SKU: MK-OGK35</p>
+</div>
+<div class="text-right mr-4">
+<p class="font-semibold text-white">152</p>
+<p class="text-sm text-gray-400">units</p>
+</div>
+<span class="material-icons-outlined text-primary cursor-pointer">more_vert</span>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444] flex items-center">
+<span class="w-2.5 h-2.5 bg-warning rounded-full mr-4 flex-shrink-0"></span>
+<div class="flex-grow">
+<p class="font-semibold text-white">Sour Diesel 1g Pre-roll</p>
+<p class="text-sm text-gray-400">SKU: MK-SDP10</p>
+</div>
+<div class="text-right mr-4">
+<p class="font-semibold text-white">18</p>
+<p class="text-sm text-gray-400">units</p>
+</div>
+<span class="material-icons-outlined text-primary cursor-pointer">more_vert</span>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444] flex items-center">
+<span class="w-2.5 h-2.5 bg-success rounded-full mr-4 flex-shrink-0"></span>
+<div class="flex-grow">
+<p class="font-semibold text-white">Blue Dream Vape Cart</p>
+<p class="text-sm text-gray-400">SKU: MK-BDV50</p>
+</div>
+<div class="text-right mr-4">
+<p class="font-semibold text-white">89</p>
+<p class="text-sm text-gray-400">units</p>
+</div>
+<span class="material-icons-outlined text-primary cursor-pointer">more_vert</span>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444] flex items-center">
+<span class="w-2.5 h-2.5 bg-danger rounded-full mr-4 flex-shrink-0"></span>
+<div class="flex-grow">
+<p class="font-semibold text-white">CBD Tincture 500mg</p>
+<p class="text-sm text-gray-400">SKU: MC-CBT500</p>
+</div>
+<div class="text-right mr-4">
+<p class="font-semibold text-white">0</p>
+<p class="text-sm text-gray-400">units</p>
+</div>
+<span class="material-icons-outlined text-primary cursor-pointer">more_vert</span>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-[#2c2c2e] border-t border-[#444] flex justify-around p-2">
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">spa</span>
+<span class="text-xs">Products</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-icons-outlined">inventory_2</span>
+<span class="text-xs">Inventory</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">chat_bubble_outline</span>
+<span class="text-xs">Customers</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">bar_chart</span>
+<span class="text-xs">Analytics</span>
+</a>
+</footer>
+</div>
+
+</body></html>

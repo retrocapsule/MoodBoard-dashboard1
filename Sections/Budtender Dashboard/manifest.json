@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_1",
+      "name": "budtender_inventory_tracking,_variant_3_of_3_1",
+      "html": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_1/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_1/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_2",
+      "name": "budtender_inventory_tracking,_variant_3_of_3_2",
+      "html": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_2/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_2/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_3",
+      "name": "budtender_inventory_tracking,_variant_3_of_3_3",
+      "html": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_4",
+      "name": "budtender_inventory_tracking,_variant_3_of_3_4",
+      "html": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_4/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_inventory_tracking,_variant_3_of_3_4/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_1_of_3",
+      "name": "budtender_product_mgmt.,_variant_1_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_2_of_3",
+      "name": "budtender_product_mgmt.,_variant_2_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_3_of_3",
+      "name": "budtender_product_mgmt.,_variant_3_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_product_mgmt.,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_rewards",
+      "name": "budtender_rewards",
+      "html": "Sections/Budtender Dashboard/budtender_rewards/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_rewards/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_rewards,_variant_1_of_3",
+      "name": "budtender_rewards,_variant_1_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_rewards,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_rewards,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_rewards,_variant_2_of_3",
+      "name": "budtender_rewards,_variant_2_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_rewards,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_rewards,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_rewards,_variant_3_of_3",
+      "name": "budtender_rewards,_variant_3_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_rewards,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_rewards,_variant_3_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_1_of_3",
+      "name": "budtender_sales_analytics,_variant_1_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_1_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_1_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_2_of_3",
+      "name": "budtender_sales_analytics,_variant_2_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_2_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_2_of_3/screen.png"
+    },
+    {
+      "folder": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_3_of_3",
+      "name": "budtender_sales_analytics,_variant_3_of_3",
+      "html": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_3_of_3/code.html",
+      "thumbnail": "Sections/Budtender Dashboard/budtender_sales_analytics,_variant_3_of_3/screen.png"
+    }
+  ]
+}

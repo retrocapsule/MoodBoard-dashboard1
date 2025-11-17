@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Interaction</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#a68d48",
+            "background-light": "#f0f0f0",
+            "background-dark": "#1c1c1e",
+          },
+          fontFamily: {
+            display: ["Roboto", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .material-icons-outlined {
+      font-size: 24px;
+    }
+    .form-select, .form-input {
+      background-color: #3a3a3c;
+      border-color: #545458;
+      color: #e5e5e7;
+    }
+    .form-select:focus, .form-input:focus {
+      --tw-ring-color: #a68d48;
+      border-color: #a68d48;
+    }
+    .dark .form-select, .dark .form-input {
+      background-color: #3a3a3c;
+      border-color: #545458;
+      color: #e5e5e7;
+    }
+    .light .form-select, .light .form-input {
+      background-color: #ffffff;
+      border-color: #d1d5db;
+      color: #111827;
+    }
+    .progress-bar::-webkit-progress-bar {
+      background-color: #545458;
+      border-radius: 9999px;
+    }
+    .progress-bar::-webkit-progress-value {
+      background-color: #a68d48;
+      border-radius: 9999px;
+    }
+    .progress-bar::-moz-progress-bar {
+      background-color: #a68d48;
+      border-radius: 9999px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="mx-auto max-w-sm">
+<header class="flex items-center justify-between p-4 bg-background-light dark:bg-[#2c2c2e]">
+<span class="material-icons-outlined text-primary">search</span>
+<h1 class="text-sm font-bold tracking-wider text-gray-300 dark:text-gray-300">CUSTOMER INTERACTION</h1>
+<div class="w-8 h-8 rounded-full border border-primary flex items-center justify-center">
+<span class="material-icons-outlined text-primary text-xl">person_outline</span>
+</div>
+</header>
+<main class="p-4 space-y-4">
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-background-light dark:bg-[#3a3a3c] text-gray-900 dark:text-gray-300 border border-primary rounded-lg focus:ring-primary focus:border-primary" placeholder="Search Customer by Name or ID" type="text"/>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444]">
+<h2 class="text-xs font-bold tracking-wider text-gray-500 mb-4">CUSTOMER PROFILE</h2>
+<div class="flex items-center mb-4">
+<img alt="Customer profile picture" class="w-14 h-14 rounded-full mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqu3ke5CPE7UXb4jSuH1dLxyttvbGC3B3ncYQR3HdyNN5NUFDtFZmiWpZgLU62L8BpuyeIUTLk4WxsFqa-zdVoKNgoOHr8syg90zqyNtw_PcVpja7qtCTYrkfyqeQLLfgt9eRwbf2I9NL1r6j-PfRVtb0VGT9DR3IyX07IUjowPXzkxI0HI9GAx9NT421y640rUA89yHfgHwo8GkeIiHh4cT0uVBYmktHFcXTVuYyNhB72cmXgl9VbDpdYjeIi4NjPstoiIkxJiWA"/>
+<div>
+<p class="text-lg font-semibold text-white">John Doe</p>
+<p class="text-sm text-gray-400">Member ID: #JOHND234</p>
+</div>
+</div>
+<div class="flex space-x-4">
+<button class="flex-1 py-2 px-4 text-primary border border-primary rounded-md text-sm font-semibold">VIEW HISTORY</button>
+<button class="flex-1 py-2 px-4 text-primary border border-primary rounded-md text-sm font-semibold">APPLY POINTS</button>
+</div>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444]">
+<h2 class="text-xs font-bold tracking-wider text-gray-500 mb-4">PURCHASE HISTORY</h2>
+<div class="space-y-2">
+<div class="flex items-center text-gray-300">
+<span class="bg-primary text-[#2c2c2e] text-xs font-bold px-2 py-1 rounded-md mr-4">10/26/23</span>
+<span>OG Kush 3.5g, Edibles</span>
+</div>
+<div class="w-full h-px bg-[#444]"></div>
+<div class="flex items-center text-gray-300">
+<span class="bg-primary text-[#2c2c2e] text-xs font-bold px-2 py-1 rounded-md mr-4">10/26/23</span>
+<span>OG Kush 3.5g, Edibles</span>
+</div>
+</div>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444]">
+<h2 class="text-xs font-bold tracking-wider text-gray-500 mb-4">LOYALTY POINTS</h2>
+<p class="text-5xl font-bold text-white">1,250</p>
+<p class="text-sm text-gray-400 mb-2">Available Points</p>
+<progress class="w-full h-1.5 progress-bar" max="100" value="83"></progress>
+<p class="text-right text-xs text-gray-400 mt-1">Next Reward at 1,500 pts</p>
+<button class="w-full mt-4 py-2 px-4 text-primary border border-primary rounded-md text-sm font-semibold">REDEEM REWARDS</button>
+</div>
+<div class="bg-[#2c2c2e] p-4 rounded-lg border border-[#444]">
+<h2 class="text-xs font-bold tracking-wider text-gray-500 mb-4">COMMUNICATE</h2>
+<div class="space-y-4">
+<div>
+<label class="text-sm text-gray-400 mb-1 block" for="message-type">Message Type</label>
+<div class="relative">
+<select class="w-full appearance-none pl-4 pr-10 py-2 border rounded-md focus:outline-none form-select" id="message-type">
+<option>Personalized Offer</option>
+<option>General Announcement</option>
+</select>
+<span class="material-icons-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<input class="w-full px-4 py-2 border rounded-md focus:outline-none form-input" placeholder="Type your message..." type="text"/>
+<button class="flex items-center justify-center space-x-2 w-full py-2">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<span class="material-icons-outlined text-[#2c2c2e] transform -rotate-45 -translate-x-px translate-y-px">send</span>
+</div>
+<span class="text-sm font-semibold text-primary">SEND MESSAGE</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-[#2c2c2e] border-t border-[#444] flex justify-around p-2">
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">spa</span>
+<span class="text-xs">Products</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">inventory_2</span>
+<span class="text-xs">Inventory</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-icons-outlined">chat_bubble_outline</span>
+<span class="text-xs">Customers</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary" href="#">
+<span class="material-icons-outlined">bar_chart</span>
+<span class="text-xs">Analytics</span>
+</a>
+</footer>
+</div>
+
+</body></html>

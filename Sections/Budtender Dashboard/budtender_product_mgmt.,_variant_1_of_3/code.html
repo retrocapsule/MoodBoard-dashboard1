@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#1d1b15", // Per instructions, dark theme is default
+            "background-dark": "#1d1b15",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center bg-background-dark/80 px-4 py-3 backdrop-blur-sm">
+<button class="mr-2 flex h-10 w-10 items-center justify-center text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-bold leading-tight tracking-tight text-white">Product Management</h1>
+</header>
+<main class="flex-1 px-4">
+<!-- Search Bar -->
+<div class="py-3">
+<label class="flex h-12 w-full flex-col">
+<div class="flex h-full w-full flex-1 items-stretch rounded-lg border border-primary/50 bg-[#2a2822] focus-within:border-primary">
+<div class="flex items-center justify-center pl-4 text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input h-full min-w-0 flex-1 resize-none overflow-hidden border-none bg-transparent px-3 text-base font-normal leading-normal text-white placeholder:text-[#999999] focus:outline-0 focus:ring-0" placeholder="Search by name, strain..." value=""/>
+</div>
+</label>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 py-3">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full border border-primary bg-primary px-4">
+<p class="text-sm font-medium leading-normal text-background-dark">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full border border-white/20 bg-[#2a2822] px-4">
+<p class="text-sm font-medium leading-normal text-[#EAEAEA]">Strain</p>
+<span class="material-symbols-outlined !text-[20px] text-[#999999]">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full border border-white/20 bg-[#2a2822] px-4">
+<p class="text-sm font-medium leading-normal text-[#EAEAEA]">Potency</p>
+<span class="material-symbols-outlined !text-[20px] text-[#999999]">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full border border-white/20 bg-[#2a2822] px-4">
+<p class="text-sm font-medium leading-normal text-[#EAEAEA]">Category</p>
+<span class="material-symbols-outlined !text-[20px] text-[#999999]">expand_more</span>
+</button>
+</div>
+<!-- Product List -->
+<div class="flex flex-col gap-4 py-4">
+<!-- Product Card 1 -->
+<div class="flex items-center gap-4 rounded-xl bg-[#2a2822] p-4">
+<div class="flex-shrink-0">
+<img class="h-20 w-20 object-contain" data-alt="A cannabis nug of OG Kush" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtsjaYxCLkxZ3-jOApt_936u160MLBfF6oaUkGxvIdDinTSWzEMJKwrrDYJHXNLBM1_y5F3pKpsmoTqgJB_h22rkvI1xdmnyo6-PDLtY8sA5jp8d1bv4L7xsHiGCoCKU3qEIb2vY4RIj-rx-9QH21SnlSie-gqx6LUTuas05Cy6f6kkKUAeEyIy-lsNy_zQa6lXV5k0VEW3jj-pLoG7JRPj8AOQ5IEH_Zfb8bg_YDmY1YcwC3bp_TiFgnbz18JrZK-bKRLul3aG4Y"/>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-lg font-bold text-white">OG Kush</h3>
+<p class="text-base font-semibold text-white">102<span class="text-sm font-normal text-[#999999]"> units</span></p>
+</div>
+<p class="text-sm text-[#999999]">Indica • 24% THC</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-primary/20 px-2 py-0.5 text-xs font-medium text-primary">In Stock</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center text-[#999999]">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Product Card 2 -->
+<div class="flex items-center gap-4 rounded-xl bg-[#2a2822] p-4">
+<div class="flex-shrink-0">
+<img class="h-20 w-20 object-contain" data-alt="A cannabis nug of Blue Dream" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4dXyvVVkt_XrDEXoFuiwWY4FLFo7hbNYUIudFJZS2WdnT92eckkR8geeXf9ApvSSmLnVo3vFPYaY0k0O5O3wec7_vOiRlgJhTq-u-zpBUDVKVCa_eIdcdVCokziIdxUKIBbLBUG1JWxDPlvEhS1qxIfVbS9upBwI_nuGWW8Z4zVI2MdNFRAULMiEC6z6wNr2ijiDbmO-rPbD6u_1JtvA_FYMH9BxnDfmYf5H4qBjp88oGvoZjEVsDupO-hdo-P3QCQet0rHa3zrI"/>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-lg font-bold text-white">Blue Dream</h3>
+<p class="text-base font-semibold text-white">48<span class="text-sm font-normal text-[#999999]"> units</span></p>
+</div>
+<p class="text-sm text-[#999999]">Sativa • 21% THC</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-orange-500/20 px-2 py-0.5 text-xs font-medium text-orange-400">Low Stock</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center text-[#999999]">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Product Card 3 -->
+<div class="flex items-center gap-4 rounded-xl bg-[#2a2822] p-4">
+<div class="flex-shrink-0">
+<img class="h-20 w-20 object-contain" data-alt="A cannabis nug of Sour Diesel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhLRudS90x2ZmDM-UQB6YllG3ZULEUmVxpAbZOz6BIBsrihyNxV8iZK7AXfxwTxcGyUa7MA27qkohyszWp78Th6lpZb6wtA6eSVwO9EMr6qqinF1eJXZQGLHlhXHuWlC6kw9sLaEYr5wqc7Q1SaaLOoYfnUvMon_4Xo9R9SDa5O2T-EKU-FojXA3b-XZ_zfK_IRVK8L-960-l0XDhjMYM9EAARjhtA8KRggiSOI0--VbXk_VazKEaRhco1q_9ca1tRqwxhW-CLpnY"/>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-lg font-bold text-white">Sour Diesel</h3>
+<p class="text-base font-semibold text-white">150<span class="text-sm font-normal text-[#999999]"> units</span></p>
+</div>
+<p class="text-sm text-[#999999]">Sativa • 26% THC</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-primary/20 px-2 py-0.5 text-xs font-medium text-primary">In Stock</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center text-[#999999]">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Product Card 4 -->
+<div class="flex items-center gap-4 rounded-xl bg-[#2a2822] p-4 opacity-60">
+<div class="flex-shrink-0">
+<img class="h-20 w-20 object-contain grayscale" data-alt="A cannabis nug of Granddaddy Purple" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCstM5K98bkWpjVhSZTsvKzxiCfYda726-LfjxLUHDnGngcNr_BvMlZhuEepVjsMmehz5J8XLVnExLBAa0o8YjqOUiGyZOYiQCNAKwTCbXTUunXOg-tgj8Itx3IjQaOY57pktgHxq4DJHp2UboZDoAOMBnz27Ivy4Bd4-1OdZiyC_HZ6AJKfp-aL9Yw-arVF3jWTvxpj4A1LSbyyw46f1rqQpVJguyYWm-ZI10cuRrXKFUW9SEVBTTCwyw4Z8umqUaBenii3xcRY1A"/>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-lg font-bold text-white">Granddaddy Purp</h3>
+<p class="text-base font-semibold text-white">0<span class="text-sm font-normal text-[#999999]"> units</span></p>
+</div>
+<p class="text-sm text-[#999999]">Indica • 23% THC</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-red-500/20 px-2 py-0.5 text-xs font-medium text-red-400">Out of Stock</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center text-[#999999]">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="sticky bottom-6 right-6 z-10 self-end pr-4">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-lg">
+<span class="material-symbols-outlined !text-[28px] text-background-dark">add</span>
+</button>
+</div>
+</div>
+</body></html>

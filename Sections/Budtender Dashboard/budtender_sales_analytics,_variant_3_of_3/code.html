@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Sales Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center justify-between gap-4 bg-background-dark/80 px-4 backdrop-blur-sm">
+<h1 class="text-xl font-bold text-[#EAEAEA]">Sales Analytics</h1>
+<button class="flex items-center gap-2 rounded-lg bg-[#1E1E1E] px-3 py-2 text-sm font-medium text-primary">
+<span>Last 7 Days</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col gap-4 p-4 pb-24">
+<!-- KPI Card 1: Total Sales -->
+<div class="flex flex-col gap-2 rounded-xl border border-[#1E1E1E] bg-[#1E1E1E] p-5">
+<div class="flex items-center justify-between">
+<p class="text-base font-medium text-[#EAEAEA]">Total Sales</p>
+<span class="material-symbols-outlined text-xl text-[#888888]">chevron_right</span>
+</div>
+<p class="text-4xl font-bold tracking-tight text-[#EAEAEA]">$12,482</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-[#888888]">vs. previous 7 days</p>
+<p class="text-sm font-medium text-green-500">+12.5%</p>
+</div>
+<div class="mt-4 flex min-h-[120px] flex-1 flex-col">
+<svg fill="none" preserveaspectratio="none" viewbox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#paint0_linear_chart1)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#a68d48" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_chart1" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#a68d48" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#a68d48" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- KPI Card 2: Average Transaction Value -->
+<div class="flex flex-col gap-3 rounded-xl border border-[#1E1E1E] bg-[#1E1E1E] p-5">
+<div class="flex items-center justify-between">
+<p class="text-base font-medium text-[#EAEAEA]">Average Transaction Value</p>
+<span class="material-symbols-outlined text-xl text-[#888888]">chevron_right</span>
+</div>
+<p class="text-4xl font-bold tracking-tight text-[#EAEAEA]">$58.30</p>
+<div class="mt-2 flex flex-col gap-2">
+<div class="h-2 rounded-full bg-[#333333]">
+<div class="h-2 rounded-full bg-primary" style="width: 85%;"></div>
+</div>
+<p class="text-sm text-[#888888]">vs. $68.00 Goal</p>
+</div>
+</div>
+<!-- KPI Card 3: Top Selling Product -->
+<div class="flex items-center gap-4 rounded-xl border border-[#1E1E1E] bg-[#1E1E1E] p-5">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-2xl text-primary">sell</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-base font-medium text-[#EAEAEA]">Top Selling Product</p>
+<p class="text-sm text-[#888888] line-clamp-1">Mohave Gold 'Indica' Pre-Roll</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-base font-medium text-[#EAEAEA]">1,204</p>
+<p class="text-sm text-[#888888]">units</p>
+</div>
+</div>
+<!-- KPI Card 4: Customer Metrics -->
+<div class="flex flex-col gap-2 rounded-xl border border-[#1E1E1E] bg-[#1E1E1E] p-5">
+<div class="flex items-center justify-between">
+<p class="text-base font-medium text-[#EAEAEA]">Customer Metrics</p>
+<span class="material-symbols-outlined text-xl text-[#888888]">chevron_right</span>
+</div>
+<p class="text-4xl font-bold tracking-tight text-[#EAEAEA]">247</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-[#888888]">New vs Returning</p>
+<p class="text-sm font-medium text-green-500">+8.2% new</p>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="h-2 w-full rounded-full bg-[#333333]">
+<div class="h-2 rounded-full bg-primary" style="width: 65%;"></div>
+</div>
+<p class="text-sm font-medium text-[#EAEAEA]">160 <span class="text-[#888888]">New</span></p>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="h-2 w-full rounded-full bg-[#333333]">
+<div class="h-2 rounded-full bg-primary/50" style="width: 35%;"></div>
+</div>
+<p class="text-sm font-medium text-[#EAEAEA]">87 <span class="text-[#888888]">Returning</span></p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-10 flex h-20 items-center justify-around border-t border-[#1E1E1E] bg-background-dark/80 backdrop-blur-sm">
+<a class="flex flex-col items-center gap-1 text-[#888888] hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#888888] hover:text-primary" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-xs font-medium">Inventory</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#888888] hover:text-primary" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-xs font-medium">Customers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-xs font-bold">Analytics</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#888888] hover:text-primary" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+</nav>
+</div>
+</body></html>

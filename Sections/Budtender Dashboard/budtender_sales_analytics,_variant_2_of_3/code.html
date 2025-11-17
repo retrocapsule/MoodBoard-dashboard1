@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Sales Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a68d48",
+            "background-light": "#f7f7f6",
+            "background-dark": "#121212",
+            "card-dark": "#1E1E1E",
+            "text-light": "#e0e0e0",
+            "text-muted": "#8a8a8a"
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10 p-4 pb-2 justify-between">
+<div class="text-text-light flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Sales Dashboard</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-text-light gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Quick Filter Chips -->
+<div class="flex gap-3 p-4 overflow-x-auto">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary pl-5 pr-5 cursor-pointer">
+<p class="text-black text-sm font-bold leading-normal">Today</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark pl-5 pr-5 cursor-pointer">
+<p class="text-text-light text-sm font-medium leading-normal">This Week</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark pl-5 pr-5 cursor-pointer">
+<p class="text-text-light text-sm font-medium leading-normal">This Month</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark pl-5 pr-5 cursor-pointer">
+<p class="text-text-light text-sm font-medium leading-normal">All Time</p>
+</div>
+</div>
+<!-- Primary Data Visualization Card: Heat Map -->
+<div class="flex flex-col gap-4 px-4 py-2">
+<div class="flex w-full flex-col gap-4 rounded-xl bg-card-dark p-6">
+<p class="text-white text-base font-bold leading-normal">Sales by Category</p>
+<p class="text-white tracking-tight text-[40px] font-bold leading-none truncate">$3,127.50</p>
+<div class="flex gap-2 items-center">
+<p class="text-text-muted text-base font-normal leading-normal">Today</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-lg">arrow_upward</span>
+<p class="text-green-400 text-base font-medium leading-normal">+8.2%</p>
+</div>
+</div>
+<!-- Heat Map Grid -->
+<div class="grid grid-cols-3 gap-2 pt-4">
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/70 aspect-square">
+<p class="text-white font-bold text-lg">Flower</p>
+<p class="text-black font-semibold text-sm">$1.8k</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/50 aspect-square">
+<p class="text-white font-bold text-lg">Edibles</p>
+<p class="text-white/80 font-semibold text-sm">$650</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/90 aspect-square">
+<p class="text-white font-bold text-lg">Vapes</p>
+<p class="text-black font-semibold text-sm">$2.4k</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/30 aspect-square">
+<p class="text-white font-bold text-lg">Pre-rolls</p>
+<p class="text-white/80 font-semibold text-sm">$275</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/20 aspect-square">
+<p class="text-white font-bold text-lg">Extracts</p>
+<p class="text-white/80 font-semibold text-sm">$150</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-3 rounded-lg bg-primary/40 aspect-square">
+<p class="text-white font-bold text-lg">Topicals</p>
+<p class="text-white/80 font-semibold text-sm">$420</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header for Top Performing Products -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Top Performing Products</h3>
+<!-- List of Top Performing Products -->
+<div class="flex flex-col gap-1 pb-24 px-2">
+<div class="flex items-center gap-4 bg-transparent px-2 min-h-[72px] py-2 justify-between rounded-lg hover:bg-card-dark">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Cannabis product in a jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5DNTuTA3WC8IIyULEBxDFMDvGQrVeLByj7yPvEMRC2dr2LA9pm22C7p4dgnnvfgTFfeycTPAJcIhk4aDDruPSUEdmruBVvXzLS4JuCxBQVfqIDbuCLm6MaJLNp3tBMoZgxTT0tje6Wn9TZHqf-LPNviKXhLX62AMXCN7i-So1FfqFO-DuJX_oqLs4J0QoqLe5-QyuLUS-uhf1M3FTsPi9ulUGtOjt_Wa1x3eX_7ZMi3FlqMrSsGEKmFTbzo4elhAcY_2z3-x8_dY");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">OG Kush 1/8th</p>
+<p class="text-text-muted text-sm font-normal leading-normal line-clamp-2">150 Units Sold</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-base font-bold leading-normal">$3,500</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-transparent px-2 min-h-[72px] py-2 justify-between rounded-lg hover:bg-card-dark">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Vape pen on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeDhv-5zNV5Er3JZW9p0xyXxacreTbzFkLnLQj4imgJY4CtcsVFC3OeNj3stofAxl_1hDlwq44OryTrr3Km6XjPqvF2Ka31K3oiVG9Dk41w5XRyeRIh4MeSdQ48B_FIceRpO47HCYJm7N4h-gxIJTjpF_96Hrb1i53UZLBEky4pUrEpjjEuoNvDzf9WEsZL-wBJGJGYZMjEytqd9sKN24F6i-xl24YeagBTTNPySGaHnC1Kr_O5ADAWjHwufcuXqfp8uItZMbVnSs");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Sativa Vape Cart</p>
+<p class="text-text-muted text-sm font-normal leading-normal line-clamp-2">124 Units Sold</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-base font-bold leading-normal">$2,870</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-transparent px-2 min-h-[72px] py-2 justify-between rounded-lg hover:bg-card-dark">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Cannabis edibles in packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbAmmg6qoLeOSIHy7S7C2A5hkfEXb7EOjYhgX3DzUFNbhJ53qTr-rpZpL3s6xWG87O47-z33MQ3pvZ8iSZNq4u2ZW8bl9SEvpMbVrRxismHD6p6a_bUbX0f9dKRuSjpMpAJoa7O-XNeEYPHjge_EOeVNSlZ2FhTjhG59QWCVxH0vY6J1xaNq7WqILYdEM81HIskPRmJbvMrwpUkCQBH_Kix7jgR5yncyBKU7OizDhwNxl4pHoA9WDSBP6v2JQ5cFUng8rTp1Np6vY");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal line-clamp-1">Indica Gummies 100mg</p>
+<p class="text-text-muted text-sm font-normal leading-normal line-clamp-2">98 Units Sold</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-base font-bold leading-normal">$2,150</p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6">
+<button class="flex items-center justify-center gap-2 h-16 w-16 rounded-full bg-primary text-black shadow-lg">
+<span class="material-symbols-outlined text-3xl">qr_code_scanner</span>
+</button>
+</div>
+</div>
+</body></html>

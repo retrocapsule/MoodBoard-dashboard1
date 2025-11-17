@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1d1b15",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start text-white/80">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Product Management</h1>
+<button class="flex w-12 items-center justify-end text-primary">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</header>
+<main class="flex-grow px-4">
+<!-- Search Bar -->
+<div class="py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full">
+<div class="text-white/60 flex border-none bg-[#2c2c2c] items-center justify-center pl-4 rounded-l-full border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-white focus:outline-0 focus:ring-0 border-none bg-[#2c2c2c] focus:border-none h-full placeholder:text-white/60 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search by name or strain..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips -->
+<div class="flex gap-2 py-3 overflow-x-auto">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2c] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Category</p>
+<span class="material-symbols-outlined text-white text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2c] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Strain</p>
+<span class="material-symbols-outlined text-white text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-2">
+<p class="text-black text-sm font-bold leading-normal">Brand</p>
+<span class="material-symbols-outlined text-black text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2c] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Stock</p>
+<span class="material-symbols-outlined text-white text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2c] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">THC%</p>
+<span class="material-symbols-outlined text-white text-base">expand_more</span>
+</button>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 pt-2 pb-24">
+<div class="flex flex-col gap-3 pb-3 bg-[#2c2c2c] rounded-xl overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A nug of OG Kush cannabis strain on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXBJmutI_0CBBEQHhzhu9z5Dve4FZURIf2ZBOp4O7q3imYOHI398AzBd53l_a5m_suwJW7xrlhPmQKHMTH9B4Y2eeSzRdOW5OpBjHYPnMPH4d2QRnnpF6rmwArCKPtjTCNRJCt92lfopuZfDzJ4UAQyolXDz5Lj5FBc0eN1RoUssx7-wlcDL3WNz_hUD01RN3sWfPZXHOMK_G9zWTobQA9m8YmMyVrIw_r-B-qa8Nbmrp0B9YQj18HioSDwnRBZ4jq4iSgFjWG318");'></div>
+<div class="px-3">
+<p class="text-white text-base font-bold leading-normal">OG Kush</p>
+<div class="flex items-center gap-1 text-white/60 mt-1">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<p class="text-sm font-normal leading-normal">Stock: 15 units</p>
+</div>
+<div class="flex items-center gap-1 text-white/60">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<p class="text-sm font-normal leading-normal">Sales (7d): 32</p>
+</div>
+</div>
+<div class="px-3 pb-1">
+<button class="w-full h-9 flex items-center justify-center gap-2 rounded-full bg-primary text-black font-bold text-sm">
+<span class="material-symbols-outlined text-base">edit</span>
+                            Edit
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 bg-[#2c2c2c] rounded-xl overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A nug of Blue Dream cannabis strain on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOInJIZH_jLS5_rtXWvYlz05Zl7PB7up07Oij1ZIyTWwadh8ZVWzZpjhBGDHuYDF2eymGhxO2k9OQSrDtqjrrpJvlamxPf1GuM_--8pJD9HWev8cVHDgJpGpE9n7RfmBGBEGir-n_3Xe9QPy4WGdzemNEItR4Nt_YYUiP0f9UYTAcJWazYjaEAAoZSg35YKbNIsylyeTfBXWVJWNu5KgJzKz4MAFi6XjoPuBctfVXmSHV20Z7cFs2utyfeB6PnuQTE-BhxfWjVxRY");'></div>
+<div class="px-3">
+<p class="text-white text-base font-bold leading-normal">Blue Dream</p>
+<div class="flex items-center gap-1 text-white/60 mt-1">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<p class="text-sm font-normal leading-normal">Stock: 28 units</p>
+</div>
+<div class="flex items-center gap-1 text-white/60">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<p class="text-sm font-normal leading-normal">Sales (7d): 45</p>
+</div>
+</div>
+<div class="px-3 pb-1">
+<button class="w-full h-9 flex items-center justify-center gap-2 rounded-full bg-primary text-black font-bold text-sm">
+<span class="material-symbols-outlined text-base">edit</span>
+                            Edit
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 bg-[#2c2c2c] rounded-xl overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A nug of Sour Diesel cannabis strain on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeUnpgcBWFalPYcQpjBidhiK5fQPHXTXdtp_JLM29MDI5-UJorPuaCA-pxdGSb_tP-KanTHe7HR46AHby1vjnxDC5Ff9j9P7_kJIXkKr_HgROScaFHeoSsFi5h_vq9P38RugQAoiMHGQ9pMoIMzWHfCNCCAcpnZMC_pcyLg6y7j8Qs2FLrRRBwb08GCb2PPgzrLHdbCIdGH1p7sctSC0Ag0cdysZj69f9_lPkhDhncvEr8rKe3oUBeWJsh1y2XgokUgbolQKRsvmA");'></div>
+<div class="px-3">
+<p class="text-white text-base font-bold leading-normal">Sour Diesel</p>
+<div class="flex items-center gap-1 text-white/60 mt-1">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<p class="text-sm font-normal leading-normal">Stock: 9 units</p>
+</div>
+<div class="flex items-center gap-1 text-white/60">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<p class="text-sm font-normal leading-normal">Sales (7d): 18</p>
+</div>
+</div>
+<div class="px-3 pb-1">
+<button class="w-full h-9 flex items-center justify-center gap-2 rounded-full bg-primary text-black font-bold text-sm">
+<span class="material-symbols-outlined text-base">edit</span>
+                            Edit
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3 bg-[#2c2c2c] rounded-xl overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A nug of Pineapple Express cannabis strain on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_WXYc9PVvt1cH_bMoS_wGQPeQ4eMK9ihTx3oyRuogJy7-BK2vi5rrBUhMorb8cvysNERGjuAILjLIjJlIymcOcG1zIIoWmvMmCfs17JTtIwzttxlP7DNLSq2fUeXavDTI-ZUCDlI0mCw-6TP87xtzd6UtiOFwOflt-jE0Ty31-ZAAtQADi_607xVqRdeI5EWOHElcDiz_lo3k2RiPSzgkHXVFyB5NLVd5RFLpjlkyv6HSL2gjJIFzsZejrawoIvX4tedgQVDndks");'></div>
+<div class="px-3">
+<p class="text-white text-base font-bold leading-normal">Pineapple Express</p>
+<div class="flex items-center gap-1 text-white/60 mt-1">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<p class="text-sm font-normal leading-normal">Stock: 34 units</p>
+</div>
+<div class="flex items-center gap-1 text-white/60">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<p class="text-sm font-normal leading-normal">Sales (7d): 51</p>
+</div>
+</div>
+<div class="px-3 pb-1">
+<button class="w-full h-9 flex items-center justify-center gap-2 rounded-full bg-primary text-black font-bold text-sm">
+<span class="material-symbols-outlined text-base">edit</span>
+                            Edit
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<footer class="fixed bottom-0 left-0 right-0">
+<div class="flex gap-2 border-t border-[#3e3a2d] bg-[#2c2c2c] px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-white/60" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory</span>
+<p class="text-primary text-xs font-medium leading-normal tracking-[0.015em]">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-white/60" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-white/60" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+</body></html>

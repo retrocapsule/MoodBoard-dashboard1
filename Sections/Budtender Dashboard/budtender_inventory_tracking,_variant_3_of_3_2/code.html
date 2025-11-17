@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Lookup</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#a68d48",
+                        'background-dark': "#1c1c1e",
+                        'surface-dark': '#2c2c2e',
+                        'border-dark': '#444444',
+                        'text-light': '#e5e5e7',
+                        'text-dark': '#8e8e93',
+                    },
+                    fontFamily: {
+                        display: ["Roboto", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem", // 12px
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-text-light font-display">
+<div class="mx-auto max-w-sm flex flex-col h-screen">
+<header class="flex items-center justify-between p-4 bg-surface-dark border-b border-border-dark">
+<button class="text-primary">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-sm font-bold tracking-wider uppercase text-text-light">Customer Lookup</h1>
+<div class="w-8 h-8 rounded-full border border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+</div>
+</header>
+<main class="p-4 flex-grow space-y-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full bg-surface-dark border border-border-dark text-text-light placeholder-text-dark rounded-lg py-3 pl-12 pr-4 focus:ring-primary focus:border-primary" placeholder="Search Customer Name/ID" type="text"/>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-dark p-4 rounded-lg border border-border-dark">
+<div class="flex items-center mb-4">
+<img alt="Customer Jane Doe" class="w-12 h-12 rounded-full mr-4 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy_Q1hjpCRERbSLPA5jCT3nNAoPqP7haO1rtzpOkyEcOONXvB4XgTXVuOf9YzI5Zky8oTvUyY3hXIdIjv7EKactvvvoLr5RibzLP6HRyyBo8KnI1tCVSGMqhQbQ7xdb0lmEVj8tMQUfe1a2duZM5DOSyOE6uHlI4vD1YYnQftvCZfAezHuJAttjxF3J492UIK9YOnv2AWw_c_XCaLW9SXD-Yl0vdxtLGJKryaGzVtJcNu_r-hgtM8s1d1uGnobHni3IcfegCXsUXo"/>
+<div>
+<p class="font-semibold text-text-light">Jane Doe</p>
+<p class="text-sm text-text-dark">ID: #JANED456</p>
+</div>
+</div>
+<div class="flex space-x-3 text-sm">
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">View History</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Apply Points</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Message</button>
+</div>
+</div>
+<div class="bg-surface-dark p-4 rounded-lg border border-border-dark">
+<div class="flex items-center mb-4">
+<img alt="Customer Mike Smith" class="w-12 h-12 rounded-full mr-4 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFAc_1SXMiMrKbDtlb60G2tdz4RFodWr3cYnJb2IbkqRlgyJ9h0g5pWe7CrquV8C7e3y3twAxIAYuRN5oifmvBAa1PW7X6jbVrDgTHosg65cNiYbxNtC3_WAbosl3Eo9NXHBcWVmGBgw0xHZeBYIntpR1GJdI4bSJO83zFD_ox7q22trBgQRXN-s63TrZSnKterGbYWIxWpgQvu2Fbe-vCqQ48q0zDKJhxnLK1FGrTDEo0Gq3g-Q7CGNtdvXm-RjW3KpdkpCjdU8w"/>
+<div>
+<p class="font-semibold text-text-light">Mike Smith</p>
+<p class="text-sm text-text-dark">ID: #MIKES789</p>
+</div>
+</div>
+<div class="flex space-x-3 text-sm">
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">View History</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Apply Points</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Message</button>
+</div>
+</div>
+<div class="bg-surface-dark p-4 rounded-lg border border-border-dark">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full mr-4 bg-[#3a3a3c] flex items-center justify-center">
+<span class="text-primary font-bold text-xl">S</span>
+</div>
+<div>
+<p class="font-semibold text-text-light">Sam Wilson</p>
+<p class="text-sm text-text-dark">ID: #SAMW101</p>
+</div>
+</div>
+<div class="flex space-x-3 text-sm">
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">View History</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Apply Points</button>
+<button class="flex-1 bg-transparent border border-primary text-primary py-2 px-3 rounded-md font-semibold hover:bg-primary/10 transition-colors">Message</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-surface-dark border-t border-border-dark flex justify-around p-2">
+<a class="flex flex-col items-center text-text-dark hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">spa</span>
+<span class="text-xs">Products</span>
+</a>
+<a class="flex flex-col items-center text-text-dark hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-xs">Inventory</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-xs">Customers</span>
+</a>
+<a class="flex flex-col items-center text-text-dark hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-xs">Analytics</span>
+</a>
+</footer>
+</div>
+
+</body></html>

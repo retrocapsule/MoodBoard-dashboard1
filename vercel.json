@@ -4,6 +4,10 @@
   "framework": null,
   "rewrites": [
     {
+      "source": "/Sections/(.*)",
+      "destination": "/Sections/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohave Cannabis Co. - Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a68d48",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark text-white overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-dark/80 backdrop-blur-sm">
+<h1 class="text-[#EAEAEA] text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Inventory</h1>
+</header>
+<!-- Floating Search & Filter Bar -->
+<div class="sticky top-[60px] z-10 px-4 py-3 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#A0A0A0] flex border-none bg-white/5 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-[#EAEAEA] focus:outline-0 focus:ring-0 border-none bg-white/5 focus:border-none h-full placeholder:text-[#A0A0A0] px-4 pl-2 text-base font-normal leading-normal" placeholder="Search products by name, strain, SKU..." value=""/>
+</div>
+</label>
+<button class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/5">
+<span class="material-symbols-outlined text-primary text-2xl">tune</span>
+</button>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-4 bg-background-dark"></div>
+<!-- Product List -->
+<main class="flex-1 px-4 space-y-3 pb-24">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Close up image of Desert Walker Pre-roll package" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBaYDFSXnqNzj0eCRdl27NBfX9p_33_RztgpKknQdn-Y6g8EPONWvJiLNxpqScTkAnNIFA3qrLV_eGCX560ji7YkGU9bU1gj_1Q6saIzUSW2K3sK_fstMRL8RNwfPOTG_lSgEIf4csMofqUTGYx56YTI3gXi3wBmVn6eKSrWBsb6mXFwswGUN_PSqZoJNHTaXeTQFyzcgMkKUy8bp8ZNmEfxiM3icIX83aPfpXPeb8I4A75HvBTZO10Da9VYDiInBGlAdRIiPwH4vo");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">Desert Walker Pre-roll</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Sativa</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Close up image of OG Kush cannabis flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBB8uvd5lGxoWQSLlRR8qLhF7wcVcUYRmHm-hXgbDsZc4DsujzUePOUl1jF5JnD5XAKN8G0zB_GNT5DwEvdsfwcJB3zcFpGx-JySuavUBHt6-AOKgXhrFlOgcy9fLS2nHjMaS5bO-kFr_QnVb-DWPuKSWRebsWxE1r5cKxpFnw0IfPjRvsAv-RLhu98jIZsmJpzwYRAj_MBDoQVpe8u2KqLXO_KSHTnVrrlp-jQgtt39fnjyPoBx_3U_I2-_q1a8axWCoNq280PLBo");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">OG Kush</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Indica</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Close up image of Blue Dream cannabis flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMG68TpxmGrFiQWxrdF6mrDgPO38q1ox_CyXjspgOuuERbpSxbQFziNoU76UF14ZGw5OlxbgPW4aoOmeg4t2wcSQYDexzjGtzyGLk8F1x8bT4hxwA5EZ-AyjW8iyu8jI5D0Gdc3VX9e1NVpwvkGhjJCl_MEy979Lsnr8ETFCH4F9YJyBs25bQHLMJysMJ4O-Q0M0VL0FCksRRF6zMt3kPTahgGF-M6eWJwG94CasFd0CNOC8yXyeYTxdrHOCtgd4cryGbngGuth2c");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">Blue Dream</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Hybrid</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Image of Cherry Pie cannabis concentrate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtcyw_86k_na-AgAHDakDETwwC5mtBBzM-IjYjnAInv705BOobLPEcMMfmuEeeVNjF0Rzp_0f48spn60qRemkZ48APgSGfjGa9V75X3FQI0cI-XknyER-Jckkrv1ObRvLf0l90ON8HtiQjABPvgZhteeo5qjnGtENfFL-LKjlsQiiqsKcT6B5Em00Sd9nAPgljz_cdX1AxkveybEXLcByglrqn9of7tBUHXHtH3C3KYikFYFG3NXmq4X5cXZ9SNhu6jhfQECUcZx8");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-red-500"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">Cherry Pie Concentrate</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Concentrate</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+<!-- List Item 5 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Packaging for Mohave Gold Gummies" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkJBuyrvFT9DnZ9xV_sz7KOeMf-1feiezZlU42sqKzmu-IywtAJXTLiYuAo-qY3lSTlbLhFZkSb6Y8Q8at2ky4posq1Vd3zACLQdo0T_DmYW9402yC6I-xVUQ0cE7blNQUQ8nlbJYrtu2i6YT4bcE5EPjFQjKmddjaGxt0qN8_KOd83HiLWxkTmS9VftUFp7dX_TI3KRvXz-prEnP2xGzQP1JnLefMOiBiWT4aCLbMszT8ab8NaZRAP7x9bW_8j5BWFUy0cDIm9Zk");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">Mohave Gold Gummies</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Edible</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+<!-- List Item 6 -->
+<div class="flex items-center gap-4 bg-transparent min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Close up image of Granddaddy Purple flower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQxkDmXuorIZmyVdyRAhi8TtmSINhzSTfkFB-ej0EJekbuDpQdp6n7lEh2K9ja0XX1_mNJ9fi1cPJORRRrh5bpfhVYQjgEhRGGDWcRAEtFQBwt2HefQPBZbdHvIJvzFJ7k4KA1P_kUb3pdHOIli7SIy7XELEBu5wNYoz2m-fAcpSnGtfvDaUhvDGZvr5t8IErQ9PsDCJec21I-B5X9qWwjShbOx_eXOaPZOHFaguDBHfm3OFhOu8qRKblTOCMWFk6MMxxNbtrd14k");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<p class="text-[#EAEAEA] text-base font-medium leading-normal line-clamp-1">Granddaddy Purple</p>
+</div>
+<p class="text-[#A0A0A0] text-sm font-normal leading-normal line-clamp-2">Indica</p>
+</div>
+</div>
+<div class="flex shrink-0 items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="text-primary flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-20">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-background-dark shadow-lg">
+<span class="material-symbols-outlined text-4xl">add</span>
+</button>
+</div>
+</div>
+</body></html>

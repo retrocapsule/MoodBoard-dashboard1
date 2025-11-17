@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Budtender Rewards &amp; Achievements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #1A1A1A; /* Fallback for older browsers */
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a68d48",
+              "background-light": "#f7f7f6",
+              "background-dark": "#1A1A1A",
+              "surface-dark": "#2a2a2a",
+              "text-light": "#F5F5F5",
+              "text-muted": "#888888",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-text-light">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<h1 class="text-text-light text-xl font-bold leading-tight tracking-[-0.015em] flex-1">Rewards &amp; Achievements</h1>
+<div class="text-text-light flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-dark">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+<div class="flex flex-col gap-8 p-4">
+<!-- Hero Progress Section -->
+<div class="flex flex-col gap-3 rounded-xl bg-surface-dark p-6">
+<div class="flex items-center justify-between gap-4">
+<p class="text-text-light text-lg font-medium leading-normal">Next Reward: Industry Event Pass</p>
+<div class="text-primary flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-3xl">local_activity</span>
+</div>
+</div>
+<div class="flex gap-6 justify-between items-baseline">
+<p class="text-text-muted text-sm font-normal leading-normal">Progress</p>
+<p class="text-text-light text-base font-bold leading-normal">1,250 / 2,000 Points</p>
+</div>
+<div class="rounded-full bg-background-dark h-3 overflow-hidden"><div class="h-3 rounded-full bg-primary" style="width: 62.5%;"></div></div>
+</div>
+<!-- Achievement Tiers -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 bg-transparent min-h-14 justify-between border-b border-surface-dark pb-4">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="flex flex-col">
+<p class="text-text-light text-base font-medium leading-normal">Novice Budtender</p>
+<p class="text-text-muted text-sm">Completed</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-muted flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-transparent min-h-14 justify-between border-b border-surface-dark pb-4">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="flex flex-col">
+<p class="text-text-light text-base font-medium leading-normal">Pro Budtender</p>
+<p class="text-text-muted text-sm">Completed</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-muted flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-transparent min-h-14 justify-between border-b border-surface-dark pb-4 opacity-60">
+<div class="flex items-center gap-4">
+<div class="text-text-muted flex items-center justify-center rounded-lg bg-surface-dark shrink-0 size-12">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div class="flex flex-col">
+<p class="text-text-light text-base font-medium leading-normal">Master Budtender</p>
+<p class="text-text-muted text-sm">Locked</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-text-muted flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reward Catalog Section -->
+<div class="flex flex-col gap-4">
+<h2 class="text-text-light text-lg font-bold leading-tight">Reward Catalog</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Reward Card 1 -->
+<div class="flex flex-col gap-3 rounded-xl bg-surface-dark p-4 items-start">
+<div class="text-primary flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined">school</span>
+</div>
+<p class="text-text-light text-base font-medium leading-normal flex-1">Advanced Sales Training</p>
+<p class="text-text-muted text-sm">2,500 Points</p>
+<button class="w-full mt-2 bg-primary/20 text-primary py-2 px-4 rounded-lg text-sm font-bold">View Details</button>
+</div>
+<!-- Reward Card 2 -->
+<div class="flex flex-col gap-3 rounded-xl bg-surface-dark p-4 items-start">
+<div class="text-primary flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined">build</span>
+</div>
+<p class="text-text-light text-base font-medium leading-normal flex-1">Professional Tool Kit</p>
+<p class="text-text-muted text-sm">4,000 Points</p>
+<button class="w-full mt-2 bg-primary text-background-dark py-2 px-4 rounded-lg text-sm font-bold">Redeem</button>
+</div>
+<!-- Reward Card 3 -->
+<div class="flex flex-col gap-3 rounded-xl bg-surface-dark p-4 items-start opacity-60">
+<div class="text-text-muted flex size-12 shrink-0 items-center justify-center rounded-lg bg-surface-dark">
+<span class="material-symbols-outlined">potted_plant</span>
+</div>
+<p class="text-text-light text-base font-medium leading-normal flex-1">Master Grower Course</p>
+<p class="text-text-muted text-sm">7,500 Points</p>
+<button class="w-full mt-2 bg-surface-dark text-text-muted py-2 px-4 rounded-lg text-sm font-bold cursor-not-allowed">Locked</button>
+</div>
+<!-- Reward Card 4 -->
+<div class="flex flex-col gap-3 rounded-xl bg-surface-dark p-4 items-start opacity-60">
+<div class="text-text-muted flex size-12 shrink-0 items-center justify-center rounded-lg bg-surface-dark">
+<span class="material-symbols-outlined">person_apron</span>
+</div>
+<p class="text-text-light text-base font-medium leading-normal flex-1">Durable Work Apron</p>
+<p class="text-text-muted text-sm">1,500 Points</p>
+<button class="w-full mt-2 bg-surface-dark text-text-muted py-2 px-4 rounded-lg text-sm font-bold cursor-not-allowed">Locked</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
