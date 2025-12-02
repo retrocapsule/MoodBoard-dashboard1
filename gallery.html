@@ -538,6 +538,7 @@
         let currentItemId = null;
         let currentItemSupabaseId = null; // Store Supabase item ID
         let currentItem = null; // Store full item object for admin panel
+        let currentItemAllFeedback = null; // Store all feedback for current item (admin view)
 
         // Get feedback for an item (from Supabase or localStorage fallback)
         async function getFeedbackForItem(itemId) {
@@ -794,7 +795,8 @@
             
             // Show admin panel button if user is admin
             const adminButton = document.getElementById('admin-panel-button');
-            if (typeof isAdmin === 'function' && isAdmin()) {
+            const isUserAdmin = typeof isAdmin === 'function' && isAdmin();
+            if (isUserAdmin) {
                 adminButton.classList.remove('hidden');
             } else {
                 adminButton.classList.add('hidden');
@@ -808,6 +810,33 @@
                     indicator.classList.remove('hidden');
                 } else {
                     indicator.classList.add('hidden');
+                }
+            }
+
+            // If admin, fetch all feedback for this item
+            currentItemAllFeedback = null;
+            if (isUserAdmin) {
+                // Try to get Supabase item ID if we don't have it
+                let supabaseItemId = currentItemSupabaseId;
+                if (!supabaseItemId && typeof getItemIdFromFolderPath === 'function') {
+                    try {
+                        supabaseItemId = await getItemIdFromFolderPath(currentItemId);
+                        if (supabaseItemId) {
+                            currentItemSupabaseId = supabaseItemId;
+                        }
+                    } catch (error) {
+                        console.log('Could not look up item ID for admin reviews:', error);
+                    }
+                }
+                
+                // Fetch all feedback if we have the Supabase ID
+                if (supabaseItemId && typeof getAllFeedbackForItem === 'function') {
+                    try {
+                        currentItemAllFeedback = await getAllFeedbackForItem(supabaseItemId);
+                        console.log('Fetched all feedback for admin view:', currentItemAllFeedback);
+                    } catch (error) {
+                        console.error('Error fetching all feedback for admin:', error);
+                    }
                 }
             }
 
@@ -836,6 +865,14 @@
                         style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);">
                     </iframe>
                 `;
+                
+                // If admin and we have feedback, render reviews section
+                if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
+                    // Wait a bit for iframe to load, then append reviews
+                    setTimeout(() => {
+                        renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                    }, 500);
+                }
                 return;
             }
             
@@ -937,6 +974,11 @@
                         newScript.textContent = script.textContent;
                         fullscreenContent.appendChild(newScript);
                     });
+                    
+                    // If admin and we have feedback, render reviews section
+                    if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
+                        renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                    }
                 })
                 .catch(error => {
                     console.error('Fetch failed, using iframe fallback:', error);
@@ -952,6 +994,14 @@
                             onerror="console.error('Iframe failed to load:', '${normalizedPath}')">
                         </iframe>
                     `;
+                    
+                    // If admin and we have feedback, render reviews section
+                    if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
+                        // Wait a bit for iframe to load, then append reviews
+                        setTimeout(() => {
+                            renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                        }, 500);
+                    }
                     
                     // Try to remove headers from iframe content after it loads (works for same-origin)
                     const iframe = document.getElementById('page-iframe');
@@ -1232,6 +1282,81 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        // Render all reviews section for admin view
+        function renderAllReviewsSection(allFeedback, container) {
+            if (!allFeedback || allFeedback.length === 0) {
+                return; // Don't show anything if no feedback
+            }
+
+            // Remove existing reviews section if it exists
+            const existingSection = container.querySelector('#admin-reviews-section');
+            if (existingSection) {
+                existingSection.remove();
+            }
+
+            // Create reviews section container
+            const reviewsSection = document.createElement('div');
+            reviewsSection.id = 'admin-reviews-section';
+            reviewsSection.className = 'w-full bg-background-dark border-t border-[#3e3a2d] p-6';
+            
+            let reviewsHTML = '<div class="max-w-4xl mx-auto">';
+            reviewsHTML += '<div class="flex items-center justify-between mb-6">';
+            reviewsHTML += '<h3 class="text-white text-xl font-bold">All Reviews (' + allFeedback.length + ')</h3>';
+            reviewsHTML += '<div class="flex items-center gap-4 text-sm text-white/60">';
+            
+            // Calculate stats
+            const avgRating = allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / allFeedback.length;
+            const thumbsUp = allFeedback.filter(f => f.thumbs === 'up').length;
+            const thumbsDown = allFeedback.filter(f => f.thumbs === 'down').length;
+            
+            reviewsHTML += `<span>Avg: <strong class="text-primary">${avgRating.toFixed(1)}/10</strong></span>`;
+            reviewsHTML += `<span>👍 ${thumbsUp}</span>`;
+            reviewsHTML += `<span>👎 ${thumbsDown}</span>`;
+            reviewsHTML += '</div></div>';
+            
+            reviewsHTML += '<div class="space-y-4">';
+            
+            allFeedback.forEach((feedback) => {
+                const user = feedback.users || {};
+                const userName = user.name || user.email || 'Unknown User';
+                const userEmail = user.email || '';
+                const rating = feedback.rating !== null && feedback.rating !== undefined ? feedback.rating : 'N/A';
+                const thumbs = feedback.thumbs ? (feedback.thumbs === 'up' ? '👍' : '👎') : '';
+                const notes = feedback.notes !== null && feedback.notes !== undefined ? feedback.notes : 'No notes provided';
+                const date = feedback.created_at ? new Date(feedback.created_at).toLocaleString() : 'Unknown date';
+                const isLocalStorage = feedback._isLocalStorage || false;
+                
+                reviewsHTML += `
+                    <div class="bg-[#1d1b15] border ${isLocalStorage ? 'border-yellow-600/50' : 'border-[#3e3a2d]'} rounded-xl p-4">
+                        ${isLocalStorage ? '<div class="mb-2 p-2 bg-yellow-900/20 border border-yellow-600/30 rounded text-yellow-400 text-xs"><strong>⚠️ Local Storage Only:</strong> This feedback was saved locally and not synced to Supabase.</div>' : ''}
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h4 class="text-white font-semibold">${escapeHtml(userName)}</h4>
+                                <p class="text-white/60 text-sm">${escapeHtml(userEmail)}</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-primary font-bold">${rating}/10</span>
+                                    ${thumbs ? `<span class="text-2xl">${thumbs}</span>` : ''}
+                                </div>
+                                <p class="text-white/40 text-xs">${date}</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#2a271f] rounded-lg p-3 mt-3">
+                            <p class="text-white/80 text-sm whitespace-pre-wrap">${escapeHtml(notes)}</p>
+                            ${notes === 'No notes provided' ? '<p class="text-white/40 text-xs mt-2 italic">User left rating/thumbs but no written notes</p>' : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            reviewsHTML += '</div></div>';
+            reviewsSection.innerHTML = reviewsHTML;
+            
+            // Append to container
+            container.appendChild(reviewsSection);
         }
 
         async function exportAllFeedback() {
