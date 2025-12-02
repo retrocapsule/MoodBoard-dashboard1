@@ -415,10 +415,14 @@
 
             galleryContainer.innerHTML = '';
 
+            // Check if user is admin
+            const isUserAdmin = typeof isAdmin === 'function' && isAdmin();
+
             // Check for feedback for all items
             const feedbackPromises = items.map(async (item, index) => {
                 const folder = item.folder || item.name || '';
                 let hasFeedback = false;
+                let allFeedbackData = null; // For admin view
                 
                 // Try to get feedback for this item
                 try {
@@ -429,20 +433,34 @@
                         supabaseItemId = await getItemIdFromFolderPath(folder);
                     }
                     
-                    // Check for feedback
-                    if (supabaseItemId && typeof getFeedback === 'function') {
-                        const feedback = await getFeedback(supabaseItemId);
-                        if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
-                            hasFeedback = true;
+                    // If admin, fetch all feedback for this item
+                    if (isUserAdmin && supabaseItemId && typeof getAllFeedbackForItem === 'function') {
+                        try {
+                            allFeedbackData = await getAllFeedbackForItem(supabaseItemId);
+                            if (allFeedbackData && allFeedbackData.length > 0) {
+                                hasFeedback = true;
+                            }
+                        } catch (error) {
+                            console.log('Error fetching all feedback for admin:', error);
                         }
-                    } else {
-                        // Fallback to localStorage
-                        const key = `feedback_${folder}`;
-                        const localFeedback = localStorage.getItem(key);
-                        if (localFeedback) {
-                            const feedback = JSON.parse(localFeedback);
+                    }
+                    
+                    // Check for feedback (regular user or fallback)
+                    if (!allFeedbackData) {
+                        if (supabaseItemId && typeof getFeedback === 'function') {
+                            const feedback = await getFeedback(supabaseItemId);
                             if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
                                 hasFeedback = true;
+                            }
+                        } else {
+                            // Fallback to localStorage
+                            const key = `feedback_${folder}`;
+                            const localFeedback = localStorage.getItem(key);
+                            if (localFeedback) {
+                                const feedback = JSON.parse(localFeedback);
+                                if (feedback && (feedback.notes || feedback.rating !== 5 || feedback.thumbs)) {
+                                    hasFeedback = true;
+                                }
                             }
                         }
                     }
@@ -450,18 +468,23 @@
                     console.log('Error checking feedback for item:', error);
                 }
                 
-                return { index, hasFeedback };
+                return { index, hasFeedback, allFeedbackData };
             });
             
             const feedbackResults = await Promise.all(feedbackPromises);
             const feedbackMap = {};
+            const allFeedbackMap = {}; // For admin view
             feedbackResults.forEach(result => {
                 feedbackMap[result.index] = result.hasFeedback;
+                if (result.allFeedbackData) {
+                    allFeedbackMap[result.index] = result.allFeedbackData;
+                }
             });
 
             items.forEach((item, index) => {
                 const isViewed = viewed.includes(index);
                 const hasNotes = feedbackMap[index] || false;
+                const allFeedback = allFeedbackMap[index] || null;
                 const itemDiv = document.createElement('div');
                 itemDiv.className = `gallery-item relative cursor-pointer ${isViewed ? 'viewed' : ''} ${hasNotes ? 'has-notes' : ''}`;
                 
@@ -478,6 +501,32 @@
                     thumbnail = thumbnail.substring(1);
                 }
                 
+                // Build feedback summary for admin
+                let feedbackSummary = '';
+                if (isUserAdmin && allFeedback && allFeedback.length > 0) {
+                    const avgRating = allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / allFeedback.length;
+                    const thumbsUp = allFeedback.filter(f => f.thumbs === 'up').length;
+                    const thumbsDown = allFeedback.filter(f => f.thumbs === 'down').length;
+                    feedbackSummary = `
+                        <div class="mt-2 pt-2 border-t border-[#3e3a2d]">
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span class="text-white/60">${allFeedback.length} review${allFeedback.length !== 1 ? 's' : ''}</span>
+                                <span class="text-primary font-semibold">${avgRating.toFixed(1)}/10</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-white/50">
+                                <span class="flex items-center gap-1">
+                                    <span>👍</span>
+                                    <span>${thumbsUp}</span>
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <span>👎</span>
+                                    <span>${thumbsDown}</span>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                }
+                
                 itemDiv.innerHTML = `
                     <div class="bg-[#2a271f] rounded-xl overflow-hidden border border-[#3e3a2d] hover:border-primary/50 transition-colors">
                         <img src="${thumbnail}" 
@@ -487,6 +536,7 @@
                              onerror="console.error('Image failed to load:', '${thumbnail}'); this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'600\\'%3E%3Crect fill=\\'%232a271f\\' width=\\'400\\' height=\\'600\\'/%3E%3Ctext fill=\\'%23fff\\' font-family=\\'Arial\\' font-size=\\'20\\' x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\'%3EImage not found%3C/text%3E%3C/svg%3E'">
                         <div class="p-3">
                             <h3 class="text-white text-xs font-semibold truncate">${displayName}</h3>
+                            ${feedbackSummary}
                         </div>
                     </div>
                 `;
