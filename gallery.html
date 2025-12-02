@@ -840,6 +840,12 @@
                 }
             }
 
+            // Clear any existing reviews section first
+            const existingReviewsSection = fullscreenContent.querySelector('#admin-reviews-section');
+            if (existingReviewsSection) {
+                existingReviewsSection.remove();
+            }
+
             // Show loading state
             fullscreenContent.innerHTML = '<div class="flex items-center justify-center h-full min-h-[400px]"><p class="text-white/60">Loading...</p></div>';
 
@@ -858,20 +864,22 @@
             
             if (isFileProtocol) {
                 // Use iframe directly for file:// protocol
-                fullscreenContent.innerHTML = `
-                    <iframe 
-                        id="page-iframe"
-                        src="${htmlPath}" 
-                        style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);">
-                    </iframe>
-                `;
+                const iframe = document.createElement('iframe');
+                iframe.id = 'page-iframe';
+                iframe.src = htmlPath;
+                iframe.style.cssText = 'width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);';
                 
-                // If admin and we have feedback, render reviews section
+                // Clear and set content
+                fullscreenContent.innerHTML = '';
+                fullscreenContent.appendChild(iframe);
+                
+                // If admin and we have feedback, render reviews section after iframe loads
                 if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
-                    // Wait a bit for iframe to load, then append reviews
-                    setTimeout(() => {
-                        renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
-                    }, 500);
+                    iframe.onload = function() {
+                        setTimeout(() => {
+                            renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                        }, 300);
+                    };
                 }
                 return;
             }
@@ -955,29 +963,34 @@
                     
                     // Inject the body content
                     // Wrap in a container to maintain the original page structure
-                    fullscreenContent.innerHTML = `<div class="loaded-page-content">${bodyContent}</div>`;
+                    const pageContentWrapper = document.createElement('div');
+                    pageContentWrapper.className = 'loaded-page-content';
+                    pageContentWrapper.innerHTML = bodyContent;
                     
                     // Ensure the loaded content maintains proper styling
-                    const loadedContent = fullscreenContent.querySelector('.loaded-page-content');
-                    if (loadedContent) {
-                        // Preserve body classes if needed
-                        const bodyClasses = doc.body.className;
-                        if (bodyClasses) {
-                            loadedContent.className += ' ' + bodyClasses;
-                        }
+                    const bodyClasses = doc.body.className;
+                    if (bodyClasses) {
+                        pageContentWrapper.className += ' ' + bodyClasses;
                     }
+                    
+                    // Clear fullscreen content and add page wrapper
+                    fullscreenContent.innerHTML = '';
+                    fullscreenContent.appendChild(pageContentWrapper);
                     
                     // Re-initialize any scripts that need to run
                     const scripts = doc.querySelectorAll('script:not([src])');
                     scripts.forEach(script => {
                         const newScript = document.createElement('script');
                         newScript.textContent = script.textContent;
-                        fullscreenContent.appendChild(newScript);
+                        pageContentWrapper.appendChild(newScript);
                     });
                     
-                    // If admin and we have feedback, render reviews section
+                    // If admin and we have feedback, render reviews section AFTER page content
                     if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
-                        renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                        // Use setTimeout to ensure page content is fully rendered first
+                        setTimeout(() => {
+                            renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                        }, 100);
                     }
                 })
                 .catch(error => {
@@ -986,21 +999,25 @@
                     // Fallback to iframe for file:// protocol or other fetch failures
                     // Make iframe full height and let it handle its own scrolling
                     // Use normalized path for iframe as well
-                    fullscreenContent.innerHTML = `
-                        <iframe 
-                            id="page-iframe"
-                            src="${normalizedPath}" 
-                            style="width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);"
-                            onerror="console.error('Iframe failed to load:', '${normalizedPath}')">
-                        </iframe>
-                    `;
+                    const iframe = document.createElement('iframe');
+                    iframe.id = 'page-iframe';
+                    iframe.src = normalizedPath;
+                    iframe.style.cssText = 'width: 100%; height: 100%; border: none; display: block; min-height: calc(100vh - 80px);';
+                    iframe.onerror = function() {
+                        console.error('Iframe failed to load:', normalizedPath);
+                    };
                     
-                    // If admin and we have feedback, render reviews section
+                    // Clear and set content
+                    fullscreenContent.innerHTML = '';
+                    fullscreenContent.appendChild(iframe);
+                    
+                    // If admin and we have feedback, render reviews section after iframe loads
                     if (isUserAdmin && currentItemAllFeedback && currentItemAllFeedback.length > 0) {
-                        // Wait a bit for iframe to load, then append reviews
-                        setTimeout(() => {
-                            renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
-                        }, 500);
+                        iframe.onload = function() {
+                            setTimeout(() => {
+                                renderAllReviewsSection(currentItemAllFeedback, fullscreenContent);
+                            }, 300);
+                        };
                     }
                     
                     // Try to remove headers from iframe content after it loads (works for same-origin)
@@ -1036,6 +1053,13 @@
         async function closeFullscreen() {
             const fullscreenView = document.getElementById('fullscreen-view');
             const galleryView = document.getElementById('gallery-view');
+            const fullscreenContent = document.getElementById('fullscreen-content');
+            
+            // Clear the content to prevent white background issues
+            fullscreenContent.innerHTML = '';
+            
+            // Clear admin reviews data
+            currentItemAllFeedback = null;
             
             fullscreenView.classList.remove('active');
             galleryView.style.display = '';
